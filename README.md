@@ -25,7 +25,7 @@
 |email|string|null: false, unique: true||
 |password|string|null: false|一意性なし|
 |phone|string|null: false, unique: true||
-### アソシエーション
+#### アソシエーション
 - has_one :user_profile, dependent: :destroy
 - has_one :address, dependent: :destroy
 - has_one :credit_card, dependent: :destroy
@@ -52,7 +52,7 @@
 |birth_day|intger|null:false|　|
 |icon_image|text|　|　|
 |total_sales|intger|　|トータルの投稿数|
-### アソシエーション
+#### アソシエーション
 - belongs_to :user
 
 ### _addresses_
@@ -65,7 +65,7 @@
 | block |string|null:false|番地|
 | building |string|　|建物名|
 | phone |string|　|電話番号、桁数的にstring|
-### アソシエーション
+#### アソシエーション
 - belongs_to :user
 
 ### _credit_cards_
@@ -74,16 +74,16 @@
 |user_id|references|foreign_key: true|　|
 |customer_id|string|null:false, unique: true|payjpのカスタマーID|
 |card_id|string|null:false, unique: true|payjpのカード番号に紐づくID|
-### アソシエーション
+#### アソシエーション
 - belongs_to :user
 
-### _ sns_credentials_
+### _sns_credentials_
 |カラム名|型|オプション|備考|
 |---|---|---|---|
 |user_id|references|foreign_key: true|　|
 |uid|string|null: false, unique: true|今の所カラムだけ用意|
 |provider|string|null: false|今の所カラムだけ用意|
-### アソシエーション
+#### アソシエーション
 - belongs_to :user
 
 ### _display_items_
@@ -101,7 +101,7 @@
 |delivery_by_day_id|integer|null:false, foreign_key: true|active_hashで管理、カラム名は任意でつける|
 |user_id|references|null:false, foreign_key: true|　|
 |size_id|references|foreign_key: true|　|
-### アソシエーション
+#### アソシエーション
 - belongs_to :user
 - belongs_to :category
 - belongs_to :brand
@@ -122,7 +122,7 @@
 |---|---|---|---|
 |display_item_id|integer|null:false, foreign_key: true|　|
 |buyer_id|references|foreign_key: true|カラム名は任意でつける|
-### アソシエーション
+#### アソシエーション
 - belongs_to :user
 - belongs_to :_display_item
 
@@ -131,7 +131,7 @@
 |---|---|---|---|
 |display_item_id|integer|null:false, foreign_key: true|　|
 |buyer_id|references|foreign_key: true|カラム名は任意でつける|
-### アソシエーション
+#### アソシエーション
 - belongs_to :user
 - belongs_to :_display_item
 - has_many: trade_messages
@@ -142,7 +142,7 @@
 |name|string|null: false|　|
 |path|string|　|gem'ancestry'を使用|
 |size_id|references|foreign_key: true|　|
-### アソシエーション
+#### アソシエーション
 - has_many :display_items
 - belongs_to :size
 
@@ -151,7 +151,7 @@
 |---|---|---|---|
 |size|string|null: false|　|
 |path|string|　|gem'ancestry'を使用|
-### アソシエーション
+#### アソシエーション
 - has_many :display_items
 - has_many :categolies
 
@@ -159,7 +159,7 @@
 |カラム名|型|オプション|備考|
 |---|---|---|---|
 |name|string|null: false|　|
-### アソシエーション
+#### アソシエーション
 - has_many :display_items
 
 ### _comments_
@@ -168,7 +168,7 @@
 |comment|text|　|　|
 |display_item_id|references|null: false, foreign_key: true|　|
 |user_id|references|null: false, foreign_key: true|　|
-### アソシエーション
+#### アソシエーション
 - belongs_to :user
 - belongs_to :display_item
 
@@ -178,7 +178,7 @@
 |message|text|　|　|
 |finished_item_id|references|null: false, foreign_key: true|　|
 |user_id|references|null: false, foreign_key: true|　|
-### アソシエーション
+#### アソシエーション
 - belongs_to :user
 - belongs_to :finished_item
 
@@ -187,6 +187,6 @@
 |---|---|---|---|
 | display_item_id |references|null:false, foreign_key:true|　|
 |user_id |references|null:false, foreign_key:true|　|
-### アソシエーション
+#### アソシエーション
 - belongs_to :user
 - belongs_to :display_item
