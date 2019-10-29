@@ -61,9 +61,11 @@ gem 'devise'
 gem "haml-rails", ">= 1.0", '<= 2.0.1'
 gem 'erb2haml'
 gem 'active_hash'
+gem 'ancestry'
 
 group :production do
   gem 'unicorn', '5.4.1'
 end
 gem 'carrierwave'
+gem 'mini_magick'
 gem 'fog-aws'
