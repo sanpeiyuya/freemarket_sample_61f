@@ -16,18 +16,20 @@ Brand.create(name: "RALPH LAUREN")
 
 # sizeテーブルのレコード追加
 Size.all.destroy_all # まず全レコード削除
+## 空レコード
+Size.create(size: "empty")
 ## SML
 sml = Size.create(size: "SML")
-children.create(size: "XXS以下")
-children.create(size: "XS(SS)")
-children.create(size: "S")
-children.create(size: "M")
-children.create(size: "L")
-children.create(size: "XL(LL)")
-children.create(size: "2XL(3L)")
-children.create(size: "3XL(4L)")
-children.create(size: "4XL(5L)")
-children.create(size: "FREE SIZE")
+sml.children.create(size: "XXS以下")
+sml.children.create(size: "XS(SS)")
+sml.children.create(size: "S")
+sml.children.create(size: "M")
+sml.children.create(size: "L")
+sml.children.create(size: "XL(LL)")
+sml.children.create(size: "2XL(3L)")
+sml.children.create(size: "3XL(4L)")
+sml.children.create(size: "4XL(5L)")
+sml.children.create(size: "FREE SIZE")
 ## メンズ靴サイズ(cm)
 mens = Size.create(size: "shoes(mens)")
 mens.children.create(size: "23.5cm以下")
@@ -97,7 +99,8 @@ kid_shoes.children.create(size: "16cm")
 kid_shoes.children.create(size: "16.5cm")
 kid_shoes.children.create(size: "17cm以上")
 ## テレビ
-tv = Size.create(size: "〜20インチ")
+tv = Size.create(size: "tv")
+tv.children.create(size: "〜20インチ")
 tv.children.create(size: "20〜26インチ")
 tv.children.create(size: "26〜32インチ")
 tv.children.create(size: "32〜37インチ")
@@ -134,3 +137,85 @@ board.children.create(size: "165cm〜170cm未満")
 
 
 # categoriesテーブルのレコード追加
+## サイズ取得
+empty = Size.find_by(size: "empty").id
+sml = Size.find_by(size: "SML").id
+shoes_mens = Size.find_by(size: "shoes(mens)").id
+shoes_ladies = Size.find_by(size: "shoes(ladies)").id
+kids_small = Size.find_by(size: "kids(samll)").id
+kids_big = Size.find_by(size: "kids(big)").id
+shoes_kids = Size.find_by(size: "shoes(kids)").id
+tv = Size.find_by(size: "tv").id
+tire = Size.find_by(size: "tire").id
+board = Size.find_by(size: "board").id
+
+Category.all.destroy_all # まず全レコード削除
+
+## レディース
+ladies = Category.create(size_id: empty, name: "レディース")
+ladies_tops = ladies.children.create(size_id: empty, name: "トップス")
+ladies_tops.children.create(size_id: sml, name: "Tシャツ/カットソー(半袖/袖なし)")
+ladies_tops.children.create(size_id: sml, name: "Tシャツ/カットソー(七分/長袖)")
+ladies_tops.children.create(size_id: sml, name: "シャツ/ブラウス(半袖/袖なし)")
+ladies_tops.children.create(size_id: sml, name: "シャツ/ブラウス(七分/長袖)")
+ladies_tops.children.create(size_id: sml, name: "ポロシャツ")
+ladies_tops.children.create(size_id: sml, name: "キャミソール")
+ladies_tops.children.create(size_id: sml, name: "タンクトップ")
+ladies_tops.children.create(size_id: sml, name: "ホルターネック")
+ladies_tops.children.create(size_id: sml, name: "ニット/セーター")
+ladies_tops.children.create(size_id: sml, name: "チュニック")
+ladies_tops.children.create(size_id: sml, name: "カーディガン/ボレロ")
+ladies_tops.children.create(size_id: sml, name: "アンサンブル")
+ladies_tops.children.create(size_id: sml, name: "ベスト/ジレ")
+ladies_tops.children.create(size_id: sml, name: "パーカー")
+ladies_tops.children.create(size_id: sml, name: "トレーナー/スウェット")
+ladies_tops.children.create(size_id: sml, name: "ベアトップ/チューブトップ")
+ladies_tops.children.create(size_id: sml, name: "ジャージ")
+ladies_tops.children.create(size_id: sml, name: "その他")
+## メンズ
+mens = Category.create(size_id: empty, name: "メンズ")
+mens_tops = mens.children.create(size_id: empty, name: "トップス")
+mens_tops.children.create(size_id: sml, name: "Tシャツ/カットソー(半袖/袖なし)")
+## ベビー・キッズ
+kids = Category.create(size_id: empty, name: "ベビー・キッズ")
+kids_BabyGirls_under95 = kids.children.create(size_id: empty, name: "ベビー服(女の子用)~95cm")
+kids_BabyGirls_under95.children.create(size_id: kids_small, name: "トップス")
+## インテリア・住まい・小物
+interiors = Category.create(size_id: empty, name: "インテリア・住まい・小物")
+interiors_kichen = interiors.children.create(size_id: empty, name: "キッチン/食器")
+interiors_kichen.children.create(size_id: empty, name: "食器")
+## 本・音楽・ゲーム
+subcals = Category.create(size_id: empty, name: "本・音楽・ゲーム")
+subcals_books = subcals.children.create(size_id: empty, name: "本")
+subcals_books.children.create(size_id: empty, name: "文学/小説")
+## おもちゃ・ホビー・グッズ
+hobbies = Category.create(size_id: empty, name: "おもちゃ・ホビー・グッズ")
+hobbies_toys = hobbies.children.create(size_id: empty, name: "おもちゃ")
+hobbies_toys.children.create(size_id: empty, name: "キャラクターグッズ")
+## コスメ・香水・美容
+beaties = Category.create(size_id: empty, name: "コスメ・香水・美容")
+beaties_cosmetics = beaties.children.create(size_id: empty, name: "ベースメイク")
+beaties_cosmetics.children.create(size_id: empty, name: "ファンデーション")
+## 家電・スマホ・カメラ
+electrics = Category.create(size_id: empty, name: "家電・スマホ・カメラ")
+electrics_phones = electrics.children.create(size_id: empty, name: "スマートフォン/携帯電話")
+electrics_phones.children.create(size_id: empty, name: "スマートフォン本体")
+## スポーツ・レジャー
+spots = Category.create(size_id: empty, name: "スポーツ・レジャー")
+spots_board = spots.children.create(size_id: empty, name: "スノーボード")
+spots.children.create(size_id: board, name: "ボード")
+## ハンドメイド
+handmades = Category.create(size_id: empty, name: "ハンドメイド")
+handmades_accessories = handmades.children.create(size_id: empty, name: "アクセサリー(女性用)")
+handmades_accessories.children.create(size_id: empty, name: "ピアス")
+## チケット
+tickets = Category.create(size_id: empty, name: "チケット")
+tickets_music = tickets.children.create(size_id: empty, name: "音楽")
+tickets_music.children.create(size_id: empty, name: "男性アイドル")
+## 自動車・オートバイ
+cars = Category.create(size_id: empty, name: "自動車・オートバイ")
+cars_tires = cars.children.create(size_id: empty, name: "自動車タイヤ/ホイール")
+cars_tires.children.create(size_id: tire, name: "タイヤ/ホイールセット")
+## その他
+etceteras = Category.create(size_id: empty, name: "その他")
+etceteras.children.create(size_id: empty, name: "まとめ売り")
