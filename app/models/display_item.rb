@@ -11,4 +11,5 @@ class DisplayItem < ApplicationRecord
   belongs_to :size
   belongs_to :brand
 
+  has_many :images, dependent: :delete_all
 end
