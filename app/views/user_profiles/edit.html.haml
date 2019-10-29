@@ -1,0 +1,12 @@
+.l-contenth
+  %section.l-chapter-container
+    .chapter-head
+      %pプロフィール
+    .form
+      %img{height: "60", src:"//static.mercdn.net/images/member_photo_noimage_thumb.png",width: "60"}/
+      = form_for @profile do |f|
+        .form__upper
+          = f.text_field :introduction,class:'form__upper__input',placeholder:'例)AYA☆セール中'
+        .form__lower
+          = form_for @profile do |f|
+            = f.text_area :introduction,class:'textarea-dault',placeholder:'例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪'
