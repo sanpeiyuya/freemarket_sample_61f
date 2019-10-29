@@ -11,7 +11,7 @@ class CreateDisplayItems < ActiveRecord::Migration[5.0]
       t.integer     :delivery_fee_burden_id,  null: false
       t.integer     :delivery_method_id,      null: false
       t.integer     :prefecture_id,           null: false
-      t.integer     :delivery_by_day_id,      null: false
+      t.integer     :1,      null: false
       t.references  :user,                    null:false, foreign_key: true
       t.timestamps
     end
