@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#   coding: utf-8
+
+Brand.create(name: "NIKE")
+Brand.create(name: "adidas")
+Brand.create(name: "PUMA")
+Brand.create(name: "RALPH LAUREN")
