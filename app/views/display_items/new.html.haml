@@ -62,3 +62,21 @@
       .submit
         = f.submit
   .exhibit__footer
+    .exhibit__footer__navi
+      %ul.exhibit__footer__navi__list
+        %li
+          = link_to "#", class: "exhibit__footer__navi__list__ele" do
+            プライバシーポリシー
+        %li
+          = link_to "#", class: "exhibit__footer__navi__list__ele" do
+            メルカリ利用規約
+        %li
+          = link_to "#", class: "exhibit__footer__navi__list__ele" do
+            特定商取引に関する表記
+    .exhibit__footer__logo
+      = link_to "#" do
+        %img(src="assets/exhibit_logo_gray.svg" alt="アイコン")
+
+    .exhibit__footer__copylight
+      %p.exhibit__footer__copylight__text
+        © 2019 Mercari

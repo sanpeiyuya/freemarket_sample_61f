@@ -1,3 +1,8 @@
+*{
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+}
+
 .exhibit {
   background: #f5f5f5;
   &__header {
@@ -15,5 +20,33 @@
     height: 220px;
     width: 456px;
     margin: 0 auto;
+    padding: 40px 0;
+    &__navi {
+      &__list {
+        display: flex;
+        justify-content: space-around;
+        &__ele {
+          color: #333;
+          font-size: 12px;
+          text-decoration: none;
+          &:hover {
+            border-bottom: 0.1mm solid gray;
+            color: gray;
+          }
+        }
+      }
+    }
+    &__logo {
+      height: 65px;
+      width: 80px;
+      margin: 40px auto 0;
+    }
+    &__copylight {
+      margin: 8px 0 0;
+      &__text {
+        text-align: center;
+        font-size: 13px;
+      }
+    }
   }
 }
