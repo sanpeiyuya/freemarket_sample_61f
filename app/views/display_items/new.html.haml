@@ -26,6 +26,10 @@
     = f.label :size_id
     = f.collection_select(:size_id, @sizes, :id, :size)
 
+  .brand
+    = f.label :brand_id
+    = f.collection_select(:brand_id, @brands, :id, :name)
+
   .condition
     = f.label :condition_id
     = f.collection_select(:condition_id, @conditions, :id, :name)
