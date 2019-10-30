@@ -97,7 +97,7 @@
 |condition_id|integer|null:false, foreign_key: true|active_hashで管理、カラム名は任意でつける|
 |delivery_fee_burden_id|integer|null:false, foreign_key: true|active_hashで管理、カラム名は任意でつける|
 |delivery_method_id|integer|null:false, foreign_key: true|active_hashで管理、カラム名は任意でつける|
-|delivery_prefecture_id|integer|null:false, foreign_key: true|active_hashで管理、カラム名は任意でつける|
+|prefecture_id|integer|null:false, foreign_key: true|active_hashで管理、カラム名は任意でつける|
 |delivery_by_day_id|integer|null:false, foreign_key: true|active_hashで管理、カラム名は任意でつける|
 |user_id|references|null:false, foreign_key: true|　|
 |size_id|references|foreign_key: true|　|
@@ -113,7 +113,7 @@
 - belongs_to :size
 - has_one :trading_item, dependent: :destroy
 - has_one :finished_item, dependent: :destroy
-- has_many :images
+- has_many :images, dependent: :destroy_all
 - has_many: messages
 - has_many :likes
 
@@ -136,11 +136,19 @@
 - belongs_to :_display_item
 - has_many: trade_messages
 
+### _images_
+|カラム名|型|オプション|備考|
+|---|---|---|---|
+|image|string|null:false|　|
+|display_item_id|references|foreign_key: true|　|
+#### アソシエーション
+- belongs_to :_display_item
+
 ### _categories_
 |カラム名|型|オプション|備考|
 |---|---|---|---|
 |name|string|null: false|　|
-|path|string|　|gem'ancestry'を使用|
+|ancestry|string|　|gem'ancestry'を使用|
 |size_id|references|foreign_key: true|　|
 #### アソシエーション
 - has_many :display_items
@@ -150,7 +158,7 @@
 |カラム名|型|オプション|備考|
 |---|---|---|---|
 |size|string|null: false|　|
-|path|string|　|gem'ancestry'を使用|
+|ancestry|string|　|gem'ancestry'を使用|
 #### アソシエーション
 - has_many :display_items
 - has_many :categolies
