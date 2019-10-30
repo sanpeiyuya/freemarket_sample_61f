@@ -1,0 +1,19 @@
+.exhibit {
+  background: #f5f5f5;
+  &__header {
+    height: 128px;
+    overflow: hidden;
+    &__logo {
+      height: 49px;
+      width: 185px;
+      margin: 40px auto 0;
+    }
+  }
+  &__main {
+  }
+  &__footer {
+    height: 220px;
+    width: 456px;
+    margin: 0 auto;
+  }
+}

@@ -1,58 +1,64 @@
-投稿ページだよ！
+.exhibit
+  .exhibit__header
+    .exhibit__header__logo
+      = link_to "#" do
+        %img(src="assets/exhibit_logo.svg" alt="アイコン")
 
-= form_for @display_item do |f|
+  .exhibit__main
+    = form_for @display_item do |f|
 
-  .user
-    = f.hidden_field :user_id, value: current_user.id
+      .user
+        = f.hidden_field :user_id, value: current_user.id
 
-  .image
-    = f.fields_for :images do |i|
-      = i.label :images
-      = i.file_field :image
+      .image
+        = f.fields_for :images do |i|
+          = i.label :images
+          = i.file_field :image
 
-  .name
-    = f.label :name
-    = f.text_field :name
+      .name
+        = f.label :name
+        = f.text_field :name
 
-  .description
-    = f.label :description
-    = f.text_area :description
+      .description
+        = f.label :description
+        = f.text_area :description
 
-  .category
-    = f.label :category_id
-    = f.collection_select(:category_id, @categories, :id, :name)
+      .category
+        = f.label :category_id
+        = f.collection_select(:category_id, @categories, :id, :name)
 
-  .size
-    = f.label :size_id
-    = f.collection_select(:size_id, @sizes, :id, :size)
+      .size
+        = f.label :size_id
+        = f.collection_select(:size_id, @sizes, :id, :size)
 
-  .brand
-    = f.label :brand_id
-    = f.collection_select(:brand_id, @brands, :id, :name)
+      .brand
+        = f.label :brand_id
+        = f.collection_select(:brand_id, @brands, :id, :name)
 
-  .condition
-    = f.label :condition_id
-    = f.collection_select(:condition_id, @conditions, :id, :name)
+      .condition
+        = f.label :condition_id
+        = f.collection_select(:condition_id, @conditions, :id, :name)
 
-  .delivery_fee_burden
-    = f.label :delivery_fee_burden_id
-    = f.collection_select(:delivery_fee_burden_id, @delivery_fee_burdens, :id, :name)
+      .delivery_fee_burden
+        = f.label :delivery_fee_burden_id
+        = f.collection_select(:delivery_fee_burden_id, @delivery_fee_burdens, :id, :name)
 
-  .delivery_method
-    = f.label :delivery_method_id
-    = f.collection_select(:delivery_method_id, @delivery_methods, :id, :name)
+      .delivery_method
+        = f.label :delivery_method_id
+        = f.collection_select(:delivery_method_id, @delivery_methods, :id, :name)
 
-  .prefecture
-    = f.label :prefecture_id
-    = f.collection_select(:prefecture_id, @prefectures, :id, :name)
+      .prefecture
+        = f.label :prefecture_id
+        = f.collection_select(:prefecture_id, @prefectures, :id, :name)
 
-  .delivery_by_day
-    = f.label :delivery_by_day_id
-    = f.collection_select(:delivery_by_day_id, @delivery_by_days, :id, :name)
+      .delivery_by_day
+        = f.label :delivery_by_day_id
+        = f.collection_select(:delivery_by_day_id, @delivery_by_days, :id, :name)
 
-  .price
-    = f.label :price
-    = f.number_field(:price, min: 300, max: 999999)
+      .price
+        = f.label :price
+        = f.number_field(:price, min: 300, max: 999999)
 
-  .submit
-    = f.submit
+      .submit
+        = f.submit
+  .exhibit__footer
