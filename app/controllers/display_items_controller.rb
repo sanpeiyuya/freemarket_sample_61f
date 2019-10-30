@@ -14,7 +14,6 @@ class DisplayItemsController < ApplicationController
 
   def create
     @display_item = DisplayItem.new(display_item_params)
-    binding.pry
     if @display_item.save
       redirect_to root_path
     else
