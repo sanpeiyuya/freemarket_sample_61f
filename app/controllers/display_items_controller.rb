@@ -1,0 +1,2 @@
+class DisplayItemsController < ApplicationController
+end
