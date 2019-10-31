@@ -8,9 +8,12 @@
     .exhibit__main__box
       %h2.exhibit__main__box__title
         商品の情報を入力
+
       = form_for @display_item do |f|
-        .user
-          = f.hidden_field :user_id, value: current_user.id
+        -# user_idを取得
+        = if user_signed_in?
+          .user
+            = f.hidden_field :user_id, value: current_user.id
         -# 画像投稿フォーム
         .image
           %h3.image__title
