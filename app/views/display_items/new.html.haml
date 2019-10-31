@@ -166,10 +166,31 @@
                 .content__form__list-C__right -
 
 
+        -# 値段設定
+        .content
+          .box
+            %p.content__note
+              = link_to "#", class: "content__note__link" do
+                禁止されている出品
+              、
+              = link_to "#", class: "content__note__link" do
+                行為
+              を必ずご確認ください。
+            %p.content__note
+              またブランド品でシリアルナンバー等がある場合はご記載ください。
+              = link_to "#", class: "content__note__link" do
+                偽ブランドの販売
+              は犯罪であり処罰される可能性があります。
+            %p.content__note
+              また、出品をもちまして
+              = link_to "#", class: "content__note__link" do
+                加盟店規約
+              に同意したことになります
 
 
-        .submit
-          = f.submit
+          = f.submit({value: "出品する", class: "submit-btn"})
+          = link_to root_path, class: "return-btn" do
+            もどる
 
 
   .exhibit__footer
