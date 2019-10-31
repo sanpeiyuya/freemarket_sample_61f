@@ -1,0 +1,182 @@
+-# %p ビュー確認用のテスト！
+.header
+  ヘッダー
+%nav.bread-crumbs
+  %ul
+    %li
+      = link_to "#", class: "bread-crumbs__list" do
+        メルカリ
+        = fa_icon 'fas fa-angle-right', class: "fa-angle-right"
+    %li
+      マイページ
+.mypage-clearfix
+  .mypage
+    .mypage__side-bar
+      %nav
+        %ul.mypage__side-bar__list
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              マイページ
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              お知らせ
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              やることリスト
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              いいね！一覧
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              出品する
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              出品した商品-出品中
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              出品した商品-取引中
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              出品した商品-売却済み
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              購入した商品-取引中
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              購入した商品-過去の取引
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              ニュース一覧
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              評価一覧
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              ガイド
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              お問い合わせ
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+        %h3.mypage__side-bar__head
+          メルペイ
+        %ul.mypage__side-bar__list
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              売上・振込申請
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              ポイント
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+      .mypage__side-bar__config
+        %h3.mypage__side-bar__head
+          設定
+        %ul.mypage__side-bar__list
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              プロフィール
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              発送元・お届け先住所変更
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              支払い方法
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              メール/パスワード
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              本人情報
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              電話番号の確認
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+          %li
+            = link_to "#", class: "mypage__side-bar__list-item" do
+              ログアウト
+              = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+              
+    .mypage__main
+      .mypage__main__user
+        = link_to "#", class: "mypage__main__user__icon" do
+          %figure
+            = image_tag "member_photo_noimage_thumb.png", size: "60x60", class: "user-icon"
+            %h2.user-name
+              サンプル
+            %ul.user-info
+              %li.user-info__display
+                評価
+                %span
+                  0
+              %li.user-info__display
+                出品数
+                %span
+                  0
+
+      .mypage__main__notice-todo
+        .mypage__main__notice-todo__tab
+          %ul
+            %li.active
+              .mypage__main__notice-todo__tab--single
+                お知らせ
+            %li
+              .mypage__main__notice-todo__tab--single
+                やることリスト
+
+        .lists-way
+          %ul
+            %li
+              = link_to "#", class: "list-banner" do
+                = image_tag "mercari_profile.png", size: "48x48", class: "mini-icon"
+                .lists-way__item
+                  .lists-way__item__text
+                    事務局から個別メッセージ「Googleログイン通知」
+                  %time
+                    = fa_icon 'fas fa-clock', class: "fas fa-clock "
+                    1日前
+                  = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+            %li
+              = link_to "#", class: "list-banner" do
+                = image_tag "mercari_profile.png", size: "48x48", class: "mini-icon"
+                .lists-way__item
+                  .lists-way__item__text
+                    事務局から個別メッセージ「Googleログイン通知」
+                  %time
+                    = fa_icon 'fas fa-clock', class: "fas fa-clock "
+                    2日前
+                  = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+            %li
+              = link_to "#", class: "list-banner" do
+                = image_tag "mercari_profile.png", size: "48x48", class: "mini-icon"
+                .lists-way__item
+                  .lists-way__item__text
+                    事務局から個別メッセージ「Googleログイン通知」
+                  %time
+                    = fa_icon 'fas fa-clock', class: "fas fa-clock "
+                    3日前
+                  = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+            %li.mypage__go-list
+              = link_to "#", class: "mypage__go-list__link" do
+                一覧を見る
+            
+      .mypage__main__item
+.footer
+  フッター
