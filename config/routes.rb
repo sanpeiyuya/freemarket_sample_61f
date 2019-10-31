@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'display_items#new'
+  root 'user_profiles#edit'
   
   
   resources :display_items, only: [:new, :create]
