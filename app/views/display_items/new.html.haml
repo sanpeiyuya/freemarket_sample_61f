@@ -58,12 +58,6 @@
               .content__form__TopEle__input
                 %span{class: "fas fa-chevron-down arrow-icon"}
                 = f.collection_select(:category_id, @categories, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
-              .content__form__TopEle__input
-                %span{class: "fas fa-chevron-down arrow-icon"}
-                = f.collection_select(:category_id, @categories, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
-              .content__form__TopEle__input
-                %span{class: "fas fa-chevron-down arrow-icon"}
-                = f.collection_select(:category_id, @categories, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
             -# サイズ
             .content__form__Ele
               = f.label :size_id do
