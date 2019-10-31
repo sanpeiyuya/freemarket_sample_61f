@@ -317,7 +317,7 @@
 
 .main-aside{
   &__background{
-    background-image: url(room.jpg);
+    background-image: image-url("room.jpg");
     width: 1440px;
     height: 260px;
     background-size: cover;
