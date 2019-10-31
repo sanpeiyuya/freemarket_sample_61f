@@ -30,8 +30,8 @@
           .main-header__context__lower__rightside__todolist__text やることリスト
         .main-header__context__lower__rightside__mypage
           =image_tag "mypage.png",class: 'main-header__context__lower__rightside__mypage__icon'
-          .main-header__context__lower__rightside__mypage__text マイページ
-
+          = link_to mypages_path, class: ".main-header__context__lower__rightside__mypage__text" do
+            マイページ
 .main-context
 
   .slider
@@ -64,10 +64,10 @@
       .main-context__items__image__5
         =image_tag"5.png",size: "188x188"
 
-
-.sell-icon 
-  .sell-icon__text 出品
-  =fa_icon "camera",class: 'sell-icon__image'
+= link_to new_display_item_path, class: ".sell-icon__text" do
+  .sell-icon 
+    .sell-icon__text 出品
+    =fa_icon "camera",class: 'sell-icon__image'
 
 %aside.main-aside
   .main-aside__background
