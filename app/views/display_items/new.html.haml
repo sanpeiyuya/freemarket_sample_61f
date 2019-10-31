@@ -137,15 +137,33 @@
                 = f.collection_select(:delivery_by_day_id, @delivery_by_days, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
 
 
-        -# 以下適当
-        .detail.clearfix
+        -# 値段設定
+        .content.clearfix
+          .content__title
+            販売価格(300〜9,999,999)
+            = link_to "#", {class: "exhibit-faq"} do
+              ？
+          .content__form
+            %ul
+              %li.content__form__list.border-none
+                .clearfix
+                  = f.label :price, {class: "content__form__list__label"} do
+                    価格
+                    %span.required-icon
+                      必須
+                  .content__form__list__box
+                    ¥
+                    .content__form__list__box__width
+                      = f.number_field(:price, min: 300, max: 999999, placeholder: "例）300", class: "exhibit-price")
 
-          .price
-            = f.label :price
-            = f.number_field(:price, min: 300, max: 999999)
+              %li.content__form__list
+              %li.content__form__list
 
-          .submit
-            = f.submit
+
+
+
+        .submit
+          = f.submit
 
 
   .exhibit__footer
