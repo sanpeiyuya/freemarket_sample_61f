@@ -1,0 +1,132 @@
+%header.main-header
+  .main-header__context
+    .main-header__context__upper
+      .main-header__context__upper__logo
+        = link_to root_path do
+          =image_tag"logo.png",size: "134x36",class: 'logo'
+      .main-header__context__upper__form
+        = form_tag('/search', method: :post) do
+          = text_field_tag :keyword, params[:keyword],{placeholder: "何かお探しですか？",class: "main-header__context__upper__form__search"}
+          -# = fa_icon "search"
+          -# = button_tag class: "main-header__context__upper__form__search-btn", value: ""
+
+    .main-header__context__lower
+      .main-header__context__lower__leftside
+        .main-header__context__lower__leftside__category
+          =fa_icon "list-ul",class: 'main-header__context__lower__leftside__category__icon'
+          .main-header__context__lower__leftside__category__text カテゴリーから探す
+        .main-header__context__lower__leftside__brand
+          =fa_icon "tags",class: 'main-header__context__lower__leftside__brand__icon'
+          .main-header__context__lower__leftside__brand__text ブランドから探す
+      .main-header__context__lower__rightside
+        .main-header__context__lower__rightside__like
+          =fa_icon "heart-o",class: 'main-header__context__lower__rightside__like__icon'
+          .main-header__context__lower__rightside__like__text いいね！一覧
+        .main-header__context__lower__rightside__notice
+          =fa_icon "bell-o",class: 'main-header__context__lower__rightside__notice__icon'
+          .main-header__context__lower__rightside__notice__text お知らせ
+        .main-header__context__lower__rightside__todolist
+          =fa_icon "check",class: 'main-header__context__lower__rightside__todolist__icon'
+          .main-header__context__lower__rightside__todolist__text やることリスト
+        .main-header__context__lower__rightside__mypage
+          =image_tag "mypage.png",class: 'main-header__context__lower__rightside__mypage__icon'
+          = link_to mypages_path, class: ".main-header__context__lower__rightside__mypage__text" do
+            マイページ
+.main-context
+
+  .slider
+    =image_tag "slide-1.png",alt:"image01",href:"#"
+    =image_tag "slide-2.jpg",alt:"image02",href:"#"
+
+  .main-context__itemslist
+    .main-context__itemslist__text 全ての商品の一覧
+    .main-context__itemslist__tagspace
+      .main-context__itemslist__tagspace__tag
+        -# .main-context__itemslist__tagspace__tag__1 エンジニア
+        -# .main-context__itemslist__tagspace__tag__2 人
+        -# .main-context__itemslist__tagspace__tag__3 Ruby
+        -# .main-context__itemslist__tagspace__tag__4 JS
+  .main-context__items
+    .main-context__items__item
+      .main-context__items__item__text アイテム
+      .main-context__items__item__more 
+        .main-context__items__item__more__text もっとみる
+        =fa_icon "chevron-right",class: 'main-context__items__item__more__icon'     
+    .main-context__items__image
+      .main-context__items__image__1
+        =image_tag"1.jpg",size: "188x188"
+      .main-context__items__image__2
+        =image_tag"2.jpg",size: "188x188"
+      .main-context__items__image__3
+        =image_tag"3.png",size: "188x188"
+      .main-context__items__image__4
+        =image_tag"4.png",size: "188x188"
+      .main-context__items__image__5
+        =image_tag"5.png",size: "188x188"
+
+= link_to new_display_item_path, class: ".sell-icon__text" do
+  .sell-icon 
+    .sell-icon__text 出品
+    =fa_icon "camera",class: 'sell-icon__image'
+
+%aside.main-aside
+  .main-aside__background
+    .main-aside__background__phone
+      .main-aside__background__phone__download
+        .main-aside__background__phone__download__text1 スマホでかんたんフリマアプリ
+        .main-aside__background__phone__download__text2 今すぐに無料ダウンロード!
+        .main-aside__background__phone__download__text3
+          =image_tag"icon.png",class: 'main-aside__background__phone__download__text3__icon'
+          =image_tag"app-store.svg",class: 'main-aside__background__phone__download__text3__apple'
+          =image_tag"google-play.svg",class: 'main-aside__background__phone__download__text3__google'
+      =image_tag"phone.png",class: 'main-aside__background__phone__image'
+
+%footer.main-footer
+  .main-footer__information
+    .main-footer__information__about
+      .main-footer__information__about__title メルカリについて
+      .main-footer__information__about__detail
+        .main-footer__information__about__detail__company 会社概要（運営会社）
+        .main-footer__information__about__detail__jobs 採用情報
+        .main-footer__information__about__detail__news プレスリリース
+        .main-footer__information__about__detail__blog 公式ブログ
+        .main-footer__information__about__detail__guideline メルカリロゴ利用ガイドライン
+        .main-footer__information__about__detail__sns
+          =fa_icon "twitter",class: 'main-footer__information__about__detail__sns__twitter'
+          =fa_icon "facebook-square",class: 'main-footer__information__about__detail__sns__facebook'
+    .main-footer__information__help
+      .main-footer__information__help__title ヘルプ＆＆ガイド
+      .main-footer__information__help__detail
+        .main-footer__information__help__detail__helpcenter メルカリガイド
+        .main-footer__information__help__detail__rakuraku らくらくメルカリ便
+        .main-footer__information__help__detail__yuyu ゆうゆうメルカリ便
+        .main-footer__information__help__detail__rakurakubig 大型メルカリ便
+        .main-footer__information__help__detail__car 車体取引ガイド
+        .main-footer__information__help__detail__description メルカリあんしん・あんぜん宣言！
+        .main-footer__information__help__detail__authenticity 偽ブランド品撲滅への取り組み
+        .main-footer__information__help__detail__box メルカリボックス
+    .main-footer__information__privacy
+      .main-footer__information__privacy__title プライバシーと利用規約
+      .main-footer__information__privacy__detail
+        .main-footer__information__privacy__detail__leftside
+          .main-footer__information__privacy__detail__leftside__privacy プライバシーポリシー
+          .main-footer__information__privacy__detail__leftside__tos メルカリ利用規約
+          .main-footer__information__privacy__detail__leftside__tosphone あんしんスマホサポート制度に関する利用特約
+          .main-footer__information__privacy__detail__leftside__compliance コンプライアンスポリシー
+        .main-footer__information__privacy__detail__rightside
+          .main-footer__information__privacy__detail__rightside__data 個人データの安全管理に係る基本方針
+          .main-footer__information__privacy__detail__rightside__tokutei 特定商取引に関する表記
+          .main-footer__information__privacy__detail__rightside__kessai 資金決済法に基づく表示
+          .main-footer__information__privacy__detail__rightside__safety 法令順守と犯罪抑止のために
+    .main-footer__information__countries
+      .main-footer__information__countries__title 国
+      .main-footer__information__countries__detail
+        .main-footer__information__countries__detail__jp 日本
+        .main-footer__information__countries__detail__us United States
+  .main-footer__copyright
+    =image_tag"logoBW.svg",class: 'main-footer__copyright__image'
+    .main-footer__copyright__text © 2019 Mercari
+
+
+    -#   .main-context__roll-context
+    -#     =image_tag"roll-context.png",class: 'roll-image'

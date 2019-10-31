@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'display_items#new'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root to: 'items#index'
   resources :display_items, only: [:new, :create]
+  resources :mypages, only: [:index]
 end
