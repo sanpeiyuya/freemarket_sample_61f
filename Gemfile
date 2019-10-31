@@ -73,5 +73,6 @@ group :production do
 end
 gem 'carrierwave'
 gem 'fog-aws'
+gem 'font-awesome-sass'
 gem "font-awesome-rails"
 gem 'mini_magick'

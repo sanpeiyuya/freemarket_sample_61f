@@ -1,0 +1,371 @@
+*{
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+}
+
+.exhibit {
+  background: #f5f5f5;
+  &__header {
+    height: 128px;
+    overflow: hidden;
+    &__logo {
+      height: 49px;
+      width: 185px;
+      margin: 40px auto 0;
+    }
+  }
+  &__main {
+    &__box {
+      width: 700px;
+      margin: 0 auto;
+      background: #fff;
+      &__title {
+        text-align: center;
+        padding: 32px 16px;
+        font-size: 22px;
+        font-weight: bold;
+        color: #333;
+      }
+    }
+  }
+  &__footer {
+    height: 220px;
+    width: 456px;
+    margin: 0 auto;
+    padding: 40px 0;
+    &__navi {
+      &__list {
+        display: flex;
+        justify-content: space-around;
+        &__ele {
+          color: #333;
+          font-size: 12px;
+          text-decoration: none;
+          &:hover {
+            border-bottom: 0.1mm solid gray;
+            color: gray;
+          }
+        }
+      }
+    }
+    &__logo {
+      height: 65px;
+      width: 80px;
+      margin: 40px auto 0;
+    }
+    &__copylight {
+      margin: 8px 0 0;
+      &__text {
+        text-align: center;
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+.image {
+  padding: 40px;
+  border-top: 1px solid #eee;
+   &__title {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+  }
+  &__tips {
+    margin: 8px 0 0;
+    line-height: 1.5;
+    color: #333;
+    font-size: 14px;
+  }
+  &__form {
+    // float: left;
+    width: 100%;
+    margin-top: 15px;
+    padding: 40px;
+    position: relative;
+    min-height: 162px;
+    border: 1px dashed #ccc;
+    text-align: center;
+    background: #f5f5f5;
+    cursor: pointer;
+    &__input {
+      display: none;
+    }
+    &__tips {
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      right: 16px;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.5;
+      transform: translate(0, -50%);
+      pointer-events: none;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-family: monospace;
+    }
+  }
+}
+
+.title {
+  padding: 40px;
+  border-top: 1px solid #eee;
+  &__name {
+    width: 100%;
+    font-weight: 600;
+    display: inline-block;
+    font-size: 14px;
+    color: #333;
+    &__input {
+      width: 100%;
+      margin: 8px 0 0;
+      height: 48px;
+      padding: 10px 16px 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: #fff;
+      line-height: 1.5;
+      font-size: 16px;
+      font-weight: normal;
+    }
+  }
+  &__description {
+    width: 100%;
+    margin: 40px 0 0;
+    font-weight: 600;
+    display: inline-block;
+    font-size: 14px;
+    color: #333;
+    &__input {
+      margin: 8px 0 0;
+      display: block;
+      width: 100%;
+      height: 142px;
+      max-width: 100%;
+      min-height: 104px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background: #fff;
+      font-size: 16px;
+      line-height: 1.5;
+      font-weight: normal;
+    }
+  }
+}
+
+.content {
+  padding: 40px;
+  border-top: 1px solid #eee;
+  &__title {
+    color: #888;
+    width: calc(100% - 400px);
+    font-size: 14px;
+    font-weight: bold;
+    float: left;
+  }
+  &__form {
+    width: 400px;
+    float: right;
+    &__TopEle {
+      font-weight: 600;
+      font-size: 14px;
+      color: #333;
+      &__input {
+        margin: 8px 0 0;
+        position: relative;
+      }
+    }
+    &__Ele {
+      margin: 40px 0 0;
+      font-weight: 600;
+      font-size: 14px;
+      color: #333;
+      &__input {
+        margin: 8px 0 0;
+        position: relative;
+      }
+    }
+    &__list-A {
+      padding: 0 0 24px;
+      border-top: 1px solid #ccc;
+      &__label {
+        width: 50%;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 48px;
+        color: #333;
+        float: left;
+      }
+      &__box {
+        width: 50%;
+        font-size: 12px;
+        font-weight: 100;
+        float: right;
+        text-align: right;
+        &__width {
+          width: 80%;
+          display: inline-block;
+          margin: 0 0 0 5%;
+        }
+      }
+    }
+    &__list-B {
+      padding: 24px 0;
+      border-top: 1px solid #ccc;
+      font-size: 14px;
+      color: #333;
+      line-height: 1;
+      &__left {
+        float: left;
+      }
+      &__right {
+        float: right;
+      }
+    }
+    &__list-C {
+      padding: 24px 0;
+      border-top: 1px solid #ccc;
+      font-weight: 600;
+      color: #333;
+      &__left {
+        font-size: 16px;
+        float: left;
+      }
+      &__right {
+        font-size: 34px;
+        float: right;
+      }
+    }
+  }
+  &__note {
+    font-size: 14px;
+    line-height: 1.5;
+    &__link {
+      text-decoration: none;
+      color: #0099e8;
+    }
+  }
+}
+
+
+// 以下、アイコン等
+.exhibit-price {
+  width: 100%;
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+  text-align: right;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.exhibit-select {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: normal;
+  cursor: pointer;
+  -webkit-appearance: none;/* ベンダープレフィックス(Google Chrome、Safari用) */
+  -moz-appearance: none; /* ベンダープレフィックス(Firefox用) */
+  appearance: none; /* 標準のスタイルを無効にする */  
+}
+.arrow-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  z-index: 2;
+  color: #888;
+  font-size: 18px;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+.required-icon {
+  background: #ea352d;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+}
+.any-icon {
+  background: #ccc;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+}
+.exhibit-faq {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #0099e8;
+  color: #fff;
+  line-height: 14px;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  &:hover {
+    background: rgba(#0099e8,0.6);
+  }
+}
+.border-none {
+  border-top: none;
+}
+
+.submit-btn {
+  margin: 40px 0 0;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  -webkit-transition: all ease-out .3s;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  text-align: center;
+}
+
+.return-btn {
+  width: 45%;
+  margin: 24px auto 0;
+  background: #aaa;
+  border: 1px solid #aaa;
+  color: #fff;
+  display: block;
+  line-height: 48px;
+  font-size: 14px;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.clearfix:after {
+  content: "";         /* 擬似要素を実体化 */
+  clear: both;        /* floatを解除する */
+  display: block;     /* ブロック要素にする */
+}

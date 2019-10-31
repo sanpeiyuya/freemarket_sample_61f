@@ -5,6 +5,7 @@ class DisplayItemsController < ApplicationController
     # カテゴリ取得
     @categories = Category.where(ancestry: nil)
     @sizes = Size.where(ancestry: nil)
+    @brands = Brand.all
     @conditions = Condition.all
     @delivery_fee_burdens = DeliveryFeeBurden.all
     @delivery_methods = DeliveryMethod.all
@@ -22,6 +23,6 @@ class DisplayItemsController < ApplicationController
 
   private
   def display_item_params
-    params.require(:display_item).permit(:user_id, :name, :description, :category_id, :size_id, :condition_id, :delivery_fee_burden_id, :delivery_method_id, :prefecture_id, :delivery_by_day_id, :price, images_attributes: [:image])
+    params.require(:display_item).permit(:user_id, :name, :description, :category_id, :size_id, :brand_id, :condition_id, :delivery_fee_burden_id, :delivery_method_id, :prefecture_id, :delivery_by_day_id, :price, images_attributes: [:image])
   end
 end
