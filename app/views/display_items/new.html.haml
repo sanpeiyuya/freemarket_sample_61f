@@ -1,9 +1,9 @@
 投稿ページだよ！
 
 = form_for @display_item do |f|
-
-  .user
-    = f.hidden_field :user_id, value: current_user.id
+  = if user_signed_in?
+    .user
+      = f.hidden_field :user_id, value: current_user.id
 
   .image
     = f.fields_for :images do |i|
