@@ -186,7 +186,7 @@
         position: relative;
       }
     }
-    &__list {
+    &__list-A {
       padding: 0 0 24px;
       border-top: 1px solid #ccc;
       &__label {
@@ -208,6 +208,33 @@
           display: inline-block;
           margin: 0 0 0 5%;
         }
+      }
+    }
+    &__list-B {
+      padding: 24px 0;
+      border-top: 1px solid #ccc;
+      font-size: 14px;
+      color: #333;
+      line-height: 1;
+      &__left {
+        float: left;
+      }
+      &__right {
+        float: right;
+      }
+    }
+    &__list-C {
+      padding: 24px 0;
+      border-top: 1px solid #ccc;
+      font-weight: 600;
+      color: #333;
+      &__left {
+        font-size: 16px;
+        float: left;
+      }
+      &__right {
+        font-size: 34px;
+        float: right;
       }
     }
   }

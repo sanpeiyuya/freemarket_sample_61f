@@ -145,19 +145,25 @@
               ？
           .content__form
             %ul
-              %li.content__form__list.border-none
+              %li.content__form__list-A.border-none
                 .clearfix
-                  = f.label :price, {class: "content__form__list__label"} do
+                  = f.label :price, {class: "content__form__list-A__label"} do
                     価格
                     %span.required-icon
                       必須
-                  .content__form__list__box
+                  .content__form__list-A__box
                     ¥
-                    .content__form__list__box__width
+                    .content__form__list-A__box__width
                       = f.number_field(:price, min: 300, max: 999999, placeholder: "例）300", class: "exhibit-price")
 
-              %li.content__form__list
-              %li.content__form__list
+              %li.content__form__list-B.clearfix
+                .content__form__list-B__left
+                  販売手数料（手数料10%）
+                .content__form__list-B__right -
+              %li.content__form__list-C.clearfix
+                .content__form__list-C__left
+                  販売利益
+                .content__form__list-C__right -
 
 
 
