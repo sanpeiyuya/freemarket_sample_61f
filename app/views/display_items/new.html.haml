@@ -11,26 +11,35 @@
       = form_for @display_item do |f|
         .user
           = f.hidden_field :user_id, value: current_user.id
-
-        .exhibit__main__box__image
-          %h3.exhibit__main__box__image__title
+        -# 画像投稿フォーム
+        .image
+          %h3.image__title
             出品画像
-            %span.exhibit__main__box__image__icon
+            %span.image__icon
               必須
-          %p.exhibit__main__box__image__tips
+          %p.image__tips
             最大10枚までアップロードできます
           = f.fields_for :images do |i|
             = i.label :image do
-              .exhibit__main__box__image__form
-                = i.file_field :image, class: "exhibit__main__box__image__form__input"
-                %p.exhibit__main__box__image__form__tips ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート
-        .name
-          = f.label :name
-          = f.text_field :name
-
-        .description
-          = f.label :description
-          = f.text_area :description
+              .image__form
+                = i.file_field :image, class: "image__form__input"
+                %p.image__form__tips ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート
+        -# 商品名と商品説明フォーム
+        .title
+          .title__name
+            = f.label :name do
+              商品名
+              %span.image__icon
+                必須
+            .box
+              = f.text_field :name
+          .title__description
+            = f.label :description do
+              商品の説明
+              %span.image__icon
+                必須
+            .box
+              = f.text_area :description
 
         .category
           = f.label :category_id
