@@ -207,6 +207,32 @@
   }
 }
 
+// .delivery {
+//   padding: 40px;
+//   border-top: 1px solid #eee;
+//   &__title {
+//     color: #888;
+//     width: calc(100% - 400px);
+//     font-size: 14px;
+//     font-weight: bold;
+//     float: left;
+//   }
+//   &__form {
+//     width: 400px;
+//     float: right;
+//     &__fee {
+//       font-weight: 600;
+//       font-size: 14px;
+//       color: #333;
+//       &__input {
+//         margin: 8px 0 0;
+//         position: relative;
+//       }
+//     }
+//   }
+// }
+
+
 .exhibit-select {
   width: 100%;
   position: relative;
@@ -252,6 +278,21 @@
   color: #fff;
   font-size: 12px;
   vertical-align: top;
+}
+.exhibit-faq {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #0099e8;
+  color: #fff;
+  line-height: 14px;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  &:hover {
+    background: rgba(#0099e8,0.6);
+  }
 }
 
 .clearfix:after {
