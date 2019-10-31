@@ -18,7 +18,7 @@
         .image
           %h3.image__title
             出品画像
-            %span.image__icon
+            %span.required-icon
               必須
           %p.image__tips
             最大10枚までアップロードできます
@@ -32,56 +32,96 @@
           .title__name
             = f.label :name do
               商品名
-              %span.image__icon
+              %span.required-icon
                 必須
             .box
-              = f.text_field :name
+              = f.text_field :name, class: "title__name__input", placeholder: "商品名（必須40文字まで）"
           .title__description
             = f.label :description do
               商品の説明
-              %span.image__icon
+              %span.required-icon
                 必須
             .box
-              = f.text_area :description
+              = f.text_area :description, class: "title__description__input", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
 
-        .category
-          = f.label :category_id
-          = f.collection_select(:category_id, @categories, :id, :name)
+        -# 商品詳細フォーム（カテゴリ・サイズ・ブランド・コンディション）
+        .detail.clearfix
+          .detail__title
+            商品の詳細
+          .detail__form
+            -# カテゴリ
+            .detail__form__category
+              = f.label :category_id do
+                カテゴリー
+                %span.required-icon
+                  必須
+              .detail__form__category__input
+                %span{class: "fas fa-chevron-down arrow-icon"}
+                = f.collection_select(:category_id, @categories, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
+              .detail__form__category__input
+                %span{class: "fas fa-chevron-down arrow-icon"}
+                = f.collection_select(:category_id, @categories, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
+              .detail__form__category__input
+                %span{class: "fas fa-chevron-down arrow-icon"}
+                = f.collection_select(:category_id, @categories, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
+            -# サイズ
+            .detail__form__size
+              = f.label :size_id do
+                サイズ
+                %span.required-icon
+                  必須
+              .detail__form__size__input
+                %span{class: "fas fa-chevron-down arrow-icon"}
+                = f.collection_select(:size_id, @sizes, :id, :size, {prompt: "--"}, {class: "exhibit-select"})
+            -# ブランド
+            .detail__form__brand
+              = f.label :brand_id do
+                ブランド
+                %span.any-icon
+                  任意
+              .detail__form__brand__input
+                %span{class: "fas fa-chevron-down arrow-icon"}
+                = f.collection_select(:brand_id, @brands, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
+            -# 商品の状態
+            .detail__form__condition
+              = f.label :condition_id do
+                商品の状態
+                %span.required-icon
+                  必須
+              .detail__form__condition__input
+                %span{class: "fas fa-chevron-down arrow-icon"}
+                = f.collection_select(:condition_id, @conditions, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
 
-        .size
-          = f.label :size_id
-          = f.collection_select(:size_id, @sizes, :id, :size)
 
-        .brand
-          = f.label :brand_id
-          = f.collection_select(:brand_id, @brands, :id, :name)
 
-        .condition
-          = f.label :condition_id
-          = f.collection_select(:condition_id, @conditions, :id, :name)
 
-        .delivery_fee_burden
-          = f.label :delivery_fee_burden_id
-          = f.collection_select(:delivery_fee_burden_id, @delivery_fee_burdens, :id, :name)
 
-        .delivery_method
-          = f.label :delivery_method_id
-          = f.collection_select(:delivery_method_id, @delivery_methods, :id, :name)
+        -# 以下適当
+        .detail.clearfix
+          .delivery_fee_burden
+            = f.label :delivery_fee_burden_id
+            = f.collection_select(:delivery_fee_burden_id, @delivery_fee_burdens, :id, :name)
 
-        .prefecture
-          = f.label :prefecture_id
-          = f.collection_select(:prefecture_id, @prefectures, :id, :name)
+          .delivery_method
+            = f.label :delivery_method_id
+            = f.collection_select(:delivery_method_id, @delivery_methods, :id, :name)
 
-        .delivery_by_day
-          = f.label :delivery_by_day_id
-          = f.collection_select(:delivery_by_day_id, @delivery_by_days, :id, :name)
+          .prefecture
+            = f.label :prefecture_id
+            = f.collection_select(:prefecture_id, @prefectures, :id, :name)
 
-        .price
-          = f.label :price
-          = f.number_field(:price, min: 300, max: 999999)
+          .delivery_by_day
+            = f.label :delivery_by_day_id
+            = f.collection_select(:delivery_by_day_id, @delivery_by_days, :id, :name)
 
-        .submit
-          = f.submit
+          .price
+            = f.label :price
+            = f.number_field(:price, min: 300, max: 999999)
+
+          .submit
+            = f.submit
+
+
   .exhibit__footer
     .exhibit__footer__navi
       %ul.exhibit__footer__navi__list
