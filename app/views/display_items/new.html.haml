@@ -11,7 +11,7 @@
 
       = form_for @display_item do |f|
         -# user_idを取得
-        = if user_signed_in?
+        - if user_signed_in?
           .user
             = f.hidden_field :user_id, value: current_user.id
         -# 画像投稿フォーム
