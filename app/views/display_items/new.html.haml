@@ -1,8 +1,8 @@
 .exhibit
   .exhibit__header
     .exhibit__header__logo
-      = link_to "#" do
-        %img(src="assets/exhibit_logo.svg" alt="アイコン")
+      = link_to root_path do
+        %img(src="/assets/exhibit_logo.svg" alt="アイコン")
 
   .exhibit__main
     .exhibit__main__box
@@ -56,7 +56,7 @@
                 %span.required-icon
                   必須
               .content__form__TopEle__input
-                %span{class: "fas fa-chevron-down arrow-icon"}
+                %span{class: "fa fa-chevron-down arrow-icon"}
                 = f.collection_select(:category_id, @categories, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
             -# サイズ
             .content__form__Ele
@@ -65,7 +65,7 @@
                 %span.required-icon
                   必須
               .content__form__Ele__input
-                %span{class: "fas fa-chevron-down arrow-icon"}
+                %span{class: "fa fa-chevron-down arrow-icon"}
                 = f.collection_select(:size_id, @sizes, :id, :size, {prompt: "--"}, {class: "exhibit-select"})
             -# ブランド
             .content__form__Ele
@@ -74,7 +74,7 @@
                 %span.any-icon
                   任意
               .content__form__Ele__input
-                %span{class: "fas fa-chevron-down arrow-icon"}
+                %span{class: "fa fa-chevron-down arrow-icon"}
                 = f.collection_select(:brand_id, @brands, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
             -# 商品の状態
             .content__form__Ele
@@ -83,7 +83,7 @@
                 %span.required-icon
                   必須
               .content__form__Ele__input
-                %span{class: "fas fa-chevron-down arrow-icon"}
+                %span{class: "fa fa-chevron-down arrow-icon"}
                 = f.collection_select(:condition_id, @conditions, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
 
         -# 配送方法フォーム
@@ -100,7 +100,7 @@
                 %span.required-icon
                   必須
               .content__form__TopEle__input
-                %span{class: "fas fa-chevron-down arrow-icon"}
+                %span{class: "fa fa-chevron-down arrow-icon"}
                 = f.collection_select(:delivery_fee_burden_id, @delivery_fee_burdens, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
             -# 配送方法
             .content__form__Ele
@@ -109,7 +109,7 @@
                 %span.required-icon
                   必須
               .content__form__Ele__input
-                %span{class: "fas fa-chevron-down arrow-icon"}
+                %span{class: "fa fa-chevron-down arrow-icon"}
                 = f.collection_select(:delivery_method_id, @delivery_methods, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
             -# 発送元の地域
             .content__form__Ele
@@ -118,7 +118,7 @@
                 %span.required-icon
                   必須
               .content__form__Ele__input
-                %span{class: "fas fa-chevron-down arrow-icon"}
+                %span{class: "fa fa-chevron-down arrow-icon"}
                 = f.collection_select(:prefecture_id, @prefectures, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
             -# 発送までの日数
             .content__form__Ele
@@ -127,7 +127,7 @@
                 %span.required-icon
                   必須
               .content__form__Ele__input
-                %span{class: "fas fa-chevron-down arrow-icon"}
+                %span{class: "fa fa-chevron-down arrow-icon"}
                 = f.collection_select(:delivery_by_day_id, @delivery_by_days, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
 
 
@@ -200,8 +200,8 @@
           = link_to "#", class: "exhibit__footer__navi__list__ele" do
             特定商取引に関する表記
     .exhibit__footer__logo
-      = link_to "#" do
-        %img(src="assets/exhibit_logo_gray.svg" alt="アイコン")
+      = link_to root_path do
+        %img(src="/assets/exhibit_logo_gray.svg" alt="アイコン")
 
     .exhibit__footer__copylight
       %p.exhibit__footer__copylight__text
