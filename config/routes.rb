@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'user_profiles#edit'
+  root 'display_items#new'
+  
+  
+  resources :display_items, only: [:new, :create]
   resources :users, only: [:index, :edit,]
   resources :user_profiles, only: [:edit, :update]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 end
