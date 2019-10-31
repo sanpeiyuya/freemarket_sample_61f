@@ -1,12 +1,13 @@
-.l-contenth
-  %section.l-chapter-container
+.contenth
+  .l-contenth
     .chapter-head
       %pプロフィール
     .form
       = form_for @profile do |f|
         .form__upper
-          %img{height: "60", src:"//static.mercdn.net/images/member_photo_noimage_thumb.png",width: "60"}/
+          .form__upper__image
+            = image_tag "member_photo_noimage_thumb.png",size: "60x60",alt:"no-image"
           = f.text_field :introduction,class:'input-default',placeholder:'例)AYA☆セール中'
         .form__lower
-          = f.text_area :introduction,class:'textarea-dault',placeholder:'ko'
-          = f.submit '変更する',class:'form-submit btn-default'
+          = f.text_area :introduction,class:'form__lower__textarea-dault',placeholder:'例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪'
+          = f.submit '変更する',class:'form__lower__submit btn-default'
