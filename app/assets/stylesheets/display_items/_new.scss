@@ -154,10 +154,10 @@
   }
 }
 
-.detail {
+.content {
   padding: 40px;
   border-top: 1px solid #eee;
-  &__title {
+  &__content {
     color: #888;
     width: calc(100% - 400px);
     font-size: 14px;
@@ -167,7 +167,7 @@
   &__form {
     width: 400px;
     float: right;
-    &__category {
+    &__TopEle {
       font-weight: 600;
       font-size: 14px;
       color: #333;
@@ -176,27 +176,7 @@
         position: relative;
       }
     }
-    &__size {
-      margin: 40px 0 0;
-      font-weight: 600;
-      font-size: 14px;
-      color: #333;
-      &__input {
-        margin: 8px 0 0;
-        position: relative;
-      }
-    }
-    &__brand {
-      margin: 40px 0 0;
-      font-weight: 600;
-      font-size: 14px;
-      color: #333;
-      &__input {
-        margin: 8px 0 0;
-        position: relative;
-      }
-    }
-    &__condition {
+    &__Ele {
       margin: 40px 0 0;
       font-weight: 600;
       font-size: 14px;

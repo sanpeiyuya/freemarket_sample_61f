@@ -45,94 +45,94 @@
               = f.text_area :description, class: "title__description__input", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
 
         -# 商品詳細フォーム（カテゴリ・サイズ・ブランド・コンディション）
-        .detail.clearfix
-          .detail__title
+        .content.clearfix
+          .content__title
             商品の詳細
-          .detail__form
+          .content__form
             -# カテゴリ
-            .detail__form__category
+            .content__form__TopEle
               = f.label :category_id do
                 カテゴリー
                 %span.required-icon
                   必須
-              .detail__form__category__input
+              .content__form__TopEle__input
                 %span{class: "fas fa-chevron-down arrow-icon"}
                 = f.collection_select(:category_id, @categories, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
-              .detail__form__category__input
+              .content__form__TopEle__input
                 %span{class: "fas fa-chevron-down arrow-icon"}
                 = f.collection_select(:category_id, @categories, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
-              .detail__form__category__input
+              .content__form__TopEle__input
                 %span{class: "fas fa-chevron-down arrow-icon"}
                 = f.collection_select(:category_id, @categories, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
             -# サイズ
-            .detail__form__size
+            .content__form__Ele
               = f.label :size_id do
                 サイズ
                 %span.required-icon
                   必須
-              .detail__form__size__input
+              .content__form__Ele__input
                 %span{class: "fas fa-chevron-down arrow-icon"}
                 = f.collection_select(:size_id, @sizes, :id, :size, {prompt: "--"}, {class: "exhibit-select"})
             -# ブランド
-            .detail__form__brand
+            .content__form__Ele
               = f.label :brand_id do
                 ブランド
                 %span.any-icon
                   任意
-              .detail__form__brand__input
+              .content__form__Ele__input
                 %span{class: "fas fa-chevron-down arrow-icon"}
                 = f.collection_select(:brand_id, @brands, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
             -# 商品の状態
-            .detail__form__condition
+            .content__form__Ele
               = f.label :condition_id do
                 商品の状態
                 %span.required-icon
                   必須
-              .detail__form__condition__input
+              .content__form__Ele__input
                 %span{class: "fas fa-chevron-down arrow-icon"}
                 = f.collection_select(:condition_id, @conditions, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
 
         -# 配送方法フォーム
-        .detail.clearfix
-          .detail__title
+        .content.clearfix
+          .content__title
             配送について
             = link_to "#", {class: "exhibit-faq"} do
               ？
-          .detail__form
+          .content__form
             -# 配送料の負担
-            .detail__form__category
+            .content__form__TopEle
               = f.label :delivery_fee_burden_id do
                 配送料の負担
                 %span.required-icon
                   必須
-              .detail__form__category__input
+              .content__form__TopEle__input
                 %span{class: "fas fa-chevron-down arrow-icon"}
                 = f.collection_select(:delivery_fee_burden_id, @delivery_fee_burdens, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
             -# 配送方法
-            .detail__form__size
+            .content__form__Ele
               = f.label :delivery_method_id do
                 配送方法
                 %span.required-icon
                   必須
-              .detail__form__size__input
+              .content__form__Ele__input
                 %span{class: "fas fa-chevron-down arrow-icon"}
                 = f.collection_select(:delivery_method_id, @delivery_methods, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
             -# 発送元の地域
-            .detail__form__size
+            .content__form__Ele
               = f.label :prefecture_id do
                 発送元の地域
                 %span.required-icon
                   必須
-              .detail__form__size__input
+              .content__form__Ele__input
                 %span{class: "fas fa-chevron-down arrow-icon"}
                 = f.collection_select(:prefecture_id, @prefectures, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
             -# 発送までの日数
-            .detail__form__size
+            .content__form__Ele
               = f.label :delivery_by_day_id do
                 発送までの日数
                 %span.required-icon
                   必須
-              .detail__form__size__input
+              .content__form__Ele__input
                 %span{class: "fas fa-chevron-down arrow-icon"}
                 = f.collection_select(:delivery_by_day_id, @delivery_by_days, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
 
