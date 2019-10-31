@@ -9,7 +9,9 @@ class DisplayItem < ApplicationRecord
   belongs_to :user
   belongs_to :category
   belongs_to :size
-  belongs_to :brand
+  belongs_to :brand, optional: true
 
   has_many :images, dependent: :delete_all
+
+  accepts_nested_attributes_for :images
 end
