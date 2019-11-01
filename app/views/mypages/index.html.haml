@@ -1,6 +1,5 @@
 -# %p ビュー確認用のテスト！
-.header
-  ヘッダー
+= render 'shared/header'
 %nav.bread-crumbs
   %ul
     %li
@@ -178,5 +177,6 @@
                 一覧を見る
             
       .mypage__main__item
-.footer
-  フッター
+= render 'shared/sell-icon'
+= render 'shared/aside'
+= render 'shared/footer'
