@@ -51,9 +51,11 @@ $(function() {
       // Add1セレクトボックスを削除
       $(`.content__form__Add1`).remove();
       $(`.content__form__Add2`).remove();
-      // 選択に応じたセレクトボックス作成
-      var html = creatSELECT_Add1(categories)
-      $('.content__form__TopEle').append(html);
+      if ( categories.length >= 1 ) {
+        // 選択に応じたセレクトボックス作成
+        var html = creatSELECT_Add1(categories)
+        $('.content__form__TopEle').append(html);
+      }
     })
     .fail(function() {
       alert('カテゴリの取得に失敗しました');
@@ -77,9 +79,12 @@ $(function() {
     .done(function(categories) {
       // Add1セレクトボックスを削除
       $(`.content__form__Add2`).remove();
-      // 選択に応じたセレクトボックス作成
-      var html = creatSELECT_Add2(categories)
-      $('.content__form__TopEle').append(html);
+      // 要素が１個以上あれば生成
+      if (categories.length >= 1 ) {
+        // 選択に応じたセレクトボックス作成
+        var html = creatSELECT_Add2(categories)
+        $('.content__form__TopEle').append(html);
+      } 
     })
     .fail(function() {
       alert('カテゴリの取得に失敗しました');
