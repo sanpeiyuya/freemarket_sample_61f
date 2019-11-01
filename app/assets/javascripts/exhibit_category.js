@@ -115,23 +115,26 @@ $(function() {
   $(document).on('change', '#display_item_category3_id', function() {
     // カテゴリ1の入力値取得
     var category_id = $('#display_item_category3_id').val();
-    $.ajax({
-      url: '/display_items/size_search',
-      type: 'post',
-      data: {
-        category_id: category_id,
-      },
-      dataType: 'json',
-    })
-    .done(function(sizes) {
-      // sizeのセレクトボックス削除
-      $('.select_size').children().remove();
-      // サイズhtml作成
-      var html = creatSize(sizes);
-      $('.select_size').append(html);
-    })
-    .fail(function() {
-      alert('サイズの取得に失敗しました');
-    })
+    var check = $('#display_item_size_id').val();
+    if ( check == null ) {
+      $.ajax({
+        url: '/display_items/size_search',
+        type: 'post',
+        data: {
+          category_id: category_id,
+        },
+        dataType: 'json',
+      })
+      .done(function(sizes) {
+        // sizeのセレクトボックス削除
+        $('.select_size').children().remove();
+        // サイズhtml作成
+        var html = creatSize(sizes);
+        $('.select_size').append(html);
+      })
+      .fail(function() {
+        alert('サイズの取得に失敗しました');
+      })
+    }
   });
 });
