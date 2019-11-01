@@ -1,9 +1,12 @@
+a {
+  text-decoration: none;
+}
+@import 'font-awesome';
 @import "reset";
-@import "font-awesome";
+@import "./display_items/new";
 @import "items";
 @import "slick-theme"; 
 @import "slick";
 @import "mypages";
 @import "user_profile-edit"
-
 

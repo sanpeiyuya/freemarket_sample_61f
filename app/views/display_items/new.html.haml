@@ -1,54 +1,208 @@
-投稿ページだよ！
+.exhibit
+  .exhibit__header
+    .exhibit__header__logo
+      = link_to root_path do
+        = image_tag "exhibit_logo.svg"
 
-= form_for @display_item do |f|
-  = if user_signed_in?
-    .user
-      = f.hidden_field :user_id, value: current_user.id
+  .exhibit__main
+    .exhibit__main__box
+      %h2.exhibit__main__box__title
+        商品の情報を入力
 
-  .image
-    = f.fields_for :images do |i|
-      = i.label :images
-      = i.file_field :image
+      = form_for @display_item do |f|
+        -# user_idを取得
+        - if user_signed_in?
+          .user
+            = f.hidden_field :user_id, value: current_user.id
+        -# 画像投稿フォーム
+        .image
+          %h3.image__title
+            出品画像
+            %span.required-icon
+              必須
+          %p.image__tips
+            最大10枚までアップロードできます
+          = f.fields_for :images do |i|
+            = i.label :image do
+              .image__form
+                = i.file_field :image, class: "image__form__input"
+                %p.image__form__tips ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート
+        -# 商品名と商品説明フォーム
+        .title
+          .title__name
+            = f.label :name do
+              商品名
+              %span.required-icon
+                必須
+            .box
+              = f.text_field :name, class: "title__name__input", placeholder: "商品名（必須40文字まで）"
+          .title__description
+            = f.label :description do
+              商品の説明
+              %span.required-icon
+                必須
+            .box
+              = f.text_area :description, class: "title__description__input", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
 
-  .name
-    = f.label :name
-    = f.text_field :name
+        -# 商品詳細フォーム（カテゴリ・サイズ・ブランド・コンディション）
+        .content.clearfix
+          .content__title
+            商品の詳細
+          .content__form
+            -# カテゴリ
+            .content__form__TopEle
+              = f.label :category_id do
+                カテゴリー
+                %span.required-icon
+                  必須
+              .content__form__TopEle__input
+                %span{class: "fa fa-chevron-down arrow-icon"}
+                = f.collection_select(:category_id, @categories, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
+            -# サイズ
+            .content__form__Ele
+              = f.label :size_id do
+                サイズ
+                %span.required-icon
+                  必須
+              .content__form__Ele__input
+                %span{class: "fa fa-chevron-down arrow-icon"}
+                = f.collection_select(:size_id, @sizes, :id, :size, {prompt: "--"}, {class: "exhibit-select"})
+            -# ブランド
+            .content__form__Ele
+              = f.label :brand_id do
+                ブランド
+                %span.any-icon
+                  任意
+              .content__form__Ele__input
+                %span{class: "fa fa-chevron-down arrow-icon"}
+                = f.collection_select(:brand_id, @brands, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
+            -# 商品の状態
+            .content__form__Ele
+              = f.label :condition_id do
+                商品の状態
+                %span.required-icon
+                  必須
+              .content__form__Ele__input
+                %span{class: "fa fa-chevron-down arrow-icon"}
+                = f.collection_select(:condition_id, @conditions, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
 
-  .description
-    = f.label :description
-    = f.text_area :description
+        -# 配送方法フォーム
+        .content.clearfix
+          .content__title
+            配送について
+            = link_to "#", {class: "exhibit-faq"} do
+              ？
+          .content__form
+            -# 配送料の負担
+            .content__form__TopEle
+              = f.label :delivery_fee_burden_id do
+                配送料の負担
+                %span.required-icon
+                  必須
+              .content__form__TopEle__input
+                %span{class: "fa fa-chevron-down arrow-icon"}
+                = f.collection_select(:delivery_fee_burden_id, @delivery_fee_burdens, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
+            -# 配送方法
+            .content__form__Ele
+              = f.label :delivery_method_id do
+                配送方法
+                %span.required-icon
+                  必須
+              .content__form__Ele__input
+                %span{class: "fa fa-chevron-down arrow-icon"}
+                = f.collection_select(:delivery_method_id, @delivery_methods, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
+            -# 発送元の地域
+            .content__form__Ele
+              = f.label :prefecture_id do
+                発送元の地域
+                %span.required-icon
+                  必須
+              .content__form__Ele__input
+                %span{class: "fa fa-chevron-down arrow-icon"}
+                = f.collection_select(:prefecture_id, @prefectures, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
+            -# 発送までの日数
+            .content__form__Ele
+              = f.label :delivery_by_day_id do
+                発送までの日数
+                %span.required-icon
+                  必須
+              .content__form__Ele__input
+                %span{class: "fa fa-chevron-down arrow-icon"}
+                = f.collection_select(:delivery_by_day_id, @delivery_by_days, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
 
-  .category
-    = f.label :category_id
-    = f.collection_select(:category_id, @categories, :id, :name)
 
-  .size
-    = f.label :size_id
-    = f.collection_select(:size_id, @sizes, :id, :size)
+        -# 値段設定
+        .content.clearfix
+          .content__title
+            販売価格(300〜9,999,999)
+            = link_to "#", {class: "exhibit-faq"} do
+              ？
+          .content__form
+            %ul
+              %li.content__form__list-A.border-none
+                .clearfix
+                  = f.label :price, {class: "content__form__list-A__label"} do
+                    価格
+                    %span.required-icon
+                      必須
+                  .content__form__list-A__box
+                    ¥
+                    .content__form__list-A__box__width
+                      = f.number_field(:price, min: 300, max: 999999, placeholder: "例）300", class: "exhibit-price")
 
-  .condition
-    = f.label :condition_id
-    = f.collection_select(:condition_id, @conditions, :id, :name)
+              %li.content__form__list-B.clearfix
+                .content__form__list-B__left
+                  販売手数料（手数料10%）
+                .content__form__list-B__right -
+              %li.content__form__list-C.clearfix
+                .content__form__list-C__left
+                  販売利益
+                .content__form__list-C__right -
 
-  .delivery_fee_burden
-    = f.label :delivery_fee_burden_id
-    = f.collection_select(:delivery_fee_burden_id, @delivery_fee_burdens, :id, :name)
 
-  .delivery_method
-    = f.label :delivery_method_id
-    = f.collection_select(:delivery_method_id, @delivery_methods, :id, :name)
+        -# 値段設定
+        .content
+          .box
+            %p.content__note
+              = link_to "#", class: "content__note__link" do
+                禁止されている出品
+              、
+              = link_to "#", class: "content__note__link" do
+                行為
+              を必ずご確認ください。
+            %p.content__note
+              またブランド品でシリアルナンバー等がある場合はご記載ください。
+              = link_to "#", class: "content__note__link" do
+                偽ブランドの販売
+              は犯罪であり処罰される可能性があります。
+            %p.content__note
+              また、出品をもちまして
+              = link_to "#", class: "content__note__link" do
+                加盟店規約
+              に同意したことになります
 
-  .prefecture
-    = f.label :prefecture_id
-    = f.collection_select(:prefecture_id, @prefectures, :id, :name)
 
-  .delivery_by_day
-    = f.label :delivery_by_day_id
-    = f.collection_select(:delivery_by_day_id, @delivery_by_days, :id, :name)
+          = f.submit({value: "出品する", class: "submit-btn"})
+          = link_to root_path, class: "return-btn" do
+            もどる
 
-  .price
-    = f.label :price
-    = f.number_field(:price, min: 300, max: 999999)
 
-  .submit
-    = f.submit
+  .exhibit__footer
+    .exhibit__footer__navi
+      %ul.exhibit__footer__navi__list
+        %li
+          = link_to "#", class: "exhibit__footer__navi__list__ele" do
+            プライバシーポリシー
+        %li
+          = link_to "#", class: "exhibit__footer__navi__list__ele" do
+            メルカリ利用規約
+        %li
+          = link_to "#", class: "exhibit__footer__navi__list__ele" do
+            特定商取引に関する表記
+    .exhibit__footer__logo
+      = link_to root_path do
+        = image_tag "exhibit_logo_gray.svg"
+
+    .exhibit__footer__copylight
+      %p.exhibit__footer__copylight__text
+        © 2019 Mercari

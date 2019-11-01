@@ -1,5 +1,5 @@
 .main-header{
-  width: 1440px;
+  width: 100%;
   height:100px;
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
@@ -26,7 +26,7 @@
       position: relative;
       width: 100%;
       &__search{
-        width: 779px;
+        width: 100%;
         height:38px;
         background-color: rgb(245, 245, 245);
         font-size: 16px;
@@ -186,7 +186,7 @@
   // }
   .slider{
     margin:0px auto;
-    width: 1440px;
+    width: 100%;
     height: 390px;
   }
   .slider img{
@@ -318,7 +318,7 @@
 .main-aside{
   &__background{
     background-image: image-url("room.jpg");
-    width: 1440px;
+    width: 100%;
     height: 260px;
     background-size: cover;
     &__phone{
