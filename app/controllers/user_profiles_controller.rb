@@ -9,6 +9,6 @@ class UserProfilesController < ApplicationController
 
   private
   def introduction_params
-    params.require(:user_profile).permit(:last_name, :introduction)
+    params.require(:user_profile).permit(:nickname, :introduction)
   end
 end
