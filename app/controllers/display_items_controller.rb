@@ -43,6 +43,17 @@ class DisplayItemsController < ApplicationController
     end
   end
 
+  def size_search
+    size_id = Category.find(params[:category_id]).size_id
+    @sizes = Size.where(ancestry: size_id)
+    respond_to do |format|
+      format.html
+      format.json {
+        @sizes
+      }
+    end
+  end
+
   private
   def display_item_params
     params.require(:display_item).permit(:user_id, :name, :description, :category_id, :size_id, :brand_id, :condition_id, :delivery_fee_burden_id, :delivery_method_id, :prefecture_id, :delivery_by_day_id, :price, images_attributes: [:image])

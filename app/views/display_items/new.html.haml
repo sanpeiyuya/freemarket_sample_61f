@@ -59,7 +59,7 @@
                 %span{class: "fa fa-chevron-down arrow-icon"}
                 = f.collection_select(:category_id, @categories, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
             -# -# サイズ
-            -# .content__form__Ele
+            .content__form__Ele.select_size
             -#   = f.label :size_id do
             -#     サイズ
             -#     %span.required-icon

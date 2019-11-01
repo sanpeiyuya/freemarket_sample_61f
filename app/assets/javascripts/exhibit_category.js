@@ -90,5 +90,23 @@ $(function() {
       alert('カテゴリの取得に失敗しました');
     })
   });
-
+  // サイズのイベント発火
+  $(document).on('change', '#display_item_category3_id', function() {
+   // カテゴリ1の入力値取得
+   var category_id = $('#display_item_category3_id').val();
+   $.ajax({
+    url: '/display_items/size_search',
+    type: 'post',
+    data: {
+      category_id: category_id,
+    },
+    dataType: 'json',
+   })
+   .done(function(sizes) {
+    console.log(sizes);
+   })
+   .fail(function() {
+     
+  })
+  });
 });
