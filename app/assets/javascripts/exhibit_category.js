@@ -1,10 +1,10 @@
 $(function() {
 
   // オプションの項目作成
-  function creatOPTION(categories) {
+  function creatOPTION(elements) {
     var html = ``;
-    categories.forEach(function(category) {
-      html += `<option value="${category.id}">${category.name}</option>`
+    elements.forEach(function(ele) {
+      html += `<option value="${ele.id}">${ele.name}</option>`
     })
     return html
   };
@@ -36,6 +36,23 @@ $(function() {
                 </div>`
     return html;
   };
+  // サイズのHtml作成
+  function creatSize(sizes) {
+    var option = creatOPTION(sizes);
+    var html = `<label for="display_item_size_id">サイズ
+                  <span class="required-icon">
+                    必須
+                  </span>
+                </label>
+                <div class="content__form__Ele__input">
+                  <span class="fa fa-chevron-down arrow-icon"></span>
+                  <select class="exhibit-select" name="display_item[size_id]" id="display_item_size_id">
+                    <option value="">--</option>
+                    ${option}
+                  </select>
+                </div>`;
+    return html;
+  }
   // カテゴリ1のイベント発火
   $('#display_item_category_id').on('change', function() {
     var category_id = $('#display_item_category_id').val();
@@ -48,9 +65,11 @@ $(function() {
       dataType: 'json',
     })
     .done(function(categories) {
-      // Add1セレクトボックスを削除
-      $(`.content__form__Add1`).remove();
-      $(`.content__form__Add2`).remove();
+      // Add1とAdd2のセレクトボックスを削除
+      $('.content__form__Add1').remove();
+      $('.content__form__Add2').remove();
+      // sizeのセレクトボックス削除
+      $('.select_size').children().remove();
       if ( categories.length >= 1 ) {
         // 選択に応じたセレクトボックス作成
         var html = creatSELECT_Add1(categories)
@@ -77,8 +96,10 @@ $(function() {
       dataType: 'json',
     })
     .done(function(categories) {
-      // Add1セレクトボックスを削除
-      $(`.content__form__Add2`).remove();
+      // Add2セレクトボックスを削除
+      $('.content__form__Add2').remove();
+      // sizeのセレクトボックス削除
+      $('.select_size').children().remove();
       // 要素が１個以上あれば生成
       if (categories.length >= 1 ) {
         // 選択に応じたセレクトボックス作成
@@ -92,21 +113,25 @@ $(function() {
   });
   // サイズのイベント発火
   $(document).on('change', '#display_item_category3_id', function() {
-   // カテゴリ1の入力値取得
-   var category_id = $('#display_item_category3_id').val();
-   $.ajax({
-    url: '/display_items/size_search',
-    type: 'post',
-    data: {
-      category_id: category_id,
-    },
-    dataType: 'json',
-   })
-   .done(function(sizes) {
-    console.log(sizes);
-   })
-   .fail(function() {
-     
-  })
+    // カテゴリ1の入力値取得
+    var category_id = $('#display_item_category3_id').val();
+    $.ajax({
+      url: '/display_items/size_search',
+      type: 'post',
+      data: {
+        category_id: category_id,
+      },
+      dataType: 'json',
+    })
+    .done(function(sizes) {
+      // sizeのセレクトボックス削除
+      $('.select_size').children().remove();
+      // サイズhtml作成
+      var html = creatSize(sizes);
+      $('.select_size').append(html);
+    })
+    .fail(function() {
+      alert('サイズの取得に失敗しました');
+    })
   });
 });
