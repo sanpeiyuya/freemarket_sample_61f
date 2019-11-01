@@ -34,5 +34,9 @@ Rails.application.routes.draw do
       get   :buy #購入確認画面
       post  :pay #購入処理
     end
+    collection do
+      post  :first_category_search #カテゴリ検索メソッド(第1段階)
+      post  :second_category_search #カテゴリ検索メソッド(第2段階)
+    end
   end
 end
