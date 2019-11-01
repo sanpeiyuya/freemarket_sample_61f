@@ -50,7 +50,7 @@
             商品の詳細
           .content__form
             -# カテゴリ
-            .content__form__TopEle
+            .content__form__TopEle.select_category
               = f.label :category_id do
                 カテゴリー
                 %span.required-icon
@@ -94,7 +94,7 @@
               ？
           .content__form
             -# 配送料の負担
-            .content__form__TopEle
+            .content__form__TopEle.select_delivery_fee
               = f.label :delivery_fee_burden_id do
                 配送料の負担
                 %span.required-icon
