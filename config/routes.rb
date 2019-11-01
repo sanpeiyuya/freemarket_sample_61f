@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+
   root 'items#index'
   # ユーザー新規作成系のルーティング(※暫定！)
   resources :users do
@@ -35,4 +36,5 @@ Rails.application.routes.draw do
       post  :pay #購入処理
     end
   end
+
 end
