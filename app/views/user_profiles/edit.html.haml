@@ -1,1 +1,19 @@
-.wrapper
+.contenth
+  .l-contenth
+    .chapter-head
+      %p本人情報の登録
+    .form
+      = form_for @profile do |f|
+        .text
+          %p お客さまの本人情報をご登録ください。
+          %p 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+        .text__link
+          = link_to "#",class:"text__raight" do
+            本人確認書類のアップロードについて
+      .form-group
+        =　f.label :name do
+        = current_user.familyname.last_name
+
+
+
+
