@@ -8,15 +8,18 @@ $(function() {
     if ( price >= 300 && price <= 9999999 ) {
       var commission_rate = Math.floor(price * 0.1).toLocaleString();
       var sales = Math.floor(price * 0.9).toLocaleString();
-      console.log(commission_rate, sales);
 
+      // 手数料のビューを取り付け
       var html = `<div class="content__form__list-B__right">¥${commission_rate}</div>`
       $('.content__form__list-B').append(html);
+      // 売上のビューを取り付け
       var html = `<div class="content__form__list-C__right">¥${sales}</div>`;
       $('.content__form__list-C').append(html);
     } else {
+      // 手数料のビューを取り付け
       var html = `<div class="content__form__list-B__right">-</div>`
       $('.content__form__list-B').append(html);
+      // 売上のビューを取り付け
       var html = `<div class="content__form__list-C__right">-</div>`;
       $('.content__form__list-C').append(html);
     }
