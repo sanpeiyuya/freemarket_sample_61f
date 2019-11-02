@@ -1,7 +1,6 @@
 $(function() {
-
   // オプションの項目作成
-  function creatOPTION(elements) {
+  function creatOption(elements) {
     var html = ``;
     elements.forEach(function(ele) {
       html += `<option value="${ele.id}">${ele.name}</option>`
@@ -10,7 +9,7 @@ $(function() {
   };
   // カテゴリ2のHtml作成
   function creatSELECT_Add1(categories) {
-    var option = creatOPTION(categories);
+    var option = creatOption(categories);
     var html = `<div class="content__form__Add1">
                   <label for="display_item_category_id"></label>
                   <div class="content__form__Ele__input">
@@ -24,7 +23,7 @@ $(function() {
   };
   // カテゴリ3のHtml作成
   function creatSELECT_Add2(categories) {
-    var option = creatOPTION(categories);
+    var option = creatOption(categories);
     var html = `<div class="content__form__Add2">
                   <label for="display_item_category_id"></label>
                   <div class="content__form__Ele__input">
@@ -38,7 +37,7 @@ $(function() {
   };
   // サイズのHtml作成
   function creatSize(sizes) {
-    var option = creatOPTION(sizes);
+    var option = creatOption(sizes);
     var html = `<label for="display_item_size_id">サイズ
                   <span class="required-icon">
                     必須
@@ -53,6 +52,35 @@ $(function() {
                 </div>`;
     return html;
   }
+
+  // サイズボックスの作成
+  function selectSize(category_id) {
+    var check = $('#display_item_size_id').val();
+    // サイズボックスに値が入ってたら作り直さない
+    if ( check == null ) {
+      $.ajax({
+        url: '/display_items/size_search',
+        type: 'post',
+        data: {
+          category_id: category_id,
+        },
+        dataType: 'json',
+      })
+      .done(function(sizes) {
+        if ( sizes.length >= 1 ) {
+          // sizeのセレクトボックス削除
+          $('.select_size').children().remove();
+          // サイズhtml作成
+          var html = creatSize(sizes);
+          $('.select_size').append(html);
+        }
+      })
+      .fail(function(sizes) {
+        alert('サイズの取得に失敗しました');
+      })
+    }
+  }
+
   // カテゴリ1のイベント発火
   $('#display_item_category_id').on('change', function() {
     var category_id = $('#display_item_category_id').val();
@@ -80,6 +108,7 @@ $(function() {
       alert('カテゴリの取得に失敗しました');
     })
   });
+
   // カテゴリ2のイベント発火
   $(document).on('change', '#display_item_category2_id', function() {
     // カテゴリ1の入力値取得
@@ -110,31 +139,15 @@ $(function() {
     .fail(function() {
       alert('カテゴリの取得に失敗しました');
     })
+    // セレクトボックス作成（サイズがあれば
+    var category_id = $('#display_item_category2_id').val();
+    selectSize(category_id)
   });
+
   // サイズのイベント発火
   $(document).on('change', '#display_item_category3_id', function() {
-    // カテゴリ1の入力値取得
+    // セレクトボックス作成（サイズがあれば
     var category_id = $('#display_item_category3_id').val();
-    var check = $('#display_item_size_id').val();
-    if ( check == null ) {
-      $.ajax({
-        url: '/display_items/size_search',
-        type: 'post',
-        data: {
-          category_id: category_id,
-        },
-        dataType: 'json',
-      })
-      .done(function(sizes) {
-        // sizeのセレクトボックス削除
-        $('.select_size').children().remove();
-        // サイズhtml作成
-        var html = creatSize(sizes);
-        $('.select_size').append(html);
-      })
-      .fail(function() {
-        alert('サイズの取得に失敗しました');
-      })
-    }
+    selectSize(category_id)
   });
 });

@@ -45,7 +45,8 @@ class DisplayItemsController < ApplicationController
 
   def size_search
     size_id = Category.find(params[:category_id]).size_id
-    @sizes = Size.where(ancestry: size_id)
+    # size_idがnullなら、@sizeを空にする
+    @sizes = Size.where(ancestry: size_id) unless size_id == nil
     respond_to do |format|
       format.html
       format.json {
