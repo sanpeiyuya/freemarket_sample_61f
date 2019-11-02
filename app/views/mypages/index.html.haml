@@ -85,7 +85,7 @@
           設定
         %ul.mypage__side-bar__list
           %li
-            = link_to edit_user_profile_path(current_user.id), class: "mypage__side-bar__list-item" do
+            = link_to edit_user_nickname_path(current_user.id), class: "mypage__side-bar__list-item" do
               プロフィール
               = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
           %li
