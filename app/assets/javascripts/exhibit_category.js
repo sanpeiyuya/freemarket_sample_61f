@@ -133,7 +133,7 @@ $(function() {
       if (categories.length >= 1 ) {
         // 選択に応じたセレクトボックス作成
         var html = creatSELECT_Add2(categories)
-        $('.content__form__TopEle').append(html);
+        $('.select_category').append(html);
       } 
     })
     .fail(function() {
