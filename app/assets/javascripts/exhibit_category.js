@@ -144,7 +144,7 @@ $(function() {
     selectSize(category_id)
   });
 
-  // サイズのイベント発火
+  // カテゴリ3のイベント発火
   $(document).on('change', '#display_item_category3_id', function() {
     // セレクトボックス作成（サイズがあれば
     var category_id = $('#display_item_category3_id').val();
