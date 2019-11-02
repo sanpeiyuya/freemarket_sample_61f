@@ -21,6 +21,7 @@ class DisplayItemsController < ApplicationController
     end
   end
 
+  # カテゴリ1の絞り込み
   def first_category_search
     @categories = Category.where(ancestry: params[:category_id])
     respond_to do |format|
@@ -30,7 +31,7 @@ class DisplayItemsController < ApplicationController
       }
     end
   end
-
+  # カテゴリ2の絞り込み
   def second_category_search
     category_1 = params[:category_id].to_s
     category_2 = params[:category2_id].to_s
@@ -42,7 +43,7 @@ class DisplayItemsController < ApplicationController
       }
     end
   end
-
+  # サイズの取得
   def size_search
     size_id = Category.find(params[:category_id]).size_id
     # size_idがnullなら、@sizeを空にする
@@ -51,6 +52,16 @@ class DisplayItemsController < ApplicationController
       format.html
       format.json {
         @sizes
+      }
+    end
+  end
+  # ブランドの検索
+  def brand_search
+    @brands = Brand.where("name LIKE ?", "%#{params[:keyword]}%")
+    respond_to do |format|
+      format.html
+      format.json {
+        @brands
       }
     end
   end

@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       post  :first_category_search #カテゴリ検索メソッド(第1段階)
       post  :second_category_search #カテゴリ検索メソッド(第2段階)
       post  :size_search #サイズ検索メソッド
+      post  :brand_search #ブランド検索メソッド
     end
   end
 end
