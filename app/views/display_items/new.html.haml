@@ -67,22 +67,9 @@
                 %span.any-icon
                   任意
               .content__form__Ele__input
-                = f.text_field(:brand_id, class: "exhibit-select")
+                = f.text_field(:brand_id, class: "exhibit-select", autocomplete: "off")
                 .brand_search_result
                   %ul.brand_search_result__box
-                  -#   %li.brand_search_result__box__content{id: 7} あいうえお
-                  -#   %li.brand_search_result__box__content{id: 7} あいうえお
-                  -#   %li.brand_search_result__box__content{id: 7} あいうえお
-                  -#   %li.brand_search_result__box__content{id: 7} あいうえお
-                  -#   %li.brand_search_result__box__content{id: 7} あいうえお
-                  -#   %li.brand_search_result__box__content{id: 7} あいうえお
-                  -#   %li.brand_search_result__box__content{id: 7} あいうえお
-                  -#   %li.brand_search_result__box__content{id: 7} あいうえお
-                  -#   %li.brand_search_result__box__content{id: 7} あいうえお
-                  -#   %li.brand_search_result__box__content{id: 7} あいうえお
-                  -#   %li.brand_search_result__box__content{id: 7} あいうえお
-                  -#   %li.brand_search_result__box__content{id: 7} あいうえお
-                  -#   %li.brand_search_result__box__content{id: 7} あいうえお
             -# 商品の状態
             .content__form__Ele
               = f.label :condition_id do
