@@ -173,6 +173,10 @@ ladies_tops.children.create(size_id: sml, name: "トレーナー/スウェット
 ladies_tops.children.create(size_id: sml, name: "ベアトップ/チューブトップ")
 ladies_tops.children.create(size_id: sml, name: "ジャージ")
 ladies_tops.children.create(size_id: sml, name: "その他")
+ladies_outer.children.create(size_id: sml, name: "テラードジャケット")
+ladies_outer.children.create(size_id: sml, name: "ノーカラードジャケット")
+ladies_pants.children.create(size_id: sml, name: "デニム/ジーンズ")
+ladies_pants.children.create(size_id: sml, name: "ショートパンツ")
 ## メンズ
 mens = Category.create(name: "メンズ")
 mens_tops = mens.children.create(name: "トップス")
