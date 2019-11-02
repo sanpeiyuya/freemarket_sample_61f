@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 #   coding: utf-8
 
 # brandsテーブルのレコード追加
@@ -219,3 +220,4 @@ cars_tires.children.create(size_id: tire, name: "タイヤ/ホイールセット
 ## その他
 etceteras = Category.create(size_id: empty, name: "その他")
 etceteras.children.create(size_id: empty, name: "まとめ売り")
+
