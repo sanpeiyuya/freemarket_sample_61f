@@ -31,17 +31,45 @@
         .main-content__items__title__more__text もっとみる
         =fa_icon "chevron-right",class: 'main-content__items__item__more__icon'     
     .main-content__items__item
-      .main-content__items__item__1
-        =image_tag"1.jpg",size: "188x188"
-      .main-content__items__item__2
-        =image_tag"2.jpg",size: "188x188"
-      .main-content__items__item__3
-        =image_tag"3.jpg",size: "188x188"
-      .main-content__items__item__4
-        =image_tag"4.jpg",size: "188x188"
-      .main-content__items__item__5
-        =image_tag"5.jpg",size: "188x188"
-
+      .main-content__items__item__content
+        .main-content__items__item__content__box
+          .main-content__items__item__content__box__1
+            .main-content__items__item__content__box__1__image
+              .main-content__items__item__content__box__1__image__price
+                %span ¥30,000
+            .main-content__items__item__content__box__1__items-name
+              %span 高級シューズ
+          .main-content__items__item__content__box__2
+            .main-content__items__item__content__box__2__image
+              .main-content__items__item__content__box__2__image__price
+                %span ¥31,000
+            .main-content__items__item__content__box__2__items-name
+              %span 高級品物
+          .main-content__items__item__content__box__3
+            .main-content__items__item__content__box__3__image
+              .main-content__items__item__content__box__3__image__price
+                %span ¥23,000
+            .main-content__items__item__content__box__3__items-name
+              %span 高級品物
+          .main-content__items__item__content__box__4
+            .main-content__items__item__content__box__4__image
+              .main-content__items__item__content__box__4__image__price
+                %span ¥20,000
+            .main-content__items__item__content__box__4__items-name
+              %span 高級品物
+          .main-content__items__item__content__box__5
+            .main-content__items__item__content__box__5__image
+              .main-content__items__item__content__box__5__image__price
+                %span ¥10,000
+            .main-content__items__item__content__box__5__items-name
+              %span 高級品物
+          .main-content__items__item__content__box__6
+            .main-content__items__item__content__box__6__image
+              .main-content__items__item__content__box__6__image__price
+                %span ¥29,999
+            .main-content__items__item__content__box__6__items-name
+              %span 高級品物
+              
 = render 'shared/sell-icon'
 = render 'shared/aside'
 = render 'shared/footer'
