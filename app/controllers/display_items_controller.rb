@@ -64,7 +64,7 @@ class DisplayItemsController < ApplicationController
         @brands
       }
     end
-  end
+  end  
 
   private
   def display_item_params

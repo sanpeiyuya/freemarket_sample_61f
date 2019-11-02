@@ -41,4 +41,11 @@ Rails.application.routes.draw do
       post  :brand_search #ブランド検索メソッド
     end
   end
+  # 配送方法のルーティング
+  resources :delivery_methods, only: [:index] do
+    collection do
+      post  :search #出品ページの検索
+    end
+  end
+
 end
