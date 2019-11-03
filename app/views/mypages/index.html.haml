@@ -1,5 +1,5 @@
--# %p ビュー確認用のテスト！
 = render 'shared/header'
+
 %nav.bread-crumbs
   %ul
     %li
@@ -120,7 +120,8 @@
             = image_tag "member_photo_noimage_thumb.png", size: "60x60", class: "user-icon"
             %h2.user-name
               - if user_signed_in?
-                = current_user.email
+                -# = current_user.user_profile.family_name
+                = @profile.last_name
               - else
                 ログインしてないよ
             %ul.user-info
@@ -137,49 +138,40 @@
         .mypage__main__notice-todo__tab
           %ul
             %li.active
-              .mypage__main__notice-todo__tab--single
+              .mypage__main__notice-todo__tab__single
                 お知らせ
             %li
-              .mypage__main__notice-todo__tab--single
+              .mypage__main__notice-todo__tab__single
                 やることリスト
-
-        .lists-way
+        .mypage__main__notice-todo__tab__content
           %ul
+            %li.show
+              .mypage__main__notice-todo__tab__content__logo
+                現在、お知らせはありません
             %li
-              = link_to "#", class: "list-banner" do
-                = image_tag "mercari_profile.png", size: "48x48", class: "mini-icon"
-                .lists-way__item
-                  .lists-way__item__text
-                    事務局から個別メッセージ「Googleログイン通知」
-                  %time
-                    = fa_icon 'fas fa-clock', class: "fas fa-clock "
-                    1日前
-                  = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
-            %li
-              = link_to "#", class: "list-banner" do
-                = image_tag "mercari_profile.png", size: "48x48", class: "mini-icon"
-                .lists-way__item
-                  .lists-way__item__text
-                    事務局から個別メッセージ「Googleログイン通知」
-                  %time
-                    = fa_icon 'fas fa-clock', class: "fas fa-clock "
-                    2日前
-                  = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
-            %li
-              = link_to "#", class: "list-banner" do
-                = image_tag "mercari_profile.png", size: "48x48", class: "mini-icon"
-                .lists-way__item
-                  .lists-way__item__text
-                    事務局から個別メッセージ「Googleログイン通知」
-                  %time
-                    = fa_icon 'fas fa-clock', class: "fas fa-clock "
-                    3日前
-                  = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
-            %li.mypage__go-list
-              = link_to "#", class: "mypage__go-list__link" do
-                一覧を見る
-            
+              .mypage__main__notice-todo__tab__content__logo
+                現在、やることリストはありません
+
       .mypage__main__item
+        .mypage__main__item__head
+          購入した商品
+        .mypage__main__item__tab
+          %ul
+            %li.actives
+              .mypage__main__item__tab__single
+                取引中
+            %li
+              .mypage__main__item__tab__single
+                過去の取引
+        .mypage__main__item__tab__content
+          %ul
+            %li.shows
+              .mypage__main__item__tab__content__logo
+                取引中の商品がありません
+            %li
+              .mypage__main__item__tab__content__logo
+                過去に取引した商品がありません
+
 = render 'shared/sell-icon'
 = render 'shared/aside'
 = render 'shared/footer'
