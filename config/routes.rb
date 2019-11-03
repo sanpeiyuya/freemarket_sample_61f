@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   # ブランドのルーティング
   resources :brands, only: [:index] do
     collection do
+      post  :enter #ブランドボックスの作成チェック
       post  :search #出品ページの検索
     end
   end

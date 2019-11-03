@@ -9,7 +9,7 @@ $(function() {
     return html;
   }
   // ブランド検索機能
-  $('#display_item_brand_id').on('keyup', function() {
+  $(document).on('keyup', '#display_item_brand_id', function() {
     // リストを空にする
     $('.brand_search_result__box').children().remove();
     // キーワード取得
