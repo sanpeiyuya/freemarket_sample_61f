@@ -1,19 +1,30 @@
 .contenth
-  .l-contenth
-    .chapter-head
+  .l-profile
+    .profile-head
       %p本人情報の登録
-    .form
-      = form_for @profile do |f|
-        .text
-          %p お客さまの本人情報をご登録ください。
-          %p 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
-        .text__link
-          = link_to "#",class:"text__raight" do
-            本人確認書類のアップロードについて
-      .form-group
-        =　f.label :name do
-        = current_user.familyname.last_name
-
-
+    .profile-form
+      .text
+        %p お客さまの本人情報をご登録ください。
+        %p 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+      .profile-form__text-link
+        = link_to "#",class:"profile-form__text-link__right" do
+          本人確認書類のアップロードについて
+          =fa_icon "chevron-right",class: '.profile-form__text-link__right__icon'
+      .profile-form__group
+        %p1お名前
+        %p.p= "#{@profile.family_name + @profile.last_name}"
+      .profile-form__group 
+        %p1お名前カナ
+        %p="#{@profile.family_name_kana + @profile.last_name_kana}"
+      .profile-form__group  
+        %p1生年月日
+        %p="#{@profile.birth_year.to_s+"/" + @profile.birth_month.to_s+ "/" + @profile.birth_day.to_s}"
+      -# = form_for @address do |f|
+      -#   .profile-form__group
+      -#     = f.label :name,"郵便番号"
+      -#     %span.any-icon
+      -#       任意
+      -#     = f.text_field :postal_code,placeholedr:"例）1234567"
+        
 
 

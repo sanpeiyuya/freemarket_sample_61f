@@ -1,6 +1,7 @@
 class UserProfilesController < ApplicationController
   def edit
     @profile = UserProfile.find(current_user.id)
+    @address = current_user.address
   end
 
   def update
