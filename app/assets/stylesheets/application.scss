@@ -1,3 +1,12 @@
+body{
+  position: relative;
+  min-height: 100%;
+  background: #f5f5f5;
+  font-family: 'Source Sans Pro', Helvetica , Arial, 'æ¸¸ã‚´ã‚·ãƒƒã‚¯ä½“', 'YuGothic', 'ãƒ¡ã‚¤ãƒªã‚ª', 'Meiryo', sans-serif;
+  font-size: 14px;
+  color: #333;
+  line-height: 1;
+}
 a {
   text-decoration: none;
 }
@@ -8,3 +17,6 @@ a {
 @import "slick-theme"; 
 @import "slick";
 @import "mypages";
+@import "user_profile-edit";
+@import "users";
+@import "logout";

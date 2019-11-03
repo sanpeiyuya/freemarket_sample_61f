@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20191103040136) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -93,6 +94,7 @@ ActiveRecord::Schema.define(version: 20191103040136) do
     t.integer  "total_sales"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.string   "nickname"
     t.index ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
   end
 

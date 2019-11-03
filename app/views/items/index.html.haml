@@ -1,35 +1,75 @@
 = render 'shared/header'
 
-.main-context
+.main-content
   .slider
-    =image_tag "slide-1.png",alt:"image01",href:"#"
-    =image_tag "slide-2.jpg",alt:"image02",href:"#"
-  .main-context__itemslist
-    .main-context__itemslist__text 全ての商品の一覧
-    .main-context__itemslist__tagspace
-      .main-context__itemslist__tagspace__tag
-        -# .main-context__itemslist__tagspace__tag__1 エンジニア
-        -# .main-context__itemslist__tagspace__tag__2 人
-        -# .main-context__itemslist__tagspace__tag__3 Ruby
-        -# .main-context__itemslist__tagspace__tag__4 JS
-  .main-context__items
-    .main-context__items__item
-      .main-context__items__item__text アイテム
-      .main-context__items__item__more 
-        .main-context__items__item__more__text もっとみる
-        =fa_icon "chevron-right",class: 'main-context__items__item__more__icon'     
-    .main-context__items__image
-      .main-context__items__image__1
-        =image_tag"1.jpg",size: "188x188"
-      .main-context__items__image__2
-        =image_tag"2.jpg",size: "188x188"
-      .main-context__items__image__3
-        =image_tag"3.png",size: "188x188"
-      .main-context__items__image__4
-        =image_tag"4.png",size: "188x188"
-      .main-context__items__image__5
-        =image_tag"5.png",size: "188x188"
+    .slide1
+      =image_tag "slide-1.png",class:'image-1'
+    .slide2
+      .slide2-content
+        .slide2-content__text
+          .slide2-content__text__text1 スマホで かんたん
+          .slide2-content__text__text2 フリマアプリ
+          .slide2-content__text__text3 メルカリはスマホカメラからすぐに出品できる
+          .slide2-content__text__text4 購入時も安心な独自システムのアプリです
+          .slide2-content__text__app
+            =image_tag"app-store.svg",class: 'slide2-content__text__app__apple'
+            =image_tag"google-play.svg",class: 'slide2-content__text__app__google'
+        =image_tag "slidephone.png",class:'image-4'
 
+  .main-content__itemslist
+    .main-content__itemslist__text 全ての商品の一覧
+    .main-content__itemslist__tagspace
+      .main-content__itemslist__tagspace__tag
+        -# .main-content__itemslist__tagspace__tag__1 エンジニア
+        -# .main-content__itemslist__tagspace__tag__2 人
+        -# .main-content__itemslist__tagspace__tag__3 Ruby
+        -# .main-content__itemslist__tagspace__tag__4 JS
+  .main-content__items
+    .main-content__items__title
+      .main-content__items__title__text アイテム
+      .main-content__items__title__more 
+        .main-content__items__title__more__text もっとみる
+        =fa_icon "chevron-right",class: 'main-content__items__item__more__icon'     
+    .main-content__items__item
+      .main-content__items__item__content
+        .main-content__items__item__content__box
+          .main-content__items__item__content__box__1
+            .main-content__items__item__content__box__1__image
+              .main-content__items__item__content__box__1__image__price
+                %span ¥30,000
+            .main-content__items__item__content__box__1__items-name
+              %span 高級シューズ
+          .main-content__items__item__content__box__2
+            .main-content__items__item__content__box__2__image
+              .main-content__items__item__content__box__2__image__price
+                %span ¥31,000
+            .main-content__items__item__content__box__2__items-name
+              %span 高級品物
+          .main-content__items__item__content__box__3
+            .main-content__items__item__content__box__3__image
+              .main-content__items__item__content__box__3__image__price
+                %span ¥23,000
+            .main-content__items__item__content__box__3__items-name
+              %span 高級品物
+          .main-content__items__item__content__box__4
+            .main-content__items__item__content__box__4__image
+              .main-content__items__item__content__box__4__image__price
+                %span ¥20,000
+            .main-content__items__item__content__box__4__items-name
+              %span 高級品物
+          .main-content__items__item__content__box__5
+            .main-content__items__item__content__box__5__image
+              .main-content__items__item__content__box__5__image__price
+                %span ¥10,000
+            .main-content__items__item__content__box__5__items-name
+              %span 高級品物
+          .main-content__items__item__content__box__6
+            .main-content__items__item__content__box__6__image
+              .main-content__items__item__content__box__6__image__price
+                %span ¥29,999
+            .main-content__items__item__content__box__6__items-name
+              %span 高級品物
+              
 = render 'shared/sell-icon'
 = render 'shared/aside'
 = render 'shared/footer'
