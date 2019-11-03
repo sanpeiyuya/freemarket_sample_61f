@@ -12,10 +12,16 @@
 DisplayItem.all.destroy_all
 # brandsテーブルのレコード追加
 Brand.all.destroy_all # まず全レコード削除
-Brand.create(name: "NIKE")
-Brand.create(name: "adidas")
-Brand.create(name: "PUMA")
-Brand.create(name: "RALPH LAUREN")
+Brand.create(name: "ナイキ", name_alphabet: "nike", name_kana: "ないき")
+Brand.create(name: "アディダス", name_alphabet: "adidas", name_kana: "あでぃだす")
+Brand.create(name: "プーマ", name_alphabet: "puma", name_kana: "ぷーま")
+Brand.create(name: "ポロ ラルフローレン", name_alphabet: "polo ralph lauren", name_kana: "ぽろ らるふろーれん")
+Brand.create(name: "ユニクロ", name_alphabet: "uniqlo", name_kana: "ゆにくろ")
+Brand.create(name: "コーチ", name_alphabet: "coach", name_kana: "こーち")
+Brand.create(name: "フルラ", name_alphabet: "fulra", name_kana: "ふるら")
+Brand.create(name: "グッチ", name_alphabet: "gucci", name_kana: "ぐっち")
+Brand.create(name: "ロンシャン", name_alphabet: "longchamp", name_kana: "ろんしゃん")
+Brand.create(name: "ティファニー", name_alphabet: "tiffany", name_kana: "てぃふぁにー")
 
 # sizeテーブルのレコード追加
 Size.all.destroy_all # まず全レコード削除

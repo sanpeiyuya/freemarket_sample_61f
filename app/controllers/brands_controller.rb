@@ -11,7 +11,10 @@ class BrandsController < ApplicationController
   end
 
   def search
-    @brands = Brand.where("name LIKE ?", "%#{params[:keyword]}%")
+    @brands = Brand
+                .where("name LIKE ?", "%#{params[:keyword]}%")
+                .or(Brand.where("name_alphabet LIKE ?", "%#{params[:keyword]}%"))
+                .or(Brand.where("name_kana LIKE ?", "%#{params[:keyword]}%"))
     respond_to do |format|
       format.html
       format.json {
