@@ -221,3 +221,5 @@ cars_tires.children.create(size_id: tire, name: "タイヤ/ホイールセット
 etceteras = Category.create(size_id: empty, name: "その他")
 etceteras.children.create(size_id: empty, name: "まとめ売り")
 
+Address.all.destroy_all # まず全レコード削除
+Address.create(id:1,user_id:1, postal_code:1410022,block:3-17-8,building:"ライオンズマンション島津山",phone:"09011112222",city:"品川区東五反田",prefecture_id:13)
