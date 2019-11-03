@@ -1,5 +1,5 @@
-= render 'shared/header'
 
+= render 'shared/header'
 %nav.bread-crumbs
   %ul
     %li
@@ -7,7 +7,13 @@
         メルカリ
         = fa_icon 'fas fa-angle-right', class: "fa-angle-right"
     %li
-      マイページ
+      = link_to "#", class: "bread-crumbs__list" do
+        マイページ
+        = fa_icon 'fas fa-angle-right', class: "fa-angle-right"
+    %li
+      = link_to "#", class: "bread-crumbs__list" do
+        ログアウト
+        = fa_icon 'fas fa-angle-right', class: "fa-angle-right"
 .mypage-clearfix
   .mypage
     .mypage__side-bar
@@ -85,7 +91,7 @@
           設定
         %ul.mypage__side-bar__list
           %li
-            = link_to edit_user_profile_path(current_user.id), class: "mypage__side-bar__list-item" do
+            = link_to "#", class: "mypage__side-bar__list-item" do
               プロフィール
               = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
           %li
@@ -112,66 +118,75 @@
             = link_to logout_mypages_path, class: "mypage__side-bar__list-item" do
               ログアウト
               = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+    .logout__main
+      .logout__main__btn 
+        = link_to destroy_user_session_path,method: :delete, class: "logout__main__btn__text" do
+          ログアウト
+        -# = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'
               
-    .mypage__main
-      .mypage__main__user
-        = link_to "#", class: "mypage__main__user__icon" do
-          %figure
-            = image_tag "member_photo_noimage_thumb.png", size: "60x60", class: "user-icon"
-            %h2.user-name
-              - if user_signed_in?
-                -# = current_user.user_profile.family_name
-                = @profile.last_name
-              - else
-                ログインしてないよ
-            %ul.user-info
-              %li.user-info__display
-                評価
-                %span
-                  0
-              %li.user-info__display
-                出品数
-                %span
-                  0
+    -# .mypage__main
+    -#   .mypage__main__user
+    -#     = link_to "#", class: "mypage__main__user__icon" do
+    -#       %figure
+    -#         = image_tag "member_photo_noimage_thumb.png", size: "60x60", class: "user-icon"
+    -#         %h2.user-name
+    -#           サンプル
+    -#         %ul.user-info
+    -#           %li.user-info__display
+    -#             評価
+    -#             %span
+    -#               0
+    -#           %li.user-info__display
+    -#             出品数
+    -#             %span
+    -#               0
 
-      .mypage__main__notice-todo
-        .mypage__main__notice-todo__tab
-          %ul
-            %li.active
-              .mypage__main__notice-todo__tab__single
-                お知らせ
-            %li
-              .mypage__main__notice-todo__tab__single
-                やることリスト
-        .mypage__main__notice-todo__tab__content
-          %ul
-            %li.show
-              .mypage__main__notice-todo__tab__content__logo
-                現在、お知らせはありません
-            %li
-              .mypage__main__notice-todo__tab__content__logo
-                現在、やることリストはありません
+    -#   .mypage__main__notice-todo
+    -#     .mypage__main__notice-todo__tab
+    -#       %ul
+    -#         %li.active
+    -#           .mypage__main__notice-todo__tab--single
+    -#             お知らせ
+    -#         %li
+    -#           .mypage__main__notice-todo__tab--single
+    -#             やることリスト
 
-      .mypage__main__item
-        .mypage__main__item__head
-          購入した商品
-        .mypage__main__item__tab
-          %ul
-            %li.actives
-              .mypage__main__item__tab__single
-                取引中
-            %li
-              .mypage__main__item__tab__single
-                過去の取引
-        .mypage__main__item__tab__content
-          %ul
-            %li.shows
-              .mypage__main__item__tab__content__logo
-                取引中の商品がありません
-            %li
-              .mypage__main__item__tab__content__logo
-                過去に取引した商品がありません
-
-= render 'shared/sell-icon'
+    -#     .lists-way
+    -#       %ul
+    -#         %li
+    -#           = link_to "#", class: "list-banner" do
+    -#             = image_tag "mercari_profile.png", size: "48x48", class: "mini-icon"
+    -#             .lists-way__item
+    -#               .lists-way__item__text
+    -#                 事務局から個別メッセージ「Googleログイン通知」
+    -#               %time
+    -#                 = fa_icon 'fas fa-clock', class: "fas fa-clock "
+    -#                 1日前
+    -#               = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+    -#         %li
+    -#           = link_to "#", class: "list-banner" do
+    -#             = image_tag "mercari_profile.png", size: "48x48", class: "mini-icon"
+    -#             .lists-way__item
+    -#               .lists-way__item__text
+    -#                 事務局から個別メッセージ「Googleログイン通知」
+    -#               %time
+    -#                 = fa_icon 'fas fa-clock', class: "fas fa-clock "
+    -#                 2日前
+    -#               = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+    -#         %li
+    -#           = link_to "#", class: "list-banner" do
+    -#             = image_tag "mercari_profile.png", size: "48x48", class: "mini-icon"
+    -#             .lists-way__item
+    -#               .lists-way__item__text
+    -#                 事務局から個別メッセージ「Googleログイン通知」
+    -#               %time
+    -#                 = fa_icon 'fas fa-clock', class: "fas fa-clock "
+    -#                 3日前
+    -#               = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
+    -#         %li.mypage__go-list
+    -#           = link_to "#", class: "mypage__go-list__link" do
+    -#             一覧を見る
+            
+    -#   .mypage__main__item
 = render 'shared/aside'
 = render 'shared/footer'
