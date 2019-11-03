@@ -21,20 +21,6 @@ class DisplayItemsController < ApplicationController
     end
   end
 
-  # サイズの取得
-  def size_search
-  end
-  # ブランドの検索
-  def brand_search
-    @brands = Brand.where("name LIKE ?", "%#{params[:keyword]}%")
-    respond_to do |format|
-      format.html
-      format.json {
-        @brands
-      }
-    end
-  end  
-
   private
   def display_item_params
     # brand_idが名前で入っているため、idに変換

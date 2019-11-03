@@ -208,7 +208,7 @@ electrics_phones.children.create(name: "スマートフォン本体")
 ## スポーツ・レジャー
 spots = Category.create(name: "スポーツ・レジャー")
 spots_board = spots.children.create(name: "スノーボード")
-spots.children.create(size_id: board, name: "ボード")
+spots_board.children.create(size_id: board, name: "ボード")
 ## ハンドメイド
 handmades = Category.create(name: "ハンドメイド")
 handmades_accessories = handmades.children.create(name: "アクセサリー(女性用)")

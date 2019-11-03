@@ -17,7 +17,7 @@ $(function() {
     // キーワードが空の時は何もしない
     if ( keyword != "" ) {
       $.ajax({
-        url: '/display_items/brand_search',
+        url: '/brands/search',
         type: 'post',
         data: {
           keyword: keyword,
