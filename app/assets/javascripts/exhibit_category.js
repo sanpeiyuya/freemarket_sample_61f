@@ -59,7 +59,7 @@ $(function() {
     // サイズボックスに値が入ってたら作り直さない
     if ( check == null ) {
       $.ajax({
-        url: '/display_items/size_search',
+        url: '/sizes/search',
         type: 'post',
         data: {
           category_id: category_id,
