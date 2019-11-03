@@ -8,8 +8,8 @@ class DisplayItem < ApplicationRecord
 
   belongs_to :user
   belongs_to :category
-  belongs_to :size
-  belongs_to :brand
+  belongs_to :size, optional: true
+  belongs_to :brand, optional: true
 
   has_many :images, dependent: :delete_all
 

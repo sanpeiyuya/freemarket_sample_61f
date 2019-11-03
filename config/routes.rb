@@ -35,6 +35,38 @@ Rails.application.routes.draw do
       get   :buy #購入確認画面
       post  :pay #購入処理
     end
+    collection do
+      post  :first_category_search #カテゴリ検索メソッド(第1段階)
+      post  :second_category_search #カテゴリ検索メソッド(第2段階)
+      post  :size_search #サイズ検索メソッド
+      post  :brand_search #ブランド検索メソッド
+    end
+  end
+  # カテゴリのルーティング
+  resources :categories, only: [:index] do
+    collection do
+      post  :search_level1 #出品ページの検索、カテゴリ階層2
+      post  :search_level2 #出品ページの検索、カテゴリ階層3
+    end
+  end
+  # サイズのルーティング
+  resources :sizes, only: [:index] do
+    collection do
+      post  :search #出品ページの検索
+    end
+  end
+  # ブランドのルーティング
+  resources :brands, only: [:index] do
+    collection do
+      post  :enter #ブランドボックスの作成チェック
+      post  :search #出品ページの検索
+    end
+  end
+  # 配送方法のルーティング
+  resources :delivery_methods, only: [:index] do
+    collection do
+      post  :search #出品ページの検索
+    end
   end
 
 end
