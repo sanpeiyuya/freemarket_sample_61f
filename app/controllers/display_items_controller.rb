@@ -21,28 +21,6 @@ class DisplayItemsController < ApplicationController
     end
   end
 
-  # カテゴリ1の絞り込み
-  def first_category_search
-    @categories = Category.where(ancestry: params[:category_id])
-    respond_to do |format|
-      format.html
-      format.json {
-        @categories
-      }
-    end
-  end
-  # カテゴリ2の絞り込み
-  def second_category_search
-    category_1 = params[:category_id].to_s
-    category_2 = params[:category2_id].to_s
-    @categories = Category.where("ancestry LIKE '#{category_1}/#{category_2}'")
-    respond_to do |format|
-      format.html
-      format.json {
-        @categories
-      }
-    end
-  end
   # サイズの取得
   def size_search
     size_id = Category.find(params[:category_id]).size_id

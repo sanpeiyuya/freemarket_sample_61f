@@ -85,7 +85,7 @@ $(function() {
   $('#display_item_category_id').on('change', function() {
     var category_id = $('#display_item_category_id').val();
     $.ajax({
-      url: '/display_items/first_category_search',
+      url: '/categories/search_level1',
       type: 'post',
       data: {
         category_id: category_id
@@ -116,7 +116,7 @@ $(function() {
     // カテゴリ2の入力値取得
     var category2_id = $('#display_item_category2_id').val();
     $.ajax({
-      url: '/display_items/second_category_search',
+      url: '/categories/search_level2',
       type: 'post',
       data: {
         category_id: category_id,

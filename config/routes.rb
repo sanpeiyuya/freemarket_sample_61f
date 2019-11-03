@@ -41,6 +41,13 @@ Rails.application.routes.draw do
       post  :brand_search #ブランド検索メソッド
     end
   end
+  # カテゴリのルーティング
+  resources :categories, only: [:index] do
+    collection do
+      post  :search_level1 #出品ページの検索、カテゴリ階層2
+      post  :search_level2 #出品ページの検索、カテゴリ階層3
+    end
+  end
   # 配送方法のルーティング
   resources :delivery_methods, only: [:index] do
     collection do
