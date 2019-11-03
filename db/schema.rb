@@ -10,17 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191103055510) do
+ActiveRecord::Schema.define(version: 20191103085859) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
-    t.string   "postal_code",   null: false
-    t.integer  "prefecture_id", null: false
-    t.string   "block",         null: false
+    t.string   "postal_code"
+    t.integer  "prefecture_id"
+    t.string   "block"
     t.string   "building"
     t.string   "phone"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "city"
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
