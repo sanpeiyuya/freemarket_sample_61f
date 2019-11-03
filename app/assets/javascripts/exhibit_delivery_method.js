@@ -1,6 +1,6 @@
 $(function() {
   // オプションの項目作成
-  function creatOption(methods) {
+  function creat_html_select_option(methods) {
     var html = ``;
     methods.forEach(function(method) {
       html += `<option value="${method.id}">${method.name}</option>`
@@ -8,8 +8,8 @@ $(function() {
     return html
   };
   // html作成
-  function createMethod(methods) {
-    var option = creatOption(methods);
+  function create_html_select_method(methods) {
+    var option = creat_html_select_option(methods);
     var html = `<label for="display_item_delivery_method_id">配送方法
                   <span class="required-icon">
                     必須
@@ -42,7 +42,7 @@ $(function() {
         dataType: 'json',
       })
       .done(function(methods) {
-        var html = createMethod(methods);
+        var html = create_html_select_method(methods);
         $('.select_delivery_method').append(html);
       })
       .fail(function() {

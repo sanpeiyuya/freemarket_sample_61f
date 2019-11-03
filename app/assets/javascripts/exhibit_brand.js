@@ -1,7 +1,7 @@
 $(function() {
 
   // リスト作成
-  function creatList(brands) {
+  function creat_html_list(brands) {
     var html = ``;
     brands.forEach(function(brand) {
       html += `<li class="brand_search_result__box__content" id=${brand.id}>${brand.name}</li>`;
@@ -25,7 +25,7 @@ $(function() {
         dataType: 'json',
       })
       .done(function(brands) {
-        var html = creatList(brands)
+        var html = creat_html_list(brands)
         $('.brand_search_result__box').append(html);
       })
       .fail(function() {
