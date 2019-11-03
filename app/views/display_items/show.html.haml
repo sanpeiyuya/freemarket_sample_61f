@@ -1,0 +1,29 @@
+= render 'shared/header'
+
+.item
+  .item__title
+    = @display_item.name
+  .item__content.clearfix
+    .item__content__photo
+    %table.item__content__table
+      %tbody.item__content__table__tbody
+        %tr.item__content__table__tr
+          %th.item__content__table__th
+            出品者
+          %td.item__content__table__td
+            = link_to "#" do
+              = @display_item.user.email
+            .item__content__table__box
+              .item__content__table__box__icon
+                = fa_icon "laugh", class: "abc"
+
+
+
+
+
+
+
+
+
+= render 'shared/aside'
+= render 'shared/footer'

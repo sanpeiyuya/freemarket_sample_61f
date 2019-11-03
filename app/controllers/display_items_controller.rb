@@ -21,6 +21,10 @@ class DisplayItemsController < ApplicationController
     end
   end
 
+  def show
+    @display_item = DisplayItem.all[0]
+  end
+
   private
   def display_item_params
     # brand_idが名前で入っているため、idに変換
