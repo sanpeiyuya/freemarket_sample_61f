@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191103085859) do
+ActiveRecord::Schema.define(version: 20191104072125) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -26,9 +26,11 @@ ActiveRecord::Schema.define(version: 20191103085859) do
   end
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",          null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "name_alphabet"
+    t.string   "name_kana"
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -37,6 +39,7 @@ ActiveRecord::Schema.define(version: 20191103085859) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "ancestry"
+    t.integer  "brand"
     t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
     t.index ["size_id"], name: "index_categories_on_size_id", using: :btree
   end
@@ -81,18 +84,18 @@ ActiveRecord::Schema.define(version: 20191103085859) do
 
   create_table "user_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
-    t.string   "family_name",                    null: false
-    t.string   "last_name",                      null: false
-    t.string   "family_name_kana",               null: false
-    t.string   "last_name_kana",                 null: false
+    t.string   "family_name",                                 null: false
+    t.string   "last_name",                      default: "", null: false
+    t.string   "family_name_kana",                            null: false
+    t.string   "last_name_kana",                              null: false
     t.text     "introduction",     limit: 65535
-    t.integer  "birth_year",                     null: false
-    t.integer  "birth_month",                    null: false
-    t.integer  "birth_day",                      null: false
+    t.integer  "birth_year",                                  null: false
+    t.integer  "birth_month",                                 null: false
+    t.integer  "birth_day",                                   null: false
     t.text     "icon_image",       limit: 65535
     t.integer  "total_sales"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.string   "nickname"
     t.index ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
   end
