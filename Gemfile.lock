@@ -89,6 +89,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.8.2)
+      devise (>= 4.6)
     erb2haml (0.1.5)
       html2haml
     erubis (2.7.0)
@@ -287,6 +289,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.2)
   devise
+  devise-i18n
   erb2haml
   fog-aws
   font-awesome-rails
