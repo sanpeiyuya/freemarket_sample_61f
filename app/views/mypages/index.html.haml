@@ -19,10 +19,10 @@
           %figure
             = image_tag "member_photo_noimage_thumb.png", size: "60x60", class: "user-icon"
             %h2.user-name
-              - if user_signed_in?
+              - if user_signed_in? && current_user.user_profile.nickname
                 = current_user.user_profile.nickname
-              - else
-                ログインしてないよ
+              - else 
+                ニックネーム未設定
             %ul.user-info
               %li.user-info__display
                 評価
