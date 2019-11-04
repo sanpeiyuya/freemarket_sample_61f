@@ -171,7 +171,7 @@
                 3日前
 
     .message__content__form
-      = form_for @display_item, @comment do |f|
+      = form_for [@display_item, @comment] do |f|
         = f.text_field :comment
         = f.submit
 
