@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   # クレジットカードの編集
   resources :credit_cards
 
+  resources :addresses,only: [:edit, :update]
+
   # 商品系のルーティング
   resources :display_items do
     member do
