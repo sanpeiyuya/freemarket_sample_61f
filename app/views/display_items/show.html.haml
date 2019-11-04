@@ -15,10 +15,44 @@
               = @display_item.user.email
             .item__content__table__box
               .item__content__table__box__icon
-                = fa_icon "laugh", class: "abc"
-
-
-
+                = fa_icon "thumbs-up", class: "nice-icon red"
+                %span.item__content__table__box__value
+                  99
+              .item__content__table__box__icon
+                = fa_icon "thumbs-up", class: "nice-icon yellow"
+                %span.item__content__table__box__value
+                  99
+              .item__content__table__box__icon
+                = fa_icon "thumbs-down", class: "nice-icon blue"
+                %span.item__content__table__box__value
+                  99
+        %tr.item__content__table__tr
+          %th.item__content__table__th
+            カテゴリー
+          %td.item__content__table__td
+            .icon_box
+              = link_to "#", class: "item__content__table__td__link" do
+                %span
+                  - if @category_lv3.nil?
+                    = @category_lv2.name
+                  - else
+                    = @category_lv3.name
+            .icon_box
+              = link_to "#", class: "item__content__table__td__link" do
+                = fa_icon "chevron-right"
+                %span
+                  - if @category_lv3.nil?
+                    = @category_lv1.name
+                  - else
+                    = @category_lv2.name
+            - unless @category_lv3.nil?
+              .icon_box
+                = link_to "#", class: "item__content__table__td__link" do
+                  = fa_icon "chevron-right"
+                  %span
+                    = @category_lv1.name
+  .item_fee
+    ５０００円だよ
 
 
 

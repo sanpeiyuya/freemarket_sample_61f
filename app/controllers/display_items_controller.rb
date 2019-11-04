@@ -23,6 +23,9 @@ class DisplayItemsController < ApplicationController
 
   def show
     @display_item = DisplayItem.all[0]
+    @category_lv1 = Category.find(@display_item.category_id)
+    @category_lv2 = @category_lv1.parent
+    @category_lv3 = @category_lv2.parent if @category_lv2.parent
   end
 
   private

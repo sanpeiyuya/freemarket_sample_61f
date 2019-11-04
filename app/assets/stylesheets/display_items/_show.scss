@@ -53,13 +53,45 @@
         padding: 8px;
         border-collapse: collapse;
         border: 1px solid #f5f5f5;
+        &__link {
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       }
       &__box {
         &__icon {
-          margin: 0;
+          margin: 8px 0 0 0;
           display: inline-block;
+          height: 15px;
+          width: 45px;
+        }
+        &__value {
+          margin: 0;
+          vertical-align: middle;
         }
       }
     }
   }
+}
+
+.nice-icon {
+  font-size: 18px;
+  vertical-align: middle;
+  display: inline-block;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+.red {
+  color: #ef5185;
+}
+.yellow {
+  color: #fba933;
+}
+.blue {
+  color: #6ab5d8;
 }
