@@ -14,14 +14,27 @@
           = image_tag"google.svg",class:'login-content__selection__space__sns__google__icon'
           .login-content__selection__space__sns__google__text Googleでログイン
     .login-content__selection__form
-      = form_for(resource, as: resource_name, url: users_path(resource_name)) do |f|
-        .loginfield
-          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス",class:'input'
-        .loginfield
-          = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード",class:'input'
-        .actions
-          = f.submit "ログイン",class:'login-content__selection__form__submit'
-        .login-content__selection__form__notice パスワードをお忘れの方
-      
-      -# = render "devise/shared/links"
+      .form
+      .form
+      = link_to new_info_users_path,class:'login-content__selection__form__submit' do
+        .login-content__selection__form__submit__text ログイン
+      .login-content__selection__form__notice パスワードをお忘れの方
+
+-# %h2 Log in
+-# = form_for(resource, as: resource_name, url: users_path(resource_name)) do |f|
+-#   .field
+-#     = f.label :email
+-#     %br/
+-#     = f.email_field :email, autofocus: true, autocomplete: "email"
+-#   .field
+-#     = f.label :password
+-#     %br/
+-#     = f.password_field :password, autocomplete: "current-password"
+-#   - if devise_mapping.rememberable?
+-#     .field
+-#       = f.check_box :remember_me
+-#       = f.label :remember_me
+-#   .actions
+-#     = f.submit "Log in"
+-# = render "devise/shared/links"
 = render 'shared/monofooter'
