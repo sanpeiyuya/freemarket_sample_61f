@@ -26,6 +26,7 @@
                 = fa_icon "thumbs-down", class: "nice-icon blue"
                 %span.item__content__table__box__value
                   99
+
         %tr.item__content__table__tr
           %th.item__content__table__th
             カテゴリー
@@ -51,6 +52,62 @@
                   = fa_icon "chevron-right"
                   %span
                     = @category_lv1.name
+
+        %tr.item__content__table__tr
+          %th.item__content__table__th
+            ブランド
+          %td.item__content__table__td
+            - unless @display_item.brand_id.nil? 
+              = @display_item.brand.name
+
+        %tr.item__content__table__tr
+          %th.item__content__table__th
+            商品のサイズ
+          %td.item__content__table__td
+            - unless @display_item.size_id.nil? 
+              =  @display_item.size.size
+
+        %tr.item__content__table__tr
+          %th.item__content__table__th
+            商品の状態
+          %td.item__content__table__td
+            = @display_item.condition.name
+
+        %tr.item__content__table__tr
+          %th.item__content__table__th
+            配送料の負担
+          %td.item__content__table__td
+            = @display_item.delivery_fee_burden.name
+
+        %tr.item__content__table__tr
+          %th.item__content__table__th
+            配送の方法
+          %td.item__content__table__td
+            = @display_item.delivery_method.name
+
+        %tr.item__content__table__tr
+          %th.item__content__table__th
+            配送元地域
+          %td.item__content__table__td
+            = link_to "#", class: "item__content__table__td__link" do
+              = @display_item.prefecture.name
+
+        %tr.item__content__table__tr
+          %th.item__content__table__th
+            配送日の目安
+          %td.item__content__table__td
+            = @display_item.delivery_by_day.name
+
+
+
+
+
+
+
+
+
+
+
   .item_fee
     ５０００円だよ
 
