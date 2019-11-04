@@ -178,6 +178,67 @@
   }
 }
 
+.message {
+  width: 700px;
+  margin: 8px auto;
+  &__content {
+    background: #fff;
+    &__chat {
+      padding: 24px;
+      &__box {
+        margin: 60px 0 0;
+        &__user {
+          float: left;
+          position: relative;
+          top: -20px;
+          color: #333;
+          &__frame {
+            width: 40px;
+            height: 40px;
+            overflow: hidden;
+            border-radius: 50%;
+            background: #eee;
+            text-align: center;
+            &__image {
+              width: 32px;
+              height: 32px;
+              margin: 10px 0 0;
+              vertical-align: bottom;
+            }
+          }
+        }
+        &__comment {
+          width: 600px;
+          float: right;
+          position: relative;
+          padding: 16px;
+          background: #eef0f4;
+          border-radius: 15px;
+          line-height: 1.5;
+          word-break: break-all;
+          &__text {
+          }
+          &__time {
+            margin: 8px 0 0;
+            &__ago {
+              vertical-align: middle;
+              color: #aaa;
+            }
+          }
+        }
+      }
+    }
+    &__form {
+      padding: 24px;
+      background: #fff;
+    }
+  }
+}
+// 最初のメッセージボックスだけmarginを小さくする
+.chat__box__top {
+  margin: 1.5em 0 0;
+}
+
 .nice-icon {
   font-size: 18px;
   vertical-align: middle;
@@ -239,4 +300,19 @@
   text-transform: none;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
+}
+
+.clock-icon {
+  vertical-align: middle;
+  display: inline-block;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  color: #aaa;
 }
