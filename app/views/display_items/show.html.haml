@@ -1,12 +1,17 @@
 = render 'shared/header'
 
 .item
+
+
   .item__title
     = @display_item.name
+
+
   .item__content.clearfix
     .item__content__photo
     %table.item__content__table
       %tbody.item__content__table__tbody
+
         %tr.item__content__table__tr
           %th.item__content__table__th
             出品者
@@ -98,16 +103,45 @@
           %td.item__content__table__td
             = @display_item.delivery_by_day.name
 
+
   .item__fee
     %span.item__fee__price
       = "¥" + @display_item.price.to_s(:delimited)
     %span.item__fee__tax (税込)
     %span.item__fee__option 送料込み
 
+
   .item__btn
     - if @display_item
       = link_to "#", class: "item__btn__possible" do
         購入画面に進む
+
+
+  .item__description
+    %p.item__description__text
+      = @display_item.description
+
+
+  .item__footer.clearfix
+    .item__footer__left
+      %span.item__footer__left__like
+        = fa_icon "heart-o", class: "like-icon"
+        %span.item__footer__left__like__text
+          いいね!
+        %spna.item__footer__left__like__count
+          100
+      = link_to "#", class: "item__footer__left__report" do
+        = fa_icon "flag-o", class: "report-icon"
+        %span.item__footer__left__report__text
+          不適切な商品の報告
+
+    .item__footer__right
+      = link_to "#", class: "item__footer__right__safe" do
+        = fa_icon "lock", class: "lock-icon"
+        %span.item__footer__right__safe__text
+          あんしん・あんぜんへの取り組み
+
+
 
 
 

@@ -104,6 +104,78 @@
       }
     }
   }
+  &__description {
+    padding: 32px 0 0;
+    line-height: 1.5;
+    font-size: 18px;
+    &__text {
+      white-space: pre-wrap;
+    }
+  }
+  &__footer {
+    margin: 16px 0 0;
+    font-size: 0;
+    &__left {
+      float: left;
+      &__like {
+        color: #333;
+        border: 1px solid #f5f5f5;
+        background: #f5f5f5;
+        display: inline-block;
+        padding: 8px 16px;
+        border-radius: 40px;
+        &__text {
+          font-size: 14px;
+          display: inline-block;
+          margin: 1px 0 0 8px;
+          vertical-align: middle;
+        }
+        &__count {
+          font-size: 14px;
+          display: inline-block;
+          margin: 1px 0 0 8px;
+          vertical-align: middle;
+        }
+      }
+      &__report {
+        display: inline-block;
+        margin: 0 0 0 16px;
+        color: #333;
+        background: #f5f5f5;
+        padding: 8px 16px;
+        border-radius: 40px;
+        -webkit-transition: all ease-out .3s;
+        transition: all ease-out .3s;
+        &:hover {
+          color: rgb(115, 115, 115);
+          background: rgba(#f5f5f5, 0.8)
+        }
+        &__text {
+          font-size: 14px;
+          display: inline-block;
+          margin: 1px 0 0 8px;
+          vertical-align: middle;
+        }
+      }
+    }
+    &__right {
+      margin: 8px 0 0;
+      float: right;
+      &__safe {
+        display: inline-block;
+        color: #0099e8;
+        &__text {
+          font-size: 14px;
+          display: inline-block;
+          margin: 1px 0 0 8px;
+          vertical-align: middle;
+          &:hover {
+            color: rgba(#0099e8, 0.8);
+          }
+        }
+      }
+    }
+  }
 }
 
 .nice-icon {
@@ -125,4 +197,46 @@
 }
 .blue {
   color: #6ab5d8;
+}
+
+.like-icon {
+  font-size: 14px;
+  color: rgb(190, 190, 190);
+  vertical-align: middle;
+  display: inline-block;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.report-icon {
+  font-size: 14px;
+  vertical-align: middle;
+  display: inline-block;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lock-icon {
+  font-size: 14px;
+  vertical-align: middle;
+  display: inline-block;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
 }
