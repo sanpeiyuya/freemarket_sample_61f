@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-  belongs_to :size
+  belongs_to :size, optional: true
 
   has_ancestry
 

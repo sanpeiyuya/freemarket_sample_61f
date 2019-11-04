@@ -50,7 +50,7 @@
             商品の詳細
           .content__form
             -# カテゴリ
-            .content__form__TopEle
+            .content__form__TopEle.select_category
               = f.label :category_id do
                 カテゴリー
                 %span.required-icon
@@ -58,24 +58,18 @@
               .content__form__TopEle__input
                 %span{class: "fa fa-chevron-down arrow-icon"}
                 = f.collection_select(:category_id, @categories, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
-            -# サイズ
-            .content__form__Ele
-              = f.label :size_id do
-                サイズ
-                %span.required-icon
-                  必須
-              .content__form__Ele__input
-                %span{class: "fa fa-chevron-down arrow-icon"}
-                = f.collection_select(:size_id, @sizes, :id, :size, {prompt: "--"}, {class: "exhibit-select"})
-            -# ブランド
-            .content__form__Ele
-              = f.label :brand_id do
-                ブランド
-                %span.any-icon
-                  任意
-              .content__form__Ele__input
-                %span{class: "fa fa-chevron-down arrow-icon"}
-                = f.collection_select(:brand_id, @brands, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
+            -# サイズを下にappendするdivタグ
+            .content__form__Ele.select_size
+            -# -# ブランド
+            .content__form__Ele.select_brand
+              -# = f.label :brand_id do
+              -#   ブランド
+              -#   %span.any-icon
+              -#     任意
+              -# .content__form__Ele__input
+              -#   = f.text_field(:brand_id, class: "exhibit-select", autocomplete: "off")
+              -#   .brand_search_result
+              -#     %ul.brand_search_result__box
             -# 商品の状態
             .content__form__Ele
               = f.label :condition_id do
@@ -94,7 +88,7 @@
               ？
           .content__form
             -# 配送料の負担
-            .content__form__TopEle
+            .content__form__TopEle.select_delivery_fee
               = f.label :delivery_fee_burden_id do
                 配送料の負担
                 %span.required-icon
@@ -103,14 +97,7 @@
                 %span{class: "fa fa-chevron-down arrow-icon"}
                 = f.collection_select(:delivery_fee_burden_id, @delivery_fee_burdens, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
             -# 配送方法
-            .content__form__Ele
-              = f.label :delivery_method_id do
-                配送方法
-                %span.required-icon
-                  必須
-              .content__form__Ele__input
-                %span{class: "fa fa-chevron-down arrow-icon"}
-                = f.collection_select(:delivery_method_id, @delivery_methods, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
+            .content__form__Ele.select_delivery_method
             -# 発送元の地域
             .content__form__Ele
               = f.label :prefecture_id do

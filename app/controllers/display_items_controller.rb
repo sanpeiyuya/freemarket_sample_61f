@@ -23,6 +23,8 @@ class DisplayItemsController < ApplicationController
 
   private
   def display_item_params
+    # brand_idが名前で入っているため、idに変換
+    params[:display_item][:brand_id] = Brand.find_by(name: params[:display_item][:brand_id]).id
     params.require(:display_item).permit(:user_id, :name, :description, :category_id, :size_id, :brand_id, :condition_id, :delivery_fee_burden_id, :delivery_method_id, :prefecture_id, :delivery_by_day_id, :price, images_attributes: [:image])
   end
 end

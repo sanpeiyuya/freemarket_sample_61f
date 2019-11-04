@@ -1,0 +1,27 @@
+= render 'shared/header'
+%nav.bread-crumbs
+  %ul
+    %li
+      = link_to "#", class: "bread-crumbs__list" do
+        メルカリ
+        = fa_icon 'fas fa-angle-right', class: "fa-angle-right"
+    %li
+      = link_to "#", class: "bread-crumbs__list" do
+        マイページ
+        = fa_icon 'fas fa-angle-right', class: "fa-angle-right"
+    %li
+      = link_to "#", class: "bread-crumbs__list" do
+        ログアウト
+        = fa_icon 'fas fa-angle-right', class: "fa-angle-right"
+.mypage-clearfix
+  .mypage
+    
+    = render 'shared/side-bar'
+              
+    .logout__main
+      .logout__main__btn 
+        = link_to destroy_user_session_path,method: :delete, class: "logout__main__btn__text" do
+          ログアウト
+        
+= render 'shared/aside'
+= render 'shared/footer'

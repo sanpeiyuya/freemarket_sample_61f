@@ -8,17 +8,23 @@
 
 #   coding: utf-8
 
+# display_itemsを全削除
+DisplayItem.all.destroy_all
 # brandsテーブルのレコード追加
 Brand.all.destroy_all # まず全レコード削除
-Brand.create(name: "NIKE")
-Brand.create(name: "adidas")
-Brand.create(name: "PUMA")
-Brand.create(name: "RALPH LAUREN")
+Brand.create(name: "ナイキ", name_alphabet: "nike", name_kana: "ないき")
+Brand.create(name: "アディダス", name_alphabet: "adidas", name_kana: "あでぃだす")
+Brand.create(name: "プーマ", name_alphabet: "puma", name_kana: "ぷーま")
+Brand.create(name: "ポロ ラルフローレン", name_alphabet: "polo ralph lauren", name_kana: "ぽろ らるふろーれん")
+Brand.create(name: "ユニクロ", name_alphabet: "uniqlo", name_kana: "ゆにくろ")
+Brand.create(name: "コーチ", name_alphabet: "coach", name_kana: "こーち")
+Brand.create(name: "フルラ", name_alphabet: "fulra", name_kana: "ふるら")
+Brand.create(name: "グッチ", name_alphabet: "gucci", name_kana: "ぐっち")
+Brand.create(name: "ロンシャン", name_alphabet: "longchamp", name_kana: "ろんしゃん")
+Brand.create(name: "ティファニー", name_alphabet: "tiffany", name_kana: "てぃふぁにー")
 
 # sizeテーブルのレコード追加
 Size.all.destroy_all # まず全レコード削除
-## 空レコード
-Size.create(size: "empty")
 ## SML
 sml = Size.create(size: "SML")
 sml.children.create(size: "XXS以下")
@@ -139,7 +145,6 @@ board.children.create(size: "165cm〜170cm未満")
 
 # categoriesテーブルのレコード追加
 ## サイズ取得
-empty = Size.find_by(size: "empty").id
 sml = Size.find_by(size: "SML").id
 shoes_mens = Size.find_by(size: "shoes(mens)").id
 shoes_ladies = Size.find_by(size: "shoes(ladies)").id
@@ -153,73 +158,79 @@ board = Size.find_by(size: "board").id
 Category.all.destroy_all # まず全レコード削除
 
 ## レディース
-ladies = Category.create(size_id: empty, name: "レディース")
-ladies_tops = ladies.children.create(size_id: empty, name: "トップス")
-ladies_tops.children.create(size_id: sml, name: "Tシャツ/カットソー(半袖/袖なし)")
-ladies_tops.children.create(size_id: sml, name: "Tシャツ/カットソー(七分/長袖)")
-ladies_tops.children.create(size_id: sml, name: "シャツ/ブラウス(半袖/袖なし)")
-ladies_tops.children.create(size_id: sml, name: "シャツ/ブラウス(七分/長袖)")
-ladies_tops.children.create(size_id: sml, name: "ポロシャツ")
-ladies_tops.children.create(size_id: sml, name: "キャミソール")
-ladies_tops.children.create(size_id: sml, name: "タンクトップ")
-ladies_tops.children.create(size_id: sml, name: "ホルターネック")
-ladies_tops.children.create(size_id: sml, name: "ニット/セーター")
-ladies_tops.children.create(size_id: sml, name: "チュニック")
-ladies_tops.children.create(size_id: sml, name: "カーディガン/ボレロ")
-ladies_tops.children.create(size_id: sml, name: "アンサンブル")
-ladies_tops.children.create(size_id: sml, name: "ベスト/ジレ")
-ladies_tops.children.create(size_id: sml, name: "パーカー")
-ladies_tops.children.create(size_id: sml, name: "トレーナー/スウェット")
-ladies_tops.children.create(size_id: sml, name: "ベアトップ/チューブトップ")
-ladies_tops.children.create(size_id: sml, name: "ジャージ")
-ladies_tops.children.create(size_id: sml, name: "その他")
+ladies = Category.create(name: "レディース")
+ladies_tops = ladies.children.create(name: "トップス")
+ladies_outer = ladies.children.create(name: "ジャケット/アウター")
+ladies_pants = ladies.children.create(name: "パンツ")
+ladies_tops.children.create(size_id: sml, name: "Tシャツ/カットソー(半袖/袖なし)", brand: 1)
+ladies_tops.children.create(size_id: sml, name: "Tシャツ/カットソー(七分/長袖)", brand: 1)
+ladies_tops.children.create(size_id: sml, name: "シャツ/ブラウス(半袖/袖なし)", brand: 1)
+ladies_tops.children.create(size_id: sml, name: "シャツ/ブラウス(七分/長袖)", brand: 1)
+ladies_tops.children.create(size_id: sml, name: "ポロシャツ", brand: 1)
+ladies_tops.children.create(size_id: sml, name: "キャミソール", brand: 1)
+ladies_tops.children.create(size_id: sml, name: "タンクトップ", brand: 1)
+ladies_tops.children.create(size_id: sml, name: "ホルターネック", brand: 1)
+ladies_tops.children.create(size_id: sml, name: "ニット/セーター", brand: 1)
+ladies_tops.children.create(size_id: sml, name: "チュニック", brand: 1)
+ladies_tops.children.create(size_id: sml, name: "カーディガン/ボレロ", brand: 1)
+ladies_tops.children.create(size_id: sml, name: "アンサンブル", brand: 1)
+ladies_tops.children.create(size_id: sml, name: "ベスト/ジレ", brand: 1)
+ladies_tops.children.create(size_id: sml, name: "パーカー", brand: 1)
+ladies_tops.children.create(size_id: sml, name: "トレーナー/スウェット", brand: 1)
+ladies_tops.children.create(size_id: sml, name: "ベアトップ/チューブトップ", brand: 1)
+ladies_tops.children.create(size_id: sml, name: "ジャージ", brand: 1)
+ladies_tops.children.create(size_id: sml, name: "その他", brand: 1)
+ladies_outer.children.create(size_id: sml, name: "テラードジャケット", brand: 1)
+ladies_outer.children.create(size_id: sml, name: "ノーカラードジャケット", brand: 1)
+ladies_pants.children.create(size_id: sml, name: "デニム/ジーンズ", brand: 1)
+ladies_pants.children.create(size_id: sml, name: "ショートパンツ", brand: 1)
 ## メンズ
-mens = Category.create(size_id: empty, name: "メンズ")
-mens_tops = mens.children.create(size_id: empty, name: "トップス")
-mens_tops.children.create(size_id: sml, name: "Tシャツ/カットソー(半袖/袖なし)")
+mens = Category.create(name: "メンズ")
+mens_tops = mens.children.create(name: "トップス")
+mens_tops.children.create(size_id: sml, name: "Tシャツ/カットソー(半袖/袖なし)", brand: 1)
 ## ベビー・キッズ
-kids = Category.create(size_id: empty, name: "ベビー・キッズ")
-kids_BabyGirls_under95 = kids.children.create(size_id: empty, name: "ベビー服(女の子用)~95cm")
-kids_BabyGirls_under95.children.create(size_id: kids_small, name: "トップス")
+kids = Category.create(name: "ベビー・キッズ")
+kids_BabyGirls_under95 = kids.children.create(name: "ベビー服(女の子用)~95cm")
+kids_BabyGirls_under95.children.create(size_id: kids_small, name: "トップス", brand: 1)
 ## インテリア・住まい・小物
-interiors = Category.create(size_id: empty, name: "インテリア・住まい・小物")
-interiors_kichen = interiors.children.create(size_id: empty, name: "キッチン/食器")
-interiors_kichen.children.create(size_id: empty, name: "食器")
+interiors = Category.create(name: "インテリア・住まい・小物")
+interiors_kichen = interiors.children.create(name: "キッチン/食器")
+interiors_kichen.children.create(name: "食器", brand: 1)
 ## 本・音楽・ゲーム
-subcals = Category.create(size_id: empty, name: "本・音楽・ゲーム")
-subcals_books = subcals.children.create(size_id: empty, name: "本")
-subcals_books.children.create(size_id: empty, name: "文学/小説")
+subcals = Category.create(name: "本・音楽・ゲーム")
+subcals_books = subcals.children.create(name: "本")
+subcals_books.children.create(name: "文学/小説")
 ## おもちゃ・ホビー・グッズ
-hobbies = Category.create(size_id: empty, name: "おもちゃ・ホビー・グッズ")
-hobbies_toys = hobbies.children.create(size_id: empty, name: "おもちゃ")
-hobbies_toys.children.create(size_id: empty, name: "キャラクターグッズ")
+hobbies = Category.create(name: "おもちゃ・ホビー・グッズ")
+hobbies_toys = hobbies.children.create(name: "おもちゃ")
+hobbies_toys.children.create(name: "キャラクターグッズ")
 ## コスメ・香水・美容
-beaties = Category.create(size_id: empty, name: "コスメ・香水・美容")
-beaties_cosmetics = beaties.children.create(size_id: empty, name: "ベースメイク")
-beaties_cosmetics.children.create(size_id: empty, name: "ファンデーション")
+beaties = Category.create(name: "コスメ・香水・美容")
+beaties_cosmetics = beaties.children.create(name: "ベースメイク")
+beaties_cosmetics.children.create(name: "ファンデーション", brand: 1)
 ## 家電・スマホ・カメラ
-electrics = Category.create(size_id: empty, name: "家電・スマホ・カメラ")
-electrics_phones = electrics.children.create(size_id: empty, name: "スマートフォン/携帯電話")
-electrics_phones.children.create(size_id: empty, name: "スマートフォン本体")
+electrics = Category.create(name: "家電・スマホ・カメラ")
+electrics_phones = electrics.children.create(name: "スマートフォン/携帯電話")
+electrics_phones.children.create(name: "スマートフォン本体", brand: 1)
 ## スポーツ・レジャー
-spots = Category.create(size_id: empty, name: "スポーツ・レジャー")
-spots_board = spots.children.create(size_id: empty, name: "スノーボード")
-spots.children.create(size_id: board, name: "ボード")
+spots = Category.create(name: "スポーツ・レジャー")
+spots_board = spots.children.create(name: "スノーボード")
+spots_board.children.create(size_id: board, name: "ボード", brand: 1)
 ## ハンドメイド
-handmades = Category.create(size_id: empty, name: "ハンドメイド")
-handmades_accessories = handmades.children.create(size_id: empty, name: "アクセサリー(女性用)")
-handmades_accessories.children.create(size_id: empty, name: "ピアス")
+handmades = Category.create(name: "ハンドメイド")
+handmades_accessories = handmades.children.create(name: "アクセサリー(女性用)")
+handmades_accessories.children.create(name: "ピアス")
 ## チケット
-tickets = Category.create(size_id: empty, name: "チケット")
-tickets_music = tickets.children.create(size_id: empty, name: "音楽")
-tickets_music.children.create(size_id: empty, name: "男性アイドル")
+tickets = Category.create(name: "チケット")
+tickets_music = tickets.children.create(name: "音楽")
+tickets_music.children.create(name: "男性アイドル")
 ## 自動車・オートバイ
-cars = Category.create(size_id: empty, name: "自動車・オートバイ")
-cars_tires = cars.children.create(size_id: empty, name: "自動車タイヤ/ホイール")
-cars_tires.children.create(size_id: tire, name: "タイヤ/ホイールセット")
+cars = Category.create(name: "自動車・オートバイ")
+cars_tires = cars.children.create(name: "自動車タイヤ/ホイール")
+cars_tires.children.create(size_id: tire, name: "タイヤ/ホイールセット", brand: 1)
 ## その他
-etceteras = Category.create(size_id: empty, name: "その他")
-etceteras.children.create(size_id: empty, name: "まとめ売り")
+etceteras = Category.create(name: "その他")
+etceteras.children.create(name: "まとめ売り")
 
 Address.all.destroy_all # まず全レコード削除
 Address.create(id:1,user_id:1, postal_code:1410022,block:"3-17-8",building:"ライオンズマンション島津山",phone:"09011112222",city:"品川区東五反田",prefecture_id:13)

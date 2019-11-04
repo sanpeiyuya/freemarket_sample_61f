@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_one :address, dependent: :destroy
   has_one :user_profile, dependent: :destroy
   has_many :display_items, dependent: :delete_all
+  has_one :user_profile
 end
