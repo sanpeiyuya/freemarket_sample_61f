@@ -98,18 +98,16 @@
           %td.item__content__table__td
             = @display_item.delivery_by_day.name
 
+  .item__fee
+    %span.item__fee__price
+      = "¥" + @display_item.price.to_s(:delimited)
+    %span.item__fee__tax (税込)
+    %span.item__fee__option 送料込み
 
-
-
-
-
-
-
-
-
-
-  .item_fee
-    ５０００円だよ
+  .item__btn
+    - if @display_item
+      = link_to "#", class: "item__btn__possible" do
+        購入画面に進む
 
 
 

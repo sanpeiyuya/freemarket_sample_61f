@@ -73,6 +73,37 @@
       }
     }
   }
+  &__fee {
+    margin: 24px 0 0;
+    text-align: center;
+    &__price {
+      margin: 0 12px 0 0;
+      font-size: 50px;
+      font-weight: 600;
+    }
+    &__tax {
+      font-size: 10px;
+    }
+    &__option {
+      font-size: 16px;
+    }
+  }
+  &__btn {
+    &__possible {
+      font-size: 24px;
+      line-height: 60px;
+      display: block;
+      margin-top: 16px;
+      background: #ea352d;
+      color: #fff;
+      text-align: center;
+      font-weight: 600;
+      transition: all ease-out .3s;
+      &:hover {
+        background: #e72015;
+      }
+    }
+  }
 }
 
 .nice-icon {
