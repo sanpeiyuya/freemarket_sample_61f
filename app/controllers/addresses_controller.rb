@@ -1,4 +1,5 @@
-class UserProfilesController < ApplicationController
+class AddressesController < ApplicationController
+  
   def edit
     @profile = UserProfile.find(current_user.id)
     @address = current_user.address
@@ -14,5 +15,5 @@ class UserProfilesController < ApplicationController
   def introduction_params
     params.require(:user_profile).permit(:nickname, :introduction)
   end
-
 end
+
