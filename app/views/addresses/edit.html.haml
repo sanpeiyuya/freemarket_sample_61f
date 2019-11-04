@@ -24,7 +24,26 @@
           = f.label :postal_code,"郵便番号"
           %span.any-icon
             任意
-          = f.text_field :last_name,placeholedr:"例）1234567"
-        
+          = f.text_field :postal_code,placeholedr:"例）1234567",class:'profile-form__group__input-text'
+        .profile-form__group
+          = f.label :postal_code,"都道府県"
+          %span.any-icon
+            任意
+          = f.select:prefecture_id
 
+
+        .profile-form__group
+          = f.label :postal_code,"市区町村"
+          %span.any-icon
+            任意
+
+        .profile-form__group
+          = f.label :postal_code,"番地"
+          %span.any-icon
+            任意
+
+        .profile-form__group
+          = f.label :postal_code,"建物名"
+          %span.any-icon
+            任意
 

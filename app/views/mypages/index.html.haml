@@ -101,7 +101,7 @@
               メール/パスワード
               = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
           %li
-            = link_to edit_user_profile_path(current_user.id), class: "mypage__side-bar__list-item" do
+            = link_to edit_address_path(current_user.id), class: "mypage__side-bar__list-item" do
               本人情報
               = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
           %li
@@ -119,8 +119,10 @@
           %figure
             = image_tag "member_photo_noimage_thumb.png", size: "60x60", class: "user-icon"
             %h2.user-name
-              - if user_signed_in?
-                = current_user.email
+              - if user_signed_in? && current_user.user_profile.nickname.nil?
+                " "
+              - elsif user_signed_in?
+                = current_user.user_profile.nickname
               - else
                 ログインしてないよ
             %ul.user-info
