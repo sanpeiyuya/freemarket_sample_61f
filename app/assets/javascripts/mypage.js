@@ -23,3 +23,15 @@ $(function() {
   }
   tabs.click(tabSwitch);
 });
+
+// 現在のページを目立たせる
+$(function() {
+  $(".nav li a").each(function(){
+    var $href = $(this).attr("href");
+      if(location.href.match($href)) {
+        $(this).parent().addClass("current");
+      } else {
+        $(this).parent().removeClass("current");
+      }
+  });
+});

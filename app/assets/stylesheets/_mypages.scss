@@ -1,4 +1,4 @@
-.main-header{
+.main-header {
   box-shadow: none;
 }
 
@@ -8,19 +8,22 @@
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
   background-color: #fff;
   position: relative;
-  &__list {
-    text-decoration: none;
-    color: #333;
-  }
   & ul {
     width: 1020px;
     margin: 0 auto;
     padding: 16px 0;
-  }
-  & li {
-    display: inline-block;
-    font-size: 14px;
-    line-height: 1.2;
+    & li {
+      display: inline-block;
+      font-size: 14px;
+      line-height: 1.2;
+      & a {
+        color: #333;
+        &:hover {
+          text-decoration: underline;
+          color: #ccc;
+        }
+      }
+    }
   }
 }
 
@@ -46,11 +49,21 @@
         color: #333;
         border-top: 1px solid #eee;
         text-decoration: none;
+        &.current {
+          color: #333;
+          font-weight: bold;
+        }
         &:hover {
           background-color: #eee;
+          .fa-angle-right {
+            color: #333;
+            transform: translate(50%, 0);
+            transition: all ease-out .2s;
+          }
         }
       }
     }
+
     &__main {
       width: 700px;
       float: right;
@@ -161,16 +174,20 @@
     }
 }
 
-.user-name {
-  font-weight: bold;
-  font-size: 14px;
-}
-
 .user-info {
+  margin: 8px 0 0;
   text-align: center;
   font-size: 14px;
-  &__display {
+  &__like {
     display: inline-block;
+    & span {
+      margin: 0 0 0 8px;
+      font-weight: bold;
+    }
+  }
+  &__item {
+    display: inline-block;
+    margin: 0 0 0 16px;
     & span {
       margin: 0 0 0 8px;
       font-weight: bold;
@@ -180,6 +197,15 @@
 
 .mini-icon {
   float: left;
+}
+
+.user-name {
+  font-weight: bold;
+  font-size: 14px;
+  margin: 8px 0 0;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .user-icon {
@@ -195,4 +221,6 @@
 
 .fa-angle-right {
   color: #ccc;
+  font-size: 20px;
+  font-weight: bold;
 }
