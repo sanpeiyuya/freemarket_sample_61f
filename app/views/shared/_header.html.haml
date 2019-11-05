@@ -5,6 +5,7 @@
         = link_to root_path do
           =image_tag"logo.png",size: "134x36",class: 'logo'
       .main-header__content__upper__form
+      
         = form_tag('/search', method: :post) do
           = text_field_tag :keyword, params[:keyword],{placeholder: "何かお探しですか？",class: "main-header__content__upper__form__search"}
           -# = fa_icon "search"
