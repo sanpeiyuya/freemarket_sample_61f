@@ -36,7 +36,7 @@ class DisplayItemsController < ApplicationController
     @now = Time.now
 
     @mine_items = DisplayItem.where(user_id: @display_item[:user_id])
-    @same_kind_items = DisplayItem.where(category_id: @display_item[:category_id])
+    @same_category_items = DisplayItem.where(category_id: @display_item[:category_id])
 
   end
 
