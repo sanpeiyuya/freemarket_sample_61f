@@ -1,0 +1,33 @@
+- num = 0
+- @comments.each do |comment|
+  - if num == 0
+    %li.message__content__chat__box.chat__box__top.clearfix
+      .message__content__chat__box__user
+        .message__content__chat__box__user__frame
+          = image_tag 'user-icon.svg', class: 'message__content__chat__box__user__frame__image'
+          %span.message__content__chat__box__user__frame__name
+            - if comment.user.user_profile.nickname
+              = comment.user.user_profile.nickname
+      .message__content__chat__box__comment
+        .message__content__chat__box__comment__text
+          = comment.comment
+        .message__content__chat__box__comment__time
+          = fa_icon "clock-o", class: "clock-icon"
+          %span.message__content__chat__box__comment__time__ago
+            = (@now - comment.created_at).seconds.ago.to_s(:human)
+    - num += 1
+  - else
+    %li.message__content__chat__box.clearfix
+      .message__content__chat__box__user
+        .message__content__chat__box__user__frame
+          = image_tag 'user-icon.svg', class: 'message__content__chat__box__user__frame__image'
+          %span.message__content__chat__box__user__frame__name
+            - if comment.user.user_profile.nickname
+              = comment.user.user_profile.nickname
+      .message__content__chat__box__comment
+        .message__content__chat__box__comment__text
+          = comment.comment
+        .message__content__chat__box__comment__time
+          = fa_icon "clock-o", class: "clock-icon"
+          %span.message__content__chat__box__comment__time__ago
+            = (@now - comment.created_at).seconds.ago.to_s(:human)

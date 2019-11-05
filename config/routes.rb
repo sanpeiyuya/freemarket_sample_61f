@@ -43,6 +43,7 @@ Rails.application.routes.draw do
       post  :size_search #サイズ検索メソッド
       post  :brand_search #ブランド検索メソッド
     end
+    resources :comments, only: [:create, :destroy]
   end
   # カテゴリのルーティング
   resources :categories, only: [:index] do

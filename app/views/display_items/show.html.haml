@@ -1,0 +1,215 @@
+= render 'shared/header'
+
+.item
+
+
+  .item__title
+    = @display_item.name
+
+
+  .item__content.clearfix
+    .item__content__photo
+    %table.item__content__table
+      %tbody.item__content__table__tbody
+
+        %tr.item__content__table__tr
+          %th.item__content__table__th
+            出品者
+          %td.item__content__table__td
+            = link_to "#" do
+              = @display_item.user.email
+            .item__content__table__box
+              .item__content__table__box__icon
+                = fa_icon "smile-o", class: "nice-icon red"
+                %span.item__content__table__box__value
+                  99
+              .item__content__table__box__icon
+                = fa_icon "meh-o", class: "nice-icon yellow"
+                %span.item__content__table__box__value
+                  99
+              .item__content__table__box__icon
+                = fa_icon "frown-o", class: "nice-icon blue"
+                %span.item__content__table__box__value
+                  99
+
+        %tr.item__content__table__tr
+          %th.item__content__table__th
+            カテゴリー
+          %td.item__content__table__td
+            .icon_box
+              = link_to "#", class: "item__content__table__td__link" do
+                %span
+                  - if @category_lv3.nil?
+                    = @category_lv2.name
+                  - else
+                    = @category_lv3.name
+            .icon_box
+              = link_to "#", class: "item__content__table__td__link" do
+                = fa_icon "chevron-right"
+                %span
+                  - if @category_lv3.nil?
+                    = @category_lv1.name
+                  - else
+                    = @category_lv2.name
+            - unless @category_lv3.nil?
+              .icon_box
+                = link_to "#", class: "item__content__table__td__link" do
+                  = fa_icon "chevron-right"
+                  %span
+                    = @category_lv1.name
+
+        %tr.item__content__table__tr
+          %th.item__content__table__th
+            ブランド
+          %td.item__content__table__td
+            - unless @display_item.brand_id.nil? 
+              = @display_item.brand.name
+
+        %tr.item__content__table__tr
+          %th.item__content__table__th
+            商品のサイズ
+          %td.item__content__table__td
+            - unless @display_item.size_id.nil? 
+              =  @display_item.size.size
+
+        %tr.item__content__table__tr
+          %th.item__content__table__th
+            商品の状態
+          %td.item__content__table__td
+            = @display_item.condition.name
+
+        %tr.item__content__table__tr
+          %th.item__content__table__th
+            配送料の負担
+          %td.item__content__table__td
+            = @display_item.delivery_fee_burden.name
+
+        %tr.item__content__table__tr
+          %th.item__content__table__th
+            配送の方法
+          %td.item__content__table__td
+            = @display_item.delivery_method.name
+
+        %tr.item__content__table__tr
+          %th.item__content__table__th
+            配送元地域
+          %td.item__content__table__td
+            = link_to "#", class: "item__content__table__td__link" do
+              = @display_item.prefecture.name
+
+        %tr.item__content__table__tr
+          %th.item__content__table__th
+            配送日の目安
+          %td.item__content__table__td
+            = @display_item.delivery_by_day.name
+
+
+  .item__fee
+    %span.item__fee__price
+      = "¥" + @display_item.price.to_s(:delimited)
+    %span.item__fee__tax (税込)
+    %span.item__fee__option 送料込み
+
+
+  .item__btn
+    - if @display_item
+      = link_to "#", class: "item__btn__possible" do
+        購入画面に進む
+
+
+  .item__description
+    %p.item__description__text
+      = @display_item.description
+
+
+  .item__footer.clearfix
+    .item__footer__left
+      %span.item__footer__left__like
+        = fa_icon "heart-o", class: "like-icon"
+        %span.item__footer__left__like__text
+          いいね!
+        %spna.item__footer__left__like__count
+          100
+      = link_to "#", class: "item__footer__left__report" do
+        = fa_icon "flag-o", class: "report-icon"
+        %span.item__footer__left__report__text
+          不適切な商品の報告
+
+    .item__footer__right
+      = link_to "#", class: "item__footer__right__safe" do
+        = fa_icon "lock", class: "lock-icon"
+        %span.item__footer__right__safe__text
+          あんしん・あんぜんへの取り組み
+
+
+.message
+  .message__content
+    .message__content__chat
+      %ul
+        = render "./shared/comment"
+
+    .message__content__form
+      = form_for [@display_item, @comment] do |f|
+        %p.message__content__form__notes
+          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        -# user_idを取得
+        - if user_signed_in?
+          .user
+            = f.hidden_field :user_id, value: current_user.id
+          .dispaly_item
+            = f.hidden_field :display_item_id, value: @display_item.id
+        = f.text_area :comment, class: "message__content__form__text-field"
+        = f.submit "コメントする", class: "message__content__form__submit"
+
+%ul.navi-link.clearfix
+  %li.navi-link__prev
+    = link_to "#", class: "navi-link__link" do
+      = fa_icon "angle-left", class: "icon icon__prev"
+      %span
+        一つ前のアイテム名を出す
+  %li.navi-link__next
+    = link_to "#", class: "navi-link__link" do
+      %span
+        一つ先のアイテム名を出す
+      = fa_icon "angle-right", class: "icon icon__next"
+
+
+.media
+  .media_text
+  %ul.media__box
+    %li.media__box__ele
+      = link_to "#" do
+        %span.media__box__ele__box.media-facebook
+          = fa_icon "facebook-official", class: "media-icon"
+    %li.media__box__ele
+      = link_to "#" do
+        %span.media__box__ele__box.media-twitter
+          = fa_icon "twitter", class: "media-icon"
+    %li.media__box__ele
+      = link_to "#" do
+        %span.media__box__ele__box.media-pinterest
+          = fa_icon "pinterest ", class: "media-icon"
+
+.other-items.clearfix
+  - unless @mine_items.length == 0
+    .other-items__top-box
+      %h2.other-items__name
+        = link_to "a", class: "other-items__name__link" do
+          = @display_item.user.user_profile.nickname + "さんのその他の出品"
+      .other-items__box.clearfix
+        = render partial: "./shared/display_items", locals: {items: @mine_items}
+
+  - unless @same_category_items.length == 0
+    .other-items__bottom-box
+      %h2.other-items__name
+        = link_to "a", class: "other-items__name__link" do
+          - if @category_lv3
+            = @category_lv1.name + "（#{@category_lv3.name}）その他の商品"
+          - else
+            = @category_lv1.name + "（#{@category_lv2.name}）その他の商品"
+      .other-items__box.clearfix
+        = render partial: "./shared/display_items", locals: {items: @same_category_items}
+
+
+= render 'shared/aside'
+= render 'shared/footer'
