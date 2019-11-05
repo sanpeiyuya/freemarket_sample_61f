@@ -245,6 +245,38 @@
     &__form {
       padding: 24px;
       background: #fff;
+      &__notes {
+        padding: 8px;
+        font-size: 14px;
+        background: #fff6de;
+      }
+      &__text-field {
+        margin: 8px 0 0;
+        background: #f5f5f5;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        min-height: 104px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      &__submit {
+        display: block;
+        width: 100%;
+        margin: 8px 0 0;
+        text-align: center;
+        background: #aaa;
+        border: 1px solid #aaa;
+        color: #fff;
+        line-height: 48px;
+        font-size: 14px;
+        border: 1px solid transparent;
+        -webkit-transition: all ease-out .3s;
+        transition: all ease-out .3s;
+        cursor: pointer;
+      }
     }
   }
 }

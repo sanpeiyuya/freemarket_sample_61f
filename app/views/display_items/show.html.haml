@@ -150,14 +150,16 @@
 
     .message__content__form
       = form_for [@display_item, @comment] do |f|
+        %p.message__content__form__notes
+          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
         -# user_idを取得
         - if user_signed_in?
           .user
             = f.hidden_field :user_id, value: current_user.id
           .dispaly_item
             = f.hidden_field :display_item_id, value: @display_item.id
-        = f.text_field :comment
-        = f.submit
+        = f.text_area :comment, class: "message__content__form__text-field"
+        = f.submit "コメントする", class: "message__content__form__submit"
 
 
 
