@@ -31,10 +31,13 @@ class DisplayItemsController < ApplicationController
     @category_lv3 = @category_lv2.parent if @category_lv2.parent
 
     @comments = @display_item.comments
-
     @comment = Comment.new
 
     @now = Time.now
+
+    @mine_items = DisplayItem.where(user_id: @display_item[:user_id])
+    @same_kind_items = DisplayItem.where(category_id: @display_item[:category_id])
+
   end
 
   private

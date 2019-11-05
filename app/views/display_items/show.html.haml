@@ -173,6 +173,7 @@
         一つ先のアイテム名を出す
       = fa_icon "angle-right", class: "icon icon__next"
 
+
 .media
   .media_text
   %ul.media__box
@@ -190,6 +191,107 @@
           = fa_icon "pinterest ", class: "media-icon"
 
 
+.other-items.clearfix
+  .other-items__top-box
+    %h2.other-items__name
+      = link_to "a", class: "other-items__name__link" do
+        = @display_item.user.user_profile.nickname + "さんのその他の出品"
+    .other-items__box.clearfix
+      .other-items__box__item-box
+        = link_to "#", class: "other-items__box__item-box__link" do
+          .other-items__box__item-box__frame
+            = image_tag @display_item.images[0].image.url, class: "other-items__box__item-box__frame__image"
+          .other-items__box__item-box__detail
+            %h3.other-items__box__item-box__detail__title
+              = @display_item.name
+            .other-items__box__item-box__detail__footer
+              .other-items__box__item-box__detail__footer__price
+                = "¥" + @display_item.price.to_s(:delimited)
+              .other-items__box__item-box__detail__footer__like
+                = fa_icon "heart-o", class: "heart-icon"
+                %span 5
+
+      .other-items__box__item-box
+        = link_to "#", class: "other-items__box__item-box__link" do
+          .other-items__box__item-box__frame
+            = image_tag @display_item.images[0].image.url, class: "other-items__box__item-box__frame__image"
+          .other-items__box__item-box__detail
+            %h3.other-items__box__item-box__detail__title
+              = @display_item.name
+            .other-items__box__item-box__detail__footer
+              .other-items__box__item-box__detail__footer__price
+                = "¥" + @display_item.price.to_s(:delimited)
+              .other-items__box__item-box__detail__footer__like
+                = fa_icon "heart-o", class: "heart-icon"
+                %span 5
+
+      .other-items__box__item-box
+        = link_to "#", class: "other-items__box__item-box__link" do
+          .other-items__box__item-box__frame
+            = image_tag @display_item.images[0].image.url, class: "other-items__box__item-box__frame__image"
+          .other-items__box__item-box__detail
+            %h3.other-items__box__item-box__detail__title
+              = @display_item.name
+            .other-items__box__item-box__detail__footer
+              .other-items__box__item-box__detail__footer__price
+                = "¥" + @display_item.price.to_s(:delimited)
+              .other-items__box__item-box__detail__footer__like
+                = fa_icon "heart-o", class: "heart-icon"
+                %span 5
+
+      .other-items__box__item-box
+        = link_to "#", class: "other-items__box__item-box__link" do
+          .other-items__box__item-box__frame
+            = image_tag @display_item.images[0].image.url, class: "other-items__box__item-box__frame__image"
+          .other-items__box__item-box__detail
+            %h3.other-items__box__item-box__detail__title
+              = @display_item.name
+            .other-items__box__item-box__detail__footer
+              .other-items__box__item-box__detail__footer__price
+                = "¥" + @display_item.price.to_s(:delimited)
+              .other-items__box__item-box__detail__footer__like
+                = fa_icon "heart-o", class: "heart-icon"
+                %span 5
+
+      .other-items__box__item-box
+        = link_to "#", class: "other-items__box__item-box__link" do
+          .other-items__box__item-box__frame
+            = image_tag @display_item.images[0].image.url, class: "other-items__box__item-box__frame__image"
+          .other-items__box__item-box__detail
+            %h3.other-items__box__item-box__detail__title
+              = @display_item.name
+            .other-items__box__item-box__detail__footer
+              .other-items__box__item-box__detail__footer__price
+                = "¥" + @display_item.price.to_s(:delimited)
+              .other-items__box__item-box__detail__footer__like
+                = fa_icon "heart-o", class: "heart-icon"
+                %span 5
+
+
+
+
+
+  .other-items__bottom-box
+    %h2.other-items__name
+      = link_to "a", class: "other-items__name__link" do
+        - if @category_lv3
+          = @category_lv1.name + "（#{@category_lv3.name}）その他の商品"
+        - else
+          = @category_lv1.name + "（#{@category_lv2.name}）その他の商品"
+    .other-items__box.clearfix
+      .other-items__box__item-box
+        = link_to "#", class: "other-items__box__item-box__link" do
+          .other-items__box__item-box__frame
+            = image_tag @display_item.images[0].image.url, class: "other-items__box__item-box__frame__image"
+          .other-items__box__item-box__detail
+            %h3.other-items__box__item-box__detail__title
+              = @display_item.name
+            .other-items__box__item-box__detail__footer
+              .other-items__box__item-box__detail__footer__price
+                = "¥" + @display_item.price.to_s(:delimited)
+              .other-items__box__item-box__detail__footer__like
+                = fa_icon "heart-o", class: "heart-icon"
+                %span 5
 
 
 

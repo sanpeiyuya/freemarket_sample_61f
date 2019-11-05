@@ -280,6 +280,11 @@
     }
   }
 }
+// 最初のメッセージボックスだけmarginを小さくする
+.chat__box__top {
+  margin: 1.5em 0 0;
+}
+
 
 .navi-link {
   margin: 24px auto 0;
@@ -302,6 +307,10 @@
   }
   &__link {
     color: #0099e8;
+    &:hover {
+      text-decoration: underline;
+      color: rgba(#0099e8, 0.5);
+    }
   }
 }
 
@@ -351,11 +360,104 @@
 .media-pinterest {
   background: #aa262a;
 }
-// 最初のメッセージボックスだけmarginを小さくする
-.chat__box__top {
-  margin: 1.5em 0 0;
+
+.other-items {
+  width: 700px;
+  margin: 0 auto;
+  &__name {
+    font-size: 22px;
+    margin: 24px 0 8px;
+    line-height: 1.4;
+    font-weight: bold;
+    &__link {
+      color: #0099e8;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  &__box {
+    width: auto;
+    margin: 0 auto;
+    &__item-box {
+      width: 210px;
+      margin: 0 20px 20px 0;
+      position: relative;
+      float: left;
+      background: #fff;
+      &__link {
+        display: block;
+        color: #333;
+      }
+      &__frame {
+        width: 210px;
+        height: 210px;
+        overflow: hidden;
+        position: relative;
+        padding: 0 0 100%;
+        &__image {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: 1;
+          width: 100%;
+          -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+        }
+      }
+      &__detail {
+        padding: 16px;
+        height: 110px;
+        &__title {
+          overflow: hidden;
+          position: relative;
+          font-weight: 400;
+          height: 3em;
+          line-height: 1.5;
+          word-break: break-word;
+          white-space: normal;
+          font-size: 16px;
+          color: #333;
+        }
+        &__footer {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+          justify-content: space-between;
+          margin: 8px 0 0;
+          &__price {
+            font-size: 17px;
+            font-weight: 600;
+            color: #333;
+          }
+          &__like {
+            font-size: 16px;
+            font-weight: 400;
+            color: #333;
+          }
+        }
+      }
+    }
+  }
+  &__bottom-box {
+    margin-bottom: 40px;
+  }
 }
 
+
+
+
+
+
+
+// 以下、アイコン----------------------------------------------
 .nice-icon {
   font-size: 18px;
   vertical-align: middle;
@@ -461,4 +563,17 @@
   position: absolute;
   top: 20%;
   left: 25%
+}
+
+.heart-icon {
+  display: inline-block;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #ccc;
 }
