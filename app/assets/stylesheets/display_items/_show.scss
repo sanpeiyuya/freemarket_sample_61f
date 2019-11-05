@@ -280,6 +280,31 @@
     }
   }
 }
+
+.navi-link {
+  margin: 24px auto 0;
+  width: 700px;
+  &__prev {
+    width: 45%;
+    position: relative;
+    word-wrap: break-word;
+    float: left;
+    padding: 0 0 0 14px;
+    text-align: left;
+  }
+  &__next {
+    width: 45%;
+    position: relative;
+    word-wrap: break-word;
+    float: right;
+    padding: 0 14px 0 0;
+    text-align: right;
+  }
+  &__link {
+    color: #0099e8;
+  }
+}
+
 // 最初のメッセージボックスだけmarginを小さくする
 .chat__box__top {
   margin: 1.5em 0 0;
@@ -361,4 +386,27 @@
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
   color: #aaa;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  display: inline-block;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 28px;
+  &__prev {
+    left: 0;
+  }
+  &__next {
+    right: 0;
+  }
 }
