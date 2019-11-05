@@ -17,11 +17,10 @@
       = form_for(resource, as: resource_name, url: users_path(resource_name)) do |f|
         .loginfield
           = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス",class:'input'
-        .loginfield
+        .loginfield2
           = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード",class:'input'
         .actions
           = f.submit "ログイン",class:'login-content__selection__form__submit'
         .login-content__selection__form__notice パスワードをお忘れの方
-      
       -# = render "devise/shared/links"
 = render 'shared/monofooter'
