@@ -7,13 +7,14 @@ class AddressesController < ApplicationController
   end
 
   def update
-    UserProfile.find(params[:id]).update(introduction_params)
+    Address.find(params[:id]).update(address_params)
     @address = current_user.address
   end
 
   private
-  def introduction_params
-    params.require(:user_profile).permit(:nickname, :introduction)
+  binding.pry
+  def address_params
+    params.require(:address).permit(:postal_code, :prefecture_id,:city,:block,:building)
   end
 end
 
