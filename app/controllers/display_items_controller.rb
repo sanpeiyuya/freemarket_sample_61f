@@ -25,13 +25,13 @@ class DisplayItemsController < ApplicationController
   end
 
   def show
-    @display_item = DisplayItem.all[0]
+    @display_item = DisplayItem.find(params[:id])
     @category_lv1 = @display_item.category
     @category_lv2 = @category_lv1.parent
     @category_lv3 = @category_lv2.parent if @category_lv2.parent
 
-    @comments = @display_item.comments
     @comment = Comment.new
+    @comments = @display_item.comments
 
     @now = Time.now
 
