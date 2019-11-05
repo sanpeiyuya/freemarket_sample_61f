@@ -25,7 +25,7 @@
           = f.label :postal_code,"郵便番号"
           %span.any-icon
             任意
-          = f.text_field :postal_code,placeholedr:'例）1234567',class:'profile-form__group__input-text'
+          = f.text_field :postal_code,placeholder:'例）1234567',class:'profile-form__group__input-text'
         .profile-form__group
           = f.label :prefecture_id,"都道府県"
           %span.any-icon
@@ -36,19 +36,19 @@
           = f.label :city,"市区町村"
           %span.any-icon
             任意
-          = f.text_field :city,placeholedr:'例)横浜市緑区',class:'profile-form__group__input-text'
+          = f.text_field :city,placeholder:'例)横浜市緑区',class:'profile-form__group__input-text'
 
         .profile-form__group
           = f.label :block,"番地"
           %span.any-icon
             任意
-          = f.text_field :block,placeholedr:"例）青山1-1-1",class:'profile-form__group__input-text'
+          = f.text_field :block,placeholder:"例）青山1-1-1",class:'profile-form__group__input-text'
 
         .profile-form__group
           = f.label :building,"建物名"
           %span.any-icon
             任意
-          = f.text_field :building, placeholedr:"例）柳ビル103",class:'profile-form__group__input-text'
+          = f.text_field :building, placeholder:"例）柳ビル103",class:'profile-form__group__input-text'
         .profile-form__btn
           = f.submit "登録する", class:"profile-form__box profile-form__btn"
         .profile-form__text-link
