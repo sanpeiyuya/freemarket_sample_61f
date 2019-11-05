@@ -12,7 +12,6 @@ class AddressesController < ApplicationController
   end
 
   private
-  binding.pry
   def address_params
     params.require(:address).permit(:postal_code, :prefecture_id,:city,:block,:building)
   end
