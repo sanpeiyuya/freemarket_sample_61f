@@ -84,18 +84,18 @@ ActiveRecord::Schema.define(version: 20191104072125) do
 
   create_table "user_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
-    t.string   "family_name",                                 null: false
-    t.string   "last_name",                      default: "", null: false
-    t.string   "family_name_kana",                            null: false
-    t.string   "last_name_kana",                              null: false
+    t.string   "family_name",                    null: false
+    t.string   "last_name",                      null: false
+    t.string   "family_name_kana",               null: false
+    t.string   "last_name_kana",                 null: false
     t.text     "introduction",     limit: 65535
-    t.integer  "birth_year",                                  null: false
-    t.integer  "birth_month",                                 null: false
-    t.integer  "birth_day",                                   null: false
+    t.integer  "birth_year",                     null: false
+    t.integer  "birth_month",                    null: false
+    t.integer  "birth_day",                      null: false
     t.text     "icon_image",       limit: 65535
     t.integer  "total_sales"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "nickname"
     t.index ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
   end

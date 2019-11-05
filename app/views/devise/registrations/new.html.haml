@@ -79,7 +79,7 @@
               必須
               %br
             = f.select :email,options_for_select(1900..2019),{ prompt: "--"},{class:'timeinput'}
-            %span{class: "fa fa-chevron-down arrow-icon"}
+            -# %span{class: "fa fa-chevron-down arrow-icon"}
             %span.timetext
               年 
             = f.select :email,options_for_select(1..12),{ prompt: "--"},{class:'timeinput'}
