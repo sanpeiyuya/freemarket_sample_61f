@@ -14,7 +14,7 @@
         .message__content__chat__box__comment__time
           = fa_icon "clock-o", class: "clock-icon"
           %span.message__content__chat__box__comment__time__ago
-            3日前
+            = (@now - comment.created_at).seconds.ago.to_s(:human)
     - num += 1
   - else
     %li.message__content__chat__box.clearfix
@@ -30,4 +30,4 @@
         .message__content__chat__box__comment__time
           = fa_icon "clock-o", class: "clock-icon"
           %span.message__content__chat__box__comment__time__ago
-            3日前
+            = (@now - comment.created_at).seconds.ago.to_s(:human)

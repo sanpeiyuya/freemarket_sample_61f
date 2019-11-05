@@ -1,4 +1,7 @@
 class DisplayItemsController < ApplicationController
+
+  require "date"
+
   def new
     @display_item = DisplayItem.new
     @display_item.images.build
@@ -30,6 +33,8 @@ class DisplayItemsController < ApplicationController
     @comments = @display_item.comments
 
     @comment = Comment.new
+
+    @now = Time.now
   end
 
   private
