@@ -1,0 +1,193 @@
+.newphone-content{
+  padding: 0 0 220px;
+  &__mono-header{
+    display: block;
+    height: 128px;
+    text-align: center;
+    &__logo{
+      margin: 40px 0 0;
+      width: 185px;
+      height: 49px;
+      line-height: 49px;
+    }
+    &__situation{
+      padding: 40px 0 0 44px;
+      border: 0;
+      display: inline-block;
+      vertical-align: top;
+      &__bar{
+        width: 508px;
+        height: 32px;
+        display:flex ;
+        &__info{
+          width: 60px;
+          height: 32px;
+          margin: 0 40px 0 0;
+          color: #888;
+          position: relative;
+          display: inline-block;
+          &__text{
+            font-size: 12px;
+          }
+          &__dot{
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            margin: 8px auto 0;
+            background: #ea352d;
+            border-radius: 50%;
+            z-index: 40;
+            left: 25px;
+          }
+          &__line{
+            position: absolute;
+            left: 50%;
+            top: 26px;
+            bottom: 5px;
+            display: block;
+            width: 130px;
+            height: 2px;
+            background: #ea352d;
+            z-index: 30;
+          }
+        }
+        &__tel{
+          height: 32px;
+          margin: 0 40px 0 0;
+          position: relative;
+          &__text{
+            font-size: 12px;
+            white-space: nowrap;
+            color: #ea352d;
+            font-weight: 600;
+          }
+          &__dot{
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            margin: 8px auto 0;
+            background: #ea352d;
+            border-radius: 50%;
+            z-index: 40;
+            left: 25px;
+          }
+          &__line{
+            position: absolute;
+            left: 50%;
+            top: 26px;
+            bottom: 5px;
+            display: block;
+            width: 130px;
+            height: 2px;
+            background: #ccc;
+            z-index: 30;
+          }
+        }
+        &__address{
+          height: 32px;
+          margin: 0 40px 0 0;
+          position: relative;
+          &__text{
+            font-size: 12px;
+            white-space: nowrap;
+            color: #888;
+          }
+          &__dot{
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            margin: 8px auto 0;
+            background: #ccc;
+            border-radius: 50%;
+            z-index: 40;
+            left: 40px;
+          }
+          &__line{
+            position: absolute;
+            left: 50%;
+            top: 26px;
+            bottom: 5px;
+            display: block;
+            width: 130px;
+            height: 2px;
+            background: #ccc;
+            z-index: 30;
+          }
+        }
+        &__pay{
+          width: 60px;
+          height: 32px;
+          margin: 0 40px 0 0;
+          position: relative;
+          &__text{
+            font-size: 12px;
+            white-space: nowrap;
+            color: #888;
+          }
+          &__dot{
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            margin: 8px auto 0;
+            background: #ccc;
+            border-radius: 50%;
+            z-index: 40;
+            left: 25px;
+          }
+          &__line{
+            position: absolute;
+            left: 50%;
+            top: 26px;
+            bottom: 5px;
+            display: block;
+            width: 100px;
+            height: 2px;
+            background: #ccc;
+            z-index: 30;
+          }
+        }
+        &__finished{
+          width: 60px;
+          height: 32px;
+          position: relative;
+          &__text{
+            font-size: 12px;
+            white-space: nowrap;
+            color: #888;
+          }
+          &__dot{
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            margin: 8px auto 0;
+            background: #ccc;
+            border-radius: 50%;
+            z-index: 40;
+            left: 25px;
+          }
+        }
+      }
+    }
+  }
+  &__mono-content{
+    width: 700px;
+    margin: 0 auto;
+    background: #fff;
+    &__head{
+      height: 97px; 
+      padding: 38px 32px 28px 32px;
+      border-bottom: 1px solid #f5f5f5;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      display: block;
+    }
+    &__space{
+      padding: 40px 40px 64px;
+      &__notice{
+        color: #0099e8;
+        text-align: right;
+      }
+    }
+  }
+}

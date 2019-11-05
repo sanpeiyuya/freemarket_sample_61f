@@ -1,0 +1,38 @@
+.complete-content
+  .complete-content__mono-header
+    = link_to root_path do
+      =image_tag"logo.svg",class: 'complete-content__mono-header__logo'
+  .complete-content__mono-header__situation
+    .complete-content__mono-header__situation__bar
+      .complete-content__mono-header__situation__bar__info 
+        .complete-content__mono-header__situation__bar__info__text 会員情報
+        .complete-content__mono-header__situation__bar__info__dot
+        .complete-content__mono-header__situation__bar__info__line
+      .complete-content__mono-header__situation__bar__tel
+        .complete-content__mono-header__situation__bar__tel__text 電話番号認証
+        .complete-content__mono-header__situation__bar__tel__dot
+        .complete-content__mono-header__situation__bar__tel__line
+      .complete-content__mono-header__situation__bar__address
+        .complete-content__mono-header__situation__bar__address__text お届け先住所入力
+        .complete-content__mono-header__situation__bar__address__dot
+        .complete-content__mono-header__situation__bar__address__line
+      .complete-content__mono-header__situation__bar__pay
+        .complete-content__mono-header__situation__bar__pay__text 支払い方法
+        .complete-content__mono-header__situation__bar__pay__dot
+        .complete-content__mono-header__situation__bar__pay__line
+      .complete-content__mono-header__situation__bar__finished 
+        .complete-content__mono-header__situation__bar__finished__text 完了
+        .complete-content__mono-header__situation__bar__finished__dot
+        .complete-content__mono-header__situation__bar__finished__line
+  .newinfo-content__mono-content
+    .newinfo-content__mono-content__head 会員登録完了
+    .newinfo-content__mono-content__space
+      = form_for @users do |f|
+        .field-first
+          .thanks-text ありがとうございます。
+          .thanks-text 会員登録が完了しました。
+        .addressnext
+          = link_to root_path,class:'next' do
+            = f.submit "メルカリをはじめる",class:'next-btn'
+= render 'shared/aaside'
+= render 'shared/monofooter'

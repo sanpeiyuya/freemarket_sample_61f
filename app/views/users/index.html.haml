@@ -1,13 +1,10 @@
-.mono-header
-  .mono-header__logo
-    = link_to root_path do
-      =image_tag"logo.svg",class: 'mono-header__logo__image'
+= render 'shared/monoheader'
 .mono-content
   .mono-content__selection
     .mono-content__selection__head 新規会員登録
     .mono-content__selection__space
       .mono-content__selection__space__content
-        = link_to new_info_users_path,class:'mono-content__selection__space__content__mail' do
+        = link_to new_user_registration_path,class:'mono-content__selection__space__content__mail' do
           = fa_icon "envelope-o",class:'mono-content__selection__space__content__mail__icon'
           .mono-content__selection__space__content__mail__text メールアドレスで登録する
         = link_to new_info_users_path,class:'mono-content__selection__space__content__facebook' do
@@ -16,12 +13,4 @@
         = link_to new_info_users_path,class:'mono-content__selection__space__content__google' do
           = image_tag"google.svg",class:'mono-content__selection__space__content__google__icon'
           .mono-content__selection__space__content__google__text Googleで登録する
-.mono-footer
-  .mono-footer__content
-    .mono-footer__content__privacy
-      .mono-footer__content__privacy__text1 プライバシーポリシー
-      .mono-footer__content__privacy__text2 メルカリ利用規約
-      .mono-footer__content__privacy__text3 特定商取引に関する表記
-    = link_to root_path do
-      = image_tag"exhibit_logo_gray.svg",class: 'mono-footer__content__logo'
-    .mono-footer__content__text © 2019 Mercari
+= render 'shared/monofooter'

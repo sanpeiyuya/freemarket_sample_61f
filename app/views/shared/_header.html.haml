@@ -5,6 +5,7 @@
         = link_to root_path do
           =image_tag"logo.png",size: "134x36",class: 'logo'
       .main-header__content__upper__form
+      
         = form_tag('/search', method: :post) do
           = text_field_tag :keyword, params[:keyword],{placeholder: "何かお探しですか？",class: "main-header__content__upper__form__search"}
           -# = fa_icon "search"
@@ -17,17 +18,28 @@
         .main-header__content__lower__leftside__brand
           =fa_icon "tags",class: 'main-header__content__lower__leftside__brand__icon'
           .main-header__content__lower__leftside__brand__text ブランドから探す
+
       .main-header__content__lower__rightside
-        .main-header__content__lower__rightside__like
-          =fa_icon "heart-o",class: 'main-header__content__lower__rightside__like__icon'
-          .main-header__content__lower__rightside__like__text いいね！一覧
-        .main-header__content__lower__rightside__notice
-          =fa_icon "bell-o",class: 'main-header__content__lower__rightside__notice__icon'
-          .main-header__content__lower__rightside__notice__text お知らせ
-        .main-header__content__lower__rightside__todolist
-          =fa_icon "check",class: 'main-header__content__lower__rightside__todolist__icon'
-          .main-header__content__lower__rightside__todolist__text やることリスト
-        .main-header__content__lower__rightside__mypage
-          =image_tag "mypage.png",class: 'main-header__content__lower__rightside__mypage__icon'
-          = link_to mypages_path, class: ".main-header__content__lower__rightside__mypage__text" do
-            マイページ
+        - if user_signed_in?
+          .main-header__content__lower__rightside__like
+            =fa_icon "heart-o",class: 'main-header__content__lower__rightside__like__icon'
+            .main-header__content__lower__rightside__like__text いいね！一覧
+          .main-header__content__lower__rightside__notice
+            =fa_icon "bell-o",class: 'main-header__content__lower__rightside__notice__icon'
+            .main-header__content__lower__rightside__notice__text お知らせ
+          .main-header__content__lower__rightside__todolist
+            =fa_icon "check",class: 'main-header__content__lower__rightside__todolist__icon'
+            .main-header__content__lower__rightside__todolist__text やることリスト
+          .main-header__content__lower__rightside__mypage
+            =image_tag "mypage.png",class: 'main-header__content__lower__rightside__mypage__icon'
+            = link_to mypages_path, class: ".main-header__content__lower__rightside__mypage__text" do
+              マイページ
+        - else
+          .main-header__content__lower__rightside__new
+            = link_to users_path, class: ".main-header__content__lower__rightside__new__link" do
+              .main-header__content__lower__rightside__new__text
+                新規会員登録
+          .main-header__content__lower__rightside__login
+            = link_to new_user_session_path, class: ".main-header__content__lower__rightside__login__link" do
+              .main-header__content__lower__rightside__login__text
+                ログイン

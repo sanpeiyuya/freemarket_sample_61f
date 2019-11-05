@@ -1,0 +1,241 @@
+.complete-content{
+
+  &__mono-header{
+    display: block;
+    height: 128px;
+    text-align: center;
+    margin: 0 auto;
+    border-bottom: 0.5px solid lightgray;
+    &__logo{
+      margin: 40px 0 0;
+      width: 185px;
+      height: 49px;
+      line-height: 49px;
+    }
+    &__situation{
+      padding: 40px 0 40px 0px;
+      border: 0;
+      vertical-align: top;
+      text-align: center;
+      &__bar{
+        margin: 0 auto;
+        width: 508px;
+        height: 32px;
+        display:flex ;
+        &__info{
+          width: 60px;
+          height: 32px;
+          margin: 0 40px 0 0;
+          color: #888;
+          position: relative;
+          display: inline-block;
+          &__text{
+            font-size: 12px;
+          }
+          &__dot{
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            margin: 8px auto 0;
+            background: #ea352d;
+            border-radius: 50%;
+            z-index: 40;
+            left: 25px;
+          }
+          &__line{
+            position: absolute;
+            left: 50%;
+            top: 26px;
+            bottom: 5px;
+            display: block;
+            width: 130px;
+            height: 2px;
+            background: #ea352d;
+            z-index: 30;
+          }
+        }
+        &__tel{
+          height: 32px;
+          margin: 0 40px 0 0;
+          position: relative;
+          &__text{
+            font-size: 12px;
+            white-space: nowrap;
+            color: #888;
+          }
+          &__dot{
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            margin: 8px auto 0;
+            background: #ea352d;
+            border-radius: 50%;
+            z-index: 40;
+            left: 25px;
+          }
+          &__line{
+            position: absolute;
+            left: 50%;
+            top: 26px;
+            bottom: 5px;
+            display: block;
+            width: 130px;
+            height: 2px;
+            background: #ea352d;
+            z-index: 30;
+          }
+        }
+        &__address{
+          height: 32px;
+          margin: 0 40px 0 0;
+          position: relative;
+          &__text{
+            font-size: 12px;
+            white-space: nowrap;
+            color: #888;
+          }
+          &__dot{
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            margin: 8px auto 0;
+            background: #ea352d;
+            border-radius: 50%;
+            z-index: 40;
+            left: 40px;
+          }
+          &__line{
+            position: absolute;
+            left: 50%;
+            top: 26px;
+            bottom: 5px;
+            display: block;
+            width: 130px;
+            height: 2px;
+            background: #ea352d;
+            z-index: 30;
+          }
+        }
+        &__pay{
+          width: 60px;
+          height: 32px;
+          margin: 0 40px 0 0;
+          position: relative;
+          &__text{
+            font-size: 12px;
+            white-space: nowrap;
+            color: #888;
+          }
+          &__dot{
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            margin: 8px auto 0;
+            background: #ea352d;
+            border-radius: 50%;
+            z-index: 40;
+            left: 25px;
+          }
+          &__line{
+            position: absolute;
+            left: 50%;
+            top: 26px;
+            bottom: 5px;
+            display: block;
+            width: 100px;
+            height: 2px;
+            background: #ea352d;
+            z-index: 30;
+          }
+        }
+        &__finished{
+          width: 60px;
+          height: 32px;
+          position: relative;
+          &__text{
+            font-size: 12px;
+            white-space: nowrap;
+            color: #ea352d;
+            font-weight: 600;
+          }
+          &__dot{
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            margin: 8px auto 0;
+            background: #ea352d;
+            border-radius: 50%;
+            z-index: 40;
+            left: 25px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.thanks-text{
+  text-align: center;
+  font-size: 18px;
+}
+
+.main-aaside{
+  &__background{
+    background-image: image-url("room.jpg");
+    margin: 0 auto;
+    width: 700px;
+    height: 300px;
+    background-size: cover;
+    &__phone{
+      margin: 0px auto;
+      justify-content: center;
+      &__download{
+        width: 700px;
+        height: 150px;
+        display: flex;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        white-space: nowrap;
+        &__text1{
+          margin: 20px auto 15px;
+          color: rgb(255, 255, 255);
+          font-size: 24px;
+        }
+        &__text2{
+          margin: 0px auto;
+          color: rgb(255, 255, 255);
+          font-weight: 600;
+          font-size: 35px;
+        }
+        &__text3{
+          margin: 0px auto;
+          height: 68px;
+          display: flex;
+          &__icon{
+            margin-right: 20px;
+            width: 68px;
+          }
+          &__apple{
+            margin: auto 0px;
+            height: 40px;
+            margin-right: 8px;
+            width: 144px;
+          }
+          &__google{
+            margin: auto 0px;
+            height: 40px;
+            margin-right: 8px;
+            width: 144px;
+          }
+        }
+      }
+      &__image{
+        margin-left:200px;
+        width: 300px;
+        height: 150px;
+        object-fit: cover;
+        object-position: 0 0;
+      }
+    }
+  }
+}
