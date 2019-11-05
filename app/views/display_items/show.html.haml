@@ -173,5 +173,29 @@
         一つ先のアイテム名を出す
       = fa_icon "angle-right", class: "icon icon__next"
 
+.media
+  .media_text
+  %ul.media__box
+    %li.media__box__ele
+      = link_to "#" do
+        %span.media__box__ele__box.media-facebook
+          = fa_icon "facebook-official", class: "media-icon"
+    %li.media__box__ele
+      = link_to "#" do
+        %span.media__box__ele__box.media-twitter
+          = fa_icon "twitter", class: "media-icon"
+    %li.media__box__ele
+      = link_to "#" do
+        %span.media__box__ele__box.media-pinterest
+          = fa_icon "pinterest ", class: "media-icon"
+
+
+
+
+
+
+
+
+
 = render 'shared/aside'
 = render 'shared/footer'

@@ -305,6 +305,52 @@
   }
 }
 
+.media {
+  margin: 24px auto;
+  padding: 32px 0 24px;
+  width: 700px;
+  background: #fff;
+  &__text {
+    text-align: center;
+  }
+  &__box {
+    margin: 16px 0 0;
+    text-align: center;
+    font-size: 0;
+    &__ele {
+      display: inline-block;
+      margin: 0 8px 8px 0;
+      vertical-align: middle;
+      text-align: center;
+      &__box {
+        width: 44px;
+        height: 44px;
+        border-radius: 4px;
+        line-height: 44px;
+        color: #fff;
+        font-size: 26px;
+        display: inline-block;
+        speak: none;
+        font-style: normal;
+        font-weight: 400;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        position: relative;
+      }
+    }
+  }
+}
+.media-facebook {
+  background: #385185;
+}
+.media-twitter {
+  background: #5d9dc9;
+}
+.media-pinterest {
+  background: #aa262a;
+}
 // 最初のメッセージボックスだけmarginを小さくする
 .chat__box__top {
   margin: 1.5em 0 0;
@@ -409,4 +455,10 @@
   &__next {
     right: 0;
   }
+}
+
+.media-icon {
+  position: absolute;
+  top: 20%;
+  left: 25%
 }
