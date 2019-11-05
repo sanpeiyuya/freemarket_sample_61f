@@ -5,11 +5,10 @@
         = link_to root_path do
           =image_tag"logo.png",size: "134x36",class: 'logo'
       .main-header__content__upper__form
-      
-        = form_tag('/search', method: :post) do
-          = text_field_tag :keyword, params[:keyword],{placeholder: "何かお探しですか？",class: "main-header__content__upper__form__search"}
-          -# = fa_icon "search"
-          -# = button_tag class: "main-header__content__upper__form__search-btn", value: ""
+        = form_for @display_item do |f|
+          = f.text_field :price, placeholder: "何かお探しですか？",class: "main-header__content__upper__form__search"
+          = f.button "",class: "main-header__content__upper__form__search-btn"
+
     .main-header__content__lower
       .main-header__content__lower__leftside
         .main-header__content__lower__leftside__category
