@@ -27,6 +27,8 @@ class DisplayItemsController < ApplicationController
     @category_lv2 = @category_lv1.parent
     @category_lv3 = @category_lv2.parent if @category_lv2.parent
 
+    @comments = @display_item.comments
+
     @comment = Comment.new
   end
 

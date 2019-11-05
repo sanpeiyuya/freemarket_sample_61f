@@ -146,32 +146,16 @@
   .message__content
     .message__content__chat
       %ul
-        %li.message__content__chat__box.chat__box__top.clearfix
-          .message__content__chat__box__user
-            .message__content__chat__box__user__frame
-              = image_tag 'user-icon.svg', class: 'message__content__chat__box__user__frame__image'
-          .message__content__chat__box__comment
-            .message__content__chat__box__comment__text
-              あいうえお、かきくけこ
-            .message__content__chat__box__comment__time
-              = fa_icon "clock-o", class: "clock-icon"
-              %span.message__content__chat__box__comment__time__ago
-                3日前
-
-        %li.message__content__chat__box.clearfix
-          .message__content__chat__box__user
-            .message__content__chat__box__user__frame
-              = image_tag 'user-icon.svg', class: 'message__content__chat__box__user__frame__image'
-          .message__content__chat__box__comment
-            .message__content__chat__box__comment__text
-              あいうえお、かきくけこ
-            .message__content__chat__box__comment__time
-              = fa_icon "clock-o", class: "clock-icon"
-              %span.message__content__chat__box__comment__time__ago
-                3日前
+        = render "./shared/comment"
 
     .message__content__form
       = form_for [@display_item, @comment] do |f|
+        -# user_idを取得
+        - if user_signed_in?
+          .user
+            = f.hidden_field :user_id, value: current_user.id
+          .dispaly_item
+            = f.hidden_field :display_item_id, value: @display_item.id
         = f.text_field :comment
         = f.submit
 
