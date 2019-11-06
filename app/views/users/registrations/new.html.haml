@@ -1,25 +1,98 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :phone
-    %br/
-    = f.phone_field :phone, autofocus: true, autocomplete: "phone"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "users/shared/links"
+.newinfo-content
+  .newinfo-content__mono-header
+    = link_to root_path do
+      =image_tag"logo.svg",class: 'newinfo-content__mono-header__logo'
+    .newinfo-content__mono-header__situation
+      .newinfo-content__mono-header__situation__bar
+        .newinfo-content__mono-header__situation__bar__info 
+          .newinfo-content__mono-header__situation__bar__info__text 会員情報
+          .newinfo-content__mono-header__situation__bar__info__dot
+          .newinfo-content__mono-header__situation__bar__info__line
+        .newinfo-content__mono-header__situation__bar__tel
+          .newinfo-content__mono-header__situation__bar__tel__text 電話番号認証
+          .newinfo-content__mono-header__situation__bar__tel__dot
+          .newinfo-content__mono-header__situation__bar__tel__line
+        .newinfo-content__mono-header__situation__bar__address
+          .newinfo-content__mono-header__situation__bar__address__text お届け先住所入力
+          .newinfo-content__mono-header__situation__bar__address__dot
+          .newinfo-content__mono-header__situation__bar__address__line
+        .newinfo-content__mono-header__situation__bar__pay
+          .newinfo-content__mono-header__situation__bar__pay__text 支払い方法
+          .newinfo-content__mono-header__situation__bar__pay__dot
+          .newinfo-content__mono-header__situation__bar__pay__line
+        .newinfo-content__mono-header__situation__bar__finished 
+          .newinfo-content__mono-header__situation__bar__finished__text 完了
+          .newinfo-content__mono-header__situation__bar__finished__dot
+          .newinfo-content__mono-header__situation__bar__finished__line
+  .newinfo-content__mono-content
+    .newinfo-content__mono-content__head 会員情報入力
+    .newinfo-content__mono-content__space
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .field-first
+          = f.label :phone do
+            ニックネーム
+            %span.required-icon
+              必須
+          = f.text_field :phone, autofocus: true, autocomplete: "phone", placeholder: "例) メルカリ太郎",class:'input'
+        .field
+          = f.label :email do
+            メールアドレス
+            %span.required-icon
+              必須
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可",class:'input'
+        .field
+          = f.label :password do
+            パスワード
+            %span.required-icon
+              必須
+          = f.password_field :password, autocomplete: "new-password", placeholder: "７文字以上",class:'input'
+        .field
+          = f.label :password_confirmation do
+            パスワード（確認）
+            %span.required-icon
+              必須
+          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "７文字以上",class:'input'
+        .field
+          .notice-head 本人確認
+          .notice-text 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+        .field
+          = f.label :password_confirmation do
+            お名前（全角）
+            %span.required-icon
+              必須
+              %br 
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "例) 山田",class:'nameinput'
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "例) 彩",class:'nameinput'
+        .field
+          = f.label :password_confirmation do
+            お名前カナ（全角）
+            %span.required-icon
+              必須
+              %br               
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "例) ヤマダ",class:'nameinput'
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "例) アヤ",class:'nameinput'
+        .field
+          = f.label :password_confirmation do
+            生年月日
+            %span.required-icon
+              必須
+              %br
+            = f.select :email,options_for_select(1900..2019),{ prompt: "--"},{class:'timeinput'}
+            -# %span{class: "fa fa-chevron-down arrow-icon"}
+            %span.timetext
+              年 
+            = f.select :email,options_for_select(1..12),{ prompt: "--"},{class:'timeinput'}
+            %span.timetext
+              月 
+            = f.select :email,options_for_select(1..31),{ prompt: "--"},{class:'timeinput'}
+            %span.timetext
+              日 
+            .name-notice-text ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+        .addressfield
+          .notice-text「次へ進む」のボタンを押すことにより、利用規約に同意したものとみなします
+        .next
+          = link_to new_phone_users_path,class:'next' do
+            = f.submit "次に進む",class:'next-btn'
+          .newinfo-notice-text 本人情報の登録について＞
+  = render 'shared/afooter'
