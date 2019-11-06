@@ -5,6 +5,7 @@ class MypagesController < ApplicationController
   end
 
   def logout
+    @display_item = DisplayItem.new
   end
   
 end
