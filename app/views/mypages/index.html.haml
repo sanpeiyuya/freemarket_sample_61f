@@ -1,13 +1,11 @@
 = render 'shared/header'
 
+- breadcrumb :mypage
 %nav.bread-crumbs
   %ul
     %li
-      = link_to "#", class: "bread-crumbs__list" do
-        メルカリ
-        = fa_icon 'fas fa-angle-right', class: "fa-angle-right"
-    %li
-      マイページ
+      = breadcrumbs separator: " #{content_tag(:i, '', class: 'fa fa-angle-right')} "
+
 .mypage-clearfix
   .mypage
 
@@ -24,11 +22,11 @@
               - else 
                 ニックネーム未設定
             %ul.user-info
-              %li.user-info__display
+              %li.user-info__like
                 評価
                 %span
                   0
-              %li.user-info__display
+              %li.user-info__item
                 出品数
                 %span
                   0

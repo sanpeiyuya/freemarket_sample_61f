@@ -2,7 +2,7 @@
   %nav
     %ul.mypage__side-bar__list
       %li
-        = link_to "#", class: "mypage__side-bar__list-item" do
+        = link_to mypages_path, class: "mypage__side-bar__list-item" do
           マイページ
           = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
       %li
@@ -18,7 +18,7 @@
           いいね！一覧
           = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
       %li
-        = link_to "#", class: "mypage__side-bar__list-item" do
+        = link_to new_display_item_path, class: "mypage__side-bar__list-item" do
           出品する
           = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
       %li

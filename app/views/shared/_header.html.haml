@@ -31,7 +31,7 @@
             .main-header__content__lower__rightside__todolist__text やることリスト
           .main-header__content__lower__rightside__mypage
             =image_tag "mypage.png",class: 'main-header__content__lower__rightside__mypage__icon'
-            = link_to mypages_path, class: ".main-header__content__lower__rightside__mypage__text" do
+            = link_to mypages_path, data: {turbolinks: :false}, class: ".main-header__content__lower__rightside__mypage__text" do
               マイページ
         - else
           .main-header__content__lower__rightside__new
