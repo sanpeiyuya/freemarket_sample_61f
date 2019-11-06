@@ -1,0 +1,82 @@
+// *{
+//   box-sizing: border-box;
+// }
+// .purple_bag{
+//   display: block;
+
+.content{
+  background-color: #fff;
+  width: 700px;
+  margin: 0 auto;
+  &__inner{
+    max-width: 320px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    &__price{
+      font-size: 22px;
+      margin-top: 8px;
+      line-height: 1.5;
+      text-align: center;
+    }
+    &__top{
+      display: flex;
+      max-width: 320px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      &__text{
+        display: flex;
+      
+      }
+    }
+  }
+}
+.item-shipping-fee{
+  font-size: 14px;
+}
+.change{
+  color: #0099e8;
+  display: block;
+  text-align: right;
+}
+// }
+// .exhibit__main__box__buy-contents{
+//   display: block;
+//   width: 700px;
+//   margin: 0 auto;
+//   text-align: center;
+//   border-top: 1px solid #f5f5f5;
+//   &__item-name{
+//     padding: 24px 12.5% 0;
+//     font-size: 16px;
+//     line-height: 1.5;
+//     text-align: center;
+//     display: flex;
+//     background-color:white;
+
+//     &__inner{
+//     display: flex;
+//     flex-wrap: wrap;
+//     max-width: 320px;
+//     margin: 0 auto;
+//       &__information{
+//         text-align: left;
+//         margin-left: 16px;
+//         width: calc(100% - 80px);
+//         font-size: 16px;
+//         line-height: 1.5;
+//         font-weight: 600;
+//       }
+//     &__buy-form{
+
+//     }
+  
+// .exhibit__main__buy-user-info{
+//   margin-top:40px ;
+//   padding: 24px 12.5% 0;
+//   border-top: 1px solid #f5f5f5;
+// }
+      
+//     }
+//   }
+
+// }
