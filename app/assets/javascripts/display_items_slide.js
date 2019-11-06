@@ -22,9 +22,7 @@ $(function() {
   
     //slickスライダー初期化  
     $(slider).slick({
-      autoplay: true,
       arrows: false,
-      fade: true,
       infinite: false //これはつけましょう。
     });
     //サムネイル画像アイテムをクリックしたときにスライダー切り替え
