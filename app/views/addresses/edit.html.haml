@@ -1,60 +1,71 @@
--# = render 'shared/side-bar'
-.contenth
-  .l-profile
-    .profile-head
-      %p本人情報の登録
-    .profile-form
-      .text
-        %p お客さまの本人情報をご登録ください。
-        %p 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
-      .profile-form__text-link
-        = link_to "#",class:"profile-form__text-link__right" do
-          本人確認書類のアップロードについて
-          =fa_icon "chevron-right",class: '.profile-form__text-link__right__icon'
-      .profile-form__group
-        %p1お名前
-        %p.p= "#{@profile.family_name + @profile.last_name}"
-      .profile-form__group 
-        %p1お名前カナ
-        %p="#{@profile.family_name_kana + @profile.last_name_kana}"
-      .profile-form__group  
-        %p1生年月日
-        %p="#{@profile.birth_year.to_s+"/" + @profile.birth_month.to_s+ "/" + @profile.birth_day.to_s}"
-      = form_for @address do |f|
-        .profile-form__group
-          = f.label :postal_code,"郵便番号"
-          %span.any-icon
-            任意
-          = f.text_field :postal_code,placeholder:'例）1234567',class:'profile-form__group__input-text'
-        .profile-form__group
-          = f.label :prefecture_id,"都道府県"
-          %span.any-icon
-            任意
-          = f.collection_select(:prefecture_id, Prefecture.all, :id, :name,{prompt: "--"},{class:"profile-form__group__input-text"})
+= render 'shared/header'
 
-        .profile-form__group
-          = f.label :city,"市区町村"
-          %span.any-icon
-            任意
-          = f.text_field :city,placeholder:'例)横浜市緑区',class:'profile-form__group__input-text'
+- breadcrumb :address
+%nav.bread-crumbs
+  %ul
+    %li
+      = breadcrumbs separator: " #{content_tag(:i, '', class: 'fa fa-angle-right')} "
 
-        .profile-form__group
-          = f.label :block,"番地"
-          %span.any-icon
-            任意
-          = f.text_field :block,placeholder:"例）青山1-1-1",class:'profile-form__group__input-text'
+.mypage-clearfix
+  .mypage
 
-        .profile-form__group
-          = f.label :building,"建物名"
-          %span.any-icon
-            任意
-          = f.text_field :building, placeholder:"例）柳ビル103",class:'profile-form__group__input-text'
-        .profile-form__btn
-          = f.submit "登録する", class:"profile-form__box profile-form__btn"
-        .profile-form__text-link
+    = render 'shared/side-bar'
+
+    .l-profile
+      .profile-head
+        本人情報の登録
+      .profile-form
+        .text
+          %p お客さまの本人情報をご登録ください。
+          %p 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+        .profile-form__text-link-top
           = link_to "#",class:"profile-form__text-link__right" do
-            本人情報の登録について
+            本人確認書類のアップロードについて
             =fa_icon "chevron-right",class: '.profile-form__text-link__right__icon'
+        .profile-form__group
+          %p1お名前
+          %p.p= "#{@profile.family_name + @profile.last_name}"
+        .profile-form__group 
+          %p1お名前カナ
+          %p="#{@profile.family_name_kana + @profile.last_name_kana}"
+        .profile-form__group  
+          %p1生年月日
+          %p="#{@profile.birth_year.to_s+"/" + @profile.birth_month.to_s+ "/" + @profile.birth_day.to_s}"
+        = form_for @address do |f|
+          .profile-form__group
+            = f.label :postal_code,"郵便番号"
+            %span.any-icon
+              任意
+            = f.text_field :postal_code,placeholder:'例）1234567',class:'profile-form__group__input-text'
+          .profile-form__group
+            = f.label :prefecture_id,"都道府県"
+            %span.any-icon
+              任意
+            = f.collection_select(:prefecture_id, Prefecture.all, :id, :name,{prompt: "--"},{class:"profile-form__group__input-text"})
+
+          .profile-form__group
+            = f.label :city,"市区町村"
+            %span.any-icon
+              任意
+            = f.text_field :city,placeholder:'例)横浜市緑区',class:'profile-form__group__input-text'
+
+          .profile-form__group
+            = f.label :block,"番地"
+            %span.any-icon
+              任意
+            = f.text_field :block,placeholder:"例）青山1-1-1",class:'profile-form__group__input-text'
+
+          .profile-form__group
+            = f.label :building,"建物名"
+            %span.any-icon
+              任意
+            = f.text_field :building, placeholder:"例）柳ビル103",class:'profile-form__group__input-text'
+          .profile-form__btn
+            = f.submit "登録する", class:"profile-form__box profile-form__btn"
+          .profile-form__text-link
+            = link_to "#",class:"profile-form__text-link__right" do
+              本人情報の登録について
+              =fa_icon "chevron-right",class: '.profile-form__text-link__right__icon'
 = render 'shared/sell-icon'
--# = render 'shared/aside'
+= render 'shared/aside'
 = render 'shared/footer'

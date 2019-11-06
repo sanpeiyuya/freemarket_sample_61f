@@ -49,12 +49,8 @@
         color: #333;
         border-top: 1px solid #eee;
         text-decoration: none;
-        &.current {
-          color: #333;
-          font-weight: bold;
-        }
         &:hover {
-          background-color: #eee;
+          background-color: #f5f5f5;
           .fa-angle-right {
             color: #333;
             transform: translate(50%, 0);
@@ -223,4 +219,15 @@
   color: #ccc;
   font-size: 20px;
   font-weight: bold;
+  vertical-align: middle;
+}
+
+.current {
+  font-weight: bold;
+  .fa-angle-right {
+    color: #333;
+  }
+  a {
+    background-color: #eee;
+  }
 }

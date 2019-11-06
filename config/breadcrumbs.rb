@@ -17,28 +17,13 @@ crumb :user_profile do
   parent :mypage
 end
 
-crumb :identification do
-  link "本人情報の登録", identification_users_path
+crumb :address do
+  link "本人情報の登録", edit_address_path
   parent :mypage
 end
 
 crumb :logout do
   link "ログアウト", logout_mypages_path
-  parent :mypage
-end
-
-crumb :exhibition do
-  link "出品した商品-出品中", exhibition_users_path
-  parent :mypage
-end
-
-crumb :trading do
-  link "出品した商品-取引中", trading_users_path
-  parent :mypage
-end
-
-crumb :sold do
-  link "出品した商品-売却済み", sold_users_path
   parent :mypage
 end
 
