@@ -1,4 +1,7 @@
 class DisplayItemsController < ApplicationController
+
+  require "date"
+
   def new
     @display_item = DisplayItem.new
     @display_item.images.build
@@ -19,6 +22,22 @@ class DisplayItemsController < ApplicationController
       redirect_to root_path
     else
     end
+  end
+
+  def show
+    @display_item = DisplayItem.find(params[:id])
+    @category_lv1 = @display_item.category
+    @category_lv2 = @category_lv1.parent
+    @category_lv3 = @category_lv2.parent if @category_lv2.parent
+
+    @comment = Comment.new
+    @comments = @display_item.comments
+
+    @now = Time.now
+
+    @mine_items = DisplayItem.where(user_id: @display_item[:user_id])
+    @same_category_items = DisplayItem.where(category_id: @display_item[:category_id])
+
   end
 
   private

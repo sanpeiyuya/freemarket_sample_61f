@@ -13,6 +13,7 @@ a {
 @import 'font-awesome';
 @import "reset";
 @import "./display_items/new";
+@import "./display_items/show";
 @import "items";
 @import "slick-theme"; 
 @import "slick";
@@ -24,3 +25,6 @@ a {
 @import "newinfo";
 @import "new";
 @import "newphone";
+@import "newaddress";
+@import "newcredit";
+@import "complete";

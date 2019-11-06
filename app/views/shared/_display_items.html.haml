@@ -1,0 +1,14 @@
+- items.each do |item|
+  .other-items__box__item-box
+    = link_to "#", class: "other-items__box__item-box__link" do
+      .other-items__box__item-box__frame
+        = image_tag item.images[0].image.url, class: "other-items__box__item-box__frame__image"
+      .other-items__box__item-box__detail
+        %h3.other-items__box__item-box__detail__title
+          = item.name
+        .other-items__box__item-box__detail__footer
+          .other-items__box__item-box__detail__footer__price
+            = "¥" + item.price.to_s(:delimited)
+          .other-items__box__item-box__detail__footer__like
+            = fa_icon "heart-o", class: "heart-icon"
+            %span 5
