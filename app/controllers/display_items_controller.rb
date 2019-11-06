@@ -40,6 +40,10 @@ class DisplayItemsController < ApplicationController
 
   end
 
+  def buy
+    
+  end
+
   private
   def display_item_params
     # brand_idが名前で入っているため、idに変換
