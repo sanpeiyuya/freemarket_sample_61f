@@ -95,9 +95,9 @@ ActiveRecord::Schema.define(version: 20191104082311) do
   create_table "user_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.string   "family_name",                    null: false
-    t.string   "last_name",                      null: false
+    t.string   "given_name",                     null: false
     t.string   "family_name_kana",               null: false
-    t.string   "last_name_kana",                 null: false
+    t.string   "given_name_kana",                null: false
     t.text     "introduction",     limit: 65535
     t.integer  "birth_year",                     null: false
     t.integer  "birth_month",                    null: false
