@@ -73,3 +73,4 @@ gem 'fog-aws'
 gem "font-awesome-rails"
 gem 'mini_magick'
 gem 'devise-i18n'
+gem 'gretel'
