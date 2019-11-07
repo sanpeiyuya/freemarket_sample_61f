@@ -1,4 +1,3 @@
-
 = render 'shared/header'
 
 .mypage-clearfix
@@ -17,7 +16,7 @@
                 クレジットカード一覧
             .credit__whole__content__footer__add-card
               %section.credit__whole__content__footer__add-card__inside
-                = link_to "#",class:'red-submit-button' do
+                = link_to new_credit_card_path, class:'red-submit-button' do
                   = image_tag ""
                   =fa_icon "credit-card",class: '.card'
                   クレジッドカードを追加する

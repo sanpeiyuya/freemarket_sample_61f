@@ -1,0 +1,60 @@
+= render 'shared/header'
+
+.mypage-clearfix
+  .mypage
+    = render 'shared/side-bar'
+
+    .credit
+      .credit__whole
+        .newinfo-content__mono-content
+          .newinfo-content__mono-content__head-edit
+            クレジットカード情報入力
+          .newinfo-content__mono-content__space
+            = form_for @users do |f|
+              .field-first-edit
+                = f.label :phone do
+                  カード番号
+                  %span.required-icon
+                    必須
+                = f.text_field :phone, autofocus: true, autocomplete: "phone", placeholder: "半角数字のみ",class:'input'
+              .field-icon-edit
+                .credit-icon
+                %img{:alt => "", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?2561606804", :width => "49"}
+                %img{:alt => "", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?2561606804", :width => "34"}
+                %img{:alt => "", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?2561606804", :width => "30"}
+                %img{:alt => "", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?2561606804", :width => "32"}/
+                %img{:alt => "", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?2561606804", :width => "21"}
+                %img{:alt => "", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?2561606804", :width => "32"}
+                %img{:alt => "", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?2561606804", :width => "32"}
+              .field-second-edit
+                = f.label :phone do
+                  有効期限
+                  %span.required-icon
+                    必須
+                  %br
+                .select-wrap-half
+                  %span{class: "fa fa-chevron-down arrow-icon-credit"}
+                  = f.select :email,options_for_select(1..12),{ prompt: "01"},{class:'credit-cards-select'}
+                  %span.option-text 月
+
+                .select-wrap-half
+                  %span{class: "fa fa-chevron-down arrow-icon-credit"}
+                  = f.select :email,options_for_select(20..29),{ prompt: "19"},{class:'credit-cards-select'}
+                  %span.option-text 年
+
+              .field-second-edit
+                = f.label :phone do
+                  セキュリティコード
+                  %span.required-icon
+                    必須
+                = f.text_field :phone, autofocus: true, autocomplete: "phone", placeholder: "カード背面4桁もしくは3桁の番号",class:'input'
+              .credit-notice
+                = fa_icon "question-circle"
+                カード裏面の番号とは？
+              .credit-submit
+                = link_to complete_users_path,class:'next' do
+                  = f.submit "追加する",class:'next-btn'
+
+= render 'shared/sell-icon'
+= render 'shared/aside'
+= render 'shared/footer'
