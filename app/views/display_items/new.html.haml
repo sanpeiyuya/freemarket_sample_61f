@@ -24,21 +24,18 @@
             最大10枚までアップロードできます
           .image__box
             %ul.boxes{style: "display: flex; margin-top: 5px;"}
-              %li.box{style: "width: 110px; height: 125px; background: red; margin-right: 5px;"}
-              %li.box{style: "width: 110px; height: 125px; background: red; margin-right: 5px;"}
-              %li.box{style: "width: 110px; height: 125px; background: red; margin-right: 5px;"}
-              %li.box{style: "width: 110px; height: 125px; background: red; margin-right: 5px;"}
+              -# %li.box{style: "width: 110px; height: 125px; background: red; margin-right: 5px;"}
 
             = f.fields_for :images do |i|
-              = i.label :image, class: "image__box__label" do
+              = i.label :image, class: "image__box__label", id: "input_0" do
                 .image__box__input-area
                   = i.file_field :image, class: "image__box__input-area__tag"
                   %p.image__box__input-area__tips ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート
- 
- 
- 
- 
- 
+
+
+
+
+
         -# 商品名と商品説明フォーム
         .title
           .title__name
