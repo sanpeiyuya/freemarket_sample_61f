@@ -1,0 +1,130 @@
+// *{
+//   box-sizing: border-box;
+// }
+.purple_bag{
+  vertical-align: text-top;
+}
+.word{
+  font-size: 16px;
+  font-weight: 600;
+}
+.content{
+  background-color: #fff;
+  width: 700px;
+  margin: 0 auto;
+  &__inner{
+    max-width: 320px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    &__point{
+      padding: 16px;
+      border: 1px solid #ccc;
+      text-align: center;
+      background-color: #ccc;
+    }
+
+    
+    &__price{
+      font-size: 22px;
+      margin-top: 8px;
+      line-height: 1.5;
+      text-align: center;
+    }
+    &__top{
+      
+      max-width: 320px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      &__text{
+      font-weight: 600;
+      }
+    }
+  }
+}
+.item-shipping-fee{
+  font-size: 14px;
+}
+.change{
+  color: #0099e8;
+  display: block;
+  text-align: right;
+}
+
+.pay{
+  width: 100%;
+  display: table;
+  justify-content:space-between;
+  &__payment{
+    display: table-cell;
+    padding: 16px;
+    font-size: 18px;
+    &__right{
+      text-align: right;
+    }
+  }
+}
+.price{
+  font-size: 22px;
+  text-align: right;
+}
+.error{
+  color: #ea352d;
+  line-height: 1.5;
+  font-size: 14px;
+}
+.payment-btn{
+  border: 1px solid #888;
+  background: #888;
+  color: #fff;
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  -webkit-transition: all ease-out .3s;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  text-align: center;
+}
+// }
+// .exhibit__main__box__buy-contents{
+//   display: block;
+//   width: 700px;
+//   margin: 0 auto;
+//   text-align: center;
+//   border-top: 1px solid #f5f5f5;
+//   &__item-name{
+//     padding: 24px 12.5% 0;
+//     font-size: 16px;
+//     line-height: 1.5;
+//     text-align: center;
+//     display: flex;
+//     background-color:white;
+
+//     &__inner{
+//     display: flex;
+//     flex-wrap: wrap;
+//     max-width: 320px;
+//     margin: 0 auto;
+//       &__information{
+//         text-align: left;
+//         margin-left: 16px;
+//         width: calc(100% - 80px);
+//         font-size: 16px;
+//         line-height: 1.5;
+//         font-weight: 600;
+//       }
+//     &__buy-form{
+
+//     }
+  
+// .exhibit__main__buy-user-info{
+//   margin-top:40px ;
+//   padding: 24px 12.5% 0;
+//   border-top: 1px solid #f5f5f5;
+// }
+      
+//     }
+//   }
+
+// }

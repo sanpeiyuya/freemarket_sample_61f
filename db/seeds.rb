@@ -8,8 +8,7 @@
 
 #   coding: utf-8
 
-# display_itemsを全削除
-DisplayItem.all.destroy_all
+
 # brandsテーブルのレコード追加
 Brand.all.destroy_all # まず全レコード削除
 Brand.create(name: "ナイキ", name_alphabet: "nike", name_kana: "ないき")

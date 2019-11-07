@@ -43,6 +43,10 @@ class DisplayItemsController < ApplicationController
     render :layout => 'display_items_show'
   end
 
+  def buy
+    
+  end
+
   private
   def display_item_params
     # brand_idが名前で入っているため、idに変換
