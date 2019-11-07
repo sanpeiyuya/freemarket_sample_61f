@@ -10,6 +10,7 @@ body{
 a {
   text-decoration: none;
 }
+
 @import 'font-awesome';
 @import "reset";
 @import "./display_items/new";
@@ -28,7 +29,4 @@ a {
 @import "newaddress";
 @import "newcredit";
 @import "complete";
-
-@import "product_purchase_confirmation"
-
-@import "bread-crumbs";
+@import "./display_items_show/slide";
