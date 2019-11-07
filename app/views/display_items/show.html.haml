@@ -193,16 +193,18 @@
         = f.submit "コメントする", class: "message__content__form__submit"
 
 %ul.navi-link.clearfix
-  %li.navi-link__prev
-    = link_to "#", class: "navi-link__link" do
-      = fa_icon "angle-left", class: "icon icon__prev"
-      %span
-        一つ前のアイテム名を出す
-  %li.navi-link__next
-    = link_to "#", class: "navi-link__link" do
-      %span
-        一つ先のアイテム名を出す
-      = fa_icon "angle-right", class: "icon icon__next"
+  - if @display_item.previous.present?
+    %li.navi-link__prev
+      = link_to display_item_path(@display_item.previous.id), class: "navi-link__link" do
+        = fa_icon "angle-left", class: "icon icon__prev"
+        %span
+          = @display_item.previous.name
+  - if @display_item.next.present?
+    %li.navi-link__next
+      = link_to display_item_path(@display_item.next.id), class: "navi-link__link" do
+        %span
+          = @display_item.next.name
+        = fa_icon "angle-right", class: "icon icon__next"
 
 
 .media
@@ -241,6 +243,15 @@
       .other-items__box.clearfix
         = render partial: "./shared/display_items", locals: {items: @same_category_items}
 
+.navi
+  %ul.navi__box
+    %li.navi__box__list
+      = link_to root_path, class: "navi__box__list__link" do
+        メルカリ
+      = fa_icon "chevron-right"
+    %li.navi__box__list
+      %span.navi__box__list__link-right
+        = @display_item.name
 
 = render 'shared/aside'
 = render 'shared/footer'

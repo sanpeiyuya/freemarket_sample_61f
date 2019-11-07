@@ -147,75 +147,78 @@ $(function() {
   }
 
 
-  // カテゴリ1のイベント発火
-  $('#display_item_category_id').on('change', function() {
-    var category_id = $('#display_item_category_id').val();
-    $.ajax({
-      url: '/categories/search_level1',
-      type: 'post',
-      data: {
-        category_id: category_id
-      },
-      dataType: 'json',
-    })
-    .done(function(categories) {
-      // Add1とAdd2のセレクトボックスを削除
-      $('.content__form__Add1').remove();
-      $('.content__form__Add2').remove();
-      // sizeのセレクトボックス削除
-      $('.select_size').children().remove();
-      if ( categories.length >= 1 ) {
-        // 選択に応じたセレクトボックス作成
-        var html = creat_html_select_category_lv2(categories)
-        $('.select_category').append(html);
-      }
-    })
-    .fail(function() {
-      alert('カテゴリの取得に失敗しました');
-    })
-    var category_id = $('#display_item_category_id').val();
-    create_html_size_and_brand(category_id);
-  });
+  //初回読み込み、リロード、ページ切り替えで動く。
+  $(document).on('turbolinks:load', function() {
+    // カテゴリ1のイベント発火
+    $('#display_item_category_id').on('change', function() {
+      var category_id = $('#display_item_category_id').val();
+      $.ajax({
+        url: '/categories/search_level1',
+        type: 'post',
+        data: {
+          category_id: category_id
+        },
+        dataType: 'json',
+      })
+      .done(function(categories) {
+        // Add1とAdd2のセレクトボックスを削除
+        $('.content__form__Add1').remove();
+        $('.content__form__Add2').remove();
+        // sizeのセレクトボックス削除
+        $('.select_size').children().remove();
+        if ( categories.length >= 1 ) {
+          // 選択に応じたセレクトボックス作成
+          var html = creat_html_select_category_lv2(categories)
+          $('.select_category').append(html);
+        }
+      })
+      .fail(function() {
+        alert('カテゴリの取得に失敗しました');
+      })
+      var category_id = $('#display_item_category_id').val();
+      create_html_size_and_brand(category_id);
+    });
 
 
-  // カテゴリ2のイベント発火
-  $(document).on('change', '#display_item_category2_id', function() {
-    // カテゴリ1の入力値取得
-    var category_id = $('#display_item_category_id').val();
-    // カテゴリ2の入力値取得
-    var category2_id = $('#display_item_category2_id').val();
-    $.ajax({
-      url: '/categories/search_level2',
-      type: 'post',
-      data: {
-        category_id: category_id,
-        category2_id: category2_id
-      },
-      dataType: 'json',
-    })
-    .done(function(categories) {
-      // Add2セレクトボックスを削除
-      $('.content__form__Add2').remove();
-      // sizeのセレクトボックス削除
-      $('.select_size').children().remove();
-      // 要素が１個以上あれば生成
-      if (categories.length >= 1 ) {
-        // 選択に応じたセレクトボックス作成
-        var html = creat_html_select_category_lv3(categories)
-        $('.select_category').append(html);
-      } 
-    })
-    .fail(function() {
-      alert('カテゴリの取得に失敗しました');
-    })
-    var category_id = $('#display_item_category2_id').val();
-    create_html_size_and_brand(category_id);
-  });
+    // カテゴリ2のイベント発火
+    $(document).on('change', '#display_item_category2_id', function() {
+      // カテゴリ1の入力値取得
+      var category_id = $('#display_item_category_id').val();
+      // カテゴリ2の入力値取得
+      var category2_id = $('#display_item_category2_id').val();
+      $.ajax({
+        url: '/categories/search_level2',
+        type: 'post',
+        data: {
+          category_id: category_id,
+          category2_id: category2_id
+        },
+        dataType: 'json',
+      })
+      .done(function(categories) {
+        // Add2セレクトボックスを削除
+        $('.content__form__Add2').remove();
+        // sizeのセレクトボックス削除
+        $('.select_size').children().remove();
+        // 要素が１個以上あれば生成
+        if (categories.length >= 1 ) {
+          // 選択に応じたセレクトボックス作成
+          var html = creat_html_select_category_lv3(categories)
+          $('.select_category').append(html);
+        } 
+      })
+      .fail(function() {
+        alert('カテゴリの取得に失敗しました');
+      })
+      var category_id = $('#display_item_category2_id').val();
+      create_html_size_and_brand(category_id);
+    });
 
 
-  // カテゴリ3のイベント発火
-  $(document).on('change', '#display_item_category3_id', function() {
-     var category_id = $('#display_item_category3_id').val();
-     create_html_size_and_brand(category_id);
+    // カテゴリ3のイベント発火
+    $(document).on('change', '#display_item_category3_id', function() {
+      var category_id = $('#display_item_category3_id').val();
+      create_html_size_and_brand(category_id);
+    });
   });
 });
