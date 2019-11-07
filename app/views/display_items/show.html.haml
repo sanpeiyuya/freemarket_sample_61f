@@ -243,6 +243,15 @@
       .other-items__box.clearfix
         = render partial: "./shared/display_items", locals: {items: @same_category_items}
 
+.navi
+  %ul.navi__box
+    %li.navi__box__list
+      = link_to root_path, class: "navi__box__list__link" do
+        メルカリ
+      = fa_icon "chevron-right"
+    %li.navi__box__list
+      %span.navi__box__list__link-right
+        = @display_item.name
 
 = render 'shared/aside'
 = render 'shared/footer'
