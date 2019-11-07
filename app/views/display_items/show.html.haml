@@ -113,7 +113,7 @@
 
   .item__btn
     - if @display_item
-      = link_to "#", class: "item__btn__possible" do
+      = link_to buy_display_item_path(current_user.id), class: "item__btn__possible" do
         購入画面に進む
 
 
