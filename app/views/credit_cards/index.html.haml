@@ -1,11 +1,4 @@
-
 = render 'shared/header'
-
--# - breadcrumb :user_profile
--# %nav.bread-crumbs
--#   %ul
--#     %li
--#       = breadcrumbs separator: " #{content_tag(:i, '', class: 'fa fa-angle-right')} "
 
 .mypage-clearfix
   .mypage
@@ -23,7 +16,7 @@
                 クレジットカード一覧
             .credit__whole__content__footer__add-card
               %section.credit__whole__content__footer__add-card__inside
-                = link_to "#",class:'red-submit-button' do
+                = link_to new_credit_card_path, class:'red-submit-button' do
                   = image_tag ""
                   =fa_icon "credit-card",class: '.card'
                   クレジッドカードを追加する

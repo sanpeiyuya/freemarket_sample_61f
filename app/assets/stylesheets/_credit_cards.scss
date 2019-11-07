@@ -9,7 +9,7 @@
 // }
 .credit{
   width: 700px;
-  margin: 40px auto 0;
+  margin: 0 auto;
   &__whole__content{
     margin: 0;
     &__headder{
@@ -66,4 +66,66 @@
 .how-to-pay{
   display: block;
   color: #0099e8;
+}
+
+.newinfo-content__mono-content__head-edit {
+  font-size: 24px;
+  padding: 8px 24px;
+  border-bottom: 1px solid #f5f5f5;
+  text-align: center;
+  line-height: 1.4;
+  font-weight: bold;
+}
+.field-first-edit {
+  width: 343px;
+  height: 70px;
+  margin: 0px auto;
+}
+.field-second-edit {
+  width: 343px;
+  height: 70px;
+  margin: 30px auto 0;
+}
+.field-icon-edit {
+  width: 343px;
+  margin: 10px auto 0;
+}
+.credit-submit {
+  width: 343px;
+  margin: 32px auto 0;
+}
+
+.select-wrap-half {
+  display: inline-block;
+  position: relative;
+  width: calc(50% - 2px);
+  margin: 8px 0 0;
+}
+
+.credit-cards-select {
+  width: calc(100% - 38px);
+  position: relative;
+  z-index: 2;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+  -webkit-appearance: none;/* ベンダープレフィックス(Google Chrome、Safari用) */
+  -moz-appearance: none; /* ベンダープレフィックス(Firefox用) */
+  appearance: none; /* 標準のスタイルを無効にする */
+}
+.option-text {
+  margin-left: 10px;
+}
+
+.arrow-icon-credit {
+  color: gray;
+  position: absolute;
+  top: 15px;
+  right: 48px;
+  font-size: 18px;
 }
