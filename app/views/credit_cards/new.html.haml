@@ -1,0 +1,30 @@
+.mypage-clearfix
+  .mypage
+
+    = render 'shared/side-bar'
+
+    .credit
+      .credit__whole
+        .credit__whole__content
+          .credit__whole__content__headder
+            支払い方法
+          .credit__whole__content__footer
+            .credit__whole__content__footer__card-list
+              .credit__whole__content__footer__card-list__title
+                クレジットカード一覧
+            .credit__whole__content__footer__add-card
+              %section.credit__whole__content__footer__add-card__inside
+                = link_to "#",class:'red-submit-button' do
+                  = image_tag ""
+                  =fa_icon "credit-card",class: '.card'
+                  クレジッドカードを追加する
+                  
+            .credit__whole__content__footer__warning-note
+              =link_to "#",class:'how-to-pay' do
+                支払い方法について
+                =fa_icon "chevron-right",class: '.profile-form__text-link__right__icon'
+
+
+= render 'shared/sell-icon'
+= render 'shared/aside'
+= render 'shared/footer'
