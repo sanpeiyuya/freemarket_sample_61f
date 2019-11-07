@@ -118,6 +118,8 @@ GEM
     formatador (0.2.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gretel (3.0.9)
+      rails (>= 3.1.0)
     haml (5.1.2)
       temple (>= 0.8.0)
       tilt
@@ -161,14 +163,14 @@ GEM
     mini_magick (4.9.5)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.12.2)
+    minitest (5.13.0)
     multi_json (1.14.1)
     mysql2 (0.5.2)
     net-scp (2.0.0)
       net-ssh (>= 2.6.5, < 6.0.0)
     net-ssh (5.2.0)
     nio4r (2.5.2)
-    nokogiri (1.10.4)
+    nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pry (0.12.2)
@@ -293,6 +295,7 @@ DEPENDENCIES
   erb2haml
   fog-aws
   font-awesome-rails
+  gretel
   haml-rails (>= 1.0, <= 2.0.1)
   jbuilder (~> 2.5)
   jquery-rails

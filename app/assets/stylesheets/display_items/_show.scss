@@ -12,13 +12,6 @@
   }
   &__content {
     margin: 16px 0 0;
-    &__photo {
-      float: left;
-      min-width: 300px;
-      max-width: 300px;
-      min-height: 375px;
-      background: red;
-    }
     &__table {
       float: right;
       max-width: 300px;
@@ -452,7 +445,38 @@
 }
 
 
-
+.navi {
+  background: #f5f5f5;
+  position: relative;
+  border-top: 1px solid #eee;
+  &__box {
+    width: 1020px;
+    overflow: visible;
+    margin: 0 auto;
+    padding: 16px 0;
+    white-space: normal;
+    &__list {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: inline-block;
+      font-size: 14px;
+      line-height: 1.2;
+      &__link {
+        margin-right: 10px;
+        color: #333;
+        &:hover {
+          color: rgba(#333, 0.5);
+          text-decoration-line: underline;
+        }
+      }
+      &__link-right {
+        margin-left: 10px;
+        color: #333;
+        font-weight: bold;
+      }
+    }
+  }
+}
 
 
 

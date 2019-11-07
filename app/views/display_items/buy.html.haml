@@ -1,0 +1,83 @@
+.exhibit
+  .exhibit__header
+    .exhibit__header__logo
+      = link_to root_path do
+        = image_tag "exhibit_logo.svg"
+
+  .exhibit__main
+    .exhibit__main__box
+      %h2.exhibit__main__box__title
+        購入内容の確認
+    .content
+      .content__inner__top
+        =image_tag"靴.jpg",size:"64x64",class:'purple_bag'
+        %span.word 格安お値下げ中 COACH コーチ 
+          
+      .content__inner
+        .content__inner__price
+          %p5¥5,500
+          %span.item-shipping-fee 送料込み
+        .content__inner
+          .content__inner__point
+            ポイントはありません
+        .pay
+          .pay__payment
+            支払い金額
+          .pay__payment__right 
+            %span.price¥5,500
+        .error
+          配送先と支払い方法の入力を完了てください。
+        .content__inner
+          =link_to "#", class:'payment-btn' do
+            購入する
+    .content
+      .content__inner
+        %h3.content__inner__text
+        配送先
+        %address〒-
+        = link_to "#", class: "change" do
+          変更する
+          =fa_icon "chevron-right"
+    .content
+      .content__inner
+        %h3.content__inner__text
+        支払い方法
+        %br /
+        = link_to "#", class: "change" do
+          変更する
+          =fa_icon "chevron-right"
+
+  -#   .exhibit__main__box__buy-contents
+  -#     .exhibit__main__box__buy-contents__item-name
+  -#       .exhibit__main__box__buy-contents__item-name__inner
+  -#         =image_tag"bag.jpg",size:"64x64",class:'purple_bag'
+  -#         .exhibit__main__box__buy-contents__item-name__inner__information 格安お値下げ中　COACH コーチ　ポッピー　2wayバッグ
+  -#         .exhibit__main__box__buy-contents__item-name__inner__buy-form
+  -#           .price¥5,500
+  -#           %span送料込み
+  -#   .exhibit__main__box__buy-contents
+  -#     .exhibit__main__box__buy-contents__item-name__inner
+  -#       %h3配送先
+  -#   .exhibit__main__box__buy-contents
+  -#     .exhibit__main__box__buy-contents__item-name__inner
+
+
+  .exhibit__footer
+    .exhibit__footer__navi
+      %ul.exhibit__footer__navi__list
+        %li
+          = link_to "#", class: "exhibit__footer__navi__list__ele" do
+            プライバシーポリシー
+        %li
+          = link_to "#", class: "exhibit__footer__navi__list__ele" do
+            メルカリ利用規約
+        %li
+          = link_to "#", class: "exhibit__footer__navi__list__ele" do
+            特定商取引に関する表記
+    .exhibit__footer__logo
+      = link_to root_path do
+        = image_tag "exhibit_logo_gray.svg"
+
+    .exhibit__footer__copylight
+      %p.exhibit__footer__copylight__text
+        © 2019 Mercari

@@ -39,28 +39,30 @@ $(function() {
     $('.content__form__list-C').append(html);
   }
 
+  //初回読み込み、リロード、ページ切り替えで動く。
+  $(document).on('turbolinks:load', function() {
+    $('#display_item_price').on('keyup', function() {
 
-  $('#display_item_price').on('keyup', function() {
-
-    var price = $('#display_item_price').val();
-
-    // 表示切り替えエリアをリセット
-    remove_html_price_area()
-
-    // 入力値に応じて、処理を切り替え
-    if ( price >= 300 && price <= 9999999 ) {
-      var commission_rate = calc_commission_rate(price)
-      var sales = calc_sales(price)
-
-      // 手数料のビューを取り付け
-      create_html_commission_rate_after_append(commission_rate)
-      // 売上のビューを取り付け
-      create_html_sales_after_append(sales)
-    } else {
-      // 手数料のビューを取り付け
-      create_html_commission_rate_after_append("-")
-      // 売上のビューを取り付け
-      create_html_sales_after_append("-")
-    }
+      var price = $('#display_item_price').val();
+  
+      // 表示切り替えエリアをリセット
+      remove_html_price_area()
+  
+      // 入力値に応じて、処理を切り替え
+      if ( price >= 300 && price <= 9999999 ) {
+        var commission_rate = calc_commission_rate(price)
+        var sales = calc_sales(price)
+  
+        // 手数料のビューを取り付け
+        create_html_commission_rate_after_append(commission_rate)
+        // 売上のビューを取り付け
+        create_html_sales_after_append(sales)
+      } else {
+        // 手数料のビューを取り付け
+        create_html_commission_rate_after_append("-")
+        // 売上のビューを取り付け
+        create_html_sales_after_append("-")
+      }
+    });
   });
 });

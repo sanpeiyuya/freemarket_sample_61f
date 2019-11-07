@@ -25,6 +25,7 @@ class DisplayItemsController < ApplicationController
   end
 
   def show
+
     @display_item = DisplayItem.find(params[:id])
     @category_lv1 = @display_item.category
     @category_lv2 = @category_lv1.parent
@@ -38,6 +39,12 @@ class DisplayItemsController < ApplicationController
     @mine_items = DisplayItem.where(user_id: @display_item[:user_id])
     @same_category_items = DisplayItem.where(category_id: @display_item[:category_id])
 
+    # 必ず最後に入れる
+    render :layout => 'display_items_show'
+  end
+
+  def buy
+    
   end
 
   private

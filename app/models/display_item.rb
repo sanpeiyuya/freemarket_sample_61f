@@ -15,4 +15,12 @@ class DisplayItem < ApplicationRecord
   has_many :comments, dependent: :delete_all
 
   accepts_nested_attributes_for :images
+
+  def previous
+    DisplayItem.where("id < ?", self.id).order("id DESC").first
+  end
+
+  def next
+    DisplayItem.where("id > ?", self.id).order("id ASC").first
+  end
 end
