@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   resources :user_profiles, only: [:edit, :update]
   # クレジットカードの編集
   resources :credit_cards
-
+  # 住所の編集
   resources :addresses,only: [:edit, :update]
 
   # 商品系のルーティング
@@ -49,12 +49,7 @@ Rails.application.routes.draw do
       get   :buy #購入確認画面
       post  :pay #購入処理
     end
-    collection do
-      post  :first_category_search #カテゴリ検索メソッド(第1段階)
-      post  :second_category_search #カテゴリ検索メソッド(第2段階)
-      post  :size_search #サイズ検索メソッド
-      post  :brand_search #ブランド検索メソッド
-    end
+    # コメントのルーティング(display_itemsとネスト)
     resources :comments, only: [:create, :destroy]
   end
   # カテゴリのルーティング
