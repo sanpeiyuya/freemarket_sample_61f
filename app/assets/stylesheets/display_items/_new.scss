@@ -81,17 +81,19 @@
     width: 620px;
     display: flex;
     margin-top: 15px;
+    flex-wrap: wrap;
     // 以下、プレビュー要素--------------------------------
     &__previews {
       display: flex;
       margin-top: 5px;
+      flex-wrap: wrap;
       &__preview {
         width: 115px;
         height: 125px;
         margin-right: 5px;
         &__frame {
           position: relative;
-          height: 60%;
+          height: 70%;
           border: 1px dashed #ccc;
           background: #f5f5f5;
           &__image {
@@ -107,13 +109,13 @@
         }
         &__btns {
           width: 115px;
-          height: 40%;
+          height: 30%;
           display: flex;
           background: white;
           &__btn {
             width: 50%;
             text-align: center;
-            line-height: 48px;
+            line-height: 37.5px;
             border: 1px dashed #ccc;
             color: #0099e8;
           } 
