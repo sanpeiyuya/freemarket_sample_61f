@@ -24,15 +24,15 @@
             最大10枚までアップロードできます
           .image__box
             %ul.image__box__previews
-              %li.image__box__previews__preview
-                .image__box__previews__preview__frame
-                  - src = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgnlJfqXSx9SgF5N69hVtK1-WvFWBcATk1VpITCFmrieh3-fga"
-                  = image_tag src, class: "image__box__previews__preview__frame__image"
-                .image__box__previews__preview__btns
-                  .image__box__previews__preview__btns__btn
-                    編集
-                  .image__box__previews__preview__btns__btn
-                    削除
+              // プレビュー用のビュー
+              -# %li.image__box__previews__preview
+              -#   .image__box__previews__preview__frame
+              -#     = image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgnlJfqXSx9SgF5N69hVtK1-WvFWBcATk1VpITCFmrieh3-fga", class: "image__box__previews__preview__frame__image"
+              -#   .image__box__previews__preview__btns
+              -#     .image__box__previews__preview__btns__btn
+              -#       編集
+              -#     .image__box__previews__preview__btns__btn
+              -#       削除
 
             = f.fields_for :images do |i|
               = i.label :image, class: "image__box__label", id: "input_0" do

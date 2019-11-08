@@ -13,6 +13,23 @@ $(function () {
       return html
     }
 
+    function create_preview_list() {
+      var list = `<li class="image__box__previews__preview">
+                    <div class="image__box__previews__preview__frame">
+                      <img class="image__box__previews__preview__frame__image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgnlJfqXSx9SgF5N69hVtK1-WvFWBcATk1VpITCFmrieh3-fga" alt="Images?q=tbn%3aand9gctgnljfqxsx9sgf5n69hvtk1 wvfwbcatk1vpitcfmrieh3 fga">
+                    </div>
+                    <div class="image__box__previews__preview__btns">
+                      <div class="image__box__previews__preview__btns__btn">
+                        編集
+                      </div>
+                      <div class="image__box__previews__preview__btns__btn">
+                        削除
+                      </div>
+                    </div>
+                  </li>`;
+      return list
+    }
+
 
     var target = $('.image__box__input-area__tag');
 
@@ -24,11 +41,12 @@ $(function () {
       var name = "input_" + String(num-1);
       console.log(name)
       $('#' + name).css('display','none');
-      // html作成
+      // inputのhtml作成
       var html = create_input_html(num);
       $('.image__box').append(html);
-
-
+      // listのhtml作成
+      var list = create_preview_list();
+      $('.image__box__previews').append(list);
     })
   });
 });
