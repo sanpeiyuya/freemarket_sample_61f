@@ -123,19 +123,19 @@
 $(function() {
 
   function create_list() {
-    var list = `<li class="image__box__previews__preview">
-                  <div class="image__box__previews__preview__frame">
-                    <img class="image__box__previews__preview__frame__image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTmsOtjLB8JMpBLghQMvuiOJTOjJ5mMtzN_olqiZlHVCCOMgIiA">
+    var list = `<div class="image__box__preview">
+                  <div class="image__box__preview__frame">
+                    <img class="image__box__preview__frame__image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTmsOtjLB8JMpBLghQMvuiOJTOjJ5mMtzN_olqiZlHVCCOMgIiA">
                   </div>
-                  <div class="image__box__previews__preview__btns">
-                    <div class="image__box__previews__preview__btns__btn">
+                  <div class="image__box__preview__btns">
+                    <div class="image__box__preview__btns__btn">
                       編集
                     </div>
-                    <div class="image__box__previews__preview__btns__btn">
+                    <div class="image__box__preview__btns__btn">
                       削除
                     </div>
                   </div>
-                </li>`;
+                </div>`;
     return list;
   };
 
@@ -149,11 +149,10 @@ $(function() {
 
     // list追加
     var list = create_list();
-    $('.image__box__previews').append(list);
-
+    $('#0').before(list);
 
     // 次のlabelを表示し、サイズを変更
-    var lists = document.getElementsByClassName('image__box__previews__preview');
+    var lists = document.getElementsByClassName('image__box__preview');
     console.log(lists.length);
     switch(lists.length) {
       case 1:
@@ -178,7 +177,6 @@ $(function() {
     }
     
     var next_label_id = Number(label.attr('id')) + 1;
-    console.log(next_label_id);
     $('#' + next_label_id).css({'display':'', 'width': width});
 
 
