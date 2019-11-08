@@ -17,25 +17,7 @@ $(function() {
     return list;
   };
 
-
-  $(document).on('change', '.image__box__input-area__tag', function(e) {
-
-    // label要素の取得
-    var label = $(this).parent().parent()
-    // 入力したインプットエリアを消す
-    label.css('display', 'none');
-
-    // プレビュー表示
-    var reader = new FileReader();
-    reader.onload = function (e) {
-      // list作成、追加
-      var list = create_list(e.target.result);
-      $('#0').before(list);  
-    }
-    reader.readAsDataURL(e.target.files[0]);
-
-
-    // 次のlabelを表示し、widthを決定
+  function create_width() {
     var lists = document.getElementsByClassName('image__box__preview');
     switch(lists.length) {
       case 0:
@@ -58,10 +40,34 @@ $(function() {
         var width = '620px'
         break;
     }
+    return width;
+  }
+
+  $(document).on('change', '.image__box__input-area__tag', function(e) {
+
+    // label要素の取得
+    var label = $(this).parent().parent()
+    // 入力したインプットエリアを消す
+    label.css('display', 'none');
+
+    // プレビュー表示
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      // list作成、追加
+      var list = create_list(e.target.result);
+      $('#0').before(list);  
+    }
+    reader.readAsDataURL(e.target.files[0]);
+
+    // 次のlabelを表示し、widthを決定
+    var width = create_width();
 
     // 次のインプットエリアを表示
     var next_label_id = Number(label.attr('id')) + 1;
     $('#' + next_label_id).css({'display':'', 'width': width});
 
   });
+  $(document).on('click', '.delete-preview', function() {
+    $(this).parent().parent().remove();
+  })
 });
