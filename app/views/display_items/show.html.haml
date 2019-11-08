@@ -11,32 +11,16 @@
     .item__content__photo
       // 本体
       %ul.item__content__photo__slider
-        %li.slide-item
-          = image_tag "https://takblog.site/wp-content/themes/takblog/assets/img/blanks/post19_1.jpg"
-        %li.slide-item
-          = image_tag "https://takblog.site/wp-content/themes/takblog/assets/img/blanks/post19_2.jpg"
-        %li.slide-item
-          = image_tag "https://takblog.site/wp-content/themes/takblog/assets/img/blanks/post19_3.jpg"
-        %li.slide-item
-          = image_tag "https://takblog.site/wp-content/themes/takblog/assets/img/blanks/post19_4.jpg"
-        %li.slide-item
-          = image_tag "https://takblog.site/wp-content/themes/takblog/assets/img/blanks/post19_5.jpg"
-        %li.slide-item
-          = image_tag "https://takblog.site/wp-content/themes/takblog/assets/img/blanks/post19_6.jpg"
+        -# 画像の個数分だけ描画
+        - @display_item.images.each do |image|
+          %li.slide-item
+            = image_tag image.image.url
       // サムネ
       %ul.item__content__photo__thumb
-        %li.thumbnail-item
-          = image_tag "https://takblog.site/wp-content/themes/takblog/assets/img/blanks/post19_1.jpg"
-        %li.thumbnail-item
-          = image_tag "https://takblog.site/wp-content/themes/takblog/assets/img/blanks/post19_2.jpg"
-        %li.thumbnail-item
-          = image_tag "https://takblog.site/wp-content/themes/takblog/assets/img/blanks/post19_3.jpg"
-        %li.thumbnail-item
-          = image_tag "https://takblog.site/wp-content/themes/takblog/assets/img/blanks/post19_4.jpg"
-        %li.thumbnail-item
-          = image_tag "https://takblog.site/wp-content/themes/takblog/assets/img/blanks/post19_5.jpg"
-        %li.thumbnail-item
-          = image_tag "https://takblog.site/wp-content/themes/takblog/assets/img/blanks/post19_6.jpg"
+        -# 画像の個数分だけ描画
+        - @display_item.images.each do |image|
+          %li.thumbnail-item
+            = image_tag image.image.url
 
 
 
