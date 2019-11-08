@@ -1,0 +1,91 @@
+= render 'shared/header'
+
+- breadcrumb :display_items
+%nav.bread-crumbs
+  %ul
+    %li
+      = breadcrumbs separator: " #{content_tag(:i, '', class: 'fa fa-angle-right')} "
+
+.mypage-clearfix
+  .mypage
+
+    = render 'shared/side-bar'
+
+    .exhibit-item
+      .exhibit-item__container
+        .exhibit-item__head
+          出品した商品
+        %ul.exhibit-item__tab
+          %li.active
+            = link_to display_items_mypages_path, class: "exhibit-item__tab__link" do
+              出品中
+          %li
+            = link_to trading_items_mypages_path, class: "exhibit-item__tab__link" do
+              取引中
+          %li
+            = link_to finished_items_mypages_path, class: "exhibit-item__tab__link" do
+              売却済み
+        .exhibit-item__tab-content
+          %ul.exhibit-item__tab-content__lists
+            %li
+              = link_to "#", class: "exhibit-item__tab-content__lists__link" do
+                %figure
+                  = image_tag "1.jpg", size: "48x48", class: "exhibit-item__tab-content__lists__img"
+                .exhibit-item__tab-content__lists__text
+                  .exhibit-item__tab-content__lists__text__name
+                    シューズ
+                  .exhibit-item__tab-content__lists__icons
+                    %span.exhibit-item__tab-content__lists__icons__clearfix
+                      =fa_icon "heart-o",class: 'exhibit-item__tab-content__lists__icons__like'
+                      %span
+                        0
+                    %span.exhibit-item__tab-content__lists__icons__clearfix
+                      =fa_icon "comment",class: 'exhibit-item__tab-content__lists__icons__comment'
+                      %span
+                        0
+                    .exhibit-item__tab-content__lists__icons__status
+                      出品中
+                    = fa_icon "angle-right", class: "exhibit-item__tab-content__lists__icons__right"
+            %li
+              = link_to "#", class: "exhibit-item__tab-content__lists__link" do
+                %figure
+                  = image_tag "2.jpg", size: "48x48", class: "exhibit-item__tab-content__lists__img"
+                .exhibit-item__tab-content__lists__text
+                  .exhibit-item__tab-content__lists__text__name
+                    トップス
+                  .exhibit-item__tab-content__lists__icons
+                    %span.exhibit-item__tab-content__lists__icons__clearfix
+                      =fa_icon "heart-o",class: 'exhibit-item__tab-content__lists__icons__like'
+                      %span
+                        0
+                    %span.exhibit-item__tab-content__lists__icons__clearfix
+                      =fa_icon "comment",class: 'exhibit-item__tab-content__lists__icons__comment'
+                      %span
+                        0
+                    .exhibit-item__tab-content__lists__icons__status
+                      出品中
+                    = fa_icon "angle-right", class: "exhibit-item__tab-content__lists__icons__right"
+            %li
+              = link_to "#", class: "exhibit-item__tab-content__lists__link" do
+                %figure
+                  = image_tag "3.jpg", size: "48x48", class: "exhibit-item__tab-content__lists__img"
+                .exhibit-item__tab-content__lists__text
+                  .exhibit-item__tab-content__lists__text__name
+                    ブーツ
+                  .exhibit-item__tab-content__lists__icons
+                    %span.exhibit-item__tab-content__lists__icons__clearfix
+                      =fa_icon "heart-o",class: 'exhibit-item__tab-content__lists__icons__like'
+                      %span
+                        0
+                    %span.exhibit-item__tab-content__lists__icons__clearfix
+                      =fa_icon "comment",class: 'exhibit-item__tab-content__lists__icons__comment'
+                      %span
+                        0
+                    .exhibit-item__tab-content__lists__icons__status
+                      出品中
+                    = fa_icon "angle-right", class: "exhibit-item__tab-content__lists__icons__right"
+
+
+= render 'shared/sell-icon'
+= render 'shared/aside'
+= render 'shared/footer'

@@ -1,0 +1,36 @@
+= render 'shared/header'
+
+- breadcrumb :trading_items
+%nav.bread-crumbs
+  %ul
+    %li
+      = breadcrumbs separator: " #{content_tag(:i, '', class: 'fa fa-angle-right')} "
+
+.mypage-clearfix
+  .mypage
+
+    = render 'shared/side-bar'
+
+    .exhibit-item
+      .exhibit-item__container
+        .exhibit-item__head
+          出品した商品
+        %ul.exhibit-item__tab
+          %li
+            = link_to display_items_mypages_path, class: "exhibit-item__tab__link" do
+              出品中
+          %li.active
+            = link_to trading_items_mypages_path, class: "exhibit-item__tab__link" do
+              取引中
+          %li
+            = link_to finished_items_mypages_path, class: "exhibit-item__tab__link" do
+              売却済み
+        .mypage__main__item__tab__content
+          %ul
+            %li.shows
+              .mypage__main__item__tab__content__logo
+                取引中の商品がありません
+
+= render 'shared/sell-icon'
+= render 'shared/aside'
+= render 'shared/footer'

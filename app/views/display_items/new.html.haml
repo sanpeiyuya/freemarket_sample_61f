@@ -22,11 +22,28 @@
               必須
           %p.image__tips
             最大10枚までアップロードできます
-          = f.fields_for :images do |i|
-            = i.label :image do
-              .image__form
-                = i.file_field :image, class: "image__form__input"
-                %p.image__form__tips ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート
+          .image__box
+            %ul.image__box__previews
+              // プレビュー用のビュー
+              -# %li.image__box__previews__preview
+              -#   .image__box__previews__preview__frame
+              -#     = image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgnlJfqXSx9SgF5N69hVtK1-WvFWBcATk1VpITCFmrieh3-fga", class: "image__box__previews__preview__frame__image"
+              -#   .image__box__previews__preview__btns
+              -#     .image__box__previews__preview__btns__btn
+              -#       編集
+              -#     .image__box__previews__preview__btns__btn
+              -#       削除
+
+            = f.fields_for :images do |i|
+              = i.label :image, class: "image__box__label", id: "input_0" do
+                .image__box__input-area
+                  = i.file_field :image, class: "image__box__input-area__tag"
+                  %p.image__box__input-area__tips ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート
+
+
+
+
+
         -# 商品名と商品説明フォーム
         .title
           .title__name
