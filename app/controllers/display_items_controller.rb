@@ -3,8 +3,10 @@ class DisplayItemsController < ApplicationController
   require "date"
 
   def index
-    @display_item = DisplayItem.new
     @display_items = DisplayItem.limit(10).order(id: "DESC")
+    # カテゴリーを取得
+    @categories = Category.where(ancestry: nil)
+
   end
 
   def new
