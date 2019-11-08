@@ -43,8 +43,8 @@ $(function() {
     return width;
   }
 
-  function create_input_area(id) {
-    var input_area = `<label style="display: none;" class="image__box__label" id="${id}" for="display_item_images_attributes_${id}_image">
+  function create_input_area(id, display) {
+    var input_area = `<label style=${display} class="image__box__label" id="${id}" for="display_item_images_attributes_${id}_image">
                         <div class="image__box__input-area">
                           <input class="image__box__input-area__tag" type="file" name="display_item[images_attributes][${id}][image]" id="display_item_images_attributes_${id}_image">
                           <p class="image__box__input-area__tips">ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート</p>
@@ -94,9 +94,14 @@ $(function() {
     //末尾に新しいインプットエリアを追加
     var labels = document.getElementsByClassName('image__box__label');
     var new_label_id = Number($(labels[labels.length - 1]).attr('id')) + 1;
-    var input_area = create_input_area(new_label_id);
+
+    var lists = document.getElementsByClassName('image__box__preview');
+    if (lists.length == 9) {
+      var input_area = create_input_area(new_label_id, 'width:140px');
+    } else {
+      var input_area = create_input_area(new_label_id, "display:none;");
+    }
     $('.image__box').append(input_area);
 
-    // var test = $('#display_item_images_attributes_0_image').val();
   })
 });
