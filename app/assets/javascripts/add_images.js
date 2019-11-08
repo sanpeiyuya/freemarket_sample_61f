@@ -9,7 +9,7 @@ $(function() {
                     <div class="image__box__preview__btns__btn">
                       編集
                     </div>
-                    <div class="image__box__preview__btns__btn">
+                    <div class="image__box__preview__btns__btn delete-preview">
                       削除
                     </div>
                   </div>
