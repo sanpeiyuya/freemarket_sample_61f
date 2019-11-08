@@ -6,7 +6,7 @@ class DisplayItemsController < ApplicationController
     @display_items = DisplayItem.limit(10).order(id: "DESC")
     # カテゴリーを取得
     @categories = Category.where(ancestry: nil)
-
+    
   end
 
   def new
