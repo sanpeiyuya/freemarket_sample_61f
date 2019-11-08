@@ -9,7 +9,8 @@ Rails.application.routes.draw do
     get "sign_out", to: "users/sessions#destroy" 
   end
 
-  root 'items#index'
+  # root画面
+  root 'display_items#index'
   # ユーザー新規作成系のルーティング(※暫定！)
   resources :users do
     collection do
