@@ -422,13 +422,17 @@
               background-color: white;
               cursor: pointer;
               box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-              &__image{
+              &__frame{
                 position: relative;
                 width: 188px;
                 height: 188px;
-                background-position: center center;
-                background-size:cover; 
-                background-image: image-url("2.jpg");
+                overflow: hidden;
+                &__image {
+                  max-height: 188px;
+                  height: auto; //縦合わせで表示
+                  position: relative;
+                  margin-left: -40px; //ちょっと左寄せ値は適当
+                }
                 &__price{
                   background: rgba(0,0,0,.4);
                   border-radius: 0 14px 14px 0;
@@ -455,6 +459,7 @@
                 padding: 0 12px;
                 white-space: normal;
                 word-break: break-word;
+                overflow: hidden;
                 span {
                   line-height:64px;
                   vertical-align: top;
