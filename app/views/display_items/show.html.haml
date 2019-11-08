@@ -11,11 +11,13 @@
     .item__content__photo
       // 本体
       %ul.item__content__photo__slider
+        -# 画像の個数分だけ描画
         - @display_item.images.each do |image|
           %li.slide-item
             = image_tag image.image.url
       // サムネ
       %ul.item__content__photo__thumb
+        -# 画像の個数分だけ描画
         - @display_item.images.each do |image|
           %li.thumbnail-item
             = image_tag image.image.url
