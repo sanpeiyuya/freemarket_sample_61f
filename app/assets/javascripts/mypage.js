@@ -1,5 +1,6 @@
 $(function() {
   $(document).on('turbolinks:load', function () {
+    
   // タブの切り替え
   $(function() {
     let tabs = $(".mypage__main__notice-todo__tab li");

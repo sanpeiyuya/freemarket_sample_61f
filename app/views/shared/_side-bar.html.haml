@@ -22,15 +22,15 @@
           出品する
           = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
       %li
-        = link_to "#", class: "mypage__side-bar__list-item" do
+        = link_to display_items_mypages_path, class: "mypage__side-bar__list-item" do
           出品した商品-出品中
           = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
       %li
-        = link_to "#", class: "mypage__side-bar__list-item" do
+        = link_to trading_items_mypages_path, class: "mypage__side-bar__list-item" do
           出品した商品-取引中
           = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
       %li
-        = link_to "#", class: "mypage__side-bar__list-item" do
+        = link_to finished_items_mypages_path, class: "mypage__side-bar__list-item" do
           出品した商品-売却済み
           = fa_icon 'fas fa-angle-right', class: "fa-angle-right fa-pull-right"
       %li
