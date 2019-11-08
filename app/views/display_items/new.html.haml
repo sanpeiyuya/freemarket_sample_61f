@@ -23,18 +23,7 @@
           %p.image__tips
             最大10枚までアップロードできます
           .image__box
-            -# %ul.image__box__previews.previews-1
-            -# %ul.image__box__previews.previews-2
-            -# - for num in 0..9 do
-            -# .image__box__preview
-            -#   .image__box__preview__frame
-            -#     %img.image__box__preview__frame__image{src: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTmsOtjLB8JMpBLghQMvuiOJTOjJ5mMtzN_olqiZlHVCCOMgIiA"}
-            -#   .image__box__preview__btns
-            -#     .image__box__preview__btns__btn
-            -#       編集
-            -#     .image__box__preview__btns__btn
-            -#       削除
-
+            // インプットフィールドを10個作成
             - for num in 0..9 do
               = f.fields_for :images do |i|
                 - if num == 0 
