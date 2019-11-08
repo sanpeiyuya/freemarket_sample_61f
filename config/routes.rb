@@ -28,6 +28,9 @@ Rails.application.routes.draw do
   resources :mypages, only: [:index] do
     collection do
       get    :logout #ログアウト画面
+      get    :display_items #出品中画面
+      get    :trading_items #取引中画面
+      get    :finished_items #売却済み画面
     end
   end
   # ニックネーム&紹介文の編集

@@ -1,5 +1,11 @@
 = render 'shared/header'
 
+- breadcrumb :credit_card_input
+%nav.bread-crumbs
+  %ul
+    %li
+      = breadcrumbs separator: " #{content_tag(:i, '', class: 'fa fa-angle-right')} "
+
 .mypage-clearfix
   .mypage
     = render 'shared/side-bar'
