@@ -32,12 +32,14 @@
   }
 }
 
-.thumbnail-item{
-  flex: 0 1 20%;
-  // margin-bottom: 10px;
-  box-sizing: border-box;
+.thumbnail-item {
+  width: 60px;
+  height: 60px;
+  // flex: 0 1 20%;
+  // box-sizing: border-box;
   position: relative;
   cursor: pointer;
+  overflow: hidden;
   &:after{
     content:'';
     background-color: rgba(white, 0.5);
@@ -54,15 +56,8 @@
     opacity: 0;
   }
   img{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    // height: auto;
-    // width: auto;
-    max-width: 100%;
-    max-height: 100%;
-    margin: auto;
+    max-height: 60px;
+    height: auto;
+    margin-left: -10px;
   } 
 }
