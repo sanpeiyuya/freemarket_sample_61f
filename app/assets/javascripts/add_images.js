@@ -1,8 +1,5 @@
 $(function () {
-  //初回読み込み、リロード、ページ切り替えで動く。
-  $(document).on('turbolinks:load', function() {
-
-
+    // 上段のinput作成
     function create_input_html(num) {
       var html = `<label class="image__box__label" id="input_${num}" for="display_item_images_attributes_${num}_image">
                     <div class="image__box__input-area">
@@ -12,7 +9,7 @@ $(function () {
                   </label>`;
       return html
     }
-
+    // 下段(追加)のinput作成
     function create_input_html_add(num) {
       var html = `<label class="add-image__box__label" id="input_${num}" for="display_item_images_attributes_${num}_image">
                     <div class="image__box__input-area">
@@ -22,7 +19,7 @@ $(function () {
                   </label>`;
       return html
     }
-
+    // プレビュー作成
     function create_preview_list(image) {
       var list = `<li class="image__box__previews__preview">
                     <div class="image__box__previews__preview__frame">
@@ -39,7 +36,7 @@ $(function () {
                   </li>`;
       return list
     }
-
+    // 下段追加のhtml作成
     function create_input_area(num) {
       var html = `<div class="add-image__box">
                     <ul class="add-image__box__previews">
@@ -97,7 +94,6 @@ $(function () {
 
       // 入力済みのinputを非表示に
       var name = "input_" + String(num+4);
-      console.log(name);
       $('#' + name).css('display','none');
 
       if (num < 5) {
@@ -118,12 +114,7 @@ $(function () {
       // 5個目のインプットエリアを非表示に
       if (num == 5) {
         $("#input_5").css('display','none');
-        // var add_input_area = create_input_area(5);
-        // $('.image').append(add_input_area);
       }
 
     })
-
-
-  });
 });
