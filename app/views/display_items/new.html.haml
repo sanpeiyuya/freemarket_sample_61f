@@ -23,24 +23,19 @@
           %p.image__tips
             最大10枚までアップロードできます
           .image__box
-            %ul.image__box__previews
-              // プレビュー用のビューを差し込む
-            = f.fields_for :images do |i|
-              = i.label :image, class: "image__box__label", id: "input_0" do
-                .image__box__input-area
-                  = i.file_field :image, class: "image__box__input-area__tag"
-                  %p.image__box__input-area__tips ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート
-
-
-          -# .image__box
-          -#   %ul.add-image__box__previews
-          -#     // プレビュー用のビューを差し込む
-          -#   = f.fields_for :images do |i|
-          -#     = i.label :image, class: "add-image__box__label", id: "input_0" do
-          -#       .image__box__input-area
-          -#         = i.file_field :image, class: "image__box__input-area__tag"
-          -#         %p.image__box__input-area__tips ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート
-
+            // インプットフィールドを10個作成
+            - for num in 0..9 do
+              = f.fields_for :images do |i|
+                - if num == 0 
+                  = i.label :image, class: "image__box__label", id: "#{num}" do
+                    .image__box__input-area
+                      = i.file_field :image, class: "image__box__input-area__tag"
+                      %p.image__box__input-area__tips ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート
+                - else
+                  = i.label :image, style: "display: none;", class: "image__box__label", id: "#{num}" do
+                    .image__box__input-area
+                      = i.file_field :image, class: "image__box__input-area__tag"
+                      %p.image__box__input-area__tips ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート
 
 
         -# 商品名と商品説明フォーム

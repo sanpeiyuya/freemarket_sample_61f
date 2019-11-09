@@ -1,120 +1,149 @@
-$(function () {
-    // 上段のinput作成
-    function create_input_html(num) {
-      var html = `<label class="image__box__label" id="input_${num}" for="display_item_images_attributes_${num}_image">
-                    <div class="image__box__input-area">
-                      <input class="image__box__input-area__tag" type="file" name="display_item[images_attributes][${num}][image]" id="display_item_images_attributes_${num}_image">
-                      <p class="image__box__input-area__tips">ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート</p>
+$(function() {
+
+  function create_list(image, num) {
+    var list = `<div class="image__box__preview" id="preview_${num}">
+                  <div class="image__box__preview__frame">
+                    <img class="image__box__preview__frame__image" src="${image}">
+                  </div>
+                  <div class="image__box__preview__btns">
+                    <div class="image__box__preview__btns__btn">
+                      編集
                     </div>
-                  </label>`;
-      return html
-    }
-    // 下段(追加)のinput作成
-    function create_input_html_add(num) {
-      var html = `<label class="add-image__box__label" id="input_${num}" for="display_item_images_attributes_${num}_image">
-                    <div class="image__box__input-area">
-                      <input class="add-image__box__input-area__tag" type="file" name="display_item[images_attributes][${num}][image]" id="display_item_images_attributes_${num}_image">
-                      <p class="image__box__input-area__tips">ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート</p>
+                    <div class="image__box__preview__btns__btn delete-preview">
+                      削除
                     </div>
-                  </label>`;
-      return html
+                  </div>
+                </div>`;
+    return list;
+  };
+
+  function create_width() {
+    var lists = document.getElementsByClassName('image__box__preview');
+    switch(lists.length) {
+      case 0:
+      case 5:
+        var width = '500px'
+        break;
+      case 1:
+      case 6:
+        var width = '380px'
+        break;
+      case 2:
+      case 7:
+        var width = '260px'
+        break;
+      case 3:
+      case 8:
+        var width = '140px'
+        break;
+      case 4:
+        var width = '620px'
+        break;
     }
-    // プレビュー作成
-    function create_preview_list(image) {
-      var list = `<li class="image__box__previews__preview">
-                    <div class="image__box__previews__preview__frame">
-                      <img class="image__box__previews__preview__frame__image" src=${image} alt="Images?q=tbn%3aand9gctgnljfqxsx9sgf5n69hvtk1 wvfwbcatk1vpitcfmrieh3 fga">
-                    </div>
-                    <div class="image__box__previews__preview__btns">
-                      <div class="image__box__previews__preview__btns__btn">
-                        編集
-                      </div>
-                      <div class="image__box__previews__preview__btns__btn">
-                        削除
-                      </div>
-                    </div>
-                  </li>`;
-      return list
+    return width;
+  }
+
+  function create_width_remove() {
+    var lists = document.getElementsByClassName('image__box__preview');
+    switch(lists.length) {
+      case 0:
+      case 5:
+        var width = '620px'
+        break;
+      case 1:
+      case 6:
+        var width = '500px'
+        break;
+      case 2:
+      case 7:
+      var width = '380px'
+        break;
+      case 3:
+      case 8:
+      var width = '260px'
+        break;
+      case 4:
+      case 9:
+        var width = '140px'
+        break;
     }
-    // 下段追加のhtml作成
-    function create_input_area(num) {
-      var html = `<div class="add-image__box">
-                    <ul class="add-image__box__previews">
-                      <!-- / プレビュー用のビューを差し込む -->
-                    </ul>
-                    <label class="add-image__box__label" id="input_${num}" for="display_item_images_attributes_${num}_image">
-                      <div class="image__box__input-area">
-                        <input class="add-image__box__input-area__tag" type="file" name="display_item[images_attributes][${num}][image]" id="display_item_images_attributes_${num}_image">
-                        <p class="image__box__input-area__tips">ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート</p>
-                      </div>
-                    </label>
-                  </div>`;
-      return html;
+    return width;
+  }
+
+  function create_input_area(id, display, active) {
+    if (active == true) {
+    var input_area = `<label style=${display} class="image__box__label active-display" id="${id}" for="display_item_images_attributes_${id}_image">
+                        <div class="image__box__input-area">
+                          <input class="image__box__input-area__tag" type="file" name="display_item[images_attributes][${id}][image]" id="display_item_images_attributes_${id}_image">
+                          <p class="image__box__input-area__tips">ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート</p>
+                        </div>
+                      </label>`
+    } else {
+    var input_area = `<label style=${display} class="image__box__label" id="${id}" for="display_item_images_attributes_${id}_image">
+                        <div class="image__box__input-area">
+                          <input class="image__box__input-area__tag" type="file" name="display_item[images_attributes][${id}][image]" id="display_item_images_attributes_${id}_image">
+                          <p class="image__box__input-area__tips">ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート</p>
+                        </div>
+                      </label>`
     }
+    return input_area;
+  }
 
+  $(document).on('change', '.image__box__input-area__tag', function(e) {
+    // label要素の取得
+    var label = $(this).parent().parent()
+    // 入力したインプットエリアを消す
+    label.css('display', 'none');
 
-    $(document).on('change', '.image__box__input-area__tag', function(e) {
-      // 同名クラス名を取得
-      var obj = document.querySelectorAll(".image__box__label");
-      var num = obj.length;
+    // プレビュー表示
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      // list作成、追加
+      var list = create_list(e.target.result, label.attr('id'));
+      // 挿入位置の指定
+      var input_areas = document.getElementsByClassName('image__box__label');
+      var now_id = $(input_areas[0]).attr('id');
+      $('#' + now_id).before(list);  
+    }
+    reader.readAsDataURL(e.target.files[0]);
 
-      // 入力済みのinputを非表示に
-      var name = "input_" + String(num-1);
-      $('#' + name).css('display','none');
+    // 次のlabelを表示し、widthを決定
+    var width = create_width();
 
-      if (num < 5) {
-      // inputのhtml作成
-      var html = create_input_html(num);
-      $('.image__box').append(html);
-      }
+    // 次のインプットエリアを表示
+    var next_label_id = Number(label.attr('id')) + 1;
+    $('#' + next_label_id).css({'display':'', 'width': width}).addClass("active-display");
 
-      // プレビュー表示用の処理
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        //// listのhtml作成
-        var list = create_preview_list(e.target.result);
-        $('.image__box__previews').append(list);
-      }
-      reader.readAsDataURL(e.target.files[0]);
+  });
 
-      // 5個目のインプットエリアを非表示に
-      if (num == 5) {
-        $("#input_5").css('display','none');
-        var add_input_area = create_input_area(5);
-        $('.image').append(add_input_area);
-      }
+  $(document).on('click', '.delete-preview', function() {
+    // previewの本体要素を取得
+    var preview = $(this).parent().parent()
+    // previewの削除
+    preview.remove();
 
-    })
+    // ラベルを消すためのID取得
+    var preview_id = preview.attr('id').replace('preview_','');
+    // 一致するラベルを削除
+    $('#' + preview_id).remove();
 
+    //末尾に新しいインプットエリアを追加
+    var labels = document.getElementsByClassName('image__box__label');
+    var new_label_id = Number($(labels[labels.length - 1]).attr('id')) + 1;
 
-    $(document).on('change', '.add-image__box__input-area__tag', function(e) {
-      // 同名クラス名を取得
-      var obj = document.querySelectorAll(".add-image__box__label");
-      var num = obj.length;
+    var lists = document.getElementsByClassName('image__box__preview');
+    if (lists.length == 9) {
+      var active = true;
+      var input_area = create_input_area(new_label_id, 'width:140px', active);
+    } else {
+      var active = false;
+      var input_area = create_input_area(new_label_id, "display:none;", active);
+    }
+    $('.image__box').append(input_area);
 
-      // 入力済みのinputを非表示に
-      var name = "input_" + String(num+4);
-      $('#' + name).css('display','none');
+    // active-displayのサイズ調整
+    var width = create_width_remove();
+    $('.active-display').css('width', width);
 
-      if (num < 5) {
-      // inputのhtml作成
-      var html = create_input_html_add(num+5);
-      $('.add-image__box').append(html);
-      }
-
-      // プレビュー表示用の処理
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        //// listのhtml作成
-        var list = create_preview_list(e.target.result);
-        $('.add-image__box__previews').append(list);
-      }
-      reader.readAsDataURL(e.target.files[0]);
-
-      // 5個目のインプットエリアを非表示に
-      if (num == 5) {
-        $("#input_5").css('display','none');
-      }
-
-    })
+  })
 });
