@@ -70,13 +70,22 @@ $(function() {
     return width;
   }
 
-  function create_input_area(id, display) {
+  function create_input_area(id, display, active) {
+    if (active == true) {
+    var input_area = `<label style=${display} class="image__box__label active-display" id="${id}" for="display_item_images_attributes_${id}_image">
+                        <div class="image__box__input-area">
+                          <input class="image__box__input-area__tag" type="file" name="display_item[images_attributes][${id}][image]" id="display_item_images_attributes_${id}_image">
+                          <p class="image__box__input-area__tips">ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート</p>
+                        </div>
+                      </label>`
+    } else {
     var input_area = `<label style=${display} class="image__box__label" id="${id}" for="display_item_images_attributes_${id}_image">
                         <div class="image__box__input-area">
                           <input class="image__box__input-area__tag" type="file" name="display_item[images_attributes][${id}][image]" id="display_item_images_attributes_${id}_image">
                           <p class="image__box__input-area__tips">ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート</p>
                         </div>
                       </label>`
+    }
     return input_area;
   }
 
@@ -124,9 +133,11 @@ $(function() {
 
     var lists = document.getElementsByClassName('image__box__preview');
     if (lists.length == 9) {
-      var input_area = create_input_area(new_label_id, 'width:140px');
+      var active = true;
+      var input_area = create_input_area(new_label_id, 'width:140px', active);
     } else {
-      var input_area = create_input_area(new_label_id, "display:none;");
+      var active = false;
+      var input_area = create_input_area(new_label_id, "display:none;", active);
     }
     $('.image__box').append(input_area);
 
