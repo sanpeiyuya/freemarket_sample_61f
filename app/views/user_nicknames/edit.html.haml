@@ -15,7 +15,7 @@
       .chapter-head
         プロフィール
       .form
-        = form_for @profile do |f|
+        = form_for @user, url: user_nickname_path  do |f|
           .form__upper
             .form__upper__image
               = image_tag "member_photo_noimage_thumb.png",size: "60x60",alt:"no-image"
