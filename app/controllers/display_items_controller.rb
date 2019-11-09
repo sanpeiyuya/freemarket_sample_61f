@@ -56,12 +56,16 @@ class DisplayItemsController < ApplicationController
 
   private
   def display_item_params
-    binding.pry
-    # brand_idが名前で入っているため、idに変換
+    # brand_idが名前で入っているためidに変換、見つからない時はnukkを入れる
     if Brand.find_by(name: params[:display_item][:brand_id])
       params[:display_item][:brand_id] = Brand.find_by(name: params[:display_item][:brand_id]).id
     else
       params[:display_item][:brand_id] = nil
+    end
+    # sizeがなければ「サイズなし」を入れておく
+    size_none = Size.find_by(size: "サイズなし")
+    if params[:display_item][:size_id] == nil
+      params[:display_item][:size_id] = size_none.id
     end
     params.require(:display_item).permit(:user_id, :name, :description, :category_id, :size_id, :brand_id, :condition_id, :delivery_fee_burden_id, :delivery_method_id, :prefecture_id, :delivery_by_day_id, :price, images_attributes: [:image])
   end
