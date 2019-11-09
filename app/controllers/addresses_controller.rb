@@ -1,15 +1,15 @@
 class AddressesController < ApplicationController
   
   def edit
-    @profile = UserProfile.find_by(user_id:current_user.id)
     @address = current_user.address
-    
   end
 
   def update
-    Address.find(params[:id]).update(address_params)
     @address = current_user.address
     
+    if @address.update(address_params)
+      redirect_to mypages_path
+    end    
   end
 
   private
