@@ -28,6 +28,7 @@ class DisplayItemsController < ApplicationController
     if @display_item.save
       redirect_to root_path
     else
+      redirect_to new_display_item_path
     end
   end
 
