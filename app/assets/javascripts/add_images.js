@@ -43,6 +43,33 @@ $(function() {
     return width;
   }
 
+  function create_width_remove() {
+    var lists = document.getElementsByClassName('image__box__preview');
+    switch(lists.length) {
+      case 0:
+      case 5:
+        var width = '620px'
+        break;
+      case 1:
+      case 6:
+        var width = '500px'
+        break;
+      case 2:
+      case 7:
+      var width = '380px'
+        break;
+      case 3:
+      case 8:
+      var width = '260px'
+        break;
+      case 4:
+      case 9:
+        var width = '140px'
+        break;
+    }
+    return width;
+  }
+
   function create_input_area(id, display) {
     var input_area = `<label style=${display} class="image__box__label" id="${id}" for="display_item_images_attributes_${id}_image">
                         <div class="image__box__input-area">
@@ -76,7 +103,7 @@ $(function() {
 
     // 次のインプットエリアを表示
     var next_label_id = Number(label.attr('id')) + 1;
-    $('#' + next_label_id).css({'display':'', 'width': width});
+    $('#' + next_label_id).css({'display':'', 'width': width}).addClass("active-display");
 
   });
 
@@ -102,6 +129,10 @@ $(function() {
       var input_area = create_input_area(new_label_id, "display:none;");
     }
     $('.image__box').append(input_area);
+
+    // active-displayのサイズ調整
+    var width = create_width_remove();
+    $('.active-display').css('width', width);
 
   })
 });
