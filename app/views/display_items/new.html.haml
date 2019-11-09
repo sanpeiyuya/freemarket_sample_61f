@@ -29,12 +29,12 @@
                 - if num == 0 
                   = i.label :image, class: "image__box__label", id: "#{num}" do
                     .image__box__input-area
-                      = i.file_field :image, class: "image__box__input-area__tag"
+                      = i.file_field :image, accept: "image/*", class: "image__box__input-area__tag"
                       %p.image__box__input-area__tips ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート
                 - else
                   = i.label :image, style: "display: none;", class: "image__box__label", id: "#{num}" do
                     .image__box__input-area
-                      = i.file_field :image, class: "image__box__input-area__tag"
+                      = i.file_field :image, accept: "image/*", class: "image__box__input-area__tag"
                       %p.image__box__input-area__tips ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート
 
 
