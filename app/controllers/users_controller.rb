@@ -1,16 +1,13 @@
 class UsersController < ApplicationController
   def index
+    @user = User.new
   end
   
   def new_info
+    @user = User.new
+    @user.build_user_profile
   end
 
-  def new
-  end
-
-  def new_phone
-    @users = User.new
-  end
 
   def new_address
     @users = User.new
@@ -24,6 +21,17 @@ class UsersController < ApplicationController
 
   def complete
     @users = User.new
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(
+      :email,
+      :password,
+      :password_confirmation,
+      :phone,
+      user_profile_attributes:[:nickname, :family_name, :given_name, :family_name_kana, :given_name_kana, :birth_year, :birth_month, :birth_day]
+    )
   end
 
 
