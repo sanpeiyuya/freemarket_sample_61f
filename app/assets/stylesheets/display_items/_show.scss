@@ -171,6 +171,7 @@
   }
 }
 
+
 .message {
   width: 700px;
   margin: 8px auto;
@@ -478,6 +479,53 @@
   }
 }
 
+// 自分が出品した商品に飛んだ時に出現する編集・削除のボックス
+// 条件分岐で出現
+.item-change {
+  margin: 24px auto;
+  background: #fff;
+  padding: 8px 16px 8px 16px;
+  width: 700px;
+  &__edit {
+    margin: 16px 0 16px 0;
+    background: #ea352d;
+    border: 1px solid #ea352d;
+    color: #fff;
+    display: block;
+    line-height: 48px;
+    font-size: 14px;
+    transition: all ease-out .3s;
+    text-align: center;
+  }
+  & p {
+    font-size: 16px;
+    text-align: center;
+  }
+  &__stop {
+    margin: 16px 0 16px 0;
+    background: #aaa;
+    border: 1px solid #aaa;
+    color: #fff;
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    transition: all ease-out .3s;
+    text-align: center;
+  }
+  &__delete {
+    margin: 16px 0 16px 0;
+    background: #aaa;
+    border: 1px solid #aaa;
+    color: #fff;
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    transition: all ease-out .3s;
+    text-align: center;
+  }
+}
 
 
 

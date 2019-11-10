@@ -5,6 +5,7 @@ class MypagesController < ApplicationController
   end
 
   def display_items
+    @display_item = DisplayItem.all
   end
 
   def trading_items
