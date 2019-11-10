@@ -28,7 +28,7 @@
         .exhibit-item__tab-content
           %ul.exhibit-item__tab-content__lists
             %li
-              = link_to "#", class: "exhibit-item__tab-content__lists__link" do
+              = link_to display_item_path(@display_item.ids), class: "exhibit-item__tab-content__lists__link" do
                 %figure
                   = image_tag "1.jpg", size: "48x48", class: "exhibit-item__tab-content__lists__img"
                 .exhibit-item__tab-content__lists__text
