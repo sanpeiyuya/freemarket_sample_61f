@@ -1,0 +1,2 @@
+class TradingItem < ApplicationRecord
+end

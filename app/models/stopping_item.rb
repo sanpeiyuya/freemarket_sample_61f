@@ -1,0 +1,2 @@
+class StoppingItem < ApplicationRecord
+end
