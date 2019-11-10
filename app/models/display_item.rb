@@ -6,7 +6,7 @@ class DisplayItem < ApplicationRecord
   validates :description,   presence: true
   validates :description,   length: { in: 1..1000 }
   validates :category_id,   presence: true
-  validates :size_id,       presence: true
+  validates :size_id,       presence: true, if: :category_has_size?
   validates :condition_id,  presence: true
   validates :delivery_fee_burden_id,  presence: true
   validates :delivery_method_id,  presence: true
@@ -30,6 +30,10 @@ class DisplayItem < ApplicationRecord
   has_many :comments, dependent: :delete_all
 
   accepts_nested_attributes_for :images
+
+  def category_has_size?
+    Category.find(category_id).size_id != nil
+  end
 
   def previous
     DisplayItem.where("id < ?", self.id).order("id DESC").first

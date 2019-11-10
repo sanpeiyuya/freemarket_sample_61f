@@ -36,9 +36,9 @@
                     .image__box__input-area
                       = i.file_field :image, accept: "image/*", class: "image__box__input-area__tag"
                       %p.image__box__input-area__tips ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート
-          %ur.has-error-area.error-text-image
-            %li.has-error-area__text
-              画像がありません
+          -# %ur.has-error-area.error-text-image
+          -#   %li.has-error-area__text
+          -#     画像がありません
 
 
         -# 商品名と商品説明フォーム
@@ -141,7 +141,7 @@
                   .content__form__list-A__box
                     ¥
                     .content__form__list-A__box__width
-                      = f.number_field(:price, min: 300, max: 999999, placeholder: "例）300", class: "exhibit-price")
+                      = f.number_field(:price, min: 300, max: 9999999, placeholder: "例）300", class: "exhibit-price")
 
               %li.content__form__list-B.clearfix
                 .content__form__list-B__left

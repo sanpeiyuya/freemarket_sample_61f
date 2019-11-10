@@ -61,11 +61,6 @@ class DisplayItemsController < ApplicationController
     else
       params[:display_item][:brand_id] = nil
     end
-    # sizeがなければ「サイズなし」を入れておく
-    size_none = Size.find_by(size: "サイズなし")
-    if params[:display_item][:size_id] == nil
-      params[:display_item][:size_id] = size_none.id
-    end
     params.require(:display_item).permit(:user_id, :name, :description, :category_id, :size_id, :brand_id, :condition_id, :delivery_fee_burden_id, :delivery_method_id, :prefecture_id, :delivery_by_day_id, :price, images_attributes: [:image])
   end
 
