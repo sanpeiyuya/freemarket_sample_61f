@@ -51,7 +51,9 @@ class DisplayItemsController < ApplicationController
 
   def destroy
     @display_item = DisplayItem.find(params[:id])
-    @display_item.destroy
+    if @display_item.destroy
+      redirect_to display_items_mypages_path
+    end
   end
 
   def buy
