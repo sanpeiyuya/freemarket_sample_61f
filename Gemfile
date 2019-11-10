@@ -74,3 +74,4 @@ gem "font-awesome-rails"
 gem 'mini_magick'
 gem 'devise-i18n'
 gem 'gretel'
+gem 'rails-i18n'

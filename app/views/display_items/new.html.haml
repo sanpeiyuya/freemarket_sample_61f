@@ -8,6 +8,14 @@
     .exhibit__main__box
       %h2.exhibit__main__box__title
         商品の情報を入力
+      - if @display_item.errors.any?
+        %ur.has-error-area
+          %li.has-error-area__text
+            = "入力した内容にエラーが#{@display_item.errors.count}件あります"
+          - @display_item.errors.full_messages.each do |message|
+            %li.has-error-area__text
+              = message
+
 
       = form_for @display_item do |f|
         -# user_idを取得
@@ -29,12 +37,12 @@
                 - if num == 0 
                   = i.label :image, class: "image__box__label", id: "#{num}" do
                     .image__box__input-area
-                      = i.file_field :image, class: "image__box__input-area__tag"
+                      = i.file_field :image, accept: "image/*", class: "image__box__input-area__tag"
                       %p.image__box__input-area__tips ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート
                 - else
                   = i.label :image, style: "display: none;", class: "image__box__label", id: "#{num}" do
                     .image__box__input-area
-                      = i.file_field :image, class: "image__box__input-area__tag"
+                      = i.file_field :image, accept: "image/*", class: "image__box__input-area__tag"
                       %p.image__box__input-area__tips ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート
 
 
@@ -69,18 +77,10 @@
               .content__form__TopEle__input
                 %span{class: "fa fa-chevron-down arrow-icon"}
                 = f.collection_select(:category_id, @categories, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
-            -# サイズを下にappendするdivタグ
+            -# このクラスの下にサイズを入れる
             .content__form__Ele.select_size
             -# -# ブランド
             .content__form__Ele.select_brand
-              -# = f.label :brand_id do
-              -#   ブランド
-              -#   %span.any-icon
-              -#     任意
-              -# .content__form__Ele__input
-              -#   = f.text_field(:brand_id, class: "exhibit-select", autocomplete: "off")
-              -#   .brand_search_result
-              -#     %ul.brand_search_result__box
             -# 商品の状態
             .content__form__Ele
               = f.label :condition_id do
@@ -146,7 +146,7 @@
                   .content__form__list-A__box
                     ¥
                     .content__form__list-A__box__width
-                      = f.number_field(:price, min: 300, max: 999999, placeholder: "例）300", class: "exhibit-price")
+                      = f.number_field(:price, min: 300, max: 9999999, placeholder: "例）300", class: "exhibit-price")
 
               %li.content__form__list-B.clearfix
                 .content__form__list-B__left
@@ -179,8 +179,7 @@
                 加盟店規約
               に同意したことになります
 
-
-          = f.submit({value: "出品する", class: "submit-btn"})
+          = f.submit({value: "出品する", class: "exhibit-submit-btn"})
           = link_to root_path, class: "return-btn" do
             もどる
 
