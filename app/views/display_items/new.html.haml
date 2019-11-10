@@ -36,6 +36,9 @@
                     .image__box__input-area
                       = i.file_field :image, accept: "image/*", class: "image__box__input-area__tag"
                       %p.image__box__input-area__tips ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート
+          %ur.has-error-area.error-text-image
+            %li.has-error-area__text
+              画像がありません
 
 
         -# 商品名と商品説明フォーム
