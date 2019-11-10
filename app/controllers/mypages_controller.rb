@@ -5,7 +5,7 @@ class MypagesController < ApplicationController
   end
 
   def display_items
-    @display_item = DisplayItem.all
+    @display_items = DisplayItem.where(user_id: current_user.id)
   end
 
   def trading_items
