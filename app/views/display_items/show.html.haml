@@ -10,9 +10,10 @@
   .item__content.clearfix
     // 売切アイコン
     .item__content__photo
-      .item__content__photo__soldout-box
-      .item__content__photo__soldout-text
-        SOLD
+      - if @display_item.trading_item
+        .item__content__photo__soldout-box
+        .item__content__photo__soldout-text
+          SOLD
       // 本体
       %ul.item__content__photo__slider
         -# 画像の個数分だけ描画
@@ -128,19 +129,24 @@
       = "¥" + @display_item.price.to_s(:delimited)
     %span.item__fee__tax (税込)
     %span.item__fee__option 送料込み
-
-  // 自分が出品していない商品の場合は表示しない
-  - if @display_item.user_id != current_user.id
+  // 既に買われていないかチェック
+  - if @display_item.trading_item
+    // 他人が出品した商品で表示する
+    - if @display_item.user_id != current_user.id
+      .item__btn
+        %span.item__btn__impossible
+          売り切れました
+  - else
     .item__btn
-      - if @display_item
-        = link_to buy_display_item_path(@display_item.id), class: "item__btn__possible" do
-          購入画面に進む
+      = link_to buy_display_item_path(@display_item.id), class: "item__btn__possible" do
+        購入画面に進む
+
 
   .item__description
     %p.item__description__text
       = @display_item.description
 
-  // 自分が出品していない商品の場合は表示しない
+  // 他人が出品した商品で表示する
   - if @display_item.user_id != current_user.id
     .item__footer.clearfix
       .item__footer__left
@@ -161,14 +167,15 @@
         %span.item__footer__right__safe__text
           あんしん・あんぜんへの取り組み
 
-.item-change
-  = link_to mypages_path, class: "item-change__edit" do
-    商品の編集
-  %p or
-  = link_to mypages_path, class: "item-change__stop" do
-    出品を一旦停止する
-  = link_to display_item_path(@display_item.id), method: :delete, data: { confirm: '削除しますか？' }, class: "item-change__delete" do
-    この商品を削除する
+- if @display_item == current_user.id
+  .item-change
+    = link_to mypages_path, class: "item-change__edit" do
+      商品の編集
+    %p or
+    = link_to mypages_path, class: "item-change__stop" do
+      出品を一旦停止する
+    = link_to display_item_path(@display_item.id), method: :delete, data: { confirm: '削除しますか？' }, class: "item-change__delete" do
+      この商品を削除する
 
 .message
   .message__content
@@ -180,14 +187,16 @@
       = form_for [@display_item, @comment] do |f|
         %p.message__content__form__notes
           相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        -# user_idを取得
+        -# user_idとdisplay_item_id取得
         - if user_signed_in?
-          .user
-            = f.hidden_field :user_id, value: current_user.id
-          .dispaly_item
-            = f.hidden_field :display_item_id, value: @display_item.id
-        = f.text_area :comment, class: "message__content__form__text-field"
-        = f.submit "コメントする", class: "message__content__form__submit"
+          = f.hidden_field :user_id, value: current_user.id
+          = f.hidden_field :display_item_id, value: @display_item.id
+        - if @display_item.trading_item
+          = f.text_area :comment, class: "message__content__form__text-field", disabled: true
+          = f.submit "売り切れのためコメントできません", class: "message__content__form__submit-impossible", disabled: true
+        - else
+          = f.text_area :comment, class: "message__content__form__text-field"
+          = f.submit "コメントする", class: "message__content__form__submit"
 
 %ul.navi-link.clearfix
   - if @display_item.previous.present?
@@ -228,7 +237,7 @@
       .other-items__top-box
         %h2.other-items__name
           = link_to "a", class: "other-items__name__link" do
-            = @display_item.user.email + "さんのその他の出品"
+            = @display_item.user.nickname + "さんのその他の出品"
         .other-items__box.clearfix
           = render partial: "./shared/display_items", locals: {items: @mine_items}
 

@@ -45,15 +45,18 @@ Rails.application.routes.draw do
   # 住所の編集
   resources :addresses,only: [:edit, :update]
 
-  # 商品系のルーティング
+  # 出品中-商品のルーティング
   resources :display_items do
     member do
-      get   :buy #購入確認画面
-      post  :pay #購入処理
+      get :buy #購入画面
     end
     # コメントのルーティング(display_itemsとネスト)
     resources :comments, only: [:create, :destroy]
   end
+  # 取引中-商品のルーティング
+  resources :trading_items, only: [:create]
+
+
   # カテゴリのルーティング
   resources :categories, only: [:index] do
     collection do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191110085602) do
+ActiveRecord::Schema.define(version: 20191110110743) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -78,11 +78,11 @@ ActiveRecord::Schema.define(version: 20191110085602) do
 
   create_table "finished_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "display_item_id"
-    t.integer  "buyer_id"
+    t.integer  "user_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["buyer_id"], name: "index_finished_items_on_buyer_id", using: :btree
     t.index ["display_item_id"], name: "index_finished_items_on_display_item_id", using: :btree
+    t.index ["user_id"], name: "index_finished_items_on_user_id", using: :btree
   end
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -110,11 +110,11 @@ ActiveRecord::Schema.define(version: 20191110085602) do
 
   create_table "trading_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "display_item_id"
-    t.integer  "buyer_id"
+    t.integer  "user_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["buyer_id"], name: "index_trading_items_on_buyer_id", using: :btree
     t.index ["display_item_id"], name: "index_trading_items_on_display_item_id", using: :btree
+    t.index ["user_id"], name: "index_trading_items_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -150,9 +150,9 @@ ActiveRecord::Schema.define(version: 20191110085602) do
   add_foreign_key "display_items", "sizes"
   add_foreign_key "display_items", "users"
   add_foreign_key "finished_items", "display_items"
-  add_foreign_key "finished_items", "users", column: "buyer_id"
+  add_foreign_key "finished_items", "users"
   add_foreign_key "images", "display_items"
   add_foreign_key "stopping_items", "display_items"
   add_foreign_key "trading_items", "display_items"
-  add_foreign_key "trading_items", "users", column: "buyer_id"
+  add_foreign_key "trading_items", "users"
 end

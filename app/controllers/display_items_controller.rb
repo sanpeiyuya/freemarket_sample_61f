@@ -55,11 +55,8 @@ class DisplayItemsController < ApplicationController
   end
 
   def buy
-    
-  end
-
-  def pay
-    
+    @display_item = DisplayItem.find(params[:id])
+    @trading_item = TradingItem.new
   end
 
   private
