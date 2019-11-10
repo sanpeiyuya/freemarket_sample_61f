@@ -9,5 +9,6 @@ class User < ApplicationRecord
 
   has_many :display_items, dependent: :delete_all
   has_many :comments, dependent: :delete_all
+  has_one :credit_card, dependent: :destroy
 
 end
