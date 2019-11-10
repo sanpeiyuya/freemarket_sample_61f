@@ -25,53 +25,16 @@
           %li
             = link_to finished_items_mypages_path, class: "exhibit-item__tab__link" do
               売却済み
-        .exhibit-item__tab-content
-          %ul.exhibit-item__tab-content__lists
-            %li
-              = link_to display_item_path(@display_item.ids), class: "exhibit-item__tab-content__lists__link" do
+      - @display_items.each do |display_item|
+        = link_to display_item_path(display_item[:id]) do
+          .exhibit-item__tab-content
+            %ul.exhibit-item__tab-content__lists
+              %li.exhibit-item__tab-content__lists__link
                 %figure
-                  = image_tag "1.jpg", size: "48x48", class: "exhibit-item__tab-content__lists__img"
+                  = image_tag display_item.images[0].image.url, size: "48x48", class: "exhibit-item__tab-content__lists__img"
                 .exhibit-item__tab-content__lists__text
                   .exhibit-item__tab-content__lists__text__name
-                    シューズ
-                  .exhibit-item__tab-content__lists__icons
-                    %span.exhibit-item__tab-content__lists__icons__clearfix
-                      =fa_icon "heart-o",class: 'exhibit-item__tab-content__lists__icons__like'
-                      %span
-                        0
-                    %span.exhibit-item__tab-content__lists__icons__clearfix
-                      =fa_icon "comment",class: 'exhibit-item__tab-content__lists__icons__comment'
-                      %span
-                        0
-                    .exhibit-item__tab-content__lists__icons__status
-                      出品中
-                    = fa_icon "angle-right", class: "exhibit-item__tab-content__lists__icons__right"
-            %li
-              = link_to "#", class: "exhibit-item__tab-content__lists__link" do
-                %figure
-                  = image_tag "2.jpg", size: "48x48", class: "exhibit-item__tab-content__lists__img"
-                .exhibit-item__tab-content__lists__text
-                  .exhibit-item__tab-content__lists__text__name
-                    トップス
-                  .exhibit-item__tab-content__lists__icons
-                    %span.exhibit-item__tab-content__lists__icons__clearfix
-                      =fa_icon "heart-o",class: 'exhibit-item__tab-content__lists__icons__like'
-                      %span
-                        0
-                    %span.exhibit-item__tab-content__lists__icons__clearfix
-                      =fa_icon "comment",class: 'exhibit-item__tab-content__lists__icons__comment'
-                      %span
-                        0
-                    .exhibit-item__tab-content__lists__icons__status
-                      出品中
-                    = fa_icon "angle-right", class: "exhibit-item__tab-content__lists__icons__right"
-            %li
-              = link_to "#", class: "exhibit-item__tab-content__lists__link" do
-                %figure
-                  = image_tag "3.jpg", size: "48x48", class: "exhibit-item__tab-content__lists__img"
-                .exhibit-item__tab-content__lists__text
-                  .exhibit-item__tab-content__lists__text__name
-                    ブーツ
+                    = display_item.name
                   .exhibit-item__tab-content__lists__icons
                     %span.exhibit-item__tab-content__lists__icons__clearfix
                       =fa_icon "heart-o",class: 'exhibit-item__tab-content__lists__icons__like'
