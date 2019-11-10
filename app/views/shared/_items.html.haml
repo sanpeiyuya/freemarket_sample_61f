@@ -1,6 +1,10 @@
 - @display_items.each do |display_item|
   = link_to display_item_path(display_item[:id]) do
     .main-content__items__item__content__box__2
+      // 売り切れアイコン
+      .main-content__items__item__content__box__2__soldout-box
+      .main-content__items__item__content__box__2__soldout-text
+        SOLD
       .main-content__items__item__content__box__2__frame
         = image_tag display_item.images[0].image.url, class: "main-content__items__item__content__box__2__frame__image"
         // 上記のパスでとりあえず画像が出せます！
