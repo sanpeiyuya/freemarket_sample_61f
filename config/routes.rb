@@ -39,7 +39,11 @@ Rails.application.routes.draw do
   # 会員情報の編集
   resources :user_profiles, only: [:edit, :update]
   # クレジットカードの編集
-  resources :credit_cards
+  resources :credit_cards do
+    collection do
+      post 'purchase'
+    end
+  end
   # 住所の編集
   resources :addresses,only: [:edit, :update]
 
