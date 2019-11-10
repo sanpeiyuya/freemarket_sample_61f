@@ -1,0 +1,29 @@
+= render 'shared/header'
+
+- breadcrumb :user_profile
+%nav.bread-crumbs
+  %ul
+    %li
+      = breadcrumbs separator: " #{content_tag(:i, '', class: 'fa fa-angle-right')} "
+
+.mypage-clearfix
+  .mypage
+
+    = render 'shared/side-bar'
+
+    .l-contenth
+      .chapter-head
+        プロフィール
+      .form
+        = form_for @user, url: user_nickname_path  do |f|
+          .form__upper
+            .form__upper__image
+              = image_tag "member_photo_noimage_thumb.png",size: "60x60",alt:"no-image"
+            = f.text_field :nickname, class:'input-default',placeholder:'例)AYA☆セール中'
+          .form__lower
+            = f.text_area :introduction,class:'form__lower__textarea-dault',placeholder:'例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪'
+            = f.submit '変更する',class:'form__lower__submit btn-default'
+
+= render 'shared/sell-icon'
+= render 'shared/aside'
+= render 'shared/footer'
