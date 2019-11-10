@@ -29,6 +29,8 @@ class DisplayItem < ApplicationRecord
   has_many :images, dependent: :delete_all
   has_many :comments, dependent: :delete_all
 
+  has_one :trading_item, dependent: :destroy
+
   accepts_nested_attributes_for :images
 
   def category_has_size?

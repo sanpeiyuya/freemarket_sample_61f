@@ -6,6 +6,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
   // スライドの箱
   &__slider {
     height: 300px;
@@ -20,6 +22,27 @@
     display: flex;
     flex-wrap:wrap;
     background: #f5f5f5;
+  }
+  &__soldout-box {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 125px 125px 0 0;
+    border-color: #ea352d transparent transparent transparent;
+  }
+  &__soldout-text {
+    z-index: 2;
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    transform: rotate(-45deg);
   }
 }
 
