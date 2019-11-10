@@ -8,6 +8,14 @@
     .exhibit__main__box
       %h2.exhibit__main__box__title
         商品の情報を入力
+      - if @display_item.errors.any?
+        %ur.has-error-area
+          %li.has-error-area__text
+            = "入力した内容にエラーが#{@display_item.errors.count}件あります"
+          - @display_item.errors.full_messages.each do |message|
+            %li.has-error-area__text
+              = message
+
 
       = form_for @display_item do |f|
         -# user_idを取得
@@ -36,9 +44,6 @@
                     .image__box__input-area
                       = i.file_field :image, accept: "image/*", class: "image__box__input-area__tag"
                       %p.image__box__input-area__tips ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート
-          -# %ur.has-error-area.error-text-image
-          -#   %li.has-error-area__text
-          -#     画像がありません
 
 
         -# 商品名と商品説明フォーム
@@ -173,7 +178,6 @@
               = link_to "#", class: "content__note__link" do
                 加盟店規約
               に同意したことになります
-
 
           = f.submit({value: "出品する", class: "exhibit-submit-btn"})
           = link_to root_path, class: "return-btn" do

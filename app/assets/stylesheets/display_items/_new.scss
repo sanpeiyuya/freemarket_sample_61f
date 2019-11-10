@@ -329,8 +329,10 @@
   color: #ea352d;
   line-height: 1.5;
   font-size: 14px;
+  font-weight: bold;
   list-style: none;
   &__text {
+    padding: 0 40px;
     margin: 8px 0 0;
   }
 }

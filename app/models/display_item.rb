@@ -32,7 +32,9 @@ class DisplayItem < ApplicationRecord
   accepts_nested_attributes_for :images
 
   def category_has_size?
-    Category.find(category_id).size_id != nil
+    if category_id
+      Category.find(category_id).size_id != nil
+    end
   end
 
   def previous

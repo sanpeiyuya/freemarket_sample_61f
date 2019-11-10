@@ -12,6 +12,8 @@ module FreemarketSample61f
       g.stylesheets false
       g.javascripts false
       g.helper false
+      
+      config.i18n.default_locale = :ja
     end
   end
 end
