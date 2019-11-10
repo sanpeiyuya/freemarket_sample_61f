@@ -58,6 +58,10 @@ class DisplayItemsController < ApplicationController
     
   end
 
+  def pay
+    
+  end
+
   private
   def display_item_params
     # brand_idが名前で入っているためidに変換、見つからない時はnullを入れる
