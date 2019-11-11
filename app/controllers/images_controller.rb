@@ -1,6 +1,8 @@
 class ImagesController < ApplicationController
 
-  def destroy
+  def edit_destroy
+    @image = Image.find(params[:image_id])
+    @image.destroy
   end
 
 end
