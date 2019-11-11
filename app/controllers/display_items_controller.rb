@@ -61,6 +61,9 @@ class DisplayItemsController < ApplicationController
     render :layout => 'display_items_show'
   end
 
+  def edit
+  end
+
   def destroy
     @display_item = DisplayItem.find(params[:id])
     if @display_item.destroy
