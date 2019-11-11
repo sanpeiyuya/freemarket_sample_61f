@@ -30,6 +30,7 @@ class DisplayItem < ApplicationRecord
   has_many :comments, dependent: :delete_all
 
   has_one :trading_item, dependent: :destroy
+  has_one :stopping_item, dependent: :destroy
 
   accepts_nested_attributes_for :images
 
