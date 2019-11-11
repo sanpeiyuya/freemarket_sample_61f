@@ -1,11 +1,10 @@
 = render 'shared/header'
+= render 'shared/flash'
 
 .item
 
-
   .item__title
     = @display_item.name
-
 
   .item__content.clearfix
     // 売切アイコン
@@ -26,7 +25,6 @@
         - @display_item.images.each do |image|
           %li.thumbnail-item
             = image_tag image.image.url
-
 
 
     %table.item__content__table
