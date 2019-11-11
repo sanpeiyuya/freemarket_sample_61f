@@ -55,6 +55,8 @@ Rails.application.routes.draw do
   end
   # 取引中-商品のルーティング
   resources :trading_items, only: [:create]
+  # 出品停止中-商品のルーティング
+  resources :stopping_items, only: [:create, :destroy]
 
 
   # カテゴリのルーティング
