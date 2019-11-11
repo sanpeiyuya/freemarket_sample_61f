@@ -62,6 +62,9 @@ class DisplayItemsController < ApplicationController
   end
 
   def edit
+    @display_item = DisplayItem.find(params[:id])
+    # カテゴリ取得
+    get_select_options
   end
 
   def destroy

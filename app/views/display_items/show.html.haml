@@ -168,7 +168,7 @@
 
 - if @display_item.user_id == current_user.id
   .item-change
-    = link_to mypages_path, class: "item-change__edit" do
+    = link_to edit_display_item_path(@display_item.id), class: "item-change__edit" do
       商品の編集
     %p or
     - if @display_item.stopping_item
