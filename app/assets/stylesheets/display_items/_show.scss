@@ -531,6 +531,18 @@
     font-size: 16px;
     text-align: center;
   }
+  &__restart {
+    margin: 16px 0 16px 0;
+    background: rgb(25, 80, 170);
+    border: 1px solid rgb(25, 80, 170);
+    color: #fff;
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    transition: all ease-out .3s;
+    text-align: center;
+  }
   &__stop {
     margin: 16px 0 16px 0;
     background: #aaa;
