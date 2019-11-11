@@ -137,9 +137,10 @@
         %span.item__btn__impossible
           売り切れました
   - else
-    .item__btn
-      = link_to buy_display_item_path(@display_item.id), class: "item__btn__possible" do
-        購入画面に進む
+    - if @display_item.user_id != current_user.id
+      .item__btn
+        = link_to buy_display_item_path(@display_item.id), class: "item__btn__possible" do
+          購入画面に進む
 
 
   .item__description
@@ -167,7 +168,7 @@
         %span.item__footer__right__safe__text
           あんしん・あんぜんへの取り組み
 
-- if @display_item == current_user.id
+- if @display_item.user_id == current_user.id
   .item-change
     = link_to mypages_path, class: "item-change__edit" do
       商品の編集
@@ -197,22 +198,23 @@
         - else
           = f.text_area :comment, class: "message__content__form__text-field"
           = f.submit "コメントする", class: "message__content__form__submit"
-
-%ul.navi-link.clearfix
-  - if @display_item.previous.present?
-    %li.navi-link__prev
-      = link_to display_item_path(@display_item.previous.id), class: "navi-link__link" do
-        = fa_icon "angle-left", class: "icon icon__prev"
-        %span
-          = @display_item.previous.name
-  - if @display_item.next.present?
-    %li.navi-link__next
-      = link_to display_item_path(@display_item.next.id), class: "navi-link__link" do
-        %span
-          = @display_item.next.name
-        = fa_icon "angle-right", class: "icon icon__next"
+// 他人が出品した商品で表示する
+- if @display_item.user_id != current_user.id
+  %ul.navi-link.clearfix
+    - if @display_item.previous.present?
+      %li.navi-link__prev
+        = link_to display_item_path(@display_item.previous.id), class: "navi-link__link" do
+          = fa_icon "angle-left", class: "icon icon__prev"
+          %span
+            = @display_item.previous.name
+    - if @display_item.next.present?
+      %li.navi-link__next
+        = link_to display_item_path(@display_item.next.id), class: "navi-link__link" do
+          %span
+            = @display_item.next.name
+          = fa_icon "angle-right", class: "icon icon__next"
         
-// 自分が出品していない商品の場合は表示しない
+// 他人が出品した商品で表示する
 - if @display_item.user_id != current_user.id
   .media
     .media_text
@@ -230,7 +232,7 @@
           %span.media__box__ele__box.media-pinterest
             = fa_icon "pinterest ", class: "media-icon"
             
-// 自分が出品していない商品の場合は表示しない
+// 他人が出品した商品で表示する
 - if @display_item.user_id != current_user.id
   .other-items.clearfix
     - unless @mine_items.length == 0
@@ -251,16 +253,17 @@
               = @category_lv1.name + "（#{@category_lv2.name}）その他の商品"
         .other-items__box.clearfix
           = render partial: "./shared/display_items", locals: {items: @same_category_items}
-
-  .navi
-    %ul.navi__box
-      %li.navi__box__list
-        = link_to root_path, class: "navi__box__list__link" do
-          メルカリ
-        = fa_icon "chevron-right"
-      %li.navi__box__list
-        %span.navi__box__list__link-right
-          = @display_item.name
+  // 他人が出品した商品で表示する
+  - if @display_item.user_id != current_user.id
+    .navi
+      %ul.navi__box
+        %li.navi__box__list
+          = link_to root_path, class: "navi__box__list__link" do
+            メルカリ
+          = fa_icon "chevron-right"
+        %li.navi__box__list
+          %span.navi__box__list__link-right
+            = @display_item.name
 
 = render 'shared/aside'
 = render 'shared/footer'
