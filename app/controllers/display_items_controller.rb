@@ -3,7 +3,19 @@ class DisplayItemsController < ApplicationController
   require "date"
 
   def index
-    @display_items = DisplayItem.limit(10).order(id: "DESC")
+    @find_items = DisplayItem.order(id: "DESC")
+    @display_items = []
+
+    @find_items.each do |item|
+      if @display_items.length < 11
+        unless item.stopping_item
+          @display_items << item
+        end
+      else
+        break
+      end
+    end
+
     # カテゴリーを取得
     @categories = Category.where(ancestry: nil)
     

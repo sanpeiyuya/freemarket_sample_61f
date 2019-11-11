@@ -44,9 +44,14 @@
                       =fa_icon "comment",class: 'exhibit-item__tab-content__lists__icons__comment'
                       %span
                         0
-                    .exhibit-item__tab-content__lists__icons__status
-                      出品中
-                    = fa_icon "angle-right", class: "exhibit-item__tab-content__lists__icons__right"
+                    - if display_item.stopping_item
+                      .exhibit-item__tab-content__lists__icons__status-stopping
+                        出品停止中
+                      = fa_icon "angle-right", class: "exhibit-item__tab-content__lists__icons__right"
+                    - else
+                      .exhibit-item__tab-content__lists__icons__status-selling
+                        出品中
+                      = fa_icon "angle-right", class: "exhibit-item__tab-content__lists__icons__right"
 
 
 = render 'shared/sell-icon'
