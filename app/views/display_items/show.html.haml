@@ -173,8 +173,12 @@
     = link_to mypages_path, class: "item-change__edit" do
       商品の編集
     %p or
-    = link_to mypages_path, class: "item-change__stop" do
-      出品を一旦停止する
+    - if @display_item.stopping_item
+      = link_to stopping_item_path(@display_item.id), method: :delete, data: { confirm: '出品を再開しますか？' }, class: "item-change__restart" do
+        出品を再開する
+    - else
+      = link_to stopping_items_path(@display_item.id), method: :post, data: { confirm: '出品を停止しますか？' }, class: "item-change__stop" do
+        出品を一旦停止する
     = link_to display_item_path(@display_item.id), method: :delete, data: { confirm: '削除しますか？' }, class: "item-change__delete" do
       この商品を削除する
 
