@@ -30,7 +30,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
           redirect_to new_address_users_path
           bypass_sign_in(@user)
         else
-          redirect_to signup_index_path, notice: '初めから入れ直してください'
+          redirect_to users_path
         end
   end
 

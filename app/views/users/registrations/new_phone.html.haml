@@ -1,3 +1,5 @@
+- content_for(:body_attributes) do
+  data-turbolinks="false"
 .newphone-content
   .newphone-content__mono-header
     = link_to root_path do
@@ -28,12 +30,12 @@
     .newphone-content__mono-content__head 電話番号の確認
     .newphone-content__mono-content__space
       .newphone-content__mono-content__form
-        = form_for @user do |f|
+        = form_for @user, html: { id: :phone_form } do |f|
           .field
             = f.label :phone do
               携帯電話の番号
             %br/
-            =f.text_field :phone,placeholder: "携帯電話の番号を入力",class:'input'
+            =f.text_field :phone,placeholder: "携帯電話の番号を入力",id:'textfield',class:'validate[required,custom[phone]] text-input'
           .field
             .notice-text 本人確認のため、携帯番号のsms（ショートメッセージサービス）を利用して認証を行います。
           .next
