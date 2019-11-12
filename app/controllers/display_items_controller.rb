@@ -73,19 +73,24 @@ class DisplayItemsController < ApplicationController
       @category_lv2_id = @display_item.category.parent.id
       @category_lv3_id = @display_item.category_id
 
-      @category_lv2_groups = @display_item.category.parent.parent.children
-      @category_lv3_groups = @display_item.category.parent.children
+      @category_lv2_group = @display_item.category.parent.parent.children
+      @category_lv3_group = @display_item.category.parent.children
     else
       @category_lv1_id = @display_item.category.parent.id
       @category_lv2_id = @display_item.category_id
 
-      @category_lv2_groups = @display_item.category.parent.children
+      @category_lv2_group = @display_item.category.parent.children
+    end
+    # サイズ
+    if @display_item.size
+      @size_id = @display_item.size_id
+      @size_groups = @display_item.size.parent.children
     end
 
 
 
 
-      # 配送方法
+    # 配送方法
     if @display_item.delivery_fee_burden_id == 1
       @delivery_methods = DeliveryMethod.where(type: 3)
     else
