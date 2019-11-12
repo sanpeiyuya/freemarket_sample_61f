@@ -16,50 +16,68 @@
           .newinfo-content__mono-content__head-edit
             クレジットカード情報入力
           .newinfo-content__mono-content__space
-            = form_for @users do |f|
+            = form_tag(credit_cards_path,method: :post,name: "inputForm") do
               .field-first-edit
-                = f.label :phone do
-                  カード番号
-                  %span.required-icon
-                    必須
-                = f.text_field :phone, autofocus: true, autocomplete: "phone", placeholder: "半角数字のみ",class:'input'
+                %label  カード番号
+                %span.required-icon 必須
+                =text_field_tag "number", "",  placeholder: "半角数字のみ",class:'input',maxlength: "16", type: "text",id: "payment_card_no",name:"number"
               .field-icon-edit
                 .credit-icon
-                %img{:alt => "", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?2561606804", :width => "49"}
-                %img{:alt => "", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?2561606804", :width => "34"}
-                %img{:alt => "", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?2561606804", :width => "30"}
-                %img{:alt => "", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?2561606804", :width => "32"}/
-                %img{:alt => "", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?2561606804", :width => "21"}
-                %img{:alt => "", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?2561606804", :width => "32"}
-                %img{:alt => "", :height => "20", :src => "//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?2561606804", :width => "32"}
+                
+                  = image_tag "http://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?3466462615", size: "49x20"
+                  = image_tag "http://www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?3466462615", size: "34x20"
+                  = image_tag "http://www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?3466462615", size: "30x20"
+                  = image_tag "http://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?3466462615", size: "32x20"
+                  = image_tag "http://www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?3466462615", size: "21x20"
+                  = image_tag "http://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?3466462615", size: "32x20"
+                  = image_tag "http://www-mercari-jp.akamaized.net/assets/img/card/discover.svg?346646261", size: "32x20"
               .field-second-edit
-                = f.label :phone do
-                  有効期限
-                  %span.required-icon
-                    必須
-                  %br
+                %label 有効期限
+                %span.required-icon 必須
+                %br
                 .select-wrap-half
-                  %span{class: "fa fa-chevron-down arrow-icon-credit"}
-                  = f.select :email,options_for_select(1..12),{ prompt: "01"},{class:'credit-cards-select'}
+                  %select#card_expire_mm.credit-cards-select{name: "exp_month", type: "text"}
+                    %option{value: ""} --
+                    %option{value: "1"}01
+                    %option{value: "2"}02
+                    %option{value: "3"}03
+                    %option{value: "4"}04
+                    %option{value: "5"}05
+                    %option{value: "6"}06
+                    %option{value: "7"}07
+                    %option{value: "8"}08
+                    %option{value: "9"}09
+                    %option{value: "10"}10
+                    %option{value: "11"}11
+                    %option{value: "12"}12
+                  %i.arrow-icon-credit  
                   %span.option-text 月
-
                 .select-wrap-half
-                  %span{class: "fa fa-chevron-down arrow-icon-credit"}
-                  = f.select :email,options_for_select(20..29),{ prompt: "19"},{class:'credit-cards-select'}
+                  %select#card_expire_yy.credit-cards-select{name: "exp_year", type: "text"}
+                    %option{value: ""} --
+                    %option{value: "2019"}19
+                    %option{value: "2020"}20
+                    %option{value: "2021"}21
+                    %option{value: "2022"}22
+                    %option{value: "2023"}23
+                    %option{value: "2024"}24
+                    %option{value: "2025"}25
+                    %option{value: "2026"}26
+                    %option{value: "2027"}27
+                    %option{value: "2028"}28
+                    %option{value: "2029"}29
                   %span.option-text 年
 
               .field-second-edit
-                = f.label :phone do
-                  セキュリティコード
-                  %span.required-icon
-                    必須
-                = f.text_field :phone, autofocus: true, autocomplete: "phone", placeholder: "カード背面4桁もしくは3桁の番号",class:'input'
-              .credit-notice
-                = fa_icon "question-circle"
-                カード裏面の番号とは？
-              .credit-submit
-                = link_to complete_users_path,class:'next' do
-                  = f.submit "追加する",class:'next-btn'
+                %label.form-label セキュリティコード
+                %span.required-icon 必須
+                = text_field_tag "cvc", "", class: "input", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc_code",name:"number",type:"text"
+                #card_token
+                .credit-notice
+                  = fa_icon "question-circle"
+                  カード裏面の番号とは？
+              .field-second-edit
+                = submit_tag "追加する", id: "token_submit", class: 'next-btn'
 
 = render 'shared/sell-icon'
 = render 'shared/aside'
