@@ -15,7 +15,7 @@ $(function() {
     return html;
   }
 
-  
+
   // ページ遷移時に実行、不要なインプットエリアを削除
   $('.image__box__label').remove();
   for (  var i = 0;  i < 10;  i++  ) {
@@ -57,31 +57,29 @@ $(function() {
     })
     .done(function() {
       var delete_images = document.getElementsByClassName('delete_image_id');
-      if ( delete_images.length != 0 ) {
-        // image_idを渡す配列
-        var delete_image_ids = []
+      // image_idを渡す配列を用意
+      var delete_image_ids = []
 
-        for (  var i = 0;  i < delete_images.length;  i++  ) {
-          var id = $(delete_images[i]).attr('name');
-          delete_image_ids.push(id)
-        }
-        $.ajax({
-          type: 'delete',
-          url:  '/images/edit_destroy',
-          data: {delete_image_ids, delete_image_ids},
-          dataType: 'html'
-        })
-        .done(function(environment) {
-          if ( environment.status == 'development') {
-            location.href = 'http://localhost:3000/';
-          } else {
-            location.href = 'http://52.197.137.91/';
-          }
-        })
-        .fail(function() {
-          alert('商品の編集に失敗しました');
-        })
+      for (  var i = 0;  i < delete_images.length;  i++  ) {
+        var id = $(delete_images[i]).attr('name');
+        delete_image_ids.push(id)
       }
+      $.ajax({
+        type: 'delete',
+        url:  '/images/edit_destroy',
+        data: {delete_image_ids, delete_image_ids},
+        dataType: 'html'
+      })
+      .done(function(environment) {
+        if ( environment== '{"type":"development"}' ) {
+          location.href = 'http://localhost:3000/';
+        } else {
+          location.href = 'http://52.197.137.91/';
+        }
+      })
+      .fail(function() {
+        alert('商品の編集に失敗しました');
+      })
     })
     .fail(function() {
       alert('商品の編集に失敗しました');

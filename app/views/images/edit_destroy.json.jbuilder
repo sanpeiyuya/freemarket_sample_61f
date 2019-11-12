@@ -1,1 +1,1 @@
-json.status @environment 
+json.type @environment
