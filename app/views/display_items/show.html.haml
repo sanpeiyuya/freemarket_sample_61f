@@ -137,7 +137,7 @@
   - else
     - if @display_item.user_id != current_user.id
       .item__btn
-        = link_to buy_display_item_path(@display_item.id), class: "item__btn__possible" do
+        = link_to buy_display_item_path(@display_item.id), class: "item__btn__possible", data:{turbolinks: "false"} do
           購入画面に進む
 
 
@@ -168,16 +168,16 @@
 
 - if @display_item.user_id == current_user.id
   .item-change
-    = link_to edit_display_item_path(@display_item.id), class: "item-change__edit" do
+    = link_to edit_display_item_path(@display_item.id), class: "item-change__edit", data:{turbolinks: "false"} do
       商品の編集
     %p or
     - if @display_item.stopping_item
-      = link_to stopping_item_path(@display_item.id), method: :delete, data: { confirm: '出品を再開しますか？' }, class: "item-change__restart" do
+      = link_to stopping_item_path(@display_item.id), method: :delete, data: { confirm: '出品を再開しますか？', turbolinks: "false" }, class: "item-change__restart" do
         出品を再開する
     - else
-      = link_to stopping_items_path(@display_item.id), method: :post, data: { confirm: '出品を停止しますか？' }, class: "item-change__stop" do
+      = link_to stopping_items_path(@display_item.id), method: :post, data: { confirm: '出品を停止しますか？', turbolinks: "false" }, class: "item-change__stop" do
         出品を一旦停止する
-    = link_to display_item_path(@display_item.id), method: :delete, data: { confirm: '削除しますか？' }, class: "item-change__delete" do
+    = link_to display_item_path(@display_item.id), method: :delete, data: { confirm: '削除しますか？', turbolinks: "false" }, class: "item-change__delete" do
       この商品を削除する
 
 .message
