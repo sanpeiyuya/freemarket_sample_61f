@@ -66,6 +66,12 @@ class DisplayItemsController < ApplicationController
     @images = @display_item.images
     # カテゴリ取得
     get_select_options
+    # edit用の変数取得
+    if @display_item.delivery_fee_burden_id == 1
+      @delivery_methods = DeliveryMethod.where(type: 3)
+    else
+      @delivery_methods = DeliveryMethod.where(type: 1)
+    end
   end
 
   def update

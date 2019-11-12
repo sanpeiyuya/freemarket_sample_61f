@@ -113,6 +113,13 @@
                 = f.collection_select(:delivery_fee_burden_id, @delivery_fee_burdens, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
             -# 配送方法
             .content__form__Ele.select_delivery_method
+              = f.label :delivery_method_id do
+                配送料の負担
+                %span.required-icon
+                  必須
+              .content__form__TopEle__input
+                %span{class: "fa fa-chevron-down arrow-icon"}
+                = f.collection_select(:delivery_method_id, @delivery_methods, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
             -# 発送元の地域
             .content__form__Ele
               = f.label :prefecture_id do
