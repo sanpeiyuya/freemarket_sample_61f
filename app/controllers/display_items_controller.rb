@@ -1,9 +1,22 @@
 class DisplayItemsController < ApplicationController
+  before_action :find_display_item, only: [:show, :destroy]
 
   require "date"
 
   def index
-    @display_items = DisplayItem.limit(10).order(id: "DESC")
+    @find_items = DisplayItem.order(id: "DESC")
+    @display_items = []
+
+    @find_items.each do |item|
+      if @display_items.length < 11
+        unless item.stopping_item
+          @display_items << item
+        end
+      else
+        break
+      end
+    end
+
     # カテゴリーを取得
     @categories = Category.where(ancestry: nil)
     
@@ -32,7 +45,6 @@ class DisplayItemsController < ApplicationController
 
   def show
 
-    @display_item = DisplayItem.find(params[:id])
     @category_lv1 = @display_item.category
     @category_lv2 = @category_lv1.parent
     @category_lv3 = @category_lv2.parent if @category_lv2.parent
@@ -49,13 +61,17 @@ class DisplayItemsController < ApplicationController
     render :layout => 'display_items_show'
   end
 
+  # 商品削除機能（このコメントは後で消す）
   def destroy
-    @display_item = DisplayItem.find(params[:id])
-    @display_item.destroy
+    if @display_item.destroy
+      redirect_to display_items_mypages_path
+    end
   end
+  # 商品削除機能（このコメントは後で消す）
 
   def buy
-    
+    @display_item = DisplayItem.find(params[:id])
+    @trading_item = TradingItem.new
   end
 
   private
@@ -78,5 +94,9 @@ class DisplayItemsController < ApplicationController
     @delivery_methods = DeliveryMethod.all
     @prefectures = Prefecture.all
     @delivery_by_days = DeliveryByDay.all
+  end
+
+  def find_display_item
+    @display_item = DisplayItem.find(params[:id])
   end
 end

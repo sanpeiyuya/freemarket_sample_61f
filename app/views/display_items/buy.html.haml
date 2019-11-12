@@ -4,32 +4,36 @@
       = link_to root_path do
         = image_tag "exhibit_logo.svg"
 
-  .exhibit__main
-    .exhibit__main__box
-      %h2.exhibit__main__box__title
-        購入内容の確認
-    .content
-      .content__inner__top
-        =image_tag"靴.jpg",size:"64x64",class:'purple_bag'
-        %span.word 格安お値下げ中 COACH コーチ 
-          
-      .content__inner
-        .content__inner__price
-          %p5¥5,500
-          %span.item-shipping-fee 送料込み
+  = form_for @trading_item do |f|
+    = f.hidden_field :display_item_id, value: @display_item.id
+    = f.hidden_field :user_id, value: current_user.id
+    .exhibit__main
+      .exhibit__main__box
+        %h2.exhibit__main__box__title
+          購入内容の確認
+      .content
+        .content__inner__top
+          =image_tag"靴.jpg",size:"64x64",class:'purple_bag'
+          %span.word 格安お値下げ中 COACH コーチ 
+            
         .content__inner
-          .content__inner__point
-            ポイントはありません
-        .pay
-          .pay__payment
-            支払い金額
-          .pay__payment__right 
-            %span.price¥5,500
-        .error
-          配送先と支払い方法の入力を完了てください。
-        .content__inner
-          =link_to "#", class:'payment-btn' do
-            購入する
+          .content__inner__price
+            %p5¥5,500
+            %span.item-shipping-fee 送料込み
+          .content__inner
+            .content__inner__point
+              ポイントはありません
+          .pay
+            .pay__payment
+              支払い金額
+            .pay__payment__right 
+              %span.price¥5,500
+          .error
+            配送先と支払い方法の入力を完了てください。
+          .content__inner
+            = f.submit({value: "購入する", class: "payment-btn"})
+
+
     .content
       .content__inner
         %h3.content__inner__text

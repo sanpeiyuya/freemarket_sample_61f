@@ -1,211 +1,29 @@
-.exhibit
-  .exhibit__header
-    .exhibit__header__logo
-      = link_to root_path do
-        = image_tag "exhibit_logo.svg"
+= render 'shared/header'
 
-  .exhibit__main
-    .exhibit__main__box
-      %h2.exhibit__main__box__title
-        商品の情報を入力
+- breadcrumb :user_profile
+%nav.bread-crumbs
+  %ul
+    %li
+      = breadcrumbs separator: " #{content_tag(:i, '', class: 'fa fa-angle-right')} "
 
-      = form_for @display_item do |f|
-        -# user_idを取得
-        - if user_signed_in?
-          .user
-            = f.hidden_field :user_id, value: current_user.id
-        -# 画像投稿フォーム
-        .image
-          %h3.image__title
-            出品画像
-            %span.required-icon
-              必須
-          %p.image__tips
-            最大10枚までアップロードできます
-          .image__box
-            %ul.image__box__previews
-              // プレビュー用のビューを差し込む
-            = f.fields_for :images do |i|
-              = i.label :image, class: "image__box__label", id: "input_0" do
-                .image__box__input-area
-                  = i.file_field :image, class: "image__box__input-area__tag"
-                  %p.image__box__input-area__tips ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート
+.mypage-clearfix
+  .mypage
 
+    = render 'shared/side-bar'
 
-          -# .image__box
-          -#   %ul.add-image__box__previews
-          -#     // プレビュー用のビューを差し込む
-          -#   = f.fields_for :images do |i|
-          -#     = i.label :image, class: "add-image__box__label", id: "input_0" do
-          -#       .image__box__input-area
-          -#         = i.file_field :image, class: "image__box__input-area__tag"
-          -#         %p.image__box__input-area__tips ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート
+    .l-contenth
+      .chapter-head
+        プロフィール
+      .form
+        = form_for @user, url: user_nickname_path  do |f|
+          .form__upper
+            .form__upper__image
+              = image_tag "member_photo_noimage_thumb.png",size: "60x60",alt:"no-image"
+            = f.text_field :nickname, class:'input-default',placeholder:'例)AYA☆セール中'
+          .form__lower
+            = f.text_area :introduction,class:'form__lower__textarea-dault',placeholder:'例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪'
+            = f.submit '変更する',class:'form__lower__submit btn-default'
 
-
-
-        -# 商品名と商品説明フォーム
-        .title
-          .title__name
-            = f.label :name do
-              商品名
-              %span.required-icon
-                必須
-            .box
-              = f.text_field :name, class: "title__name__input", placeholder: "商品名（必須40文字まで）"
-          .title__description
-            = f.label :description do
-              商品の説明
-              %span.required-icon
-                必須
-            .box
-              = f.text_area :description, class: "title__description__input", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
-
-        -# 商品詳細フォーム（カテゴリ・サイズ・ブランド・コンディション）
-        .content.clearfix
-          .content__title
-            商品の詳細
-          .content__form
-            -# カテゴリ
-            .content__form__TopEle.select_category
-              = f.label :category_id do
-                カテゴリー
-                %span.required-icon
-                  必須
-              .content__form__TopEle__input
-                %span{class: "fa fa-chevron-down arrow-icon"}
-                = f.collection_select(:category_id, @categories, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
-            -# サイズを下にappendするdivタグ
-            .content__form__Ele.select_size
-            -# -# ブランド
-            .content__form__Ele.select_brand
-              -# = f.label :brand_id do
-              -#   ブランド
-              -#   %span.any-icon
-              -#     任意
-              -# .content__form__Ele__input
-              -#   = f.text_field(:brand_id, class: "exhibit-select", autocomplete: "off")
-              -#   .brand_search_result
-              -#     %ul.brand_search_result__box
-            -# 商品の状態
-            .content__form__Ele
-              = f.label :condition_id do
-                商品の状態
-                %span.required-icon
-                  必須
-              .content__form__Ele__input
-                %span{class: "fa fa-chevron-down arrow-icon"}
-                = f.collection_select(:condition_id, @conditions, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
-
-        -# 配送方法フォーム
-        .content.clearfix
-          .content__title
-            配送について
-            = link_to "#", {class: "exhibit-faq"} do
-              ？
-          .content__form
-            -# 配送料の負担
-            .content__form__TopEle.select_delivery_fee
-              = f.label :delivery_fee_burden_id do
-                配送料の負担
-                %span.required-icon
-                  必須
-              .content__form__TopEle__input
-                %span{class: "fa fa-chevron-down arrow-icon"}
-                = f.collection_select(:delivery_fee_burden_id, @delivery_fee_burdens, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
-            -# 配送方法
-            .content__form__Ele.select_delivery_method
-            -# 発送元の地域
-            .content__form__Ele
-              = f.label :prefecture_id do
-                発送元の地域
-                %span.required-icon
-                  必須
-              .content__form__Ele__input
-                %span{class: "fa fa-chevron-down arrow-icon"}
-                = f.collection_select(:prefecture_id, @prefectures, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
-            -# 発送までの日数
-            .content__form__Ele
-              = f.label :delivery_by_day_id do
-                発送までの日数
-                %span.required-icon
-                  必須
-              .content__form__Ele__input
-                %span{class: "fa fa-chevron-down arrow-icon"}
-                = f.collection_select(:delivery_by_day_id, @delivery_by_days, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
-
-
-        -# 値段設定
-        .content.clearfix
-          .content__title
-            販売価格(300〜9,999,999)
-            = link_to "#", {class: "exhibit-faq"} do
-              ？
-          .content__form
-            %ul
-              %li.content__form__list-A.border-none
-                .clearfix
-                  = f.label :price, {class: "content__form__list-A__label"} do
-                    価格
-                    %span.required-icon
-                      必須
-                  .content__form__list-A__box
-                    ¥
-                    .content__form__list-A__box__width
-                      = f.number_field(:price, min: 300, max: 999999, placeholder: "例）300", class: "exhibit-price")
-
-              %li.content__form__list-B.clearfix
-                .content__form__list-B__left
-                  販売手数料（手数料10%）
-                .content__form__list-B__right -
-              %li.content__form__list-C.clearfix
-                .content__form__list-C__left
-                  販売利益
-                .content__form__list-C__right -
-
-
-        -# 値段設定
-        .content
-          .box
-            %p.content__note
-              = link_to "#", class: "content__note__link" do
-                禁止されている出品
-              、
-              = link_to "#", class: "content__note__link" do
-                行為
-              を必ずご確認ください。
-            %p.content__note
-              またブランド品でシリアルナンバー等がある場合はご記載ください。
-              = link_to "#", class: "content__note__link" do
-                偽ブランドの販売
-              は犯罪であり処罰される可能性があります。
-            %p.content__note
-              また、出品をもちまして
-              = link_to "#", class: "content__note__link" do
-                加盟店規約
-              に同意したことになります
-
-
-          = f.submit({value: "出品する", class: "submit-btn"})
-          = link_to root_path, class: "return-btn" do
-            もどる
-
-
-  .exhibit__footer
-    .exhibit__footer__navi
-      %ul.exhibit__footer__navi__list
-        %li
-          = link_to "#", class: "exhibit__footer__navi__list__ele" do
-            プライバシーポリシー
-        %li
-          = link_to "#", class: "exhibit__footer__navi__list__ele" do
-            メルカリ利用規約
-        %li
-          = link_to "#", class: "exhibit__footer__navi__list__ele" do
-            特定商取引に関する表記
-    .exhibit__footer__logo
-      = link_to root_path do
-        = image_tag "exhibit_logo_gray.svg"
-
-    .exhibit__footer__copylight
-      %p.exhibit__footer__copylight__text
-        © 2019 Mercari
+= render 'shared/sell-icon'
+= render 'shared/aside'
+= render 'shared/footer'

@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one :address, dependent: :destroy
 
   has_many :display_items, dependent: :delete_all
+  has_many :trading_items, dependent: :delete_all
   has_many :comments, dependent: :delete_all
   has_one :credit_card, dependent: :destroy
 
