@@ -1,0 +1,2 @@
+class FinishedItem < ApplicationRecord
+end
