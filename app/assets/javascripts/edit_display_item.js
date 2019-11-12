@@ -1,89 +1,142 @@
 $(function() {
 
-  function test() {
-    var html = `<label class="image__box__label" id="[]" for="display_item_images_attributes_0_image">
-                  <div class="image__box__input-area">
-                    <input accept="image/*" class="image__box__input-area__tag" type="file" name="display_item[images_attributes][0][image]" id="display_item_images_attributes_0_image">
-                    <p class="image__box__input-area__tips">ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート</p>
-                  </div>
-                </label>`;
-    return html
-  }
+  var pathname = window.location.pathname;
+  if (/display_items.\d+.edit/.test(pathname)) {
+    console.log('edit画面で実行する');
 
-  function delete_image_id(image_id) {
-    var html = `<span class="delete_image_id" name=${image_id}></span>`;
-    return html;
-  }
-
-
-  // ページ遷移時に実行、不要なインプットエリアを削除
-  $('.image__box__label').remove();
-  for (  var i = 0;  i < 10;  i++  ) {
-    var remove_ele = "#display_item_images_attributes_"+ i +"_id";
-    $(remove_ele).remove();
-  }
-  // ページ遷移時に実行、新しいinputエリアを取り付け
-  var html = test();
-  $('.image__box').append(html);
-
-
-
-  // プレビューが消されたら、deleteするimage_idを取得
-  $('.image__box__preview__btns__btn').on('click', function() {
-    var preview_box = $(this).parent().parent();
-    var image_id = $(preview_box).attr('id');
-
-    var html = delete_image_id(image_id);
-    $('.delete_image_id_box').append(html);
-
-    $(preview_box).remove();
-  });
-
-
-
-  // 送信をjsで送る
-  $('.edit_display_item').on('submit', function(e) {
-    e.preventDefault();
-    var formData = new FormData(this);
-    var pathname = window.location.pathname.replace('/edit', '');
-
-    $.ajax({
-      type: 'PATCH',
-      url: pathname,
-      data: formData,
-      dataType: 'json',
-      processData: false,
-      contentType: false
-    })
-    .done(function() {
-      var delete_images = document.getElementsByClassName('delete_image_id');
-      // image_idを渡す配列を用意
-      var delete_image_ids = []
-
-      for (  var i = 0;  i < delete_images.length;  i++  ) {
-        var id = $(delete_images[i]).attr('name');
-        delete_image_ids.push(id)
+    function create_width() {
+      var lists = document.getElementsByClassName('image__box__preview');
+      switch(lists.length) {
+        case 1:
+        case 6:
+          var width = '500px'
+          break;
+        case 2:
+        case 7:
+          var width = '380px'
+          break;
+        case 3:
+        case 8:
+          var width = '260px'
+          break;
+        case 4:
+        case 9:
+          var width = '140px'
+          break;
+        case 5:
+        case 10:
+          var width = '620px'
+          break;
       }
-      $.ajax({
-        type: 'delete',
-        url:  '/images/edit_destroy',
-        data: {delete_image_ids, delete_image_ids},
-        dataType: 'html'
-      })
-      .done(function(environment) {
-        if ( environment== '{"type":"development"}' ) {
-          location.href = 'http://localhost:3000/';
+      return width;
+    }
+
+    function create_display_label(i) {
+      var width = create_width();
+      var html = `<label style="width:${width};" class="image__box__label active-display" id="${i}" for="display_item_images_attributes_${i}_image">
+                    <div class="image__box__input-area">
+                      <input accept="image/*" class="image__box__input-area__tag" type="file" name="display_item[images_attributes][${i}][image]" id="display_item_images_attributes_${i}_image">
+                      <p class="image__box__input-area__tips">ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート</p>
+                    </div>
+                  </label>`;
+      return html
+    }
+
+    function create_display_none_label(i) {
+      var html = `<label style="display:none;" class="image__box__label" id="${i}" for="display_item_images_attributes_${i}_image">
+                    <div class="image__box__input-area">
+                      <input accept="image/*" class="image__box__input-area__tag" type="file" name="display_item[images_attributes][${i}][image]" id="display_item_images_attributes_${i}_image">
+                      <p class="image__box__input-area__tips">ドラッグアンドドロップ<br>またはクリックしてファイルをアップデート</p>
+                    </div>
+                  </label>`;
+      return html
+    }
+
+    function delete_image_id(image_id) {
+      var html = `<span class="delete_image_id" name=${image_id}></span>`;
+      return html;
+    }
+  
+  
+    // ページ遷移時に実行、不要なインプットエリアを削除
+    $('.image__box__label').remove();
+    for (  var i = 0;  i < 10;  i++  ) {
+      var remove_ele = "#display_item_images_attributes_"+ i +"_id";
+      $(remove_ele).remove();
+    }
+    // ページ遷移時に実行、新しいinputエリアを取り付け
+    var previews = document.getElementsByClassName('image__box__preview');
+    console.log(previews)
+    if ( previews.length < 10 ) {
+      console.log(previews)
+      for ( var i = 0;  i <= (9 - previews.length);  i++ ) {
+        if (i == 0) {
+          var html = create_display_label(i);
+          $('.image__box').append(html);
         } else {
-          location.href = 'http://52.197.137.91/';
+          var html = create_display_none_label(i);
+          $('.image__box').append(html);
         }
+      }
+    }
+    
+    // プレビューが消されたら、deleteするimage_idを取得
+    $('.edit-delete-preview').on('click', function() {
+      var preview_box = $(this).parent().parent();
+      var image_id = $(preview_box).attr('id');
+  
+      var html = delete_image_id(image_id);
+      $('.delete_image_id_box').append(html);
+  
+      $(preview_box).remove();
+    });
+  
+  
+  
+    // 送信をjsで送る
+    $('.edit_display_item').on('submit', function(e) {
+      e.preventDefault();
+      var formData = new FormData(this);
+      var pathname = window.location.pathname.replace('/edit', '');
+  
+      $.ajax({
+        type: 'PATCH',
+        url: pathname,
+        data: formData,
+        dataType: 'json',
+        processData: false,
+        contentType: false
+      })
+      .done(function() {
+        var delete_images = document.getElementsByClassName('delete_image_id');
+        // image_idを渡す配列を用意
+        var delete_image_ids = []
+  
+        for (  var i = 0;  i < delete_images.length;  i++  ) {
+          var id = $(delete_images[i]).attr('name');
+          delete_image_ids.push(id)
+        }
+        $.ajax({
+          type: 'delete',
+          url:  '/images/edit_destroy',
+          data: {delete_image_ids, delete_image_ids},
+          dataType: 'html'
+        })
+        .done(function(environment) {
+          if ( environment == '{"type":"development"}' ) {
+            location.href = 'http://localhost:3000/';
+          } else {
+            location.href = 'http://52.197.137.91/';
+          }
+        })
+        .fail(function() {
+          alert('商品の編集に失敗しました');
+        })
       })
       .fail(function() {
         alert('商品の編集に失敗しました');
       })
-    })
-    .fail(function() {
-      alert('商品の編集に失敗しました');
-    })
-  });
-
+    });
+ 
+  }
 });
