@@ -66,7 +66,26 @@ class DisplayItemsController < ApplicationController
     @images = @display_item.images
     # カテゴリ取得
     get_select_options
+
+
+
     # edit用の変数取得
+    # カテゴリー
+      # 初期値を取得
+      if @display_item.category.parent.parent
+        @category_lv1_id = @display_item.category.parent.parent.id
+        @category_lv2_id = @display_item.category.parent.id
+        @category_lv3_id = @display_item.category_id
+
+        @category_lv2_groups = @display_item.category.parent.parent.children
+        @category_lv3_groups = @display_item.category.parent.children
+      else
+      end
+
+
+
+
+      # 配送方法
     if @display_item.delivery_fee_burden_id == 1
       @delivery_methods = DeliveryMethod.where(type: 3)
     else

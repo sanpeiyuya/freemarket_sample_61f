@@ -80,9 +80,30 @@
                   必須
               .content__form__TopEle__input
                 %span{class: "fa fa-chevron-down arrow-icon"}
-                = f.collection_select(:category_id, @categories, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
+                = f.collection_select(:category_id, @categories, :id, :name, {selected: @category_lv1_id}, {class: "exhibit-select"})
+              - if @category_lv3_id
+                .content__form__Add1
+                  = f.label :category_id, {style: "display:none;"}
+                  .content__form__Ele__input
+                    %span{class: "fa fa-chevron-down arrow-icon"}
+                    = f.collection_select(:category_id, @category_lv2_groups, :id, :name, {selected: @category_lv2_id}, {class: "exhibit-select display_item_category_2"})
+                .content__form__Add2
+                  = f.label :category_id, {style: "display:none;"}
+                  .content__form__Ele__input
+                    %span{class: "fa fa-chevron-down arrow-icon"}
+                    = f.collection_select(:category_id, @category_lv3_groups, :id, :name, {selected: @category_lv3_id}, {class: "exhibit-select display_item_category_3"})
+              - else
+                .content__form__Add1
+                  = f.label :category_id, {style: "display:none;"}
+                  .content__form__Ele__input
+                    %span{class: "fa fa-chevron-down arrow-icon"}
+                    = f.collection_select(:category_id, @category_lv2_groups, :id, :name, {selected: @category_lv2_id}, {class: "exhibit-select display_item_category_2"})
+
+
+
             -# このクラスの下にサイズを入れる
             .content__form__Ele.select_size
+
             -# -# ブランド
             .content__form__Ele.select_brand
             -# 商品の状態
