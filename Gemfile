@@ -78,6 +78,9 @@ gem "font-awesome-rails"
 gem 'mini_magick'
 gem 'devise-i18n'
 gem 'gretel'
+
 gem 'payjp'
-gem 'rails-i18n'
 gem 'gon'
+gem 'rails-i18n'
+gem 'jquery-validation-rails'
+gem 'jQuery-Validation-Engine-rails'
