@@ -86,10 +86,10 @@ class DisplayItemsController < ApplicationController
       @size_id = @display_item.size_id
       @size_groups = @display_item.size.parent.children
     end
-
-
-
-
+    # ブランド
+    if @display_item.brand
+      @brand_name = @display_item.brand.name
+    end
     # 配送方法
     if @display_item.delivery_fee_burden_id == 1
       @delivery_methods = DeliveryMethod.where(type: 3)
