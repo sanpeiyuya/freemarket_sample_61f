@@ -7,6 +7,7 @@ class CreditCardsController < ApplicationController
 
   def new
     @users = User.all[0]
+    card = CreditCard.find_by(user_id: current_user.id)
   end
 
   def create
@@ -19,14 +20,20 @@ class CreditCardsController < ApplicationController
         card: params['payjp-token'],
         metadata:{user_id: current_user.id}
       )
-      @card = CreditCard.new(user_id: current_user,customer_id:customer_id ,card_id: customer.default_card)
+      @card = CreditCard.new(user_id: current_user.id,customer_id:customer.id ,card_id: customer.default_card)
       if @card.save
-        redirect_to action:"show"
+        redirect_to action: "index"
       else
-        redirect_to card_index_path
+        redirect_to action: "create"
       end
     end
   end
+
+  def show
+
+
+  end
+
 
   private
 
