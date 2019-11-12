@@ -15,27 +15,7 @@ $(function() {
     return html;
   }
 
-  function update_display_item(form_data) {
-    var formData = new FormData(form_data);
-    var pathname = window.location.pathname.replace('/edit', '');
-
-    $.ajax({
-      type: 'PATCH',
-      url: pathname,
-      data: formData,
-      dataType: 'json',
-      processData: false,
-      contentType: false
-    })
-    .done(function() {
-      console.log('成功');
-    })
-    .fail(function() {
-      alert('商品の編集に失敗しました');
-    })
-  }
-
-
+  
   // ページ遷移時に実行、不要なインプットエリアを削除
   $('.image__box__label').remove();
   for (  var i = 0;  i < 10;  i++  ) {
@@ -76,11 +56,8 @@ $(function() {
       contentType: false
     })
     .done(function() {
-      console.log('成功');
-
       var delete_images = document.getElementsByClassName('delete_image_id');
       if ( delete_images.length != 0 ) {
-        console.log("画像削除フェーズにはいった")
         // image_idを渡す配列
         var delete_image_ids = []
 
