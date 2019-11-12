@@ -422,6 +422,28 @@
               background-color: white;
               cursor: pointer;
               box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+              position: relative;
+              &__soldout-box {
+                z-index: 1;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 100px 100px 0 0;
+                border-color: #ea352d transparent transparent transparent;
+              }
+              &__soldout-text {
+                z-index: 2;
+                position: absolute;
+                top: 25px;
+                left: 5px;
+                color: #fff;
+                font-size: 20px;
+                font-weight: bold;
+                transform: rotate(-45deg);
+              }
               &__frame{
                 position: relative;
                 width: 188px;
