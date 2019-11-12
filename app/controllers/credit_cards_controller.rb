@@ -6,12 +6,12 @@ class CreditCardsController < ApplicationController
   end
 
   def new
-    @users = User.all[0]
+    gon.payjp_key = ENV["PAYJP_PRIVATE_KEY"]
     card = CreditCard.find_by(user_id: current_user.id)
   end
 
   def create
-    Payjp.api_key = PAYJP_SECRET_KEY
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     if params['payjp-token'].blank?
       redirect_to new_credit_card_path
     else
