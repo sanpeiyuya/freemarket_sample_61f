@@ -2,7 +2,6 @@ $(function() {
 
   var pathname = window.location.pathname;
   if (/display_items.\d+.edit/.test(pathname)) {
-    console.log('edit画面で実行する');
 
     function create_width() {
       var lists = document.getElementsByClassName('image__box__preview');
@@ -66,9 +65,7 @@ $(function() {
     }
     // ページ遷移時に実行、新しいinputエリアを取り付け
     var previews = document.getElementsByClassName('image__box__preview');
-    console.log(previews)
     if ( previews.length < 10 ) {
-      console.log(previews)
       for ( var i = 0;  i <= (9 - previews.length);  i++ ) {
         if (i == 0) {
           var html = create_display_label(i);
