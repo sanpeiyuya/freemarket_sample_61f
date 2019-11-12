@@ -23,7 +23,7 @@ $(function() {
       type: 'PATCH',
       url: pathname,
       data: formData,
-      dataType: 'html',
+      dataType: 'json',
       processData: false,
       contentType: false
     })
@@ -71,7 +71,7 @@ $(function() {
       type: 'PATCH',
       url: pathname,
       data: formData,
-      dataType: 'html',
+      dataType: 'json',
       processData: false,
       contentType: false
     })
@@ -94,7 +94,12 @@ $(function() {
           data: {delete_image_ids, delete_image_ids},
           dataType: 'html'
         })
-        .done(function() {
+        .done(function(environment) {
+          if ( environment.status == 'development') {
+            location.href = 'http://localhost:3000/';
+          } else {
+            location.href = 'http://52.197.137.91/';
+          }
         })
         .fail(function() {
           alert('商品の編集に失敗しました');
