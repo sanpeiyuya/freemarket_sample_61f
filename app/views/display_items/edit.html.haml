@@ -31,8 +31,9 @@
           %p.image__tips
             最大10枚までアップロードできます
           .image__box
-            // Deleteするimage_id
+            // Deleteするimageを保存
             .delete_image_id_box
+
             - @images.each do |image|
               .image__box__preview{:id => "#{image.id}"}
                 .image__box__preview__frame

@@ -32,7 +32,7 @@ class DisplayItem < ApplicationRecord
   has_one :trading_item, dependent: :destroy
   has_one :stopping_item, dependent: :destroy
 
-  accepts_nested_attributes_for :images
+  accepts_nested_attributes_for :images, allow_destroy: true
 
   def category_has_size?
     if category_id

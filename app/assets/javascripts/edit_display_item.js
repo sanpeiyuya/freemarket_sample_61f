@@ -52,7 +52,8 @@ $(function() {
     }
 
     function delete_image_id(image_id) {
-      var html = `<span class="delete_image_id" name=${image_id}></span>`;
+      var html = `<input type="checkbox" style="display: none;" checked="true" value="1" name="display_item[images_attributes][0][_destroy]" id="display_item_images_attributes_0__destroy">
+                  <input type="hidden" value="${image_id}" name="display_item[images_attributes][0][id]" id="display_item_images_attributes_0_id">`;
       return html;
     }
   
@@ -87,53 +88,6 @@ $(function() {
   
       $(preview_box).remove();
     });
-  
-  
-  
-    // 送信をjsで送る
-    $('.edit_display_item').on('submit', function(e) {
-      e.preventDefault();
-      var formData = new FormData(this);
-      var pathname = window.location.pathname.replace('/edit', '');
-  
-      $.ajax({
-        type: 'PATCH',
-        url: pathname,
-        data: formData,
-        dataType: 'json',
-        processData: false,
-        contentType: false
-      })
-      .done(function() {
-        var delete_images = document.getElementsByClassName('delete_image_id');
-        // image_idを渡す配列を用意
-        var delete_image_ids = []
-  
-        for (  var i = 0;  i < delete_images.length;  i++  ) {
-          var id = $(delete_images[i]).attr('name');
-          delete_image_ids.push(id)
-        }
-        $.ajax({
-          type: 'delete',
-          url:  '/images/edit_destroy',
-          data: {delete_image_ids, delete_image_ids},
-          dataType: 'html'
-        })
-        .done(function(environment) {
-          if ( environment == '{"type":"development"}' ) {
-            location.href = 'http://localhost:3000/';
-          } else {
-            location.href = 'http://52.197.137.91/';
-          }
-        })
-        .fail(function() {
-          alert('商品の編集に失敗しました');
-        })
-      })
-      .fail(function() {
-        alert('商品の編集に失敗しました');
-      })
-    });
- 
+   
   }
 });
