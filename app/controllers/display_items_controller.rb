@@ -88,7 +88,6 @@ class DisplayItemsController < ApplicationController
     # size_idがないときは、nullで入力する
     unless params[:display_item][:size_id]
       params[:display_item][:size_id] = nil
-      binding.pry
     end
     params.require(:display_item).permit(:user_id, :name, :description, :category_id, :size_id, :brand_id, :condition_id, :delivery_fee_burden_id, :delivery_method_id, :prefecture_id, :delivery_by_day_id, :price, images_attributes: [:image, :id, :_destroy])
   end
