@@ -58,7 +58,12 @@ Rails.application.routes.draw do
   # 出品停止中-商品のルーティング
   resources :stopping_items, only: [:create, :destroy]
 
-
+  # イメージのルーティング
+  resources :images, only: [:index] do
+    collection do
+      delete  :edit_destroy #編集ページの削除機能
+    end
+  end
   # カテゴリのルーティング
   resources :categories, only: [:index] do
     collection do

@@ -16,7 +16,7 @@ $(function() {
                   <label for="display_item_category_id"></label>
                   <div class="content__form__Ele__input">
                     <span class="fa fa-chevron-down arrow-icon"></span>
-                    <select class="exhibit-select" name="display_item[category_id]" id="display_item_category2_id">
+                    <select class="exhibit-select display_item_category_2" name="display_item[category_id]" id="display_item_category2_id">
                     <option value="">--</option>
                     ${option}
                   </div>
@@ -32,7 +32,7 @@ $(function() {
                   <label for="display_item_category_id"></label>
                   <div class="content__form__Ele__input">
                     <span class="fa fa-chevron-down arrow-icon"></span>
-                    <select class="exhibit-select" name="display_item[category_id]" id="display_item_category3_id">
+                    <select class="exhibit-select display_item_category_3" name="display_item[category_id]" id="display_item_category3_id">
                     <option value="">--</option>
                     ${option}
                   </div>
@@ -181,11 +181,11 @@ $(function() {
 
 
     // カテゴリ2のイベント発火
-    $(document).on('change', '#display_item_category2_id', function() {
+    $(document).on('change', '.display_item_category_2', function() {
       // カテゴリ1の入力値取得
       var category_id = $('#display_item_category_id').val();
       // カテゴリ2の入力値取得
-      var category2_id = $('#display_item_category2_id').val();
+      var category2_id = $('.display_item_category_2').val();
       $.ajax({
         url: '/categories/search_level2',
         type: 'post',
@@ -210,14 +210,14 @@ $(function() {
       .fail(function() {
         alert('カテゴリの取得に失敗しました');
       })
-      var category_id = $('#display_item_category2_id').val();
+      var category_id = $('.display_item_category_2').val();
       create_html_size_and_brand(category_id);
     });
 
 
     // カテゴリ3のイベント発火
-    $(document).on('change', '#display_item_category3_id', function() {
-      var category_id = $('#display_item_category3_id').val();
+    $(document).on('change', '.display_item_category_3', function() {
+      var category_id = $('.display_item_category_3').val();
       create_html_size_and_brand(category_id);
     });
   });
