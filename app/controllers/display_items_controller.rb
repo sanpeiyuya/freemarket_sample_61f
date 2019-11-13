@@ -20,16 +20,18 @@ class DisplayItemsController < ApplicationController
     @hobies = []
 
     @items.each do |item|
-      if item.category.parent.parent_id == @lady.id && @ladies.length < 10
-        @ladies << item
-      elsif item.category.parent.parent_id == @man.id && @mens.length < 10
-        @mens << item
-      elsif item.category.parent.parent_id == @electrical.id && @electricals.length < 10
-        @electricals << item
-      elsif item.category.parent.parent_id == @hobby.id && @hobies.length < 10
-        @hobies << item
-      elsif @ladies == 10 && @mens == 10 && @electricals == 10 && @hobies == 10
-        break
+      if item.stopping_item.nil? && 
+        if item.category.parent.parent_id == @lady.id && @ladies.length < 10
+          @ladies << item
+        elsif item.category.parent.parent_id == @man.id && @mens.length < 10
+          @mens << item
+        elsif item.category.parent.parent_id == @electrical.id && @electricals.length < 10
+          @electricals << item
+        elsif item.category.parent.parent_id == @hobby.id && @hobies.length < 10
+          @hobies << item
+        elsif @ladies == 10 && @mens == 10 && @electricals == 10 && @hobies == 10
+          break
+        end
       end
     end
 
