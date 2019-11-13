@@ -7,9 +7,10 @@ $(function() {
 
 
   $('#new_display_item').on('submit', function(e) {
-    e.preventDefault();
-    $('.alert-message').remove();
 
+    // エラーメッセージを削除
+    $('.alert-message').remove();
+    // エラー件数チェック用
     var check = 0;
 
     // 画像の有無を判定
@@ -128,10 +129,27 @@ $(function() {
       check += 1
     }
 
+    var price = $('#display_item_price').val();
+    // 「価格」の有無を判定
+    if ( !price ) {
+      var html = create_alert_html("価格を入力してください")
+      $('.content__form__list-A__box').append(html)
+      check += 1
+    }
+    if ( price < 300 || price > 9999999 ) {
+      var html = create_alert_html("300円~999万円で入力してください")
+      $('.content__form__list-A__box').append(html)
+      check += 1
+    }
 
-
-
-    console.log("checkは" + check);
+    // エラーがあれば、送信しない
+    if ( check != 0 ) {
+      var html = create_alert_html(`${check}件の誤りがあります`);
+      $('.exhibit__main__box__title').append(html)
+      // トップへスクロール
+      $(".exhibit__main").get(0).scrollIntoView(true);
+      e.preventDefault();
+    }
 
   })
 });
