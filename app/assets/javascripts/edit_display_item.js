@@ -52,8 +52,8 @@ $(function() {
     }
 
     function delete_image_id(image_id) {
-      var html = `<input type="checkbox" style="display: none;" checked="true" value="1" name="display_item[images_attributes][0][_destroy]" id="display_item_images_attributes_0__destroy">
-                  <input type="hidden" value="${image_id}" name="display_item[images_attributes][0][id]" id="display_item_images_attributes_0_id">`;
+      var html = `<input type="checkbox" style="display: none;" checked="true" value="1" name="display_item[images_attributes][${image_id}][_destroy]" id="display_item_images_attributes_${image_id}__destroy">
+                  <input type="hidden" value="${image_id}" name="display_item[images_attributes][${image_id}][id]" id="display_item_images_attributes_${image_id}_id">`;
       return html;
     }
   
