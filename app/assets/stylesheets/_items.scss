@@ -313,6 +313,21 @@
       line-height: 1.4em;
       margin: 0;
       padding: 0;
+      &__categories {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        font-size: 14px;
+        margin: 15px auto 0;
+        &__list {
+          margin: 0 15px 0 0;
+          padding: 8px 14px;
+          font-size: 15px;
+          font-weight: bold;
+          background: rgb(239, 239, 239);
+          border-radius: 15px;
+        }
+      }
     }
     &__tagspace{
       overflow-x: auto;
@@ -320,7 +335,7 @@
       white-space: nowrap;
       &__tag{
         display: flex;
-        margin: 0px auto;
+        margin: 0 auto;
         &__1{
           background-color: rgb(239, 239, 239);
           cursor: pointer;

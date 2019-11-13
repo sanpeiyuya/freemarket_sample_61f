@@ -4,19 +4,36 @@ class DisplayItemsController < ApplicationController
   require "date"
 
   def index
-    @find_items = DisplayItem.order(id: "DESC")
-    @display_items = []
-    @find_items.each do |item|
-      if @display_items.length < 10
-        unless item.stopping_item
-          @display_items << item
-        end
-      else
+    # カテゴリーを取得
+    @lady = Category.find_by(name: "レディース")
+    @man = Category.find_by(name: "メンズ")
+    @electrical = Category.find_by(name: "家電・スマホ・カメラ")
+    @hobby = Category.find_by(name: "おもちゃ・ホビー・グッズ")
+ 
+    # カテゴリをまとめて配列に保存
+    @categories = [@lady, @man, @electrical, @hobby]
+
+    @items = DisplayItem.order('created_at DESC')
+    @ladies = []
+    @mens = []
+    @electricals = []
+    @hobies = []
+
+    @items.each do |item|
+      if item.category.parent.parent_id == @lady.id && @ladies.length < 10
+        @ladies << item
+      elsif item.category.parent.parent_id == @man.id && @mens.length < 10
+        @mens << item
+      elsif item.category.parent.parent_id == @electrical.id && @electricals.length < 10
+        @electricals << item
+      elsif item.category.parent.parent_id == @hobby.id && @hobies.length < 10
+        @hobies << item
+      elsif @ladies == 10 && @mens == 10 && @electricals == 10 && @hobies == 10
         break
       end
     end
-    # カテゴリーを取得
-    @categories = Category.where(ancestry: nil)
+
+
   end
 
   def new
