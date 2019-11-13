@@ -28,7 +28,7 @@ class DisplayItemsController < ApplicationController
         @electricals << item
       elsif item.category.parent.parent_id == @hobby.id && @hobies.length <= 10
         @hobies << item
-      elsif @ladies == 10 && @mens == 10 && @hobies == 10
+      elsif @ladies == 10 && @mens == 10 && @electricals == 10 && @hobies == 10
         break
       end
     end
