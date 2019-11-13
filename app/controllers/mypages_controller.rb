@@ -3,11 +3,11 @@ class MypagesController < ApplicationController
     # @profile = UserProfile.find_by(user_id: current_user.id)
     @display_item = DisplayItem.new
   end
-
+  # 商品削除機能（このコメントは後で消す）
   def display_items
-    @display_items = DisplayItem.where(user_id: current_user.id)
+    @display_items = current_user.display_items
   end
-
+  # 商品削除機能（このコメントは後で消す）
   def trading_items
   end
 

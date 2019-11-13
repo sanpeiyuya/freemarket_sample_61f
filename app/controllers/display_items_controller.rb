@@ -1,4 +1,5 @@
 class DisplayItemsController < ApplicationController
+  before_action :find_display_item, only: [:show, :destroy, :edit]
 
   require "date"
 
@@ -43,8 +44,6 @@ class DisplayItemsController < ApplicationController
   end
 
   def show
-
-    @display_item = DisplayItem.find(params[:id])
     @category_lv1 = @display_item.category
     @category_lv2 = @category_lv1.parent
     @category_lv3 = @category_lv2.parent if @category_lv2.parent
@@ -62,7 +61,6 @@ class DisplayItemsController < ApplicationController
   end
 
   def edit
-    @display_item = DisplayItem.find(params[:id])
     @images = @display_item.images
     # カテゴリ取得
     get_select_options
@@ -106,7 +104,6 @@ class DisplayItemsController < ApplicationController
   end
 
   def destroy
-    @display_item = DisplayItem.find(params[:id])
     if @display_item.destroy
       redirect_to display_items_mypages_path
     end
@@ -142,5 +139,9 @@ class DisplayItemsController < ApplicationController
     @delivery_methods = DeliveryMethod.all
     @prefectures = Prefecture.all
     @delivery_by_days = DeliveryByDay.all
+  end
+
+  def find_display_item
+    @display_item = DisplayItem.find(params[:id])
   end
 end
