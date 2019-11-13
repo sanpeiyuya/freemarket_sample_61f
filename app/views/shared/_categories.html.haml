@@ -2,7 +2,7 @@
   .main-content__items
     .main-content__items__title
       .main-content__items__title__text
-        = category.name
+        = category.name + "新着アイテム"
       .main-content__items__title__more 
         .main-content__items__title__more__text もっとみる
         =fa_icon "chevron-right",class: 'main-content__items__item__more__icon'     
@@ -10,4 +10,11 @@
       .main-content__items__item__content
         .main-content__items__item__content__box
           -# アイテムを描画
-          = render "shared/items"
+          - if category.name == "レディース"
+            = render partial: "shared/items", locals: { display_items: @ladies }
+          - elsif category.name == "メンズ"
+            = render partial: "shared/items", locals: { display_items: @mens }
+          - elsif category.name == "家電・スマホ・カメラ"
+            = render partial: "shared/items", locals: { display_items: @electricals }
+          - elsif category.name == "おもちゃ・ホビー・グッズ"
+            = render partial: "shared/items", locals: { display_items: @hobies }
