@@ -7,7 +7,7 @@
   .exhibit__main
     .exhibit__main__box
       %h2.exhibit__main__box__title
-        商品の情報を入力
+        商品の情報を編集
       - if @display_item.errors.any?
         %ur.has-error-area
           %li.has-error-area__text
@@ -228,7 +228,7 @@
                 加盟店規約
               に同意したことになります
 
-          = f.submit({value: "出品する", class: "exhibit-submit-btn"})
+          = f.submit({value: "上記の内容で編集する", class: "exhibit-submit-btn"})
           = link_to root_path, class: "return-btn" do
             もどる
 
