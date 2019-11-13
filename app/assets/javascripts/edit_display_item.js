@@ -2,7 +2,6 @@ $(function() {
 
   var pathname = window.location.pathname;
   if (/display_items.\d+.edit/.test(pathname)) {
-    console.log("hello");
 
     function create_width() {
       var lists = document.getElementsByClassName('image__box__preview');
