@@ -54,6 +54,15 @@ ActiveRecord::Schema.define(version: 20191110110743) do
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
+  create_table "credit_cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "customer_id", null: false
+    t.string   "card_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_credit_cards_on_user_id", using: :btree
+  end
+
   create_table "display_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                                 null: false
     t.text     "description",            limit: 65535, null: false
@@ -145,6 +154,7 @@ ActiveRecord::Schema.define(version: 20191110110743) do
   add_foreign_key "categories", "sizes"
   add_foreign_key "comments", "display_items"
   add_foreign_key "comments", "users"
+  add_foreign_key "credit_cards", "users"
   add_foreign_key "display_items", "brands"
   add_foreign_key "display_items", "categories"
   add_foreign_key "display_items", "sizes"
