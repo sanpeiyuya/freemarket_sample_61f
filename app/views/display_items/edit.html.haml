@@ -82,7 +82,7 @@
                   必須
               .content__form__TopEle__input
                 %span{class: "fa fa-chevron-down arrow-icon"}
-                = f.collection_select(:category_id, @categories, :id, :name, {selected: @category_lv1_id}, {class: "exhibit-select"})
+                = f.collection_select(:category_id, @categories, :id, :name, {selected: @category_lv1_id}, {class: "exhibit-select display_item_category_1"})
               - if @category_lv3_id
                 .content__form__Add1
                   = f.label :category_id, {style: "display:none;"}
@@ -125,14 +125,14 @@
                     %ul.brand_search_result__box
 
             -# 商品の状態
-            .content__form__Ele
+            .content__form__Ele.select_condition
               = f.label :condition_id do
                 商品の状態
                 %span.required-icon
                   必須
               .content__form__Ele__input
                 %span{class: "fa fa-chevron-down arrow-icon"}
-                = f.collection_select(:condition_id, @conditions, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
+                = f.collection_select(:condition_id, @conditions, :id, :name, {prompt: "--"}, {class: "exhibit-select display_select_condition"})
 
         -# 配送方法フォーム
         .content.clearfix
@@ -149,7 +149,7 @@
                   必須
               .content__form__TopEle__input
                 %span{class: "fa fa-chevron-down arrow-icon"}
-                = f.collection_select(:delivery_fee_burden_id, @delivery_fee_burdens, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
+                = f.collection_select(:delivery_fee_burden_id, @delivery_fee_burdens, :id, :name, {prompt: "--"}, {class: "exhibit-select display_select_burden"})
             -# 配送方法
             .content__form__Ele.select_delivery_method
               = f.label :delivery_method_id do
@@ -158,25 +158,25 @@
                   必須
               .content__form__TopEle__input
                 %span{class: "fa fa-chevron-down arrow-icon"}
-                = f.collection_select(:delivery_method_id, @delivery_methods, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
+                = f.collection_select(:delivery_method_id, @delivery_methods, :id, :name, {prompt: "--"}, {class: "exhibit-select display_select_method"})
             -# 発送元の地域
-            .content__form__Ele
+            .content__form__Ele.select_prefecture
               = f.label :prefecture_id do
                 発送元の地域
                 %span.required-icon
                   必須
               .content__form__Ele__input
                 %span{class: "fa fa-chevron-down arrow-icon"}
-                = f.collection_select(:prefecture_id, @prefectures, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
+                = f.collection_select(:prefecture_id, @prefectures, :id, :name, {prompt: "--"}, {class: "exhibit-select display_select_prefecture"})
             -# 発送までの日数
-            .content__form__Ele
+            .content__form__Ele.select_by_day
               = f.label :delivery_by_day_id do
                 発送までの日数
                 %span.required-icon
                   必須
               .content__form__Ele__input
                 %span{class: "fa fa-chevron-down arrow-icon"}
-                = f.collection_select(:delivery_by_day_id, @delivery_by_days, :id, :name, {prompt: "--"}, {class: "exhibit-select"})
+                = f.collection_select(:delivery_by_day_id, @delivery_by_days, :id, :name, {prompt: "--"}, {class: "exhibit-select display_select_by_day"})
 
 
         -# 値段設定
@@ -196,7 +196,7 @@
                   .content__form__list-A__box
                     ¥
                     .content__form__list-A__box__width
-                      = f.number_field(:price, min: 300, max: 9999999, placeholder: "例）300", class: "exhibit-price")
+                      = f.number_field(:price, placeholder: "例）300", class: "exhibit-price display_item_price")
 
               %li.content__form__list-B.clearfix
                 .content__form__list-B__left
