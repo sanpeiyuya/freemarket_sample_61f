@@ -100,7 +100,9 @@ class DisplayItemsController < ApplicationController
 
   def update
     @display_item = DisplayItem.find(params[:id])
-    @display_item.update(display_item_params)
+    if @display_item.update(display_item_params)
+      redirect_to root_path
+    end
   end
 
   def destroy
@@ -122,6 +124,11 @@ class DisplayItemsController < ApplicationController
       params[:display_item][:brand_id] = Brand.find_by(name: params[:display_item][:brand_id]).id
     else
       params[:display_item][:brand_id] = nil
+    end
+    # size_idがないときは、nullで入力する
+    unless params[:display_item][:size_id]
+      params[:display_item][:size_id] = nil
+      binding.pry
     end
     params.require(:display_item).permit(:user_id, :name, :description, :category_id, :size_id, :brand_id, :condition_id, :delivery_fee_burden_id, :delivery_method_id, :prefecture_id, :delivery_by_day_id, :price, images_attributes: [:image, :id, :_destroy])
   end
