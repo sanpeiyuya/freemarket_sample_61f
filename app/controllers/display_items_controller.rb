@@ -57,15 +57,9 @@ class DisplayItemsController < ApplicationController
   def update
     @display_item = DisplayItem.find(params[:id])
     if @display_item.update(display_item_params)
-      redirect_to root_path
+      redirect_to root_path, notice: '商品を編集しました'
     else
-      @images = @display_item.images
-      # セレクトボックスの中身を取得
-      get_select_box_contents
-      # edit用の初期情報を取得
-      get_edit_variables  
-      # editページに戻す
-      render action: :edit
+      redirect_to edit_display_item_path(params[:id]), alert: '編集に失敗しました'
     end
   end
 
