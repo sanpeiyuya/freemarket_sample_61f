@@ -1,9 +1,8 @@
 # README
-![ER_free-marcket (3)](https://user-images.githubusercontent.com/12472994/67822897-73a2c980-fb04-11e9-8e8f-4a6dea398e87.png)
+![ER_free-marcket (4)](https://user-images.githubusercontent.com/12472994/68737559-2572e780-0627-11ea-897d-53bbd86d8882.png)
 
 ## テーブル
 - users
-- user_profiles
 - addresses
 - credit_cards
 - sns_credentials
@@ -25,8 +24,18 @@
 |email|string|null: false, unique: true||
 |password|string|null: false|一意性なし|
 |phone|string|null: false, unique: true||
+|family_name|string|null:false|　|
+|given_name|string|null:false|　|
+|family_name_kana|string|null:false|　|
+|given_name_kana|string|null:false|　|
+|introduction|text|　|　|
+|birth_year|intger|null:false|　|
+|birth_month|intger|null:false|　|
+|birth_day|intger|null:false|　|
+|icon_image|text|　|　|
+|total_sales|intger|　|トータルの投稿数|
+
 #### アソシエーション
-- has_one :user_profile, dependent: :destroy
 - has_one :address, dependent: :destroy
 - has_one :credit_card, dependent: :destroy
 - has_one :sns_credential, dependent: :destroy
@@ -36,24 +45,6 @@
 - has_many: comments
 - has_many: trade-messages
 - has_many :likes
-
-### _user_profilses_
-|カラム名|型|オプション|備考|
-|---|---|---|---|
-|email|string|null: false, unique: true||
-|user_id|references|foreign_key: true||
-|family_name|string|null:false|　|
-|last_name|string|null:false|　|
-|family_name_kana|string|null:false|　|
-|last_name_kana|string|null:false|　|
-|introduction|text|　|　|
-|birth_year|intger|null:false|　|
-|birth_month|intger|null:false|　|
-|birth_day|intger|null:false|　|
-|icon_image|text|　|　|
-|total_sales|intger|　|トータルの投稿数|
-#### アソシエーション
-- belongs_to :user
 
 ### _addresses_
 |カラム名|型|オプション|備考|
@@ -113,6 +104,7 @@
 - belongs_to :size
 - has_one :trading_item, dependent: :destroy
 - has_one :finished_item, dependent: :destroy
+- has_one :stopping_item, dependent: :destroy
 - has_many :images, dependent: :destroy_all
 - has_many: messages
 - has_many :likes
@@ -136,6 +128,13 @@
 - belongs_to :_display_item
 - has_many: trade_messages
 
+### _stopping_items_
+|カラム名|型|オプション|備考|
+|---|---|---|---|
+|display_item_id|integer|null:false, foreign_key: true|　|
+#### アソシエーション
+- belongs_to :_display_item
+
 ### _images_
 |カラム名|型|オプション|備考|
 |---|---|---|---|
@@ -150,6 +149,7 @@
 |name|string|null: false|　|
 |ancestry|string|　|gem'ancestry'を使用|
 |size_id|references|foreign_key: true|　|
+|brand|string|　|ブランドの有無を判定、1ならブランド有り|
 #### アソシエーション
 - has_many :display_items
 - belongs_to :size
@@ -167,6 +167,8 @@
 |カラム名|型|オプション|備考|
 |---|---|---|---|
 |name|string|null: false|　|
+|name_alphabet|string|null: false|　|
+|name_kana|string|null: false|　|
 #### アソシエーション
 - has_many :display_items
 
