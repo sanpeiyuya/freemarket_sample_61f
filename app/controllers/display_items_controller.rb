@@ -44,18 +44,8 @@ class DisplayItemsController < ApplicationController
   end
 
   def show
-    @category_lv1 = @display_item.category
-    @category_lv2 = @category_lv1.parent
-    @category_lv3 = @category_lv2.parent if @category_lv2.parent
-
-    @comment = Comment.new
-    @comments = @display_item.comments
-
-    @now = Time.now
-
-    @mine_items = DisplayItem.where(user_id: @display_item[:user_id])
-    @same_category_items = DisplayItem.where(category_id: @display_item[:category_id])
-
+    # show用の変数取得
+    get_show_variables
     # 必ず最後に入れる
     render :layout => 'display_items_show'
   end
@@ -144,4 +134,20 @@ class DisplayItemsController < ApplicationController
   def find_display_item
     @display_item = DisplayItem.find(params[:id])
   end
+
+  def get_show_variables
+    # カテゴリ系
+    @category_lv1 = @display_item.category
+    @category_lv2 = @category_lv1.parent
+    @category_lv3 = @category_lv2.parent if @category_lv2.parent
+    # コメント生成
+    @comment = Comment.new
+    # コメントを取得、コメント時間算出用の時間取得
+    @comments = @display_item.comments
+    @now = Time.now
+    # 次のアイテム、前のアイテム取得
+    @mine_items = DisplayItem.where(user_id: @display_item[:user_id])
+    @same_category_items = DisplayItem.where(category_id: @display_item[:category_id])
+  end
+
 end
