@@ -13,12 +13,14 @@
           購入内容の確認
       .content
         .content__inner__top
-          =image_tag"靴.jpg",size:"64x64",class:'purple_bag'
-          %span.word 格安お値下げ中 COACH コーチ 
+          =image_tag @display_item.images[0].image.url ,class:'display_item_image'
+          %span.word 
+            = @display_item.name
             
         .content__inner
           .content__inner__price
-            %p5¥5,500
+            %p5
+              = "¥" + @display_item.price.to_s(:delimited)
             %span.item-shipping-fee 送料込み
           .content__inner
             .content__inner__point
@@ -27,7 +29,8 @@
             .pay__payment
               支払い金額
             .pay__payment__right 
-              %span.price¥5,500
+              %span.price
+              =  "¥" + @display_item.price.to_s(:delimited)
           .error
             配送先と支払い方法の入力を完了てください。
           .content__inner
@@ -38,8 +41,17 @@
       .content__inner
         %h3.content__inner__text
         配送先
-        %address〒-
-        = link_to "#", class: "change" do
+        %address
+          = "〒-" + current_user.address.postal_code.to_s
+        %p
+          = current_user.address.prefecture.name
+          = current_user.address.city
+          = current_user.address.block
+          = current_user.address.building
+        %p
+          = current_user.family_name
+          = current_user.given_name
+        = link_to edit_address_path, class: "change" do
           変更する
           =fa_icon "chevron-right"
     .content
@@ -50,21 +62,6 @@
         = link_to new_credit_card_path, class: "change" do
           変更する
           =fa_icon "chevron-right"
-
-  -#   .exhibit__main__box__buy-contents
-  -#     .exhibit__main__box__buy-contents__item-name
-  -#       .exhibit__main__box__buy-contents__item-name__inner
-  -#         =image_tag"bag.jpg",size:"64x64",class:'purple_bag'
-  -#         .exhibit__main__box__buy-contents__item-name__inner__information 格安お値下げ中　COACH コーチ　ポッピー　2wayバッグ
-  -#         .exhibit__main__box__buy-contents__item-name__inner__buy-form
-  -#           .price¥5,500
-  -#           %span送料込み
-  -#   .exhibit__main__box__buy-contents
-  -#     .exhibit__main__box__buy-contents__item-name__inner
-  -#       %h3配送先
-  -#   .exhibit__main__box__buy-contents
-  -#     .exhibit__main__box__buy-contents__item-name__inner
-
 
   .exhibit__footer
     .exhibit__footer__navi
