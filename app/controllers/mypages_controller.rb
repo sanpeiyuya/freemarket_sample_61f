@@ -14,6 +14,13 @@ class MypagesController < ApplicationController
   end
 
   def trading_items
+    @items = current_user.display_items
+    @trading_items = []
+    @items.each do |item|
+      if item.trading_item && item.finished_item.nil? 
+        @trading_items << item.trading_item
+      end
+    end
   end
 
   def finished_items
