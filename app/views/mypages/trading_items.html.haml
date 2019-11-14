@@ -25,23 +25,23 @@
           %li
             = link_to finished_items_mypages_path, class: "exhibit-item__tab__link" do
               売却済み
-        - if @trading_items.nil?
+        - if @has_trading_items.nil?
           .mypage__main__item__tab__content
             %ul
               %li.shows
                 .mypage__main__item__tab__content__logo
                   取引中の商品がありません
         - else
-          - @trading_items.each do |trading_item|
-            = link_to display_item_path(trading_item.display_item_id) do
+          - @has_trading_items.each do |has_trading_item|
+            = link_to display_item_path(has_trading_item.id) do
               .exhibit-item__tab-content
                 %ul.exhibit-item__tab-content__lists
                   %li.exhibit-item__tab-content__lists__link
                     %figure
-                      = image_tag trading_item.display_item.images[0].image.url, size: "48x48", class: "exhibit-item__tab-content__lists__img"
+                      = image_tag has_trading_item.images[0].image.url, size: "48x48", class: "exhibit-item__tab-content__lists__img"
                     .exhibit-item__tab-content__lists__text
                       .exhibit-item__tab-content__lists__text__name
-                        = trading_item.display_item.name
+                        = has_trading_item.name
                       .exhibit-item__tab-content__lists__icons
                         %span.exhibit-item__tab-content__lists__icons__clearfix
                           =fa_icon "heart-o",class: 'exhibit-item__tab-content__lists__icons__like'
