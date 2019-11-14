@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191110110743) do
+ActiveRecord::Schema.define(version: 20191113112524) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -110,6 +110,14 @@ ActiveRecord::Schema.define(version: 20191110110743) do
     t.index ["ancestry"], name: "index_sizes_on_ancestry", using: :btree
   end
 
+  create_table "sns_credentials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "uid"
+    t.string   "provider"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "stopping_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "display_item_id"
     t.datetime "created_at",      null: false
@@ -146,6 +154,7 @@ ActiveRecord::Schema.define(version: 20191110110743) do
     t.text     "introduction",           limit: 65535
     t.text     "icon_image",             limit: 65535
     t.integer  "total_sales"
+    t.index ["email"], name: "email", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
