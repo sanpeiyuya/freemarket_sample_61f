@@ -40,21 +40,6 @@
             %span.required-icon
               必須
           = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可",class:'validate[required,custom[email]] text-input',id:'textfield'
-        -# .field
-        -#   = f.label :password do
-        -#     パスワード
-        -#     %span.required-icon
-        -#       必須
-        -# = f.password_field :password, autocomplete: "new-password", placeholder: "７文字以上",id:'passwordfield'
-        -# .field
-        -#   = f.label :password_confirmation do
-        -#     パスワード（確認）
-        -#     %span.required-icon
-        -#       必須
-        -#   = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "７文字以上",id:'re_passwordfield'
-        -# .field
-        -#   .notice-head 本人確認
-        -#   .notice-text 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
         =f.hidden_field :password, value:"Devise.friendly_token.first(6)"
         =f.hidden_field :password_confirmation, value:"Devise.friendly_token.first(6)"
         .field

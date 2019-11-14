@@ -25,8 +25,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       session[:password] = @user.password
       session[:password_confirmation] = @user.password
       session[:user_attributes] = @user
-      render "users/registrations/sns"
-      # redirect_to users_sign_up_sns_path
+      # render "users/registrations/sns"
+      redirect_to users_sign_up_sns_path
     end
 
     def failure
