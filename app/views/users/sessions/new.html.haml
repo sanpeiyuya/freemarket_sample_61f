@@ -7,10 +7,10 @@
         .login-content__selection__signup__text 新規会員登録
     .login-content__selection__space
       .login-content__selection__space__sns
-        = link_to new_info_users_path,class:'login-content__selection__space__sns__facebook' do
+        = link_to user_facebook_omniauth_authorize_path, method: :post,class:'login-content__selection__space__sns__facebook' do
           = fa_icon "facebook-square",class:'login-content__selection__space__sns__facebook__icon'
           .login-content__selection__space__sns__facebook__text Facebookでログイン
-        = link_to new_info_users_path,class:'login-content__selection__space__sns__google' do
+        = link_to user_google_oauth2_omniauth_authorize_path, method: :post,class:'login-content__selection__space__sns__google' do
           = image_tag"google.svg",class:'login-content__selection__space__sns__google__icon'
           .login-content__selection__space__sns__google__text Googleでログイン
     .login-content__selection__form
