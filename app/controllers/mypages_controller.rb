@@ -5,7 +5,13 @@ class MypagesController < ApplicationController
   end
   # 商品削除機能（このコメントは後で消す）
   def display_items
-    @display_items = current_user.display_items
+    @items = current_user.display_items
+    @display_items = []
+    @items.each do |item|
+      if item.trading_item.nil? && item.finished_item.nil? 
+        @display_items << item
+      end
+    end
   end
   # 商品削除機能（このコメントは後で消す）
   def trading_items
