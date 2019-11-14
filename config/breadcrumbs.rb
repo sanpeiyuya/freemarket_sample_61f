@@ -7,9 +7,29 @@ crumb :mypage do
   parent :root
 end
 
-crumb :credit_card do
-  link "支払い方法", credit_card_path
+crumb :display_items do
+  link "出品した商品 - 出品中", display_items_mypages_path
   parent :mypage
+end
+
+crumb :trading_items do
+  link "出品した商品 - 取引中", trading_items_mypages_path
+  parent :mypage
+end
+
+crumb :finished_items do
+  link "出品した商品 - 売却済み", finished_items_mypages_path
+  parent :mypage
+end
+
+crumb :credit_card do
+  link "支払い方法", credit_cards_path
+  parent :mypage
+end
+
+crumb :credit_card_input do
+  link "クレジットカード情報入力", new_credit_card_path
+  parent :credit_card
 end
 
 crumb :user_profile do

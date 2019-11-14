@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191104082311) do
+ActiveRecord::Schema.define(version: 20191110110743) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -54,6 +54,15 @@ ActiveRecord::Schema.define(version: 20191104082311) do
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
+  create_table "credit_cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "customer_id", null: false
+    t.string   "card_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_credit_cards_on_user_id", using: :btree
+  end
+
   create_table "display_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                                 null: false
     t.text     "description",            limit: 65535, null: false
@@ -76,6 +85,15 @@ ActiveRecord::Schema.define(version: 20191104082311) do
     t.index ["user_id"], name: "index_display_items_on_user_id", using: :btree
   end
 
+  create_table "finished_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "display_item_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["display_item_id"], name: "index_finished_items_on_display_item_id", using: :btree
+    t.index ["user_id"], name: "index_finished_items_on_user_id", using: :btree
+  end
+
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "image",           null: false
     t.integer  "display_item_id", null: false
@@ -92,33 +110,42 @@ ActiveRecord::Schema.define(version: 20191104082311) do
     t.index ["ancestry"], name: "index_sizes_on_ancestry", using: :btree
   end
 
-  create_table "user_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "stopping_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "display_item_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["display_item_id"], name: "index_stopping_items_on_display_item_id", using: :btree
+  end
+
+  create_table "trading_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "display_item_id"
     t.integer  "user_id"
-    t.string   "family_name",                    null: false
-    t.string   "last_name",                      null: false
-    t.string   "family_name_kana",               null: false
-    t.string   "last_name_kana",                 null: false
-    t.text     "introduction",     limit: 65535
-    t.integer  "birth_year",                     null: false
-    t.integer  "birth_month",                    null: false
-    t.integer  "birth_day",                      null: false
-    t.text     "icon_image",       limit: 65535
-    t.integer  "total_sales"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.string   "nickname"
-    t.index ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["display_item_id"], name: "index_trading_items_on_display_item_id", using: :btree
+    t.index ["user_id"], name: "index_trading_items_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "phone",                               null: false
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "phone",                                             null: false
+    t.string   "email",                                default: "", null: false
+    t.string   "encrypted_password",                   default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.string   "family_name"
+    t.string   "given_name"
+    t.string   "family_name_kana"
+    t.string   "given_name_kana"
+    t.integer  "birth_year"
+    t.integer  "birth_month"
+    t.integer  "birth_day"
+    t.string   "nickname"
+    t.text     "introduction",           limit: 65535
+    t.text     "icon_image",             limit: 65535
+    t.integer  "total_sales"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -127,10 +154,15 @@ ActiveRecord::Schema.define(version: 20191104082311) do
   add_foreign_key "categories", "sizes"
   add_foreign_key "comments", "display_items"
   add_foreign_key "comments", "users"
+  add_foreign_key "credit_cards", "users"
   add_foreign_key "display_items", "brands"
   add_foreign_key "display_items", "categories"
   add_foreign_key "display_items", "sizes"
   add_foreign_key "display_items", "users"
+  add_foreign_key "finished_items", "display_items"
+  add_foreign_key "finished_items", "users"
   add_foreign_key "images", "display_items"
-  add_foreign_key "user_profiles", "users"
+  add_foreign_key "stopping_items", "display_items"
+  add_foreign_key "trading_items", "display_items"
+  add_foreign_key "trading_items", "users"
 end

@@ -37,9 +37,10 @@
           .field
             .notice-text 本人確認のため、携帯番号のsms（ショートメッセージサービス）を利用して認証を行います。
           .next
-            = link_to new_address_users_path,class:'next' do
-              = f.submit "smsを送信する",class:'next-btn'
+            = f.submit "smsを送信する",class:'next-btn'
           .field
             .notice-text ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
       .newphone-content__mono-content__space__notice 電話番号の確認が必要な理由＞
 = render 'shared/afooter'
+
+-# = link_to new_address_users_path,class:'next' do

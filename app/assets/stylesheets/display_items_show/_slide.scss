@@ -6,6 +6,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
   // スライドの箱
   &__slider {
     height: 300px;
@@ -21,6 +23,27 @@
     flex-wrap:wrap;
     background: #f5f5f5;
   }
+  &__soldout-box {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 125px 125px 0 0;
+    border-color: #ea352d transparent transparent transparent;
+  }
+  &__soldout-text {
+    z-index: 2;
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    transform: rotate(-45deg);
+  }
 }
 
 .slide-item{
@@ -32,12 +55,14 @@
   }
 }
 
-.thumbnail-item{
-  flex: 0 1 20%;
-  // margin-bottom: 10px;
-  box-sizing: border-box;
+.thumbnail-item {
+  width: 60px;
+  height: 60px;
+  // flex: 0 1 20%;
+  // box-sizing: border-box;
   position: relative;
   cursor: pointer;
+  overflow: hidden;
   &:after{
     content:'';
     background-color: rgba(white, 0.5);
@@ -54,15 +79,7 @@
     opacity: 0;
   }
   img{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    // height: auto;
-    // width: auto;
-    max-width: 100%;
-    max-height: 100%;
-    margin: auto;
+    max-height: 60px;
+    height: auto;
   } 
 }

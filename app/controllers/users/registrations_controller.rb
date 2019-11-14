@@ -1,18 +1,38 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    @user = User.new
+  end
 
-  # POST /resource
-  # def create
-  #   super
-  # end
+  def new_phone
+    session[:nickname] = params[:user][:nickname]
+    session[:email] = params[:user][:email]
+    session[:password] = params[:user][:password]
+    session[:password_confirmation] = params[:user][:password_confirmation]
+    session[:family_name] = params[:user][:family_name]
+    session[:given_name] = params[:user][:given_name]
+    session[:family_name_kana] = params[:user][:family_name_kana]
+    session[:given_name_kana] = params[:user][:given_name_kana]
+    session[:birth_year] = params[:user][:birth_year]
+    session[:birth_month] = params[:user][:birth_month]
+    session[:birth_day] = params[:user][:birth_day]
+    @user = User.new
+  end
+  
+  def create
+    @user = User.new(email:session[:email],password: session[:password], password_confirmation: session[:password_confirmation], phone: params[:user][:phone],nickname:session[:nickname],family_name: session[:family_name], given_name: session[:given_name], family_name_kana: session[:family_name_kana], given_name_kana: session[:given_name_kana], birth_year: session[:birth_year],birth_month: session[:birth_month],birth_day: session[:birth_day])
+        if @user.save
+          redirect_to new_address_users_path
+          bypass_sign_in(@user)
+        else
+          redirect_to users_path
+        end
+  end
 
   # GET /resource/edit
   # def edit
@@ -41,9 +61,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:phone])
+    # devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

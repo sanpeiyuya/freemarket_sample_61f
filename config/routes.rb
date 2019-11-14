@@ -5,11 +5,14 @@ Rails.application.routes.draw do
   } 
 
   devise_scope :user do
+    get 'users/sign_up/new_phone' => 'users/registrations#new_phone'
+    post 'users/sign_up/' => 'users/registrations#create'
     get "sign_in", to: "users/sessions#new"
     get "sign_out", to: "users/sessions#destroy" 
   end
 
-  root 'items#index'
+  # root画面
+  root 'display_items#index'
   # ユーザー新規作成系のルーティング(※暫定！)
   resources :users do
     collection do
@@ -28,6 +31,9 @@ Rails.application.routes.draw do
   resources :mypages, only: [:index] do
     collection do
       get    :logout #ログアウト画面
+      get    :display_items #出品中画面
+      get    :trading_items #取引中画面
+      get    :finished_items #売却済み画面
     end
   end
   # ニックネーム&紹介文の編集
@@ -35,23 +41,32 @@ Rails.application.routes.draw do
   # 会員情報の編集
   resources :user_profiles, only: [:edit, :update]
   # クレジットカードの編集
-  resources :credit_cards
-
+  resources :credit_cards do
+    collection do
+      post 'purchase'
+    end
+  end
+  # 住所の編集
   resources :addresses,only: [:edit, :update]
 
-  # 商品系のルーティング
+  # 出品中-商品のルーティング
   resources :display_items do
     member do
-      get   :buy #購入確認画面
-      post  :pay #購入処理
+      get :buy #購入画面
     end
-    collection do
-      post  :first_category_search #カテゴリ検索メソッド(第1段階)
-      post  :second_category_search #カテゴリ検索メソッド(第2段階)
-      post  :size_search #サイズ検索メソッド
-      post  :brand_search #ブランド検索メソッド
-    end
+    # コメントのルーティング(display_itemsとネスト)
     resources :comments, only: [:create, :destroy]
+  end
+  # 取引中-商品のルーティング
+  resources :trading_items, only: [:create]
+  # 出品停止中-商品のルーティング
+  resources :stopping_items, only: [:create, :destroy]
+
+  # イメージのルーティング
+  resources :images, only: [:index] do
+    collection do
+      delete  :edit_destroy #編集ページの削除機能
+    end
   end
   # カテゴリのルーティング
   resources :categories, only: [:index] do

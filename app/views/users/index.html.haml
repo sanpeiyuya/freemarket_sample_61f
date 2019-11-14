@@ -4,7 +4,7 @@
     .mono-content__selection__head 新規会員登録
     .mono-content__selection__space
       .mono-content__selection__space__content
-        = link_to new_user_registration_path,class:'mono-content__selection__space__content__mail' do
+        = link_to new_user_registration_path, data: {"turbolinks" => false},class:'mono-content__selection__space__content__mail' do
           = fa_icon "envelope-o",class:'mono-content__selection__space__content__mail__icon'
           .mono-content__selection__space__content__mail__text メールアドレスで登録する
         = link_to new_info_users_path,class:'mono-content__selection__space__content__facebook' do

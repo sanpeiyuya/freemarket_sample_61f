@@ -1,15 +1,14 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# # This file should contain all the record creation needed to seed the database with its default values.
+# # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+# #
+# # Examples:
+# #
+# #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+# #   Character.create(name: 'Luke', movie: movies.first)
 
-#   coding: utf-8
+# #   coding: utf-8
 
-# display_itemsを全削除
-DisplayItem.all.destroy_all
+
 # brandsテーブルのレコード追加
 Brand.all.destroy_all # まず全レコード削除
 Brand.create(name: "ナイキ", name_alphabet: "nike", name_kana: "ないき")
@@ -232,7 +231,5 @@ cars_tires.children.create(size_id: tire, name: "タイヤ/ホイールセット
 etceteras = Category.create(name: "その他")
 etceteras.children.create(name: "まとめ売り")
 
-Address.all.destroy_all # まず全レコード削除
-Address.create(id:1,user_id:1, postal_code:1410022,block:"3-17-8",building:"ライオンズマンション島津山",phone:"09011112222",city:"品川区東五反田",prefecture_id:13)
-UserProfile.all.destroy_all
-UserProfile.create(id:1,user_id:1,family_name:"三瓶",last_name:"祐也",family_name_kana:"さんぺい",last_name_kana:"ゆうや",introduction:"こんにちわ",birth_year:1987,birth_month:8,birth_day:28,icon_image:nil,total_sales:nil,created_at:2019,updated_at:2019,nickname:"まかお")
+# Address.all.destroy_all # まず全レコード削除
+# Address.create(id:1,user_id:4, postal_code:1410022,block:"3-17-8",building:"ライオンズマンション島津山",phone:"09011112222",city:"品川区東五反田",prefecture_id:13)

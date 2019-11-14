@@ -1,0 +1,58 @@
+= render 'shared/header'
+- breadcrumb :display_items
+%nav.bread-crumbs
+  %ul
+    %li
+      = breadcrumbs separator: " #{content_tag(:i, '', class: 'fa fa-angle-right')} "
+
+.mypage-clearfix
+  .mypage
+
+    = render 'shared/side-bar'
+    
+    .exhibit-item
+      .exhibit-item__container
+        .exhibit-item__head
+          出品した商品
+        %ul.exhibit-item__tab
+          %li.active
+            = link_to display_items_mypages_path, class: "exhibit-item__tab__link" do
+              出品中
+          %li
+            = link_to trading_items_mypages_path, class: "exhibit-item__tab__link" do
+              取引中
+          %li
+            = link_to finished_items_mypages_path, class: "exhibit-item__tab__link" do
+              売却済み
+      - @display_items.each do |display_item|
+        = link_to display_item_path(display_item[:id]) do
+          .exhibit-item__tab-content
+            %ul.exhibit-item__tab-content__lists
+              %li.exhibit-item__tab-content__lists__link
+                %figure
+                  = image_tag display_item.images[0].image.url, size: "48x48", class: "exhibit-item__tab-content__lists__img"
+                .exhibit-item__tab-content__lists__text
+                  .exhibit-item__tab-content__lists__text__name
+                    = display_item.name
+                  .exhibit-item__tab-content__lists__icons
+                    %span.exhibit-item__tab-content__lists__icons__clearfix
+                      =fa_icon "heart-o",class: 'exhibit-item__tab-content__lists__icons__like'
+                      %span
+                        0
+                    %span.exhibit-item__tab-content__lists__icons__clearfix
+                      =fa_icon "comment",class: 'exhibit-item__tab-content__lists__icons__comment'
+                      %span
+                        0
+                    - if display_item.stopping_item
+                      .exhibit-item__tab-content__lists__icons__status-stopping
+                        出品停止中
+                      = fa_icon "angle-right", class: "exhibit-item__tab-content__lists__icons__right"
+                    - else
+                      .exhibit-item__tab-content__lists__icons__status-selling
+                        出品中
+                      = fa_icon "angle-right", class: "exhibit-item__tab-content__lists__icons__right"
+
+
+= render 'shared/sell-icon'
+= render 'shared/aside'
+= render 'shared/footer'

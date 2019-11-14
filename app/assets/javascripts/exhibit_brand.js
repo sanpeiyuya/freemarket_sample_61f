@@ -8,6 +8,8 @@ $(function() {
     })
     return html;
   }
+
+
   // ブランド検索機能
   $(document).on('keyup', '#display_item_brand_id', function() {
     // リストを空にする

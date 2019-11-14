@@ -1,10 +1,15 @@
-- @display_items.each do |display_item|
-  = link_to display_item_path(display_item[:id]) do
+- display_items.each do |display_item|
+  = link_to display_item_path(display_item[:id]), data:{turbolinks: "false"} do
     .main-content__items__item__content__box__2
-      .main-content__items__item__content__box__2__image
-        -# = image_tag display_item.images[0].image.url
+      // 売り切れアイコン
+      - if display_item.trading_item
+        .main-content__items__item__content__box__2__soldout-box
+        .main-content__items__item__content__box__2__soldout-text
+          SOLD
+      .main-content__items__item__content__box__2__frame
+        = image_tag display_item.images[0].image.url, class: "main-content__items__item__content__box__2__frame__image"
         // 上記のパスでとりあえず画像が出せます！
-        .main-content__items__item__content__box__2__image__price
+        .main-content__items__item__content__box__2__frame__price
           %span
             = "¥" + display_item.price.to_s(:delimited)
       .main-content__items__item__content__box__2__items-name

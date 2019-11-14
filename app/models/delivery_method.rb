@@ -1,7 +1,7 @@
 class DeliveryMethod < ActiveHash::Base
   #type:1 = 送料込み（出品者負担）だけで表示
   #type:2 = 着払い（購入者負担）だけで表示
-  #type:3 = 両方でで表示
+  #type:3 = 両方で表示
   self.data = [
       {id: 1, type: 3, name: '未定'}, 
       {id: 2, type: 1, name: 'らくらくメルカリ便'}, 
