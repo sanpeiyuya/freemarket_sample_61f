@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   # クレジットカードの編集
   resources :credit_cards do
     collection do
-      post 'purchase'
+      post 'buy'
     end
   end
   # 住所の編集
