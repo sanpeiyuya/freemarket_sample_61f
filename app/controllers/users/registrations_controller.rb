@@ -23,15 +23,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session[:birth_day] = params[:user][:birth_day]
     @user = User.new
   end
+
+  def sns
+    # sns先で使われている名前とメールアドレスをテキストボックスに入った状態をつくる
+    @user = User.new(
+      nickname:              session[:user_attributes]["nickname"],
+      email:                 session[:user_attributes]["email"]
+    )
+  end
   
   def create
-    @user = User.new(email:session[:email],password: session[:password], password_confirmation: session[:password_confirmation], phone: params[:user][:phone],nickname:session[:nickname],family_name: session[:family_name], given_name: session[:given_name], family_name_kana: session[:family_name_kana], given_name_kana: session[:given_name_kana], birth_year: session[:birth_year],birth_month: session[:birth_month],birth_day: session[:birth_day])
-        if @user.save
-          redirect_to new_address_users_path
-          bypass_sign_in(@user)
-        else
-          redirect_to users_path
-        end
+      @user = User.new(email:session[:email],password: session[:password], password_confirmation: session[:password_confirmation], phone: params[:user][:phone],nickname:session[:nickname],family_name: session[:family_name], given_name: session[:given_name], family_name_kana: session[:family_name_kana], given_name_kana: session[:given_name_kana], birth_year: session[:birth_year],birth_month: session[:birth_month],birth_day: session[:birth_day])
+      if @user.save
+        user = User.find_by(phone: params[:user][:phone])
+        sns = SnsCredential.update(user_id: user.id)
+        redirect_to new_address_users_path
+        bypass_sign_in(@user)
+      else
+        redirect_to users_path
+      end
   end
 
   # GET /resource/edit
