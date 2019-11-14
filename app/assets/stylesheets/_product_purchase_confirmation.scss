@@ -1,12 +1,14 @@
-// *{
-//   box-sizing: border-box;
-// }
-.purple_bag{
-  vertical-align: text-top;
+.display_item_image {
+  display: inline-block;
+  max-width: 64px;
+  max-height: 64px;
 }
 .word{
+  display: inline-block;
+  width: calc(100% - 64px);
   font-size: 16px;
   font-weight: 600;
+  word-wrap: break-word;
 }
 .content{
   background-color: #fff;
@@ -31,11 +33,10 @@
       text-align: center;
     }
     &__top{
-      
       max-width: 320px;
       margin: 0 auto;
-      flex-wrap: wrap;
-      &__text{
+      display: flex;
+      &__text {
       font-weight: 600;
       }
     }
@@ -86,45 +87,3 @@
   cursor: pointer;
   text-align: center;
 }
-// }
-// .exhibit__main__box__buy-contents{
-//   display: block;
-//   width: 700px;
-//   margin: 0 auto;
-//   text-align: center;
-//   border-top: 1px solid #f5f5f5;
-//   &__item-name{
-//     padding: 24px 12.5% 0;
-//     font-size: 16px;
-//     line-height: 1.5;
-//     text-align: center;
-//     display: flex;
-//     background-color:white;
-
-//     &__inner{
-//     display: flex;
-//     flex-wrap: wrap;
-//     max-width: 320px;
-//     margin: 0 auto;
-//       &__information{
-//         text-align: left;
-//         margin-left: 16px;
-//         width: calc(100% - 80px);
-//         font-size: 16px;
-//         line-height: 1.5;
-//         font-weight: 600;
-//       }
-//     &__buy-form{
-
-//     }
-  
-// .exhibit__main__buy-user-info{
-//   margin-top:40px ;
-//   padding: 24px 12.5% 0;
-//   border-top: 1px solid #f5f5f5;
-// }
-      
-//     }
-//   }
-
-// }
