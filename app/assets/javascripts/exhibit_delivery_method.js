@@ -17,7 +17,7 @@ $(function() {
                 </label>
                 <div class="content__form__Ele__input">
                   <span class="fa fa-chevron-down arrow-icon"></span>
-                  <select class="exhibit-select" name="display_item[delivery_method_id]" id="display_item_delivery_method_id">
+                  <select class="exhibit-select display_select_method" name="display_item[delivery_method_id]" id="display_item_delivery_method_id">
                     <option value="">--</option>
                     ${option}
                   </select>
