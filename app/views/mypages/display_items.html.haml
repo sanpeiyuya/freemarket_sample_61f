@@ -1,4 +1,6 @@
 = render 'shared/header'
+= render 'shared/flash'
+
 - breadcrumb :display_items
 %nav.bread-crumbs
   %ul
@@ -24,6 +26,7 @@
           %li
             = link_to finished_items_mypages_path, class: "exhibit-item__tab__link" do
               売却済み
+
       - @display_items.each do |display_item|
         = link_to display_item_path(display_item[:id]) do
           .exhibit-item__tab-content
