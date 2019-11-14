@@ -49,7 +49,7 @@ class DisplayItemsController < ApplicationController
     @display_item = DisplayItem.new(display_item_params)
     # イメージが存在しない時は登録させない
     if display_item_params[:images_attributes] && @display_item.save
-      redirect_to root_path
+      redirect_to root_path, notice: '商品を出品しました'
     else
       # セレクトボックスの中身を取得
       get_select_box_contents
