@@ -154,7 +154,6 @@ ActiveRecord::Schema.define(version: 20191113112524) do
     t.text     "introduction",           limit: 65535
     t.text     "icon_image",             limit: 65535
     t.integer  "total_sales"
-    t.index ["email"], name: "email", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
