@@ -76,7 +76,7 @@ class DisplayItemsController < ApplicationController
   def update
     @display_item = DisplayItem.find(params[:id])
     if @display_item.update(display_item_params)
-      redirect_to root_path, notice: '商品を編集しました'
+      redirect_to display_item_path(params[:id]), notice: '商品を編集しました'
     else
       redirect_to edit_display_item_path(params[:id]), alert: '編集に失敗しました'
     end
