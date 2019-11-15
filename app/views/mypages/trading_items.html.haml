@@ -25,7 +25,7 @@
           %li
             = link_to finished_items_mypages_path, class: "exhibit-item__tab__link" do
               売却済み
-        - if @has_trading_items.nil?
+        - if @has_trading_items.empty?
           .mypage__main__item__tab__content
             %ul
               %li.shows
