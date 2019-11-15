@@ -43,7 +43,7 @@ class CreditCardsController < ApplicationController
         customer: card.customer_id,
         currency: 'jpy',
         )
-        @display_item.update(user_id: current_user.id)
+        
         
         @trading_item = TradingItem.new(trading_item_params)
         if @trading_item.save
