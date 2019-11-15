@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
-    :sessions => 'users/sessions'   
+    :sessions => 'users/sessions',
+    :omniauth_callbacks => 'users/omniauth_callbacks'  
   } 
 
   devise_scope :user do
     get 'users/sign_up/new_phone' => 'users/registrations#new_phone'
+    get 'users/sign_up/sns' => 'users/registrations#sns'
     post 'users/sign_up/' => 'users/registrations#create'
     get "sign_in", to: "users/sessions#new"
     get "sign_out", to: "users/sessions#destroy" 
@@ -43,7 +45,7 @@ Rails.application.routes.draw do
   # クレジットカードの編集
   resources :credit_cards do
     collection do
-      post 'purchase'
+      post 'buy'
     end
   end
   # 住所の編集

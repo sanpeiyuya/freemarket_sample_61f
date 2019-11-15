@@ -4,16 +4,17 @@
       = link_to root_path do
         = image_tag "exhibit_logo.svg"
 
-  = form_for @trading_item do |f|
+  = form_for @trading_item ,url: buy_credit_cards_path do |f|
     = f.hidden_field :display_item_id, value: @display_item.id
     = f.hidden_field :user_id, value: current_user.id
+    %input{:name => "payjp-token", :type => "hidden", :value => "tok_...."}/
     .exhibit__main
       .exhibit__main__box
         %h2.exhibit__main__box__title
           購入内容の確認
       .content
         .content__inner__top
-          =image_tag @display_item.images[0].image.url ,size:"64x64",class:'purple_bag'
+          =image_tag @display_item.images[0].image.url ,class:'display_item_image'
           %span.word 
             = @display_item.name
             
