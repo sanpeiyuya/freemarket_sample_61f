@@ -29,9 +29,28 @@ class CreditCardsController < ApplicationController
     end
   end
 
-  def show
-
-
+  def buy
+    
+    card = CreditCard.find_by(user_id: current_user.id)
+    @display_item = DisplayItem.find(params[:trading_item][:display_item_id])
+    @address = Address.find_by(user_id: current_user.id)
+    if card.blank?
+      redirect_to action: "new"
+    else
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      if Payjp::Charge.create(
+        amount: @display_item.price,
+        customer: card.customer_id,
+        currency: 'jpy',
+        )
+        
+        
+        @trading_item = TradingItem.new(trading_item_params)
+        if @trading_item.save
+          redirect_to root_path
+        end
+      end
+    end
   end
 
 
@@ -40,6 +59,8 @@ class CreditCardsController < ApplicationController
   def set_card
     @card = CreditCard.find_by(user_id: current_user.id) if CreditCard.where(user_id: current_user.id).present?
   end
-  
 
+  def trading_item_params
+    params.require(:trading_item).permit(:user_id, :display_item_id)
+  end
 end
