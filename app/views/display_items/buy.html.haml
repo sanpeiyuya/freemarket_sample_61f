@@ -32,10 +32,14 @@
             .pay__payment__right 
               %span.price
               =  "¥" + @display_item.price.to_s(:delimited)
-          .error
-            配送先と支払い方法の入力を完了てください。
-          .content__inner
-            = f.submit({value: "購入する", class: "payment-btn"})
+          -if current_user.credit_card && current_user.address
+            .content__inner
+              = f.submit({value: "購入する", class: "buy-btn"})
+          -else
+            .error
+              配送先と支払い方法の入力を完了てください。
+            .content__inner
+              = f.submit({value: "購入する", class: "payment-btn"})
 
 
     .content
@@ -43,26 +47,35 @@
         %h3.content__inner__text
         配送先
         %address
-          = "〒-" + current_user.address.postal_code.to_s
+          = "〒-" + current_user.address&.postal_code.to_s
         %p
-          = current_user.address.prefecture.name
-          = current_user.address.city
-          = current_user.address.block
-          = current_user.address.building
+          = current_user.address&.prefecture&.name
+          = current_user.address&.city
+          = current_user.address&.block
+          = current_user.address&.building
         %p
-          = current_user.family_name
-          = current_user.given_name
+          = current_user&.family_name
+          = current_user&.given_name
         = link_to edit_address_path, class: "change" do
           変更する
           =fa_icon "chevron-right"
     .content
-      .content__inner
-        %h3.content__inner__text
-        支払い方法
-        %br /
-        = link_to new_credit_card_path, class: "change" do
-          変更する
-          =fa_icon "chevron-right"
+      -if current_user.credit_card.nil?
+        .content__inner
+          %h3.content__inner__text
+          支払い方法
+          %br /
+          = link_to new_credit_card_path, class: "change" ,data:{turbolinks:"false"} do
+            変更する
+            =fa_icon "chevron-right"
+      -else 
+        .content__inner
+          %h3.content__inner__text
+          支払い方法
+          visa
+          = link_to new_credit_card_path, class: "change" do
+            変更する
+            =fa_icon "chevron-right"
 
   .exhibit__footer
     .exhibit__footer__navi

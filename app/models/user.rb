@@ -16,8 +16,8 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates :email, presence: true, uniqueness:true
-  validates :password, confirmation: true, presence: true,length: { in: 7..128, message: "パスワードは8文字以上128文字以下で入力してください" }
-  validates :password_confirmation, presence: true
+  validates :password, confirmation: true, presence: true,length: { in: 7..128, message: "パスワードは8文字以上128文字以下で入力してください" },on: :create
+  validates :password_confirmation, presence: true,on: :create
   validates :family_name, presence: true
   validates :given_name, presence: true
   validates :family_name_kana, presence: true
