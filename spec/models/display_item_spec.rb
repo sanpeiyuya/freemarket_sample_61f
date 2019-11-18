@@ -56,7 +56,81 @@ describe DisplayItem do
       expect(display_item.errors[:size_id]).to include("を入力してください")
     end
 
+    it "「condition_id」なしで商品は作れない" do
+      size = create(:size)
+      category = create(:category, size_id: size.id)
+      # カテゴリが必要なので作る
+      display_item = build(:display_item, category_id: category.id, condition_id: "")
+      display_item.valid?
+      expect(display_item.errors[:condition_id]).to include("を入力してください")
+    end
+
+  it "「delivery_fee_burden_id」なしで商品は作れない" do
+    size = create(:size)
+    category = create(:category, size_id: size.id)
+    # カテゴリが必要なので作る
+    display_item = build(:display_item, category_id: category.id, delivery_fee_burden_id: "")
+    display_item.valid?
+    expect(display_item.errors[:delivery_fee_burden_id]).to include("を入力してください")
   end
+
+  it "「delivery_method_id」なしで商品は作れない" do
+    size = create(:size)
+    category = create(:category, size_id: size.id)
+    # カテゴリが必要なので作る
+    display_item = build(:display_item, category_id: category.id, delivery_method_id: "")
+    display_item.valid?
+    expect(display_item.errors[:delivery_method_id]).to include("を入力してください")
+  end
+
+  it "「prefecture_id」なしで商品は作れない" do
+    size = create(:size)
+    category = create(:category, size_id: size.id)
+    # カテゴリが必要なので作る
+    display_item = build(:display_item, category_id: category.id, prefecture_id: "")
+    display_item.valid?
+    expect(display_item.errors[:prefecture_id]).to include("を入力してください")
+  end
+
+  it "「delivery_by_day_id」なしで商品は作れない" do
+    size = create(:size)
+    category = create(:category, size_id: size.id)
+    # カテゴリが必要なので作る
+    display_item = build(:display_item, category_id: category.id, delivery_by_day_id: "")
+    display_item.valid?
+    expect(display_item.errors[:delivery_by_day_id]).to include("を入力してください")
+  end
+
+  it "「price」が数値ではないと商品は作れない" do
+    size = create(:size)
+    category = create(:category, size_id: size.id)
+    # カテゴリが必要なので作る
+    display_item = build(:display_item, category_id: category.id, price: "あいうえお")
+    display_item.valid?
+    expect(display_item.errors[:price]).to include("は数値で入力してください")
+  end
+
+  it "「price」が299円だと商品は作れない" do
+    size = create(:size)
+    category = create(:category, size_id: size.id)
+    # カテゴリが必要なので作る
+    display_item = build(:display_item, category_id: category.id, price: 299)
+    display_item.valid?
+    expect(display_item.errors[:price]).to include("は299より大きい値にしてください")
+  end
+
+  it "「price」が10000000円だと商品は作れない" do
+    size = create(:size)
+    category = create(:category, size_id: size.id)
+    # カテゴリが必要なので作る
+    display_item = build(:display_item, category_id: category.id, price: 10000000)
+    display_item.valid?
+    expect(display_item.errors[:price]).to include("は10000000より小さい値にしてください")
+  end
+end
+
+
+
 
   describe '#destroy' do
     it 'display_itemのレコードを削除できるか' do
