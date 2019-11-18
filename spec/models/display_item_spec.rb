@@ -15,7 +15,7 @@ describe DisplayItem do
     it 'redirect_to_302' do
       user = create(:user)
       category = create(:category)
-      # カテゴリとユーザーがが必要なので作る
+      # カテゴリとユーザーが必要なので作る
       display_item = create(:display_item, category_id: category.id, user_id: user.id, brand_id: "", size_id: "")
       expect{ display_item.destroy }.to change{ DisplayItem.count }.by(-1)
     end
