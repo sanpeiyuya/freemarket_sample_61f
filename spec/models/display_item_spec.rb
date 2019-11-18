@@ -47,6 +47,15 @@ describe DisplayItem do
       expect(display_item.errors[:category_id]).to include("を入力してください")
     end
 
+    it "「size_id」なしで商品は作れない //カテゴリーidにsize_idがある時" do
+      size = create(:size)
+      category = create(:category, size_id: size.id)
+      # カテゴリが必要なので作る
+      display_item = build(:display_item, category_id: category.id, size_id: "")
+      display_item.valid?
+      expect(display_item.errors[:size_id]).to include("を入力してください")
+    end
+
   end
 
   describe '#destroy' do
