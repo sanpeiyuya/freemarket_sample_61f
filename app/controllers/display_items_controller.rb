@@ -84,7 +84,7 @@ class DisplayItemsController < ApplicationController
 
   def destroy
     if @display_item.destroy
-      redirect_to display_items_mypages_path
+      redirect_to display_items_mypages_path, notice: '商品を削除しました'
     end
   end
 
