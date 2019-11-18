@@ -5,6 +5,32 @@ class CreditCardsController < ApplicationController
   def index
   end
 
+  def show
+    if @card.present?
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @default_card_information = customer.cards.retrieve(@card.card_id)
+      @card_information = customer.cards.retrieve(@card.card_id)
+
+      # 登録しているカード会社のブランドアイコンを表示する
+      @card_brand = @card_information.brand      
+      case @card_brand
+      when "Visa"
+        @card_src = "visa.svg"
+      when "JCB"
+        @card_src = "jcb.svg"
+      when "MasterCard"
+        @card_src = "master-card.svg"
+      when "American Express"
+        @card_src = "american_express.svg"
+      when "Diners Club"
+        @card_src = "dinersclub.svg"
+      when "Discover"
+        @card_src = "discover.svg"
+      end
+    end
+  end
+
   def new
     gon.payjp_key = ENV["PAYJP_PRIVATE_KEY"]
     card = CreditCard.find_by(user_id: current_user.id)
@@ -22,7 +48,7 @@ class CreditCardsController < ApplicationController
       )
       @card = CreditCard.new(user_id: current_user.id,customer_id:customer.id ,card_id: customer.default_card)
       if @card.save
-        redirect_to action: "index"
+        redirect_to root_path
       else
         redirect_to action: "create"
       end
@@ -52,6 +78,20 @@ class CreditCardsController < ApplicationController
       end
     end
   end
+
+  def destroy
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+
+    #削除に成功した時にポップアップを表示します。
+    if @card.destroy 
+      customer.delete
+      redirect_to mypages_path
+    else #削除に失敗した時にアラートを表示します。
+      redirect_to action: "show", alert: "削除できませんでした"
+    end
+  end
+
 
 
   private
