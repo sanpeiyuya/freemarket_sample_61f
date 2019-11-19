@@ -64,7 +64,7 @@
             %span.required-icon
               必須
               %br
-            = f.select :birth_year,options_for_select(1900..2019),{ prompt: "--"},{class:'validate[required]',id:'timetextfield'}
+            = f.select :birth_year,options_for_select(@years),{ prompt: "--"},{class:'validate[required]',id:'timetextfield'}
             %span.timetext 
               年 
             = f.select :birth_month,options_for_select(1..12),{ prompt: "--"},{class:'validate[required]',id:'timetextfield'}
