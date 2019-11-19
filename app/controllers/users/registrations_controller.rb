@@ -31,6 +31,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       nickname:              session[:user_attributes]["nickname"],
       email:                 session[:user_attributes]["email"]
     )
+    @years = Array.new((1900..2019).map{|y| [y,y]}.reverse)
   end
   
   def create
