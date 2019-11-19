@@ -7,6 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     @user = User.new
+    @years = Array.new((1900..2019).map{|y| [y,y]}.reverse)
   end
 
   def new_phone
