@@ -49,10 +49,10 @@
             %span.required-icon
               必須
             %br
-          = f.select :email,options_for_select(@month),{ prompt: "01"},{class:'timeinput'}
+          = f.select :email,options_for_select(@month),{ prompt: "01"},{id:'timetextfield'}
           %span  月
         .field-first
-          = f.select :email,options_for_select(20..29),{ prompt: "19"},{class:'timeinput'}
+          = f.select :email,options_for_select(20..29),{ prompt: "19"},{id:'timetextfield'}
           %span  年
         .field
           = f.label :phone do
