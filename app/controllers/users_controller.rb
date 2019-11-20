@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     @user = User.new
   end
@@ -12,14 +13,9 @@ class UsersController < ApplicationController
   def create_address
     @address =Address.new(address_params)
     if @address.save
-      redirect_to new_credit_users_path
+      redirect_to new_credit_credit_cards_path
     else
     end
-  end
-
-  def new_credit
-    @users = User.new
-    @month = ['02','03','04','05','06','07','08','09','10','11','12']
   end
 
   def complete
@@ -29,6 +25,10 @@ class UsersController < ApplicationController
   private
   def address_params
     params.require(:address).permit(:user_id, :postal_code, :prefecture_id, :city, :block, :building, :phone)
+  end
+
+  def set_card
+    @card = CreditCard.find_by(user_id: current_user.id) if CreditCard.where(user_id: current_user.id).present?
   end
 
 end
