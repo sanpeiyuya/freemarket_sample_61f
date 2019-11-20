@@ -46,6 +46,8 @@ Rails.application.routes.draw do
   resources :credit_cards do
     collection do
       post 'buy'
+      get    :new_credit #クレカ入力画面
+      post   :create_credit #処理
     end
   end
   # 住所の編集
